@@ -107,15 +107,58 @@ export function initials(name: string) {
   return ((words[0]?.[0] ?? "") + (words[1]?.[0] ?? "")).toUpperCase() || "?";
 }
 
-/** Primeira célula livre (varrendo linhas) onde um token novo cabe sem sobrepor outro. */
-export function firstFreeCell(scene: Pick<SceneView, "cols" | "rows" | "tokens">): Cell {
+/** Primeira célula livre (varrendo linhas) onde um token `size`×`size` cabe sem sobrepor outro. */
+export function firstFreeCell(scene: Pick<SceneView, "cols" | "rows" | "tokens">, size = 1): Cell {
   const taken = new Set<string>();
   for (const t of scene.tokens) {
     for (let dy = 0; dy < t.size; dy++)
       for (let dx = 0; dx < t.size; dx++) taken.add(`${t.x + dx}:${t.y + dy}`);
   }
-  for (let y = 0; y < scene.rows; y++) {
-    for (let x = 0; x < scene.cols; x++) if (!taken.has(`${x}:${y}`)) return { x, y };
+  const fits = (x: number, y: number) => {
+    for (let dy = 0; dy < size; dy++)
+      for (let dx = 0; dx < size; dx++) if (taken.has(`${x + dx}:${y + dy}`)) return false;
+    return true;
+  };
+  for (let y = 0; y + size <= scene.rows; y++) {
+    for (let x = 0; x + size <= scene.cols; x++) if (fits(x, y)) return { x, y };
   }
   return { x: 0, y: 0 };
+}
+
+/** Efeitos que valem para o token (personagem: os da ficha; NPC: os do token). */
+export function tokenEffects(token: TokenView, effects: EffectView[]) {
+  return effects.filter((e) =>
+    token.characterId
+      ? e.targetType === "character" && e.targetId === token.characterId
+      : e.targetType === "token" && e.targetId === token.id,
+  );
+}
+
+/** Vida para a barra do token: personagem (todos veem) ou NPC (só o mestre recebe). */
+export function tokenHp(
+  token: TokenView,
+  characters: CharacterView[],
+): { current: number; max: number } | null {
+  if (token.characterId) return characters.find((c) => c.id === token.characterId)?.hp ?? null;
+  return token.stats ? { current: token.stats.hp, max: token.stats.hpMax } : null;
+}
+
+/** Nomes curtos dos efeitos para mostrar em cima do token (condição pelo nome em português). */
+export function tokenBadges(token: TokenView, effects: EffectView[]): string[] {
+  return tokenEffects(token, effects).map(
+    (e) => SRD.conditions.find((c) => c.key === e.conditionKey)?.namePt ?? e.sourceName,
+  );
+}
+
+/** Ataque rápido só entre lados opostos: personagem ataca NPC e NPC ataca personagem. */
+export function canQuickAttack(attacker: TokenView, target: TokenView) {
+  return attacker.id !== target.id && !attacker.characterId !== !target.characterId;
+}
+
+/** Cor da barra de vida pela fração restante. */
+export function hpColor(current: number, max: number) {
+  const f = max > 0 ? current / max : 0;
+  if (f > 0.5) return "#86c98f";
+  if (f > 0.25) return "#d9a45b";
+  return "#e46d61";
 }

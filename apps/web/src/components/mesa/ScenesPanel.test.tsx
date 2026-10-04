@@ -3,7 +3,7 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MesaSocketContext } from "@/lib/MesaContext";
 import { NO_AMBIENCE } from "@/test/fixtures";
-import { ScenesPanel } from "./ScenesPanel";
+import { PlaceTokens, ScenesPanel } from "./ScenesPanel";
 
 const scene: SceneView = {
   id: "s1",
@@ -34,6 +34,7 @@ const table: TableState = {
       raceId: "halfling",
       classes: [],
       updatedAt: "",
+      hp: { current: 10, max: 10 },
     },
   ],
   activeSceneId: "s1",
@@ -54,6 +55,7 @@ function setup() {
   render(
     <MesaSocketContext.Provider value={socket as any}>
       <ScenesPanel table={table} />
+      <PlaceTokens table={table} />
     </MesaSocketContext.Provider>,
   );
   return emitWithAck;

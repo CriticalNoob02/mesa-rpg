@@ -72,6 +72,7 @@ describe("characters", () => {
     raceId: "human",
     classes: [],
     updatedAt: "2026-10-02T20:00:00.000Z",
+    hp: { current: 10, max: 10 },
   });
 
   it("upsert mantém ordem e remove", () => {

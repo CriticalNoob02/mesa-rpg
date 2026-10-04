@@ -268,6 +268,35 @@ export type SpellPt = {
   lists: Record<string, string>;
 };
 
+/** Monstro do SRD no formato da ficha simples de NPC (números já prontos). */
+export type Monster = {
+  id: string;
+  name: string;
+  namePt?: string;
+  type: string;
+  typePt?: string;
+  size: string;
+  cr: string;
+  /** Lado do token em quadrados (espaço ocupado). */
+  squares: number;
+  hp: number;
+  hitDice: string;
+  ac: number;
+  touch: number;
+  flatFooted: number;
+  init: number;
+  /** Deslocamento em terra, em pés. */
+  speed: number;
+  fort: number;
+  ref: number;
+  will: number;
+  attacks: { name: string; bonus: number; damage: string; critical: string }[];
+  /** Texto original para consulta do mestre. */
+  fullAttack: string;
+  specialAttacks: string | null;
+  specialQualities: string | null;
+};
+
 export type SrdCore = {
   races: Race[];
   classes: SrdClass[];

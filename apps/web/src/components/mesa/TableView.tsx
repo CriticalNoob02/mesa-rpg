@@ -8,21 +8,23 @@ import { useMesa } from "@/lib/store";
 import { CharactersPanel } from "./CharactersPanel";
 import { CombatPanel } from "./CombatPanel";
 import { Composer } from "./Composer";
+import { GmPanel } from "./GmPanel";
 import { HandoutsPanel, readSeen } from "./HandoutsPanel";
 import { LogPanel } from "./LogPanel";
 import { MesaHeader } from "./MesaHeader";
 import { PlayersBar } from "./PlayersBar";
-import { ScenesPanel } from "./ScenesPanel";
 
-type Tab = "log" | "characters" | "combat" | "handouts" | "scenes";
+type Tab = "gm" | "log" | "characters" | "combat" | "handouts";
 
 export function TableView() {
   const table = useMesa((s) => s.table)!;
   const status = useMesa((s) => s.status);
-  const [tab, setTab] = useState<Tab>("log");
-  // Celular: mapa ou painel, um de cada vez.
-  const [mobileView, setMobileView] = useState<"map" | "panel">("panel");
   const isGm = table.me.role === "GM";
+  const [tab, setTab] = useState<Tab>(isGm ? "gm" : "log");
+  // Celular: mapa ou painel, um de cada vez. Com cena ativa, começa no mapa.
+  const [mobileView, setMobileView] = useState<"map" | "panel">(table.scene ? "map" : "panel");
+  const current = table.scene?.tokens.find((t) => t.id === table.combat?.currentTokenId);
+  const myTurn = !!current && current.ownerId === table.me.id;
   // Handouts que o jogador ainda não abriu (o mestre não precisa do aviso).
   // Relido a cada render: a aba Handouts grava os vistos ao abrir.
   const seen = isGm ? null : readSeen(table.campaign.id);
@@ -39,7 +41,7 @@ export function TableView() {
       >
         {(
           [
-            ["map", "Mapa"],
+            ["map", myTurn && mobileView !== "map" ? "Mapa · Sua vez!" : "Mapa"],
             ["panel", "Mesa"],
           ] as const
         ).map(([key, label]) => (
@@ -50,8 +52,9 @@ export function TableView() {
             aria-selected={mobileView === key}
             onClick={() => setMobileView(key)}
             className={clsx(
-              "flex-1 border-b-2 py-2 text-sm",
+              "flex-1 border-b-2 py-2.5 text-sm",
               mobileView === key ? "border-accent text-ink" : "border-transparent text-muted",
+              key === "map" && myTurn && mobileView !== "map" && "animate-pulse text-accent",
             )}
           >
             {label}
@@ -79,16 +82,20 @@ export function TableView() {
           >
             {(
               [
+                ...(isGm ? ([["gm", "Mestre"]] as const) : []),
                 ["log", "Log"],
                 ["characters", `Personagens (${table.characters.length})`],
-                ["combat", table.combat ? `Combate · R${table.combat.round}` : "Combate"],
+                ...(isGm
+                  ? []
+                  : ([
+                      ["combat", table.combat ? `Combate · R${table.combat.round}` : "Combate"],
+                    ] as const)),
                 [
                   "handouts",
                   unseen > 0 && tab !== "handouts"
                     ? `Handouts (${unseen} novo${unseen > 1 ? "s" : ""})`
                     : "Handouts",
                 ],
-                ...(isGm ? ([["scenes", "Cenas"]] as const) : []),
               ] as const
             ).map(([key, label]) => (
               <button
@@ -110,9 +117,9 @@ export function TableView() {
           </div>
           {tab === "log" && <LogPanel log={table.log} me={table.me} />}
           {tab === "characters" && <CharactersPanel table={table} />}
-          {tab === "combat" && <CombatPanel table={table} />}
+          {tab === "gm" && isGm && <GmPanel table={table} />}
+          {tab === "combat" && !isGm && <CombatPanel table={table} />}
           {tab === "handouts" && <HandoutsPanel table={table} />}
-          {tab === "scenes" && isGm && <ScenesPanel table={table} />}
           <Composer me={table.me} disabled={status !== "online"} />
         </aside>
       </div>

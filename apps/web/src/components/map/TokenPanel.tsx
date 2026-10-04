@@ -226,35 +226,37 @@ function InfoTab({
 }
 
 /** Ataques do token: da ficha (personagem, com efeitos) ou do bloco do NPC. */
-function useAttacks(token: TokenView, table: TableState) {
-  return useMemo(() => {
-    const c = token.characterId
-      ? table.characters.find((x) => x.id === token.characterId)
-      : undefined;
-    if (c?.base) {
-      try {
-        const d = deriveCharacter(c.base, characterEffects(table.effects, c.id), SRD);
-        return d.attacks.map((a) => ({
-          name: a.name,
-          bonuses: a.bonuses,
-          damage: damageExpr(a.damageDice, a.damage.total),
-          critical: a.critical,
-        }));
-      } catch {
-        return [];
-      }
+export function useAttacks(token: TokenView, table: TableState) {
+  // biome-ignore lint/correctness/useExhaustiveDependencies: só o que attacksOf lê
+  return useMemo(() => attacksOf(token, table), [token, table.characters, table.effects]);
+}
+
+/** Ataques do token sem hook (para quem decide fora de render). */
+export function attacksOf(token: TokenView, table: Pick<TableState, "characters" | "effects">) {
+  const c = token.characterId
+    ? table.characters.find((x) => x.id === token.characterId)
+    : undefined;
+  if (c?.base) {
+    try {
+      const d = deriveCharacter(c.base, characterEffects(table.effects, c.id), SRD);
+      return d.attacks.map((a) => ({
+        name: a.name,
+        bonuses: a.bonuses,
+        damage: damageExpr(a.damageDice, a.damage.total),
+        critical: a.critical,
+      }));
+    } catch {
+      return [];
     }
-    if (!token.stats) return [];
-    const fx = table.effects.filter((e) => e.targetType === "token" && e.targetId === token.id);
-    return deriveNpc(token.stats, fx).attacks.map((a) => ({
-      name: a.name,
-      bonuses: [a.bonus],
-      damage: a.damageBonus
-        ? `${a.damage}${a.damageBonus > 0 ? "+" : ""}${a.damageBonus}`
-        : a.damage,
-      critical: a.critical,
-    }));
-  }, [token, table.characters, table.effects]);
+  }
+  if (!token.stats) return [];
+  const fx = table.effects.filter((e) => e.targetType === "token" && e.targetId === token.id);
+  return deriveNpc(token.stats, fx).attacks.map((a) => ({
+    name: a.name,
+    bonuses: [a.bonus],
+    damage: a.damageBonus ? `${a.damage}${a.damageBonus > 0 ? "+" : ""}${a.damageBonus}` : a.damage,
+    critical: a.critical,
+  }));
 }
 
 function AttackTab({

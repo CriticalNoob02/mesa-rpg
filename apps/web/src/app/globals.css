@@ -46,3 +46,31 @@ body {
   scrollbar-width: thin;
   scrollbar-color: var(--color-line) transparent;
 }
+
+/* Aviso "Sua vez!" no mapa. */
+@keyframes turn-splash {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  15%,
+  75% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+}
+.turn-splash {
+  animation: turn-splash 2.2s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .turn-splash {
+    animation-duration: 0.01s;
+    animation-delay: 1.8s;
+    animation-fill-mode: both;
+  }
+}

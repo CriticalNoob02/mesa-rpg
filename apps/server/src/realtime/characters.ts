@@ -1,6 +1,12 @@
 import type { CharacterView, Me, PlayerView } from "@mesa/protocol";
 import { LIMITS } from "@mesa/protocol";
-import { type DieRng, rollExpr, validateCharacter } from "@mesa/rules";
+import {
+  type CharacterBase,
+  type DieRng,
+  deriveCharacter,
+  rollExpr,
+  validateCharacter,
+} from "@mesa/rules";
 import { SRD } from "@mesa/srd";
 import { SPELLS } from "@mesa/srd/spells";
 import { z } from "zod";
@@ -32,6 +38,7 @@ export function toCharacterView(
       level,
     })) as CharacterView["classes"],
     updatedAt: c.updatedAt.toISOString(),
+    hp: { current: c.base.hp.current, max: hpMax(c.base) },
     ...(full ? { base: c.base } : {}),
   };
 }
@@ -111,4 +118,9 @@ export function characterActions(store: Store, hub: Hub, me: PlayerRecord, rng: 
       return { scores };
     },
   };
+}
+
+/** PV máximo pela ficha (sem efeitos temporários). */
+function hpMax(base: CharacterBase) {
+  return deriveCharacter(base, [], SRD).hp.total;
 }

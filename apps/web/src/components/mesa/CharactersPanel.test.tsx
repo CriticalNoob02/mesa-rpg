@@ -29,6 +29,7 @@ const table = (withBase: boolean): TableState => ({
       raceId: "dwarf",
       classes: [{ classId: "fighter", level: 1 }],
       updatedAt: "2026-10-02T20:00:00.000Z",
+      hp: { current: 10, max: 10 },
       ...(withBase ? { base } : {}),
     },
   ],

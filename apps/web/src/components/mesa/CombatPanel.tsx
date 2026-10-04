@@ -8,7 +8,7 @@ import { roundsLabel } from "@/lib/effects";
 import { useMesaAction } from "@/lib/MesaContext";
 
 /** Iniciativa, rodada e turno. Mestre conduz; o dono do combatente da vez encerra o turno. */
-export function CombatPanel({ table }: { table: TableState }) {
+export function CombatPanel({ table, bare }: { table: TableState; bare?: boolean }) {
   const send = useMesaAction();
   const [error, setError] = useState<string | null>(null);
   const isGm = table.me.role === "GM";
@@ -37,7 +37,11 @@ export function CombatPanel({ table }: { table: TableState }) {
   };
 
   return (
-    <div className="scrollbar-thin min-h-0 flex-1 overflow-y-auto px-4 py-3 text-sm">
+    <div
+      className={
+        bare ? "text-sm" : "scrollbar-thin min-h-0 flex-1 overflow-y-auto px-4 py-3 text-sm"
+      }
+    >
       {!combat ? (
         <div className="flex flex-col items-center gap-3 py-6 text-center">
           <Swords size={22} className="text-faint" />

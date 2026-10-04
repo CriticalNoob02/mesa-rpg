@@ -9,8 +9,8 @@ import { api } from "@/lib/api";
 import { useMesaAction } from "@/lib/MesaContext";
 import { getSession } from "@/lib/sessions";
 
-/** Aba do mestre: cenas, imagem do mapa, grid, névoa e tokens de NPC. */
-export function ScenesPanel({ table }: { table: TableState }) {
+/** Cenas, imagem do mapa, grid, névoa e ambiente (seção do painel do mestre). */
+export function ScenesPanel({ table, bare }: { table: TableState; bare?: boolean }) {
   const send = useMesaAction();
   const [name, setName] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -23,7 +23,11 @@ export function ScenesPanel({ table }: { table: TableState }) {
   }
 
   return (
-    <div className="scrollbar-thin min-h-0 flex-1 overflow-y-auto px-4 py-3 text-sm">
+    <div
+      className={
+        bare ? "text-sm" : "scrollbar-thin min-h-0 flex-1 overflow-y-auto px-4 py-3 text-sm"
+      }
+    >
       <form
         className="mb-3 flex gap-2"
         onSubmit={async (e) => {
@@ -170,9 +174,6 @@ function SceneEditor({
       setUploading(false);
     }
   }
-
-  const placed = new Set(scene.tokens.map((t) => t.characterId).filter(Boolean));
-  const firstFree = () => firstFreeCell(scene);
 
   return (
     <div className="flex flex-col gap-4 border-t border-line pt-3">
@@ -336,43 +337,62 @@ function SceneEditor({
       </section>
 
       <AmbienceEditor table={table} run={run} />
+    </div>
+  );
+}
 
-      <section>
-        <h3 className="mb-2 text-xs tracking-wide text-faint uppercase">Tokens</h3>
-        <NpcForm
-          onCreate={(npc) =>
-            run(send("token:create", { sceneId: scene.id, ...firstFree(), ...npc }))
-          }
-        />
-        {table.characters.filter((c) => !placed.has(c.id)).length > 0 && (
-          <ul className="mt-2 flex flex-col">
-            {table.characters
-              .filter((c) => !placed.has(c.id))
-              .map((c) => (
-                <li key={c.id} className="flex items-center justify-between gap-2 py-1">
-                  <span className="truncate">
-                    {c.name} <span className="text-xs text-faint">· {c.ownerName}</span>
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      run(
-                        send("token:create", {
-                          sceneId: scene.id,
-                          characterId: c.id,
-                          ...firstFree(),
-                        }),
-                      )
-                    }
-                    className="flex items-center gap-1 text-xs text-muted hover:text-accent"
-                  >
-                    <UserPlus size={12} /> pôr no mapa
-                  </button>
-                </li>
-              ))}
-          </ul>
-        )}
-      </section>
+/** Personagens que ainda não estão na cena e token de NPC avulso. */
+export function PlaceTokens({ table }: { table: TableState }) {
+  const send = useMesaAction();
+  const [error, setError] = useState<string | null>(null);
+  const scene = table.scene;
+  if (!scene) return <p className="text-sm text-faint">Crie ou abra uma cena primeiro.</p>;
+  const placed = new Set(scene.tokens.map((t) => t.characterId).filter(Boolean));
+  async function run(p: Promise<{ ok: boolean; error?: string }>) {
+    const res = await p;
+    setError(res.ok ? null : (res.error ?? "Erro."));
+    return res.ok;
+  }
+  return (
+    <div className="flex flex-col gap-2 text-sm">
+      <NpcForm
+        onCreate={(npc) =>
+          run(send("token:create", { sceneId: scene.id, ...firstFreeCell(scene), ...npc }))
+        }
+      />
+      {table.characters.filter((c) => !placed.has(c.id)).length > 0 && (
+        <ul className="mt-2 flex flex-col">
+          {table.characters
+            .filter((c) => !placed.has(c.id))
+            .map((c) => (
+              <li key={c.id} className="flex items-center justify-between gap-2 py-1">
+                <span className="truncate">
+                  {c.name} <span className="text-xs text-faint">· {c.ownerName}</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() =>
+                    run(
+                      send("token:create", {
+                        sceneId: scene.id,
+                        characterId: c.id,
+                        ...firstFreeCell(scene),
+                      }),
+                    )
+                  }
+                  className="flex items-center gap-1 text-xs text-muted hover:text-accent"
+                >
+                  <UserPlus size={12} /> pôr no mapa
+                </button>
+              </li>
+            ))}
+        </ul>
+      )}
+      {error && (
+        <p role="alert" className="text-xs text-fumble">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

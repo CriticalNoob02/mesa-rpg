@@ -18,6 +18,7 @@ import type {
   Domain,
   Feat,
   Gear,
+  Monster,
   Skill,
   Spell,
   SrdClass,
@@ -507,6 +508,79 @@ const domains: Domain[] = rows(
   })),
 }));
 
+// ---------- monstros ----------
+
+const num = (re: RegExp, text: string | null | undefined, fallback = 0) => {
+  const m = re.exec(text ?? "");
+  return m ? Number(m[1]!.replace("+", "")) : fallback;
+};
+const SIZE_SQUARES: Record<string, number> = { "5 ft.": 1, "10 ft.": 2, "15 ft.": 3, "20 ft.": 4 };
+
+/** "Morningstar +2 melee (1d6) or javelin +3 ranged (1d4)" → ataques da ficha de NPC. */
+function parseAttacks(text: string | null): Monster["attacks"] {
+  if (isNone(text)) return [];
+  const out: Monster["attacks"] = [];
+  for (const part of text!.split(/\s+(?:or|and)\s+|,\s+(?=\d*\s*[a-z]+ [+-])/i)) {
+    // "corpo a corpo/à distância" pode faltar ou vir depois do dano ("Bite +25 (2d6+6) melee").
+    const m =
+      /^(?:\d+\s+)?(.+?)\s+([+-]\d+)(?:\/[+-]\d+)*(?:\s+(?:melee|ranged)(?:\s+touch)?)?\s*\((.+?)\)/i.exec(
+        part.trim(),
+      );
+    if (!m) continue;
+    const inner = m[3]!;
+    const dice = /^(\d+d\d+(?:[+-]\d+)?)/.exec(inner.trim());
+    if (!dice) continue;
+    const range = /\/(\d{2})-20/.exec(inner)?.[1];
+    const mult = /[x×](\d)/.exec(inner)?.[1];
+    const name = m[1]!.replace(/^\w/, (c) => c.toUpperCase());
+    out.push({
+      name,
+      bonus: Number(m[2]),
+      damage: dice[1]!,
+      critical: `${range ? `${range}-20/` : ""}x${mult ?? 2}`,
+    });
+    if (out.length >= 10) break;
+  }
+  return out;
+}
+
+const monsters: Monster[] = [];
+const seenMonsters = new Set<string>();
+for (const r of rows(
+  "select * from monster where reference not like '%Epic%' and reference not like '%Psionic%' order by name",
+)) {
+  const id = slug(r.name!);
+  if (seenMonsters.has(id)) continue;
+  // Sem "attack", o "full attack" traz as mesmas armas (com quantidade na frente).
+  const attacks = parseAttacks(isNone(r.attack) ? (r.full_attack ?? null) : r.attack!);
+  const hp = num(/\((\d+) hp\)/, r.hit_dice);
+  const ac = num(/^(-?\d+)/, r.armor_class, -1);
+  if (!hp || ac < 0) continue;
+  seenMonsters.add(id);
+  monsters.push({
+    id,
+    name: r.name!,
+    type: r.type ?? "",
+    size: r.size ?? "Medium",
+    cr: orNull(r.challenge_rating) ?? "—",
+    squares: SIZE_SQUARES[r.space ?? ""] ?? (/Huge|Gargantuan|Colossal/.test(r.size ?? "") ? 4 : 1),
+    hp,
+    hitDice: (r.hit_dice ?? "").replace(/\s*\(.*\)/, ""),
+    ac,
+    touch: num(/touch (-?\d+)/, r.armor_class, ac),
+    flatFooted: num(/flat-footed (-?\d+)/, r.armor_class, ac),
+    init: num(/^([+-]?\d+)/, r.initiative),
+    speed: num(/^(\d+) ft/, r.speed, 30),
+    fort: num(/Fort ([+-]\d+)/, r.saves),
+    ref: num(/Ref ([+-]\d+)/, r.saves),
+    will: num(/Will ([+-]\d+)/, r.saves),
+    attacks,
+    fullAttack: orNull(r.full_attack) ?? "",
+    specialAttacks: orNull(r.special_attacks),
+    specialQualities: orNull(r.special_qualities),
+  });
+}
+
 // Ids únicos (a base tem alguns nomes repetidos).
 for (const [name, list] of Object.entries({ skills, feats, weapons, armor, gear, spells })) {
   const seen = new Set<string>();
@@ -524,3 +598,4 @@ write("armor.json", armor);
 write("gear.json", gear);
 write("domains.json", domains);
 write("spells.json", spells);
+write("monsters.json", monsters);

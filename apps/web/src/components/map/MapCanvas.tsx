@@ -18,7 +18,15 @@ import {
   Text,
 } from "react-konva";
 import { useAsset } from "@/lib/assets";
-import { brushCells, cellAt, initials, previewCost, reachBands, tokenMovement } from "./geometry";
+import {
+  brushCells,
+  cellAt,
+  hpColor,
+  initials,
+  previewCost,
+  reachBands,
+  tokenMovement,
+} from "./geometry";
 
 export type MapTool = "move" | "ruler" | "reveal" | "hide";
 
@@ -36,9 +44,14 @@ type Props = {
   zoom: { n: number; factor: number };
   /** Combatente da vez (anel dourado). */
   currentTokenId: string | null;
-  /** Tokens com efeito ativo (marca roxa). */
-  affected: Set<string>;
+  /** Vida por token (barra embaixo). */
+  hp: Map<string, { current: number; max: number }>;
+  /** Efeitos por token (etiquetas em cima). */
+  badges: Map<string, string[]>;
+  /** Alvos do ataque rápido: clicar ataca em vez de selecionar. */
+  targets: Set<string>;
   onSelect: (id: string | null) => void;
+  onAttack: (targetId: string) => void;
   onMove: (id: string, to: Cell) => Promise<boolean>;
   onFog: (cells: number[], reveal: boolean) => void;
 };
@@ -319,6 +332,11 @@ export default function MapCanvas(props: Props) {
           {scene.tokens.map((t) => {
             const r = (t.size * gs) / 2;
             const selected = t.id === selectedId;
+            const isTarget = props.targets.has(t.id);
+            const hp = props.hp.get(t.id);
+            const badges = props.badges.get(t.id) ?? [];
+            const barH = Math.max(4, gs * 0.09);
+            const down = !!hp && hp.current <= 0;
             return (
               <Group
                 key={t.id}
@@ -326,14 +344,23 @@ export default function MapCanvas(props: Props) {
                 x={t.x * gs}
                 y={t.y * gs}
                 draggable={canDrag(t)}
-                opacity={t.hidden ? 0.45 : 1}
+                opacity={t.hidden ? 0.45 : down ? 0.6 : 1}
                 onMouseDown={(e) => {
                   if (tool === "move") {
                     e.cancelBubble = true;
-                    onSelect(t.id);
+                    if (!isTarget) onSelect(t.id);
                   }
                 }}
-                onTap={() => onSelect(t.id)}
+                onClick={() => {
+                  if (tool === "move" && isTarget) props.onAttack(t.id);
+                }}
+                onTap={() => (isTarget ? props.onAttack(t.id) : onSelect(t.id))}
+                onMouseEnter={(e) => {
+                  if (isTarget) e.target.getStage()!.container().style.cursor = "crosshair";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.getStage()!.container().style.cursor = "";
+                }}
                 onDragStart={(e) => {
                   e.cancelBubble = true;
                   onSelect(t.id);
@@ -363,15 +390,16 @@ export default function MapCanvas(props: Props) {
                     listening={false}
                   />
                 )}
-                {props.affected.has(t.id) && (
+                {isTarget && (
                   <Circle
-                    x={r * 1.62}
-                    y={r * 0.38}
-                    radius={Math.max(4, r * 0.16)}
-                    fill="#bf9be6"
-                    stroke="#15120f"
-                    strokeWidth={1.5}
+                    x={r}
+                    y={r}
+                    radius={r * 0.98}
+                    stroke="#e46d61"
+                    strokeWidth={3}
                     strokeScaleEnabled={false}
+                    shadowColor="#e46d61"
+                    shadowBlur={10}
                     listening={false}
                   />
                 )}
@@ -399,10 +427,45 @@ export default function MapCanvas(props: Props) {
                   fill="#15120f"
                   listening={false}
                 />
+                {hp && hp.max > 0 && (
+                  <Group x={r * 0.25} y={r * 2 - barH * 0.5} listening={false}>
+                    <Rect width={r * 1.5} height={barH} fill="#15120f" cornerRadius={barH / 2} />
+                    <Rect
+                      width={r * 1.5 * Math.max(0, Math.min(1, hp.current / hp.max))}
+                      height={barH}
+                      fill={hpColor(hp.current, hp.max)}
+                      cornerRadius={barH / 2}
+                    />
+                  </Group>
+                )}
+                {badges.length > 0 && (
+                  <Label x={r} y={-2} listening={false}>
+                    <Tag
+                      fill="#2a2036"
+                      stroke="#bf9be6"
+                      strokeWidth={1}
+                      strokeScaleEnabled={false}
+                      cornerRadius={3}
+                      pointerDirection="down"
+                      pointerWidth={0}
+                      pointerHeight={0}
+                    />
+                    <Text
+                      text={
+                        badges.length > 2
+                          ? `${badges.slice(0, 2).join(" · ")} +${badges.length - 2}`
+                          : badges.join(" · ")
+                      }
+                      fontSize={Math.max(9, gs * 0.18)}
+                      fill="#e3d4f5"
+                      padding={3}
+                    />
+                  </Label>
+                )}
                 <Text
                   text={t.name}
                   x={-gs}
-                  y={r * 2 + 2}
+                  y={r * 2 + (hp ? barH * 0.5 + 2 : 2)}
                   width={r * 2 + gs * 2}
                   align="center"
                   fontSize={Math.max(9, gs * 0.2)}

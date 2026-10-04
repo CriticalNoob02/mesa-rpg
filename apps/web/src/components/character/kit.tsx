@@ -2,8 +2,8 @@
 
 import type { Issue, Part, Stat } from "@mesa/rules";
 import clsx from "clsx";
-import { AlertTriangle, Minus, Plus, XCircle } from "lucide-react";
-import type { ReactNode } from "react";
+import { AlertTriangle, ChevronRight, Minus, Plus, XCircle } from "lucide-react";
+import { type ReactNode, useState } from "react";
 import { BONUS_PT } from "@/lib/format";
 import { signed } from "@/lib/srd";
 
@@ -12,19 +12,57 @@ export function Section({
   aside,
   children,
   className,
+  collapsible,
 }: {
   title: string;
   aside?: ReactNode;
   children: ReactNode;
   className?: string;
+  /** Recolhível: `id` guarda o estado no navegador. */
+  collapsible?: { id: string; defaultOpen?: boolean };
 }) {
+  const [open, setOpen] = useState(() => {
+    if (!collapsible) return true;
+    try {
+      const v = localStorage.getItem(`mesa:section:${collapsible.id}`);
+      if (v !== null) return v === "1";
+    } catch {}
+    return collapsible.defaultOpen ?? true;
+  });
+  function toggle() {
+    setOpen((o) => {
+      try {
+        localStorage.setItem(`mesa:section:${collapsible!.id}`, o ? "0" : "1");
+      } catch {}
+      return !o;
+    });
+  }
   return (
     <section className={clsx("rounded-xl border border-line bg-surface p-4 sm:p-5", className)}>
-      <header className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="font-display text-xl">{title}</h2>
+      <header
+        className={clsx("flex flex-wrap items-baseline justify-between gap-2", open && "mb-3")}
+      >
+        {collapsible ? (
+          <h2 className="font-display text-xl">
+            <button
+              type="button"
+              aria-expanded={open}
+              onClick={toggle}
+              className="flex items-center gap-1.5 hover:text-accent"
+            >
+              <ChevronRight
+                size={16}
+                className={clsx("text-muted transition-transform", open && "rotate-90")}
+              />
+              {title}
+            </button>
+          </h2>
+        ) : (
+          <h2 className="font-display text-xl">{title}</h2>
+        )}
         {aside && <div className="text-sm text-muted">{aside}</div>}
       </header>
-      {children}
+      {open && children}
     </section>
   );
 }

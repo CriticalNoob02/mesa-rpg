@@ -1,5 +1,5 @@
-import { CharacterWizard } from "@/components/character/CharacterWizard";
+import { QuickCreator } from "@/components/character/QuickCreator";
 
 export default function NewCharacterPage() {
-  return <CharacterWizard />;
+  return <QuickCreator />;
 }

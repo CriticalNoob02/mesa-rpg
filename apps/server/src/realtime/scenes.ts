@@ -1,6 +1,7 @@
 import { LIMITS, type SceneView } from "@mesa/protocol";
-import { deriveCharacter, moveCost } from "@mesa/rules";
+import { deriveCharacter, moveCost, type NpcStats } from "@mesa/rules";
 import { SRD } from "@mesa/srd";
+import { MONSTERS } from "@mesa/srd/monsters";
 import { z } from "zod";
 import type { AssetFiles } from "../lib/assets";
 import { singleLine } from "../lib/text";
@@ -54,6 +55,7 @@ const fogSchema = z.union([
 const tokenCreateSchema = z.object({
   sceneId: id,
   characterId: id.optional(),
+  monsterId: z.string().max(80).optional(),
   name: singleLine(40).optional(),
   x: coord,
   y: coord,
@@ -309,6 +311,8 @@ export function sceneActions(
 
       let name = t.name;
       let tokenSpeed = t.speed ?? 30;
+      let tokenSize = t.size ?? 1;
+      let stats: NpcStats | null = null;
       if (t.characterId) {
         const c = await store.findCharacter(t.characterId);
         if (!c || c.campaignId !== campaignId) throw new ActionError("Personagem não encontrado.");
@@ -324,6 +328,27 @@ export function sceneActions(
         }
       } else if (me.role !== "GM") {
         throw new ActionError("Só o mestre cria tokens de NPC.");
+      } else if (t.monsterId) {
+        const m = MONSTERS.find((x) => x.id === t.monsterId);
+        if (!m) throw new ActionError("Monstro não encontrado.");
+        // "Goblin", "Goblin 2", "Goblin 3"… para o mestre distinguir no mapa.
+        const base = t.name ?? (m.namePt ?? m.name).split(",")[0]!.trim();
+        const same = tokens.filter((x) => x.name === base || x.name.startsWith(`${base} `)).length;
+        name = same ? `${base} ${same + 1}` : base;
+        tokenSpeed = m.speed;
+        tokenSize = t.size ?? Math.min(4, m.squares);
+        stats = {
+          hp: m.hp,
+          hpMax: m.hp,
+          ac: m.ac,
+          touch: m.touch,
+          flatFooted: m.flatFooted,
+          init: m.init,
+          fort: m.fort,
+          ref: m.ref,
+          will: m.will,
+          attacks: m.attacks.slice(0, 10),
+        };
       }
       if (me.role !== "GM") {
         if ((await store.getActiveSceneId(campaignId)) !== scene.id)
@@ -331,7 +356,6 @@ export function sceneActions(
         if (t.hidden) throw new ActionError("Só o mestre esconde tokens.");
       }
       if (!name) throw new ActionError("Dê um nome ao token.");
-      const tokenSize = t.size ?? 1;
       const created = await store.createToken({
         sceneId: scene.id,
         characterId: t.characterId ?? null,
@@ -344,6 +368,7 @@ export function sceneActions(
         speed: tokenSpeed,
         moveSpent: 0,
         diagParity: 0,
+        stats,
       });
       await hub.publishToken(campaignId, created);
       return { id: created.id };

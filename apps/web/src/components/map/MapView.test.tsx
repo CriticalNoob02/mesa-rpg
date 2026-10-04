@@ -10,10 +10,21 @@ vi.mock("next/dynamic", () => ({
   default: () =>
     function CanvasStub(props: any) {
       return (
-        <div data-testid="canvas" data-tool={props.tool}>
+        <div
+          data-testid="canvas"
+          data-tool={props.tool}
+          data-targets={[...props.targets].join(",")}
+        >
           <button type="button" onClick={() => props.onSelect("t1")}>
             selecionar
           </button>
+          <button type="button" onClick={() => props.onSelect("p1")}>
+            selecionar meu
+          </button>
+          <button type="button" onClick={() => props.onAttack("t1")}>
+            atacar goblin
+          </button>
+          <span data-testid="hp">{JSON.stringify([...props.hp])}</span>
           <button type="button" onClick={() => props.onMove("t1", { x: 3, y: 3 })}>
             mover
           </button>
@@ -157,5 +168,74 @@ describe("MapView narração", () => {
     expect(screen.queryByRole("dialog")).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Narração" }));
     expect(screen.getByText("Prévia: os jogadores ainda não veem.")).toBeInTheDocument();
+  });
+
+  it("ataque em 2 cliques: seleciona o meu token na vez e clica no inimigo", async () => {
+    const goblin = { ...scene.tokens[0]!, hidden: false, stats: undefined };
+    const mine = {
+      ...goblin,
+      id: "p1",
+      characterId: "ch1",
+      ownerId: "u1",
+      name: "Lidda",
+      x: 3,
+    };
+    const t: TableState = {
+      ...table("PLAYER", { ...scene, tokens: [goblin, mine] }),
+      characters: [
+        {
+          id: "ch1",
+          ownerId: "u1",
+          ownerName: "X",
+          name: "Lidda",
+          raceId: "halfling",
+          classes: [],
+          updatedAt: "",
+          hp: { current: 4, max: 8 },
+        },
+      ],
+      combat: {
+        sceneId: "s1",
+        round: 2,
+        currentTokenId: "p1",
+        order: [
+          { tokenId: "p1", name: "Lidda", initiative: 18 },
+          { tokenId: "t1", name: "Goblin", initiative: 5 },
+        ],
+      },
+    };
+    const emit = setup(t, { ok: true, hit: true, damage: 7 });
+    expect(screen.getAllByText(/Sua vez/).length).toBeGreaterThan(0);
+    expect(screen.getByTestId("hp")).toHaveTextContent('[["p1",{"current":4,"max":8}]]');
+    expect(screen.getByTestId("canvas").dataset.targets).toBe("");
+    fireEvent.click(screen.getByRole("button", { name: "Agir" }));
+    expect(screen.getByTestId("canvas").dataset.targets).toBe("t1");
+    expect(screen.getByText(/Sem ataque na ficha/)).toBeInTheDocument();
+    await act(async () => fireEvent.click(screen.getByText("atacar goblin")));
+    expect(emit).toHaveBeenCalledWith("attack", {
+      attackerTokenId: "p1",
+      targetTokenId: "t1",
+      attackIndex: 0,
+    });
+    expect(screen.getByRole("status")).toHaveTextContent("Acertou Goblin: 7 de dano!");
+    await act(async () => fireEvent.click(screen.getByRole("button", { name: "Encerrar turno" })));
+    expect(emit).toHaveBeenCalledWith("combat:next", {});
+  });
+
+  it("fora da vez: só mostra de quem é a vez, sem alvos", () => {
+    const goblin = { ...scene.tokens[0]!, hidden: false };
+    const t: TableState = {
+      ...table("PLAYER", { ...scene, tokens: [goblin] }),
+      combat: {
+        sceneId: "s1",
+        round: 1,
+        currentTokenId: "t1",
+        order: [{ tokenId: "t1", name: "Goblin", initiative: 5 }],
+      },
+    };
+    setup(t);
+    expect(screen.getByText("Goblin", { selector: "strong" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Agir" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Encerrar turno" })).toBeNull();
   });
 });

@@ -58,3 +58,12 @@ export const spellText = (s: Spell) => ({
   area: s.pt?.area ?? s.area,
   effect: s.pt?.effect ?? s.effect,
 });
+
+/** Índice do ataque principal: o de maior bônus (ataque rápido e destaques). */
+export function bestAttackIndex(attacks: { bonuses: readonly number[] }[]) {
+  let best = 0;
+  attacks.forEach((a, i) => {
+    if ((a.bonuses[0] ?? -99) > (attacks[best]!.bonuses[0] ?? -99)) best = i;
+  });
+  return best;
+}

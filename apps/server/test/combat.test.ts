@@ -375,3 +375,59 @@ describe("ataque e NPC", () => {
     ).toEqual({ ok: false, error: "Dano inválido (ex.: 1d8+2)." });
   });
 });
+
+describe("monstros prontos", () => {
+  it("mestre põe goblin do SRD com ficha completa e nomes numerados", async () => {
+    const t = await table();
+    const a: any = await emit(t.gm.socket, "token:create", {
+      sceneId: t.sceneId,
+      monsterId: "goblin-1st-level-warrior",
+      x: 8,
+      y: 8,
+    });
+    const b: any = await emit(t.gm.socket, "token:create", {
+      sceneId: t.sceneId,
+      monsterId: "goblin-1st-level-warrior",
+      x: 9,
+      y: 8,
+    });
+    const ga = (await srv.store.findToken(a.id))!;
+    const gb = (await srv.store.findToken(b.id))!;
+    expect(ga.stats).toMatchObject({
+      hp: 5,
+      hpMax: 5,
+      ac: 15,
+      touch: 12,
+      flatFooted: 14,
+      init: 1,
+      fort: 3,
+      ref: 1,
+      will: -1,
+    });
+    expect(ga.stats!.attacks[0]).toMatchObject({ bonus: 2, damage: "1d6", critical: "x2" });
+    expect([ga.name, gb.name]).toEqual(["Goblin 2", "Goblin 3"]); // já havia um "Goblin" na mesa
+    const ogre: any = await emit(t.gm.socket, "token:create", {
+      sceneId: t.sceneId,
+      monsterId: "ogre",
+      x: 0,
+      y: 5,
+    });
+    expect((await srv.store.findToken(ogre.id))!).toMatchObject({ size: 2, speed: 30 });
+    expect(
+      await emit(t.ana.socket, "token:create", {
+        sceneId: t.sceneId,
+        monsterId: "ogre",
+        x: 0,
+        y: 0,
+      }),
+    ).toMatchObject({ ok: false });
+    expect(
+      await emit(t.gm.socket, "token:create", {
+        sceneId: t.sceneId,
+        monsterId: "nada",
+        x: 0,
+        y: 0,
+      }),
+    ).toEqual({ ok: false, error: "Monstro não encontrado." });
+  });
+});

@@ -66,6 +66,8 @@ export type CharacterView = {
   raceId: string;
   classes: { classId: ClassId; level: number }[];
   updatedAt: string;
+  /** Vida (todos veem, para a barra no token). */
+  hp: { current: number; max: number };
   base?: CharacterBase;
 };
 
@@ -208,6 +210,8 @@ export type FogInput =
 export type TokenCreateInput = {
   sceneId: string;
   characterId?: string;
+  /** Monstro do SRD: nome, tamanho, deslocamento e ficha vêm prontos. */
+  monsterId?: string;
   name?: string;
   x: number;
   y: number;

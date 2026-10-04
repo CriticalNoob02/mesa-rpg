@@ -7,9 +7,13 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { useMesaAction } from "@/lib/MesaContext";
 import { getSession } from "@/lib/sessions";
+import { bestAttackIndex } from "@/lib/srd";
+import { canQuickAttack, tokenBadges, tokenHp } from "./geometry";
 import type { MapTool } from "./MapCanvas";
 import { NarrationCard } from "./NarrationCard";
-import { TokenPanel } from "./TokenPanel";
+import { QuickCard } from "./QuickCard";
+import { attacksOf, TokenPanel } from "./TokenPanel";
+import { TurnBar, TurnSplash } from "./TurnBar";
 
 // Konva precisa do canvas do navegador: sem SSR.
 const MapCanvas = dynamic(() => import("./MapCanvas"), {
@@ -27,6 +31,14 @@ export function MapView({ table }: { table: TableState }) {
   const [fitSignal, setFitSignal] = useState(0);
   const [zoom, setZoom] = useState({ n: 0, factor: 1 });
   const [error, setError] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ text: string; hit: boolean } | null>(null);
+  // Ação do turno armada: o painel completo só abre em "Mais opções".
+  const [moreOptions, setMoreOptions] = useState(false);
+  useEffect(() => {
+    if (!toast) return;
+    const t = setTimeout(() => setToast(null), 3500);
+    return () => clearTimeout(t);
+  }, [toast]);
   // Movimento barrado pelo limite do turno: o mestre pode forçar.
   const [forceable, setForceable] = useState<{ id: string; x: number; y: number } | null>(null);
   // Narração: abre sozinha para o jogador quando o mestre revela (ou muda o texto).
@@ -51,17 +63,46 @@ export function MapView({ table }: { table: TableState }) {
   }
 
   const selected = scene.tokens.find((t) => t.id === selectedId) ?? null;
-  const affected = new Set(
-    scene.tokens
-      .filter((t) =>
-        table.effects.some((e) =>
-          t.characterId
-            ? e.targetType === "character" && e.targetId === t.characterId
-            : e.targetType === "token" && e.targetId === t.id,
-        ),
-      )
-      .map((t) => t.id),
+  const hp = new Map(
+    scene.tokens.flatMap((t) => {
+      const v = tokenHp(t, table.characters);
+      return v ? [[t.id, v] as const] : [];
+    }),
   );
+  const badges = new Map(scene.tokens.map((t) => [t.id, tokenBadges(t, table.effects)]));
+  const combat = table.combat?.sceneId === scene.id ? table.combat : null;
+  const current = combat?.currentTokenId
+    ? (scene.tokens.find((t) => t.id === combat.currentTokenId) ?? null)
+    : null;
+  const canAct = !!current && (isGm || current.ownerId === table.me.id);
+  // Armado: o combatente da vez está selecionado por quem o controla.
+  const armed = canAct && selected?.id === current.id ? current : null;
+  const targets = new Set(
+    armed ? scene.tokens.filter((t) => canQuickAttack(armed, t)).map((t) => t.id) : [],
+  );
+
+  function select(id: string | null) {
+    setSelectedId(id);
+    setMoreOptions(false);
+  }
+
+  async function quickAttack(targetId: string) {
+    if (!armed) return;
+    const target = scene!.tokens.find((t) => t.id === targetId);
+    const res = await send("attack", {
+      attackerTokenId: armed.id,
+      targetTokenId: targetId,
+      attackIndex: bestAttackIndex(attacksOf(armed, table)),
+    });
+    if (!res.ok) return setError(res.error);
+    setError(null);
+    setToast({
+      hit: res.hit,
+      text: res.hit
+        ? `Acertou ${target?.name ?? "o alvo"}: ${res.damage} de dano!`
+        : `Errou ${target?.name ?? "o alvo"}.`,
+    });
+  }
   const previewing = isGm && scene.id !== table.activeSceneId;
 
   async function act<T extends { ok: boolean }>(p: Promise<T>) {
@@ -92,8 +133,11 @@ export function MapView({ table }: { table: TableState }) {
         fitSignal={fitSignal}
         zoom={zoom}
         currentTokenId={table.combat?.sceneId === scene.id ? table.combat.currentTokenId : null}
-        affected={affected}
-        onSelect={setSelectedId}
+        hp={hp}
+        badges={badges}
+        targets={targets}
+        onSelect={select}
+        onAttack={quickAttack}
         onMove={async (id, to) => {
           const res = await send("token:move", { id, ...to });
           setForceable(
@@ -221,19 +265,46 @@ export function MapView({ table }: { table: TableState }) {
         />
       )}
 
-      {selected && (
+      {combat && <TurnSplash table={table} />}
+      {combat && current && (
+        <TurnBar
+          table={table}
+          current={current}
+          canAct={canAct}
+          armed={!!armed}
+          onAct={() => select(current.id)}
+          onMore={() => setMoreOptions(true)}
+          onError={setError}
+        />
+      )}
+
+      {selected && (!armed || moreOptions) ? (
         <TokenPanel
           token={selected}
           table={table}
-          onClose={() => setSelectedId(null)}
+          onClose={() => select(null)}
           onError={setError}
         />
+      ) : (
+        !isGm && <QuickCard table={table} onSelectToken={select} />
+      )}
+
+      {toast && (
+        <p
+          role="status"
+          className={clsx(
+            "absolute top-36 left-1/2 -translate-x-1/2 rounded-lg border bg-surface px-4 py-2 font-display text-lg shadow-xl whitespace-nowrap",
+            toast.hit ? "border-crit/60 text-crit" : "border-line text-muted",
+          )}
+        >
+          {toast.text}
+        </p>
       )}
 
       {error && (
         <p
           role="alert"
-          className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-md border border-fumble/40 bg-surface px-3 py-1.5 text-sm text-fumble"
+          className="absolute top-36 left-1/2 max-w-[calc(100%-1.5rem)] -translate-x-1/2 rounded-md border border-fumble/40 bg-surface px-3 py-1.5 text-sm text-fumble"
         >
           {error}
           {forceable && (
