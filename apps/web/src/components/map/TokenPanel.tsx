@@ -17,6 +17,7 @@ import clsx from "clsx";
 import { Eye, EyeOff, Minus, Plus, Trash2, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import { characterEffects, roundsLabel, tokenTargetEffects } from "@/lib/effects";
+import { BONUS_PT } from "@/lib/format";
 import { useMesaAction } from "@/lib/MesaContext";
 import { signed } from "@/lib/srd";
 import { tokenMovement } from "./geometry";
@@ -546,7 +547,7 @@ function EffectsTab({
                 >
                   {BONUS_TYPES.map((t) => (
                     <option key={t} value={t}>
-                      {t}
+                      {BONUS_PT[t]}
                     </option>
                   ))}
                 </select>

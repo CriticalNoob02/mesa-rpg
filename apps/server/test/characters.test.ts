@@ -47,7 +47,7 @@ describe("character:save", () => {
     const res = (await emit(ana.socket, "character:save", {
       base: tordek({ feats: [{ id: "cleave" }, { id: "toughness" }] }),
     } as any)) as any;
-    expect(res).toMatchObject({ ok: false, error: 'Cleave: falta "Power Attack".' });
+    expect(res).toMatchObject({ ok: false, error: 'Trespassar: falta "Ataque Poderoso".' });
     expect(res.issues[0]).toMatchObject({ path: "feats.0" });
     expect(srv.store.characters).toHaveLength(0);
   });

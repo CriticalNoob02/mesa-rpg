@@ -56,9 +56,9 @@ describe("CharacterWizard", () => {
     expect(screen.getAllByText("Guerreiro 1").length).toBeGreaterThan(0);
 
     await step(/Talentos/);
-    await userEvent.click(screen.getByRole("button", { name: "Adicionar Toughness" }));
-    await userEvent.click(screen.getByRole("button", { name: "Adicionar Alertness" }));
-    await userEvent.click(screen.getByRole("button", { name: "Adicionar Blind-Fight" }));
+    await userEvent.click(screen.getByRole("button", { name: "Adicionar Vitalidade" }));
+    await userEvent.click(screen.getByRole("button", { name: "Adicionar Prontidão" }));
+    await userEvent.click(screen.getByRole("button", { name: "Adicionar Lutar às Cegas" }));
 
     await step(/Revisão/);
     expect(screen.getByText("A ficha segue as regras. Pode salvar.")).toBeInTheDocument();
@@ -85,7 +85,7 @@ describe("CharacterWizard", () => {
     await step(/Classe/);
     await userEvent.click(screen.getByRole("button", { name: "Escolher" }));
     await step(/Talentos/);
-    for (const f of ["Toughness", "Alertness", "Blind-Fight"]) {
+    for (const f of ["Vitalidade", "Prontidão", "Lutar às Cegas"]) {
       await userEvent.click(screen.getByRole("button", { name: `Adicionar ${f}` }));
     }
     await userEvent.click(screen.getByRole("button", { name: /^Salvar$/ }));

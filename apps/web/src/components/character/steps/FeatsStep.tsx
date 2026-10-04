@@ -1,10 +1,12 @@
 "use client";
 
 import { checkPrerequisites, isWeaponProficient, type PrereqContext } from "@mesa/rules";
-import { ABILITIES, type Feat, SRD } from "@mesa/srd";
+import { ABILITIES, type Feat, ptName, SRD } from "@mesa/srd";
 import clsx from "clsx";
 import { Check, CircleHelp, Plus, Trash2, X } from "lucide-react";
 import { useMemo, useState } from "react";
+import { FEAT_TYPE_PT } from "@/lib/format";
+import { byPt, matches } from "@/lib/search";
 import { SCHOOLS_PT } from "@/lib/srd";
 import { Section, Select } from "../kit";
 import type { StepProps } from "../types";
@@ -72,9 +74,10 @@ export function FeatsStep({ base, update, derived }: StepProps) {
   const taken = (feat: Feat) => !feat.multiple && base.feats.some((f) => f.id === feat.id);
   const list = SRD.feats
     .filter((f) => !f.types.includes("Epic"))
-    .filter((f) => !query || f.name.toLowerCase().includes(query.toLowerCase()))
+    .filter((f) => matches(query, f.namePt, f.name))
     .filter((f) => !taken(f))
-    .filter((f) => !onlyAvailable || status(f, choices[f.id]) !== false);
+    .filter((f) => !onlyAvailable || status(f, choices[f.id]) !== false)
+    .sort(byPt(ptName));
 
   function add(feat: Feat) {
     const choice = choices[feat.id];
@@ -107,7 +110,7 @@ export function FeatsStep({ base, update, derived }: StepProps) {
               <li key={i} className="flex items-center gap-2 border-t border-line py-2 text-sm">
                 <StatusIcon ok={overflow ? false : ok} />
                 <span>
-                  {feat?.name ?? f.id}
+                  {feat ? ptName(feat) : f.id}
                   {f.choice && <span className="text-muted"> ({choiceLabel(f.choice)})</span>}
                 </span>
                 {overflow && <span className="text-xs text-fumble">sem espaço</span>}
@@ -133,7 +136,7 @@ export function FeatsStep({ base, update, derived }: StepProps) {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Buscar talento (nome em inglês)"
+            placeholder="Buscar talento (português ou inglês)"
             aria-label="Buscar talento"
             className="h-9 min-w-0 flex-1 rounded-md border border-line bg-bg px-3 text-sm focus:border-accent focus:outline-none"
           />
@@ -155,7 +158,7 @@ export function FeatsStep({ base, update, derived }: StepProps) {
               <li key={feat.id} className="border-t border-line py-2.5">
                 <div className="flex flex-wrap items-center gap-2">
                   <StatusIcon ok={ok} />
-                  <span className="font-medium">{feat.name}</span>
+                  <span className="font-medium">{ptName(feat)}</span>
                   {feat.types
                     .filter((t) => t !== "General")
                     .map((t) => (
@@ -163,7 +166,7 @@ export function FeatsStep({ base, update, derived }: StepProps) {
                         key={t}
                         className="rounded bg-surface-2 px-1.5 text-[10px] text-muted uppercase"
                       >
-                        {t}
+                        {FEAT_TYPE_PT[t] ?? t}
                       </span>
                     ))}
                   <span className="ml-auto flex items-center gap-2">
@@ -178,7 +181,7 @@ export function FeatsStep({ base, update, derived }: StepProps) {
                       type="button"
                       onClick={() => add(feat)}
                       disabled={!!kind && !choice}
-                      aria-label={`Adicionar ${feat.name}`}
+                      aria-label={`Adicionar ${ptName(feat)}`}
                       title="Adicionar"
                       className="flex size-8 items-center justify-center rounded-md border border-line hover:border-accent hover:text-accent disabled:opacity-30"
                     >
@@ -187,9 +190,11 @@ export function FeatsStep({ base, update, derived }: StepProps) {
                   </span>
                 </div>
                 {feat.prerequisite && (
-                  <p className="mt-1 pl-6 text-xs text-faint">Requer: {feat.prerequisite}</p>
+                  <p className="mt-1 pl-6 text-xs text-faint">
+                    Requer: {feat.prerequisitePt ?? feat.prerequisite}
+                  </p>
                 )}
-                <p className="mt-1 pl-6 text-xs text-muted">{feat.benefit}</p>
+                <p className="mt-1 pl-6 text-xs text-muted">{feat.benefitPt ?? feat.benefit}</p>
               </li>
             );
           })}
@@ -201,7 +206,10 @@ export function FeatsStep({ base, update, derived }: StepProps) {
 
 function choiceLabel(choice: string) {
   return (
-    SRD.weapons.find((w) => w.id === choice)?.name ??
+    (() => {
+      const w = SRD.weapons.find((x) => x.id === choice);
+      return w ? ptName(w) : undefined;
+    })() ??
     SRD.skills.find((s) => s.id === choice)?.namePt ??
     SCHOOLS_PT[choice[0]!.toUpperCase() + choice.slice(1)] ??
     choice
@@ -237,9 +245,9 @@ function ChoiceInput({
     >
       <option value="">Escolha…</option>
       {kind === "weapon" &&
-        SRD.weapons.map((w) => (
+        [...SRD.weapons].sort(byPt(ptName)).map((w) => (
           <option key={w.id} value={w.id}>
-            {w.name}
+            {ptName(w)}
           </option>
         ))}
       {kind === "skill" &&

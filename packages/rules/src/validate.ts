@@ -1,4 +1,4 @@
-import { ABILITIES, type Spell, type SrdCore } from "@mesa/srd";
+import { ABILITIES, ptName, type Spell, type SrdCore } from "@mesa/srd";
 import { POINT_BUY_BUDGET, pointBuyCost } from "./abilities";
 import { ALIGNMENTS, type CharacterBase } from "./character";
 import { type Derived, deriveCharacter, RulesError } from "./derive";
@@ -138,16 +138,21 @@ export function validateCharacter(
       return;
     }
     if (feat.choice && !f.choice)
-      err(`feats.${i}`, `${feat.name}: escolha ${feat.choice.toLowerCase()}.`);
+      err(
+        `feats.${i}`,
+        `${ptName(feat)}: escolha ${(feat.choicePt ?? feat.choice).toLowerCase()}.`,
+      );
     const key = feat.multiple ? `${f.id}:${f.choice ?? ""}` : f.id;
-    if (seen.has(key) && !feat.stack) err(`feats.${i}`, `${feat.name} repetido.`);
+    if (seen.has(key) && !feat.stack) err(`feats.${i}`, `${ptName(feat)} repetido.`);
     seen.add(key);
-    if (derived.feats.granted.includes(f.id)) warn(`feats.${i}`, `${feat.name} já vem da classe.`);
+    if (derived.feats.granted.includes(f.id))
+      warn(`feats.${i}`, `${ptName(feat)} já vem da classe.`);
     // Talento extra de monge ignora pré-requisito.
     if ((levelsByClass.monk ?? 0) > 0 && isMonkBonusFeat(f.id)) return;
     for (const r of checkPrerequisites(feat, f.choice, ctx, srd)) {
-      if (r.ok === false) err(`feats.${i}`, `${feat.name}: falta "${r.text}".`);
-      else if (r.ok === null) warn(`feats.${i}`, `${feat.name}: confira "${r.text}" com o mestre.`);
+      if (r.ok === false) err(`feats.${i}`, `${ptName(feat)}: falta "${r.textPt}".`);
+      else if (r.ok === null)
+        warn(`feats.${i}`, `${ptName(feat)}: confira "${r.textPt}" com o mestre.`);
     }
   });
   if (derived.feats.overflow.length) {
@@ -166,7 +171,7 @@ export function validateCharacter(
   for (const w of weapons) {
     const weapon = srd.weapons.find((x) => x.id === w);
     if (weapon && !isWeaponProficient(weapon, ctx_who())) {
-      warn("equipment.weapons", `Sem proficiência com ${weapon.name}: −4 no ataque.`);
+      warn("equipment.weapons", `Sem proficiência com ${ptName(weapon)}: −4 no ataque.`);
     }
   }
   gear.forEach((g, i) => {

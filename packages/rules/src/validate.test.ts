@@ -78,7 +78,7 @@ describe("validateCharacter", () => {
 
   it("talentos: pré-requisitos, escolha, repetição e espaços", () => {
     expect(messages({ ...valid(), feats: [{ id: "cleave" }, { id: "toughness" }] })).toContain(
-      'Cleave: falta "Power Attack".',
+      'Trespassar: falta "Ataque Poderoso".',
     );
     expect(
       messages({
@@ -86,12 +86,12 @@ describe("validateCharacter", () => {
         abilities: { ...valid().abilities, str: 12 },
         feats: [{ id: "power-attack" }],
       }),
-    ).toContain('Power Attack: falta "Str 13".');
+    ).toContain('Ataque Poderoso: falta "For 13".');
     expect(messages({ ...valid(), feats: [{ id: "weapon-focus" }] })[0]).toMatch(
-      /Weapon Focus: escolha/,
+      /Foco em Arma: escolha/,
     );
     expect(messages({ ...valid(), feats: [{ id: "alertness" }, { id: "alertness" }] })).toContain(
-      "Alertness repetido.",
+      "Prontidão repetido.",
     );
     expect(
       messages({ ...valid(), feats: [{ id: "toughness" }, { id: "toughness" }] }).some((m) =>
@@ -118,14 +118,14 @@ describe("validateCharacter", () => {
           { id: "weapon-specialization", choice: "waraxe-dwarven" },
         ],
       }),
-    ).toContain('Weapon Specialization: falta "Weapon Focus with selected weapon".');
+    ).toContain('Especialização em Arma: falta "Foco em Arma com a arma escolhida".');
     expect(
       messages({
         ...fighter4,
         raceId: "human",
         feats: [{ id: "weapon-focus", choice: "chain-spiked" }],
       }),
-    ).toContain('Weapon Focus: falta "Proficiency with selected weapon".');
+    ).toContain('Foco em Arma: falta "Proficiência com a arma escolhida".');
   });
 
   it("monge ignora pré-requisito do talento extra", () => {

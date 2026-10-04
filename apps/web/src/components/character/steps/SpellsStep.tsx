@@ -1,11 +1,12 @@
 "use client";
 
 import type { CharacterBase, Spellcasting } from "@mesa/rules";
-import { type Spell, SRD } from "@mesa/srd";
+import { ptName, type Spell, SRD } from "@mesa/srd";
 import clsx from "clsx";
 import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
-import { className as classNamePt, SCHOOLS_PT } from "@/lib/srd";
+import { byPt, matches } from "@/lib/search";
+import { className as classNamePt, SCHOOLS_PT, spellText } from "@/lib/srd";
 import { Section } from "../kit";
 import type { StepProps } from "../types";
 
@@ -54,7 +55,8 @@ function CasterSection({
   const onList = (lvl: number) =>
     spells
       .filter((s) => s.levels[casting.list] === lvl)
-      .filter((s) => !query || s.name.toLowerCase().includes(query.toLowerCase()));
+      .filter((s) => matches(query, s.pt?.name, s.name))
+      .sort(byPt((s) => spellText(s).name));
   const domainSpells = (lvl: number) =>
     base.domains
       .map((d) => SRD.domains.find((x) => x.id === d)?.spells[lvl - 1]?.id)
@@ -84,7 +86,7 @@ function CasterSection({
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Buscar magia (nome em inglês)"
+            placeholder="Buscar magia (português ou inglês)"
             aria-label={`Buscar magia de ${classNamePt(casting.classId)}`}
             className="mt-4 h-9 w-full rounded-md border border-line bg-bg px-3 text-sm focus:border-accent focus:outline-none"
           />
@@ -113,7 +115,7 @@ function CasterSection({
                         <SpellRow key={s.id} spell={s}>
                           <input
                             type="checkbox"
-                            aria-label={`Conhecer ${s.name}`}
+                            aria-label={`Conhecer ${spellText(s).name}`}
                             checked={has}
                             disabled={!has && max !== null && mine.length >= max}
                             onChange={() =>
@@ -173,7 +175,7 @@ function CasterSection({
                           <span className="flex items-center gap-1">
                             <button
                               type="button"
-                              aria-label={`Preparar uma ${s.name} a menos`}
+                              aria-label={`Preparar uma ${spellText(s).name} a menos`}
                               disabled={n === 0}
                               onClick={() => {
                                 const i = prepared.indexOf(s.id);
@@ -186,7 +188,7 @@ function CasterSection({
                             <span className="w-4 text-center font-mono text-xs">{n}</span>
                             <button
                               type="button"
-                              aria-label={`Preparar ${s.name}`}
+                              aria-label={`Preparar ${spellText(s).name}`}
                               disabled={prepared.length >= max}
                               onClick={() => setLevel([...prepared, s.id])}
                               className="text-muted hover:text-ink disabled:opacity-30"
@@ -210,7 +212,7 @@ function CasterSection({
 
 function uniqueById(list: Spell[]) {
   return [...new Map(list.map((s) => [s.id, s])).values()].sort((a, b) =>
-    a.name.localeCompare(b.name),
+    spellText(a).name.localeCompare(spellText(b).name, "pt-BR"),
   );
 }
 
@@ -263,14 +265,14 @@ function DomainPicker({ value, onChange }: { value: string[]; onChange: (v: stri
         Domínios <span className="font-normal text-muted">({value.length} de 2)</span>
       </h3>
       <div className="flex flex-wrap gap-1.5">
-        {SRD.domains.map((d) => {
+        {[...SRD.domains].sort(byPt(ptName)).map((d) => {
           const on = value.includes(d.id);
           return (
             <button
               key={d.id}
               type="button"
               aria-pressed={on}
-              title={d.grantedPowers}
+              title={d.grantedPowersPt ?? d.grantedPowers}
               disabled={!on && value.length >= 2}
               onClick={() => onChange(on ? value.filter((x) => x !== d.id) : [...value, d.id])}
               className={clsx(
@@ -278,7 +280,7 @@ function DomainPicker({ value, onChange }: { value: string[]; onChange: (v: stri
                 on ? "border-gm bg-gm/10 text-gm" : "border-line text-muted hover:text-ink",
               )}
             >
-              {d.name}
+              {ptName(d)}
             </button>
           );
         })}
@@ -287,7 +289,7 @@ function DomainPicker({ value, onChange }: { value: string[]; onChange: (v: stri
         const d = SRD.domains.find((x) => x.id === id);
         return d ? (
           <p key={id} className="mt-2 text-xs text-muted">
-            <span className="text-gm">{d.name}:</span> {d.grantedPowers}
+            <span className="text-gm">{ptName(d)}:</span> {d.grantedPowersPt ?? d.grantedPowers}
           </p>
         ) : null;
       })}
@@ -329,6 +331,7 @@ function SpellRow({
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
+  const t = spellText(spell);
   return (
     <li className="border-t border-line py-1.5 text-sm">
       <div className="flex items-center gap-2">
@@ -338,21 +341,29 @@ function SpellRow({
           onClick={() => setOpen((o) => !o)}
           className="min-w-0 text-left hover:text-accent"
         >
-          {spell.name}
+          {t.name}
         </button>
         {domain && <span className="text-[10px] text-gm uppercase">domínio</span>}
         <span className="ml-auto shrink-0 text-xs text-faint">
           {SCHOOLS_PT[spell.school] ?? spell.school}
         </span>
       </div>
-      <p className="pl-6 text-xs text-muted">{spell.summary}</p>
+      <p className="pl-6 text-xs text-muted">{t.summary}</p>
       {open && (
         <div className="mt-1 pl-6 text-xs text-muted">
           <p className="text-faint">
-            {spell.castingTime} · {spell.range} · {spell.duration}
-            {spell.savingThrow && ` · ${spell.savingThrow}`}
+            {t.castingTime} · {t.range} · {t.duration} · {t.components}
+            {t.savingThrow && ` · TR: ${t.savingThrow}`}
+            {t.spellResistance && ` · RM: ${t.spellResistance}`}
           </p>
-          <p className="mt-1 whitespace-pre-line">{spell.description}</p>
+          {(t.target || t.area || t.effect) && (
+            <p className="text-faint">
+              {t.target && `Alvo: ${t.target}`}
+              {t.area && `Área: ${t.area}`}
+              {t.effect && `Efeito: ${t.effect}`}
+            </p>
+          )}
+          <p className="mt-1 whitespace-pre-line">{t.description}</p>
         </div>
       )}
     </li>

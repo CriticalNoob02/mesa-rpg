@@ -1,9 +1,11 @@
 "use client";
 
 import { isArmorProficient, isWeaponProficient } from "@mesa/rules";
-import { SRD } from "@mesa/srd";
+import { ptName, SRD } from "@mesa/srd";
 import { Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
+import { kg, kgFromLb, lbFromKg, money } from "@/lib/format";
+import { byPt } from "@/lib/search";
 import { meters, signed } from "@/lib/srd";
 import { Section, Select, StatValue } from "../kit";
 import type { StepProps } from "../types";
@@ -45,7 +47,7 @@ export function EquipmentStep({ base, update, derived }: StepProps) {
                   .filter((a) => a.kind === k)
                   .map((a) => (
                     <option key={a.id} value={a.id}>
-                      {a.name} (CA +{a.bonus})
+                      {ptName(a)} (CA +{a.bonus})
                       {isArmorProficient(a, who) ? "" : " · sem proficiência"}
                     </option>
                   ))}
@@ -62,7 +64,8 @@ export function EquipmentStep({ base, update, derived }: StepProps) {
               .filter((a) => a.kind === "shield")
               .map((a) => (
                 <option key={a.id} value={a.id}>
-                  {a.name} (CA +{a.bonus}){isArmorProficient(a, who) ? "" : " · sem proficiência"}
+                  {ptName(a)} (CA +{a.bonus})
+                  {isArmorProficient(a, who) ? "" : " · sem proficiência"}
                 </option>
               ))}
           </Select>
@@ -103,7 +106,7 @@ export function EquipmentStep({ base, update, derived }: StepProps) {
                 key={i}
                 className="flex flex-wrap items-center gap-x-3 border-t border-line py-2 text-sm"
               >
-                <span className="w-40">{w?.name ?? id}</span>
+                <span className="w-40">{w ? ptName(w) : id}</span>
                 {atk && (
                   <span className="font-mono text-xs text-muted">
                     {atk.bonuses.map(signed).join("/")} · {atk.damageDice}
@@ -115,7 +118,7 @@ export function EquipmentStep({ base, update, derived }: StepProps) {
                 )}
                 <button
                   type="button"
-                  aria-label={`Remover ${w?.name ?? id}`}
+                  aria-label={`Remover ${w ? ptName(w) : id}`}
                   title="Remover"
                   onClick={() => setEq({ weapons: eq.weapons.filter((_, j) => j !== i) })}
                   className="ml-auto text-faint hover:text-fumble"
@@ -133,9 +136,10 @@ export function EquipmentStep({ base, update, derived }: StepProps) {
               <optgroup key={p} label={PROF_PT[p]}>
                 {SRD.weapons
                   .filter((w) => w.proficiency === p)
+                  .sort(byPt(ptName))
                   .map((w) => (
                     <option key={w.id} value={w.id}>
-                      {w.name} ({w.damage.medium ?? "—"})
+                      {ptName(w)} ({w.damage.medium ?? "—"})
                       {isWeaponProficient(w, who) ? "" : " · sem proficiência"}
                     </option>
                   ))}
@@ -162,7 +166,7 @@ export function EquipmentStep({ base, update, derived }: StepProps) {
         title="Equipamento"
         aside={
           derived &&
-          `${derived.load.weight.toLocaleString("pt-BR")} lb · carga ${LOAD_PT[derived.load.category]} (leve até ${derived.load.light})`
+          `${kg(derived.load.weight)} · carga ${LOAD_PT[derived.load.category]} (leve até ${kg(derived.load.light)})`
         }
       >
         <ul className="mb-3 flex flex-col">
@@ -195,21 +199,21 @@ export function EquipmentStep({ base, update, derived }: StepProps) {
                 className="h-8 w-16 rounded border border-line bg-bg px-2 font-mono focus:border-accent focus:outline-none"
               />
               <input
-                aria-label="Peso (lb)"
+                aria-label="Peso (kg)"
                 type="number"
                 min={0}
-                step={0.5}
-                value={g.weight}
+                step={0.25}
+                value={kgFromLb(g.weight)}
                 onChange={(e) =>
                   setEq({
                     gear: eq.gear.map((x, j) =>
-                      j === i ? { ...x, weight: Number(e.target.value) } : x,
+                      j === i ? { ...x, weight: lbFromKg(Number(e.target.value)) } : x,
                     ),
                   })
                 }
                 className="h-8 w-20 rounded border border-line bg-bg px-2 font-mono focus:border-accent focus:outline-none"
               />
-              <span className="text-xs text-faint">lb</span>
+              <span className="text-xs text-faint">kg</span>
               <button
                 type="button"
                 aria-label={`Remover ${g.name}`}
@@ -230,9 +234,9 @@ export function EquipmentStep({ base, update, derived }: StepProps) {
             className="min-w-0 flex-1"
           >
             <option value="">Item do Livro do Jogador…</option>
-            {SRD.gear.map((g) => (
+            {[...SRD.gear].sort(byPt(ptName)).map((g) => (
               <option key={g.id} value={g.id}>
-                {g.name} ({g.weight} lb, {g.cost})
+                {ptName(g)} ({kg(g.weight)}, {money(g.cost)})
               </option>
             ))}
           </Select>
@@ -242,7 +246,10 @@ export function EquipmentStep({ base, update, derived }: StepProps) {
             onClick={() => {
               const g = SRD.gear.find((x) => x.id === gearPick);
               setEq({
-                gear: [...eq.gear, { name: g?.name ?? "Item", qty: 1, weight: g?.weight ?? 0 }],
+                gear: [
+                  ...eq.gear,
+                  { name: g ? ptName(g) : "Item", qty: 1, weight: g?.weight ?? 0 },
+                ],
               });
               setGearPick("");
             }}

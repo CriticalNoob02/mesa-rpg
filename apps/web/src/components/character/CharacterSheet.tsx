@@ -1,7 +1,7 @@
 "use client";
 
 import { ABILITY_PT, deriveCharacter } from "@mesa/rules";
-import { ABILITIES, type Spell, SRD } from "@mesa/srd";
+import { ABILITIES, ptName, type Spell, SRD } from "@mesa/srd";
 import clsx from "clsx";
 import { ArrowLeft, Minus, Pencil, Plus, Trash2 } from "lucide-react";
 import Link from "next/link";
@@ -9,8 +9,17 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { RollButton } from "@/components/mesa/RollButton";
 import { characterEffects, roundsLabel } from "@/lib/effects";
+import { kg } from "@/lib/format";
 import { useMesaAction } from "@/lib/MesaContext";
-import { ALIGNMENT_PT, characterSummary, className, meters, SCHOOLS_PT, signed } from "@/lib/srd";
+import {
+  ALIGNMENT_PT,
+  characterSummary,
+  className,
+  meters,
+  SCHOOLS_PT,
+  signed,
+  spellText,
+} from "@/lib/srd";
 import { useMesa } from "@/lib/store";
 import { Section, StatValue } from "./kit";
 
@@ -367,12 +376,15 @@ export function CharacterSheet({ characterId }: { characterId: string }) {
                       <li key={i}>
                         <details>
                           <summary className="cursor-pointer">
-                            {feat?.name ?? f.id}
+                            {feat ? ptName(feat) : f.id}
                             {f.choice && (
                               <span className="text-muted">
                                 {" "}
                                 (
-                                {SRD.weapons.find((w) => w.id === f.choice)?.name ??
+                                {(() => {
+                                  const w = SRD.weapons.find((x) => x.id === f.choice);
+                                  return w ? ptName(w) : undefined;
+                                })() ??
                                   SRD.skills.find((s) => s.id === f.choice)?.namePt ??
                                   f.choice}
                                 )
@@ -384,7 +396,9 @@ export function CharacterSheet({ characterId }: { characterId: string }) {
                               </span>
                             )}
                           </summary>
-                          <p className="mt-1 pl-4 text-xs text-muted">{feat?.benefit}</p>
+                          <p className="mt-1 pl-4 text-xs text-muted">
+                            {feat?.benefitPt ?? feat?.benefit}
+                          </p>
                         </details>
                       </li>
                     );
@@ -435,7 +449,10 @@ export function CharacterSheet({ characterId }: { characterId: string }) {
                       <p className="mb-2 text-xs text-gm">
                         Domínios:{" "}
                         {base.domains
-                          .map((d) => SRD.domains.find((x) => x.id === d)?.name ?? d)
+                          .map((d) => {
+                            const dom = SRD.domains.find((x) => x.id === d);
+                            return dom ? ptName(dom) : d;
+                          })
                           .join(", ")}
                       </p>
                     )}
@@ -446,7 +463,12 @@ export function CharacterSheet({ characterId }: { characterId: string }) {
                             // biome-ignore lint/suspicious/noArrayIndexKey: nível é a posição
                             <li key={lvl}>
                               <span className="font-mono text-xs text-faint">{lvl}º </span>
-                              {list.map((id) => name(id)?.name ?? id).join(", ")}
+                              {list
+                                .map((id) => {
+                                  const sp = name(id);
+                                  return sp ? spellText(sp).name : id;
+                                })
+                                .join(", ")}
                             </li>
                           ) : null,
                         )}
@@ -463,12 +485,12 @@ export function CharacterSheet({ characterId }: { characterId: string }) {
                             const s = name(id);
                             return (
                               <li key={id}>
-                                {s?.name ?? id}
+                                {s ? spellText(s).name : id}
                                 {s && (
                                   <span className="text-xs text-faint">
                                     {" "}
                                     · {SCHOOLS_PT[s.school] ?? s.school} {s.levels[c.list]} ·{" "}
-                                    {s.summary}
+                                    {spellText(s).summary}
                                   </span>
                                 )}
                               </li>
@@ -483,15 +505,11 @@ export function CharacterSheet({ characterId }: { characterId: string }) {
 
               <Section
                 title="Equipamento"
-                aside={`${derived.load.weight.toLocaleString("pt-BR")} lb · carga ${LOAD_PT[derived.load.category]}`}
+                aside={`${kg(derived.load.weight)} · carga ${LOAD_PT[derived.load.category]}`}
               >
                 <ul className="text-sm">
-                  {base.equipment.armorId && (
-                    <li>{SRD.armor.find((a) => a.id === base.equipment.armorId)?.name}</li>
-                  )}
-                  {base.equipment.shieldId && (
-                    <li>{SRD.armor.find((a) => a.id === base.equipment.shieldId)?.name}</li>
-                  )}
+                  {base.equipment.armorId && <li>{nameOfArmor(base.equipment.armorId)}</li>}
+                  {base.equipment.shieldId && <li>{nameOfArmor(base.equipment.shieldId)}</li>}
                   {base.equipment.gear.map((g, i) => (
                     // biome-ignore lint/suspicious/noArrayIndexKey: itens posicionais
                     <li key={i} className="text-muted">
@@ -538,6 +556,11 @@ export function groupSpecials(list: { classId: string; level: number; text: stri
     } else map.set(s.text, { text: s.text, count: 1, levels: at });
   }
   return [...map.values()];
+}
+
+function nameOfArmor(id: string) {
+  const a = SRD.armor.find((x) => x.id === id);
+  return a ? ptName(a) : id;
 }
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {

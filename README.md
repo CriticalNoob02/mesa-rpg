@@ -9,6 +9,7 @@ Plano completo em `~/.claude/plans/continue-elegant-squirrel.md`. Entregue até 
 - **Fase 3:** mapa tático (cenas, imagem enviada pelo mestre, grid calibrável, tokens, névoa, régua e contagem de movimento).
 - **Fase 4:** combate (iniciativa, turnos com limite de movimento, ataques resolvidos no servidor, efeitos e condições com duração, ficha simples de NPC).
 - **Fase 5:** ambientação (narração para ler em voz alta, imagem de ambiente, áudio em loop, handouts por destinatário).
+- **v0.2.0:** todo o conteúdo do SRD em português do Brasil.
 
 ## Estrutura
 
@@ -170,4 +171,12 @@ npm run import -w @mesa/srd -- ./dnd35.db
 
 O que é importado: 11 classes base (tabelas 1–20), 110 talentos do Livro do Jogador, 84 perícias (com subtipos), 67 armas, 18 armaduras e escudos, 163 itens, 35 domínios e 617 magias.
 
-A base não traz raças nem condições estruturadas; elas estão escritas à mão em `packages/srd/src`. Nomes de talentos, magias e itens ficam em inglês por enquanto. As magias (~800 KB) só carregam no web quando há conjurador. Licença em `packages/srd/OGL.txt`.
+A base não traz raças nem condições estruturadas; elas estão escritas à mão em `packages/srd/src`.
+
+**Tradução para português** (`packages/srd/data/pt/`):
+- **Conteúdo traduzido:** nomes, resumos e descrições das 617 magias, com os campos curtos (alcance, duração, componentes, teste de resistência, alvo e área). Também os 110 talentos, com benefício, pré-requisito e escolha, mais armas, armaduras, itens, domínios com seus poderes concedidos, habilidades e proficiências de classe e tendências.
+- **Unidades:** seguem a edição brasileira: 1,5 m por quadrado, 1 lb = 0,5 kg, moedas em PO/PP/PC.
+- **Como foi feita:** tradução automática revisada com um glossário de termos e nomes da edição brasileira, mais um validador. O validador confere chaves, dados (XdY) preservados, unidades imperiais e o número de cláusulas do pré-requisito, que o motor casa por posição.
+- **Como o app usa:** os campos `*Pt` (ou `pt`, nas magias) ficam ao lado do original. O motor de regras continua lendo o texto em inglês, e a tela mostra o português, voltando ao inglês só se faltar algo.
+- **Busca:** aceita os dois idiomas, sem diferenciar acentos.
+- **Licença:** a tradução é Open Game Content, como o original. As magias (~800 KB) só carregam no web quando há conjurador. Licença em `packages/srd/OGL.txt`.

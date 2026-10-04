@@ -152,7 +152,8 @@ export type PrereqContext = {
   isProficient: (weaponId: string) => boolean;
 };
 
-export type PrereqResult = { text: string; ok: boolean | null };
+/** `text` é a cláusula original (é o que o motor avalia); `textPt`, a tradução para mostrar. */
+export type PrereqResult = { text: string; textPt: string; ok: boolean | null };
 
 const ABILITY_BY_NAME: Record<string, Ability> = {
   str: "str",
@@ -174,9 +175,13 @@ export function checkPrerequisites(
   srd: SrdCore,
 ): PrereqResult[] {
   if (!feat.prerequisite) return [];
-  return feat.prerequisite.split(/,\s*/).map((raw) => {
+  // A tradução mantém as mesmas cláusulas na mesma ordem: casa por índice.
+  const pt = feat.prerequisitePt?.split(/,\s*/);
+  const original = feat.prerequisite.split(/,\s*/);
+  const ptMatches = pt?.length === original.length;
+  return original.map((raw, i) => {
     const text = raw.trim();
-    return { text, ok: evaluate(text) };
+    return { text, textPt: (ptMatches ? pt![i]!.trim() : null) || text, ok: evaluate(text) };
   });
 
   function evaluate(text: string): boolean | null {

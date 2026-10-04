@@ -4,6 +4,7 @@ import type { Issue, Part, Stat } from "@mesa/rules";
 import clsx from "clsx";
 import { AlertTriangle, Minus, Plus, XCircle } from "lucide-react";
 import type { ReactNode } from "react";
+import { BONUS_PT } from "@/lib/format";
 import { signed } from "@/lib/srd";
 
 export function Section({
@@ -131,7 +132,7 @@ export function Breakdown({ parts }: { parts: Part[] }) {
         >
           <span>
             {p.label}
-            {p.type !== "untyped" && <span className="text-faint"> ({p.type})</span>}
+            {p.type !== "untyped" && <span className="text-faint"> ({BONUS_PT[p.type]})</span>}
           </span>
           <span className="font-mono">{signed(p.value)}</span>
         </li>

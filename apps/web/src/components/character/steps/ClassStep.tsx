@@ -56,7 +56,8 @@ export function ClassStep({ base, update, derived }: StepProps) {
             const classLevel = base.levels
               .slice(0, i + 1)
               .filter((x) => x.classId === l.classId).length;
-            const specials = c.levels[classLevel - 1]?.special ?? [];
+            const row = c.levels[classLevel - 1];
+            const specials = row?.specialPt ?? row?.special ?? [];
             const increaseIndex = (i + 1) % 4 === 0 ? (i + 1) / 4 - 1 : -1;
             return (
               <li
@@ -162,7 +163,7 @@ export function ClassStep({ base, update, derived }: StepProps) {
             {cls.casting && ` · magias (${ABILITY_PT[cls.casting.ability].short})`}
           </span>
         </div>
-        <p className="mt-2 text-xs text-faint">{cls.proficiencies}</p>
+        <p className="mt-2 text-xs text-faint">{cls.proficienciesPt ?? cls.proficiencies}</p>
       </Section>
 
       {derived && derived.totalLevel > 0 && (

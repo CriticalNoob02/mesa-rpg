@@ -101,6 +101,8 @@ export type Race = {
 
 export type ClassLevelRow = {
   level: number;
+  /** Mesmas habilidades de `special`, em português (mesma ordem). */
+  specialPt?: string[];
   bab: number;
   fort: number;
   ref: number;
@@ -148,6 +150,8 @@ export type SrdClass = {
     halfCasterLevel?: boolean;
   };
   proficiencies: string;
+  proficienciesPt?: string;
+  alignmentPt?: string;
   levels: ClassLevelRow[];
 };
 
@@ -165,6 +169,11 @@ export type Skill = {
 export type Feat = {
   id: string;
   name: string;
+  namePt?: string;
+  benefitPt?: string;
+  /** Mesmas cláusulas de `prerequisite`, na mesma ordem (separadas por ", "). */
+  prerequisitePt?: string | null;
+  choicePt?: string | null;
   types: string[];
   multiple: boolean;
   stack: boolean;
@@ -176,6 +185,8 @@ export type Feat = {
 export type Weapon = {
   id: string;
   name: string;
+  namePt?: string;
+  damageTypePt?: string;
   proficiency: "simple" | "martial" | "exotic";
   /** Categoria de empunhadura: leve, uma mão, duas mãos, distância, desarmado. */
   handedness: "unarmed" | "light" | "one-handed" | "two-handed" | "ranged";
@@ -190,6 +201,7 @@ export type Weapon = {
 export type Armor = {
   id: string;
   name: string;
+  namePt?: string;
   kind: "light" | "medium" | "heavy" | "shield";
   cost: string;
   bonus: number;
@@ -202,13 +214,15 @@ export type Armor = {
   weight: number;
 };
 
-export type Gear = { id: string; name: string; cost: string; weight: number };
+export type Gear = { id: string; name: string; namePt?: string; cost: string; weight: number };
 
 /** Magias do domínio por nível (1–9); `id` null quando a magia não está no SRD 3.5. */
 export type Domain = {
   id: string;
   name: string;
+  namePt?: string;
   grantedPowers: string;
+  grantedPowersPt?: string;
   spells: { name: string; id: string | null }[];
 };
 
@@ -231,6 +245,27 @@ export type Spell = {
   spellResistance: string | null;
   summary: string;
   description: string;
+  /** Tradução para português (mesmos campos de texto). */
+  pt?: SpellPt;
+};
+
+export type SpellPt = {
+  name: string;
+  summary: string;
+  description: string;
+  castingTime: string;
+  range: string;
+  duration: string;
+  components: string;
+  target: string | null;
+  area: string | null;
+  effect: string | null;
+  savingThrow: string | null;
+  spellResistance: string | null;
+  subschool: string | null;
+  descriptor: string | null;
+  /** Lista → nome da lista em português (ex. "Sorcerer/Wizard" → "Feiticeiro/Mago"). */
+  lists: Record<string, string>;
 };
 
 export type SrdCore = {

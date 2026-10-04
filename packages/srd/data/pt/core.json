@@ -1,0 +1,1271 @@
+{
+ "feats": {
+  "acrobatic": {
+   "name": "Acrobático",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Saltar e Acrobacia.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "agile": {
+   "name": "Ágil",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Equilíbrio e Arte da Fuga.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "alertness": {
+   "name": "Prontidão",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Ouvir e Observar.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "animal-affinity": {
+   "name": "Afinidade com Animais",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Adestrar Animais e Cavalgar.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "armor-proficiency-heavy": {
+   "name": "Usar Armadura (Pesada)",
+   "benefit": "Veja Usar Armadura (Leve).",
+   "prerequisite": "Usar Armadura (Leve), Usar Armadura (Média)",
+   "choice": null
+  },
+  "armor-proficiency-light": {
+   "name": "Usar Armadura (Leve)",
+   "benefit": "Quando você veste um tipo de armadura com o qual é proficiente, a penalidade de armadura dessa armadura se aplica apenas aos testes de Equilíbrio, Escalar, Arte da Fuga, Esconder-se, Saltar, Furtividade, Prestidigitação e Acrobacia.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "armor-proficiency-medium": {
+   "name": "Usar Armadura (Média)",
+   "benefit": "Veja Usar Armadura (Leve).",
+   "prerequisite": "Usar Armadura (Leve)",
+   "choice": null
+  },
+  "athletic": {
+   "name": "Atlético",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Escalar e Natação.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "augment-summoning": {
+   "name": "Aumentar Invocação",
+   "benefit": "Cada criatura que você conjurar com qualquer magia de invocação recebe +4 de bônus de melhoria em Força e Constituição durante a duração da magia que a invocou.",
+   "prerequisite": "Foco em Magia (conjuração)",
+   "choice": null
+  },
+  "blind-fight": {
+   "name": "Lutar às Cegas",
+   "benefit": "Em combate corpo a corpo, toda vez que você errar por causa de camuflagem, pode jogar novamente a porcentagem da chance de falha uma vez para ver se realmente acertou.\nUm atacante invisível não recebe nenhuma vantagem para acertá-lo em corpo a corpo. Ou seja, você não perde seu bônus de Destreza na Classe de Armadura, e o atacante não recebe o bônus usual de +2 por estar invisível. Os bônus do atacante invisível ainda se aplicam a ataques à distância, porém.\nVocê sofre apenas metade da penalidade usual no deslocamento por não conseguir enxergar. Escuridão e pouca visibilidade em geral reduzem seu deslocamento para três quartos do normal, em vez da metade.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "brew-potion": {
+   "name": "Preparar Poção",
+   "benefit": "Você pode criar uma poção de qualquer magia de 3º nível ou inferior que conheça e que tenha como alvo uma ou mais criaturas. Preparar uma poção leva um dia. Ao criar uma poção, você define o nível de conjurador, que deve ser suficiente para conjurar a magia em questão e não maior que o seu próprio nível. O preço base de uma poção é o nível da magia × o nível de conjurador × 50 PO. Para preparar uma poção, você deve gastar 1/25 desse preço base em XP e consumir matérias-primas que custam metade desse preço base.\nAo criar uma poção, você faz todas as escolhas que normalmente faria ao conjurar a magia. Quem beber a poção é o alvo da magia.\nQualquer poção que armazene uma magia com um componente material caro ou um custo em XP também tem um custo proporcional. Além dos custos derivados do preço base, você deve gastar o componente material ou pagar o XP ao criar a poção.",
+   "prerequisite": "Nível de conjurador 3",
+   "choice": null
+  },
+  "cleave": {
+   "name": "Trespassar",
+   "benefit": "Se você causar dano suficiente a uma criatura para derrubá-la (normalmente reduzindo-a a menos de 0 pontos de vida ou matando-a), recebe imediatamente um ataque corpo a corpo extra contra outra criatura dentro do seu alcance. Você não pode dar um passo de ajuste de 1,5 m antes de realizar esse ataque extra. O ataque extra é feito com a mesma arma e com o mesmo bônus do ataque que derrubou a criatura anterior. Você pode usar esta habilidade uma vez por rodada.",
+   "prerequisite": "For 13, Ataque Poderoso",
+   "choice": null
+  },
+  "combat-casting": {
+   "name": "Conjurar em Combate",
+   "benefit": "Você recebe +4 de bônus nos testes de Concentração feitos para conjurar uma magia ou usar uma habilidade similar a magia na defensiva ou enquanto estiver agarrando ou imobilizado.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "combat-expertise": {
+   "name": "Especialização em Combate",
+   "benefit": "Quando usar a ação de ataque ou a ação de ataque total em corpo a corpo, você pode sofrer uma penalidade de até -5 na sua jogada de ataque e somar o mesmo número (+5 ou menos) como bônus de esquiva na sua Classe de Armadura. Esse número não pode exceder seu bônus base de ataque. As alterações nas jogadas de ataque e na Classe de Armadura duram até a sua próxima ação.",
+   "prerequisite": "Int 13",
+   "choice": null
+  },
+  "combat-reflexes": {
+   "name": "Reflexos de Combate",
+   "benefit": "Você pode realizar um número de ataques de oportunidade adicionais igual ao seu bônus de Destreza.\nCom este talento, você também pode realizar ataques de oportunidade enquanto estiver desprevenido.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "craft-magic-arms-and-armor": {
+   "name": "Criar Armas e Armaduras Mágicas",
+   "benefit": "Você pode criar qualquer arma, armadura ou escudo mágico cujos pré-requisitos cumpra. Aprimorar uma arma, armadura ou escudo leva um dia para cada 1.000 PO no preço de suas propriedades mágicas. Para aprimorar uma arma, armadura ou escudo, você deve gastar 1/25 do preço total das propriedades em XP e consumir matérias-primas que custam metade desse preço total.\nA arma, armadura ou escudo a ser aprimorado deve ser um item obra-prima fornecido por você. O custo dele não está incluído no custo acima.\nVocê também pode consertar uma arma, armadura ou escudo mágico quebrado, se for um que você poderia fabricar. Isso custa metade do XP, metade das matérias-primas e metade do tempo que levaria para criar o item originalmente.",
+   "prerequisite": "Nível de conjurador 5",
+   "choice": null
+  },
+  "craft-rod": {
+   "name": "Criar Bastão",
+   "benefit": "Você pode criar qualquer bastão cujos pré-requisitos cumpra. Criar um bastão leva um dia para cada 1.000 PO de seu preço base. Para criar um bastão, você deve gastar 1/25 de seu preço base em XP e consumir matérias-primas que custam metade de seu preço base.\nAlguns bastões têm custos extras em componentes materiais ou XP, como indicado em suas descrições. Esses custos se somam aos derivados do preço base do bastão.",
+   "prerequisite": "Nível de conjurador 9",
+   "choice": null
+  },
+  "craft-staff": {
+   "name": "Criar Cajado",
+   "benefit": "Você pode criar qualquer cajado cujos pré-requisitos cumpra.\nCriar um cajado leva um dia para cada 1.000 PO de seu preço base. Para criar um cajado, você deve gastar 1/25 de seu preço base em XP e consumir matérias-primas que custam metade de seu preço base. Um cajado recém-criado tem 50 cargas.\nAlguns cajados têm custos extras em componentes materiais ou XP, como indicado em suas descrições. Esses custos se somam aos derivados do preço base do cajado.",
+   "prerequisite": "Nível de conjurador 12",
+   "choice": null
+  },
+  "craft-wand": {
+   "name": "Criar Varinha",
+   "benefit": "Você pode criar uma varinha de qualquer magia de 4º nível ou inferior que conheça. Criar uma varinha leva um dia para cada 1.000 PO de seu preço base. O preço base de uma varinha é o nível de conjurador × o nível da magia × 750 PO. Para criar uma varinha, você deve gastar 1/25 desse preço base em XP e consumir matérias-primas que custam metade desse preço base. Uma varinha recém-criada tem 50 cargas.\nQualquer varinha que armazene uma magia com um componente material caro ou um custo em XP também tem um custo proporcional. Além do custo derivado do preço base, você deve gastar cinquenta cópias do componente material ou pagar cinquenta vezes o custo em XP.",
+   "prerequisite": "Nível de conjurador 5",
+   "choice": null
+  },
+  "craft-wondrous-item": {
+   "name": "Criar Item Maravilhoso",
+   "benefit": "Você pode criar qualquer item maravilhoso cujos pré-requisitos cumpra. Encantar um item maravilhoso leva um dia para cada 1.000 PO de seu preço. Para encantar um item maravilhoso, você deve gastar 1/25 do preço do item em XP e consumir matérias-primas que custam metade desse preço.\nVocê também pode consertar um item maravilhoso quebrado, se for um que você poderia fabricar. Isso custa metade do XP, metade das matérias-primas e metade do tempo que levaria para criar o item originalmente.\nAlguns itens maravilhosos têm custos extras em componentes materiais ou XP, como indicado em suas descrições. Esses custos se somam aos derivados do preço base do item. Você deve pagar esse custo para criar o item ou para consertá-lo se estiver quebrado.",
+   "prerequisite": "Nível de conjurador 3",
+   "choice": null
+  },
+  "deceitful": {
+   "name": "Enganador",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Disfarces e Falsificação.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "deflect-arrows": {
+   "name": "Desviar Objetos",
+   "benefit": "Você precisa ter pelo menos uma mão livre (sem segurar nada) para usar este talento. Uma vez por rodada, quando normalmente seria atingido por uma arma de ataque à distância, você pode desviá-la de modo a não sofrer dano algum. Você deve estar ciente do ataque e não pode estar desprevenido.\nTentar desviar uma arma de ataque à distância não conta como uma ação. Armas de ataque à distância excepcionalmente grandes e ataques à distância gerados por efeitos de magia não podem ser desviados.",
+   "prerequisite": "Des 13, Ataque Desarmado Aprimorado",
+   "choice": null
+  },
+  "deft-hands": {
+   "name": "Mãos Leves",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Prestidigitação e Usar Cordas.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "diehard": {
+   "name": "Duro de Matar",
+   "benefit": "Quando seus pontos de vida forem reduzidos a um valor entre -1 e -9, você se torna estável automaticamente. Você não precisa jogar d% para ver se perde 1 ponto de vida a cada rodada.\nQuando seus pontos de vida forem reduzidos a um valor negativo, você pode escolher agir como se estivesse incapacitado, em vez de morrendo. Você deve tomar essa decisão assim que seus pontos de vida ficarem negativos (mesmo que não seja seu turno). Se não escolher agir como se estivesse incapacitado, você cai inconsciente imediatamente.\nAo usar este talento, você pode realizar uma única ação de movimento ou ação padrão a cada turno, mas não ambas, e não pode realizar uma ação de rodada completa. Você pode realizar uma ação de movimento sem se ferir mais, mas se realizar qualquer ação padrão (ou qualquer outra ação considerada extenuante, incluindo algumas ações livres, como conjurar uma magia acelerada), sofre 1 ponto de dano após concluir o ato. Se chegar a -10 pontos de vida, você morre imediatamente.",
+   "prerequisite": "Tolerância",
+   "choice": null
+  },
+  "diligent": {
+   "name": "Diligente",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Avaliação e Decifrar Escrita.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "dodge": {
+   "name": "Esquiva",
+   "benefit": "Durante sua ação, você designa um oponente e recebe +1 de bônus de esquiva na Classe de Armadura contra ataques desse oponente. Você pode escolher um novo oponente em qualquer ação.\nUma condição que faça você perder seu bônus de Destreza na Classe de Armadura (se houver) também faz você perder os bônus de esquiva. Além disso, bônus de esquiva se acumulam entre si, ao contrário da maioria dos outros tipos de bônus.",
+   "prerequisite": "Des 13",
+   "choice": null
+  },
+  "empower-spell": {
+   "name": "Potencializar Magia",
+   "benefit": "Todos os efeitos numéricos variáveis de uma magia potencializada aumentam em metade.\nTestes de resistência e jogadas resistidas não são afetados, nem magias sem variáveis aleatórias. Uma magia potencializada ocupa um espaço de magia dois níveis acima do nível real da magia.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "endurance": {
+   "name": "Tolerância",
+   "benefit": "Você recebe +4 de bônus nos seguintes testes e testes de resistência: testes de Natação para resistir a dano não letal, testes de Constituição para continuar correndo, testes de Constituição para evitar dano não letal de uma marcha forçada, testes de Constituição para prender a respiração, testes de Constituição para evitar dano não letal por fome ou sede, testes de resistência de Fortitude para evitar dano não letal de ambientes quentes ou frios e testes de resistência de Fortitude para resistir a dano por sufocamento. Além disso, você pode dormir usando armadura leve ou média sem ficar fatigado.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "enlarge-spell": {
+   "name": "Aumentar Magia",
+   "benefit": "Você pode alterar uma magia com alcance curto, médio ou longo para aumentar seu alcance em 100%. Uma magia aumentada com alcance curto passa a ter alcance de 15 m + 1,5 m/nível, enquanto magias de alcance médio passam a ter alcance de 60 m + 6 m/nível e magias de alcance longo passam a ter alcance de 240 m + 24 m/nível. Uma magia aumentada ocupa um espaço de magia um nível acima do nível real da magia.\nMagias cujo alcance não é definido por distância, assim como magias cujo alcance não é curto, médio ou longo, não têm o alcance aumentado.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "eschew-materials": {
+   "name": "Dispensar Componentes Materiais",
+   "benefit": "Você pode conjurar qualquer magia que tenha um componente material de custo igual ou inferior a 1 PO sem precisar desse componente. (Conjurar a magia ainda provoca ataques de oportunidade normalmente.) Se a magia exigir um componente material que custe mais de 1 PO, você deve ter o componente material em mãos para conjurá-la, como de costume.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "exotic-weapon-proficiency": {
+   "name": "Usar Arma Exótica",
+   "benefit": "Escolha um tipo de arma exótica. Você sabe como usar esse tipo de arma exótica em combate.\nBenefício: Você faz jogadas de ataque com a arma normalmente.",
+   "prerequisite": "Bônus base de ataque +1 (mais For 13 para espada bastarda ou machado de guerra anão)",
+   "choice": "Um tipo de arma exótica"
+  },
+  "extend-spell": {
+   "name": "Estender Magia",
+   "benefit": "Uma magia estendida dura o dobro do normal. Uma magia com duração de concentração, instantânea ou permanente não é afetada por este talento. Uma magia estendida ocupa um espaço de magia um nível acima do nível real da magia.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "extra-turning": {
+   "name": "Expulsão Adicional",
+   "benefit": "Cada vez que você escolhe este talento, pode usar sua habilidade de expulsar ou fascinar criaturas quatro vezes a mais por dia do que o normal.\nSe você tiver a habilidade de expulsar ou fascinar mais de um tipo de criatura, cada uma de suas habilidades de expulsar ou fascinar recebe quatro usos adicionais por dia.",
+   "prerequisite": "Capacidade de expulsar ou fascinar criaturas",
+   "choice": null
+  },
+  "far-shot": {
+   "name": "Tiro Longo",
+   "benefit": "Quando você usa uma arma de projétil, como um arco, o incremento de distância dela aumenta em metade (multiplique por 1 e 1/2). Quando você usa uma arma de arremesso, o incremento de distância dela dobra.",
+   "prerequisite": "Tiro Certeiro",
+   "choice": null
+  },
+  "forge-ring": {
+   "name": "Forjar Anel",
+   "benefit": "Você pode criar qualquer anel cujos pré-requisitos cumpra. Criar um anel leva um dia para cada 1.000 PO de seu preço base. Para criar um anel, você deve gastar 1/25 de seu preço base em XP e consumir matérias-primas que custam metade de seu preço base.\nVocê também pode consertar um anel quebrado, se for um que você poderia fabricar. Isso custa metade do XP, metade das matérias-primas e metade do tempo que levaria para forjar o anel originalmente.\nAlguns anéis mágicos têm custos extras em componentes materiais ou XP, como indicado em suas descrições. Você deve pagar esse custo para forjar o anel ou para consertá-lo se estiver quebrado.",
+   "prerequisite": "Nível de conjurador 12",
+   "choice": null
+  },
+  "great-cleave": {
+   "name": "Trespassar Aprimorado",
+   "benefit": "Este talento funciona como Trespassar, exceto que não há limite para o número de vezes que você pode usá-lo por rodada.",
+   "prerequisite": "For 13, Trespassar, Ataque Poderoso, bônus base de ataque +4",
+   "choice": null
+  },
+  "great-fortitude": {
+   "name": "Fortitude Maior",
+   "benefit": "Você recebe +2 de bônus em todos os testes de resistência de Fortitude.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "greater-spell-focus": {
+   "name": "Foco em Magia Maior",
+   "benefit": "Escolha uma escola de magia à qual você já tenha aplicado o talento Foco em Magia.\nBenefício: Some +1 à Classe de Dificuldade de todos os testes de resistência contra magias da escola escolhida. Esse bônus se acumula com o bônus de Foco em Magia.",
+   "prerequisite": null,
+   "choice": "Uma escola de magia à qual você já aplicou o talento Foco em Magia"
+  },
+  "greater-spell-penetration": {
+   "name": "Magia Penetrante Maior",
+   "benefit": "Você recebe +2 de bônus nos testes de nível de conjurador (1d20 + nível de conjurador) feitos para superar a resistência à magia de uma criatura. Esse bônus se acumula com o de Magia Penetrante.",
+   "prerequisite": "Magia Penetrante",
+   "choice": null
+  },
+  "greater-two-weapon-fighting": {
+   "name": "Combater com Duas Armas Maior",
+   "benefit": "Você recebe um terceiro ataque com a arma da mão inábil, embora com uma penalidade de -10.",
+   "prerequisite": "Des 19, Combater com Duas Armas Aprimorado, Combater com Duas Armas, bônus base de ataque +11",
+   "choice": null
+  },
+  "greater-weapon-focus": {
+   "name": "Foco em Arma Maior",
+   "benefit": "Escolha um tipo de arma para o qual você já tenha escolhido Foco em Arma. Você também pode escolher ataque desarmado ou agarrar como sua arma para os fins deste talento.\nBenefício: Você recebe +1 de bônus em todas as jogadas de ataque que fizer com a arma escolhida. Esse bônus se acumula com outros bônus nas jogadas de ataque, incluindo o de Foco em Arma (veja abaixo).",
+   "prerequisite": "Proficiência com a arma escolhida, Foco em Arma com a arma escolhida, Nível 8 de guerreiro",
+   "choice": "Um tipo de arma para o qual você já escolheu Foco em Arma"
+  },
+  "greater-weapon-specialization": {
+   "name": "Especialização em Arma Maior",
+   "benefit": "Escolha um tipo de arma para o qual você já tenha escolhido Especialização em Arma. Você também pode escolher ataque desarmado ou agarrar como sua arma para os fins deste talento.\nBenefício: Você recebe +2 de bônus em todas as jogadas de dano que fizer com a arma escolhida. Esse bônus se acumula com outros bônus nas jogadas de dano, incluindo o de Especialização em Arma (veja abaixo).",
+   "prerequisite": "Proficiência com a arma escolhida, Foco em Arma Maior com a arma escolhida, Foco em Arma com a arma escolhida, Especialização em Arma com a arma escolhida, Nível 12 de guerreiro",
+   "choice": "Um tipo de arma para o qual você já escolheu Especialização em Arma"
+  },
+  "heighten-spell": {
+   "name": "Elevar Magia",
+   "benefit": "Uma magia elevada tem um nível de magia maior que o normal (até um máximo de 9º nível). Ao contrário de outros talentos metamágicos, Elevar Magia de fato aumenta o nível efetivo da magia que modifica. Todos os efeitos que dependem do nível da magia (como as CDs dos testes de resistência e a capacidade de penetrar um globo de invulnerabilidade menor) são calculados de acordo com o nível elevado. A magia elevada é tão difícil de preparar e conjurar quanto uma magia de seu nível efetivo.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "improved-bull-rush": {
+   "name": "Encontrão Aprimorado",
+   "benefit": "Quando você realiza um encontrão, não provoca ataque de oportunidade do defensor. Você também recebe +4 de bônus no teste resistido de Força que faz para empurrar o defensor.",
+   "prerequisite": "For 13, Ataque Poderoso",
+   "choice": null
+  },
+  "improved-counterspell": {
+   "name": "Contramágica Aprimorada",
+   "benefit": "Ao realizar uma contramágica, você pode usar uma magia da mesma escola que seja um ou mais níveis de magia acima da magia alvo.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "improved-critical": {
+   "name": "Crítico Aprimorado",
+   "benefit": "Escolha um tipo de arma.\nBenefício: Ao usar a arma escolhida, sua margem de ameaça é dobrada.",
+   "prerequisite": "Proficiência com a arma, bônus base de ataque +8",
+   "choice": "Um tipo de arma"
+  },
+  "improved-disarm": {
+   "name": "Desarmar Aprimorado",
+   "benefit": "Você não provoca ataque de oportunidade quando tenta desarmar um oponente, nem o oponente tem chance de desarmá-lo. Você também recebe +4 de bônus na jogada de ataque resistida que faz para desarmar seu oponente.",
+   "prerequisite": "Int 13, Especialização em Combate",
+   "choice": null
+  },
+  "improved-familiar": {
+   "name": "Familiar Aprimorado",
+   "benefit": "Este talento permite que conjuradores obtenham um novo familiar a partir de uma lista não padrão, mas apenas quando normalmente poderiam obter um novo familiar.\nBenefício: Ao escolher um familiar, as criaturas listadas abaixo também ficam disponíveis para o conjurador. O conjurador pode escolher um familiar com tendência de até um passo de distância em cada um dos eixos de tendência (de leal a caótico, de bom a mau).\nFamiliar \nTendência \nNível de Conjurador Arcano\nLagarto elétrico\nNeutro\n5º\nStirge\nNeutro\n5º\nFormian operário\nLeal e neutro\n7º\nDiabrete\nLeal e mau\n7º\nPseudodragão\nNeutro e bom\n7º\nQuasit\nCaótico e mau\n7º\nFamiliares aprimorados seguem, no mais, as regras de familiares comuns, com duas exceções: se o tipo da criatura for diferente de animal, seu tipo não muda; e familiares aprimorados não ganham a habilidade de falar com outras criaturas de sua espécie (embora muitos deles já tenham a capacidade de se comunicar).\nA lista da tabela acima apresenta apenas alguns familiares aprimorados possíveis. Quase qualquer criatura com tamanho e poder gerais semelhantes aos da lista é um familiar adequado. Nem a tendência do mestre é a única categorização possível. Por exemplo, familiares aprimorados poderiam ser atribuídos conforme o tipo ou subtipo de criatura do mestre, como mostrado abaixo.\nFamiliar\nTipo/Subtipo\nNível de Conjurador Arcano\nFalcão celestial1\nBom\n3º\nVíbora Miúda abissal2\nMau\n3º\nElemental do ar Pequeno\nAr\n5º\nElemental da terra Pequeno\nTerra\n5º\nElemental do fogo Pequeno\nFogo\n5º\nLagarto elétrico\nEletricidade\n5º\nElemental da água Pequeno\nÁgua\n5º\nHomúnculo3\nMorto-vivo\n7º\nMephit do gelo\nFrio\n7º\n1 Ou outro animal celestial da lista padrão de familiares.\n2 Ou outro animal abissal da lista padrão de familiares.\n3 O mestre deve primeiro criar o homúnculo, substituindo o sangue por icor ou outra parte do corpo do mestre, se necessário.",
+   "prerequisite": "Capacidade de adquirir um novo familiar, tendência compatível, nível suficientemente alto (veja abaixo)",
+   "choice": "Um familiar com tendência a até um passo em cada eixo de tendência (de leal a caótico, de bom a mau)"
+  },
+  "improved-feint": {
+   "name": "Fintar Aprimorado",
+   "benefit": "Você pode fazer um teste de Blefar para fintar em combate como uma ação de movimento.",
+   "prerequisite": "Int 13, Especialização em Combate",
+   "choice": null
+  },
+  "improved-grapple": {
+   "name": "Agarrar Aprimorado",
+   "benefit": "Você não provoca ataque de oportunidade quando faz um ataque de toque para iniciar uma manobra de agarrar. Você também recebe +4 de bônus em todos os testes de agarrar, independentemente de ter iniciado a manobra ou não.",
+   "prerequisite": "Des 13, Ataque Desarmado Aprimorado",
+   "choice": null
+  },
+  "improved-initiative": {
+   "name": "Iniciativa Aprimorada",
+   "benefit": "Você recebe +4 de bônus nos testes de iniciativa.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "improved-overrun": {
+   "name": "Atropelar Aprimorado",
+   "benefit": "Quando você tenta atropelar um oponente, o alvo não pode escolher evitá-lo. Você também recebe +4 de bônus no teste de Força para derrubar seu oponente.",
+   "prerequisite": "For 13, Ataque Poderoso",
+   "choice": null
+  },
+  "improved-precise-shot": {
+   "name": "Tiro Preciso Aprimorado",
+   "benefit": "Seus ataques à distância ignoram o bônus na CA concedido aos alvos por qualquer coisa inferior a cobertura total, e a chance de falha concedida aos alvos por qualquer coisa inferior a camuflagem total. Cobertura total e camuflagem total fornecem seus benefícios normais contra seus ataques à distância.\nAlém disso, quando você dispara ou arremessa armas de ataque à distância contra um oponente que esteja agarrando, você automaticamente atinge o oponente que escolheu.",
+   "prerequisite": "Des 19, Tiro Certeiro, Tiro Preciso, bônus base de ataque +11",
+   "choice": null
+  },
+  "improved-shield-bash": {
+   "name": "Ataque com Escudo Aprimorado",
+   "benefit": "Quando você realiza um ataque com escudo, ainda pode aplicar o bônus de escudo do escudo à sua CA.",
+   "prerequisite": "Usar Escudo",
+   "choice": null
+  },
+  "improved-sunder": {
+   "name": "Separar Aprimorado",
+   "benefit": "Quando você ataca um objeto empunhado ou carregado por um oponente (como uma arma ou um escudo), não provoca ataque de oportunidade.\nVocê também recebe +4 de bônus em qualquer jogada de ataque feita para atacar um objeto empunhado ou carregado por outro personagem.",
+   "prerequisite": "For 13, Ataque Poderoso",
+   "choice": null
+  },
+  "improved-trip": {
+   "name": "Derrubar Aprimorado",
+   "benefit": "Você não provoca ataque de oportunidade quando tenta derrubar um oponente estando desarmado. Você também recebe +4 de bônus no teste de Força para derrubar seu oponente.\nSe você derrubar um oponente em combate corpo a corpo, recebe imediatamente um ataque corpo a corpo contra esse oponente, como se não tivesse usado seu ataque na tentativa de derrubar.",
+   "prerequisite": "Int 13, Especialização em Combate",
+   "choice": null
+  },
+  "improved-turning": {
+   "name": "Expulsão Aprimorada",
+   "benefit": "Você expulsa ou fascina criaturas como se tivesse um nível a mais do que realmente tem na classe que lhe concede essa habilidade.",
+   "prerequisite": "Capacidade de expulsar ou fascinar criaturas",
+   "choice": null
+  },
+  "improved-two-weapon-fighting": {
+   "name": "Combater com Duas Armas Aprimorado",
+   "benefit": "Além do único ataque extra padrão que você recebe com uma arma na mão inábil, você recebe um segundo ataque com ela, embora com uma penalidade de -5.",
+   "prerequisite": "Des 17, Combater com Duas Armas, bônus base de ataque +6",
+   "choice": null
+  },
+  "improved-unarmed-strike": {
+   "name": "Ataque Desarmado Aprimorado",
+   "benefit": "Você é considerado armado mesmo quando está desarmado; ou seja, você não provoca ataques de oportunidade de oponentes armados quando os ataca desarmado. No entanto, você ainda recebe um ataque de oportunidade contra qualquer oponente que faça um ataque desarmado contra você.\nAlém disso, seus ataques desarmados podem causar dano letal ou não letal, à sua escolha.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "investigator": {
+   "name": "Investigador",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Obter Informação e Procurar.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "iron-will": {
+   "name": "Vontade de Ferro",
+   "benefit": "Você recebe +2 de bônus em todos os testes de resistência de Vontade.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "leadership": {
+   "name": "Liderança",
+   "benefit": "Benefícios: Ter este talento permite que o personagem atraia companheiros leais e seguidores dedicados, subordinados que o auxiliam. Veja a tabela abaixo para saber que tipo de parceiro e quantos seguidores o personagem pode recrutar.\nModificadores de Liderança: Diversos fatores podem afetar o valor de Liderança de um personagem, fazendo-o variar em relação ao valor base (nível de personagem + modificador de Car). A reputação de um personagem (do ponto de vista do parceiro ou seguidor que ele tenta atrair) aumenta ou diminui seu valor de Liderança:\nReputação do Líder \nModificador\nGrande renome\n+2\nJustiça e generosidade\n+1\nPoder especial\n+1\nFracasso\n-1\nDistanciamento\n-1\nCrueldade\n-2\nOutros modificadores podem se aplicar quando o personagem tenta atrair um parceiro:\nO Líder . . . \nModificador\nTem um familiar, montaria especial ou companheiro animal\n-2\nRecruta um parceiro de tendência diferente\n-1\nCausou a morte de um parceiro\n-2*\n* Cumulativo por parceiro morto.\nSeguidores têm prioridades diferentes das dos parceiros. Quando o personagem tenta atrair um novo seguidor, use qualquer um dos modificadores a seguir que se aplique.\nO Líder . . . \nModificador\nTem uma fortaleza, base de operações, sede de guilda ou algo semelhante\n+2\nMuda-se com frequência\n-1\nCausou a morte de outros seguidores\n-1.\nValor de Liderança\nNível do Parceiro\n-- Número de Seguidores por Nível --\n1º\n2º\n3º\n4º\n5º\n6º\n1 ou menos\n-\n-\n-\n-\n-\n-\n-\n2\n1º\n-\n-\n-\n-\n-\n-\n3\n2º\n-\n-\n-\n-\n-\n-\n4\n3º\n-\n-\n-\n-\n-\n-\n5\n3º\n-\n-\n-\n-\n-\n-\n6\n4º\n-\n-\n-\n-\n-\n-\n7\n5º\n-\n-\n-\n-\n-\n-\n8\n5º\n-\n-\n-\n-\n-\n-\n9\n6º\n-\n-\n-\n-\n-\n-\n10\n7º\n5\n-\n-\n-\n-\n-\n11\n7º\n6\n-\n-\n-\n-\n-\n12\n8º\n8\n-\n-\n-\n-\n-\n13\n9º\n10\n1\n-\n-\n-\n-\n14\n10º\n15\n1\n-\n-\n-\n-\n15\n10º\n20\n2\n1\n-\n-\n-\n16\n11º\n25\n2\n1\n-\n-\n-\n17\n12º\n30\n3\n1\n1\n-\n-\n18\n12º\n35\n3\n1\n1\n-\n-\n19\n13º\n40\n4\n2\n1\n1\n-\n20\n14º\n50\n5\n3\n2\n1\n-\n21\n15º\n60\n6\n3\n2\n1\n1\n22\n15º\n75\n7\n4\n2\n2\n1\n23\n16º\n90\n9\n5\n3\n2\n1\n24\n17º\n110\n11\n6\n3\n2\n1\n25 ou mais\n17º\n135\n13\n7\n4\n2\n2\nValor de Liderança: O valor base de Liderança de um personagem é igual ao seu nível mais qualquer modificador de Carisma. Para levar em conta modificadores de Carisma negativos, esta tabela permite valores de Liderança muito baixos, mas o personagem ainda precisa ser de 6º nível ou superior para obter o talento Liderança. Fatores externos podem afetar o valor de Liderança de um personagem, conforme detalhado acima.\nNível do Parceiro: O personagem pode atrair um parceiro de até este nível. Independentemente do valor de Liderança, ele só pode recrutar um parceiro que tenha dois ou mais níveis a menos que ele próprio. O parceiro deve estar equipado com itens adequados ao seu nível. Um personagem pode tentar atrair um parceiro de uma raça, classe e tendência específicas. A tendência do parceiro não pode ser oposta à do líder em nenhum dos eixos ordem-caos ou bem-mal, e o líder sofre uma penalidade na Liderança se recrutar um parceiro de tendência diferente da sua.\nParceiros ganham XP da seguinte forma:\nO parceiro não conta como membro do grupo na hora de determinar o XP do grupo.\nDivida o nível do parceiro pelo nível do PJ ao qual ele está associado (o personagem com o talento Liderança que atraiu o parceiro).\nMultiplique esse resultado pelo total de XP concedido ao PJ e some esse número de pontos de experiência ao total do parceiro.\nSe um parceiro ganhar XP suficiente para alcançar um nível apenas um abaixo do nível de personagem do PJ associado, o parceiro não ganha o novo nível; seu novo total de XP passa a ser 1 a menos que o necessário para alcançar o próximo nível.\nNúmero de Seguidores por Nível: O personagem pode liderar até o número indicado de personagens de cada nível. Seguidores são semelhantes a parceiros, exceto que geralmente são PdMs de nível baixo. Como normalmente estão cinco ou mais níveis abaixo do personagem que seguem, raramente são eficazes em combate.\nSeguidores não ganham experiência e, portanto, não sobem de nível. No entanto, quando um personagem com Liderança alcança um novo nível, o jogador consulta a tabela acima para determinar se ele obteve mais seguidores, alguns dos quais podem ser de nível maior que os seguidores existentes. (Você não consulta a tabela para ver se seu parceiro sobe de nível, porém, porque parceiros ganham experiência por conta própria.)",
+   "prerequisite": "Nível de personagem 6",
+   "choice": null
+  },
+  "lightning-reflexes": {
+   "name": "Reflexos Rápidos",
+   "benefit": "Você recebe +2 de bônus em todos os testes de resistência de Reflexos.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "magical-aptitude": {
+   "name": "Aptidão Mágica",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Identificar Magia e Usar Instrumento Mágico.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "manyshot": {
+   "name": "Tiro Múltiplo",
+   "benefit": "Como uma ação padrão, você pode disparar duas flechas contra um único oponente a até 9 m. Ambas as flechas usam a mesma jogada de ataque (com uma penalidade de -4) para determinar o sucesso e causam dano normalmente (mas veja Especial).\nPara cada cinco pontos de bônus base de ataque acima de +6, você pode adicionar uma flecha a esse ataque, até um máximo de quatro flechas com bônus base de ataque +16. No entanto, cada flecha após a segunda adiciona uma penalidade cumulativa de -2 na jogada de ataque (para uma penalidade total de -6 com três flechas e -8 com quatro).\nRedução de dano e outras resistências se aplicam separadamente contra cada flecha disparada.",
+   "prerequisite": "Des 17, Tiro Certeiro, Tiro Rápido, bônus base de ataque +6",
+   "choice": null
+  },
+  "martial-weapon-proficiency": {
+   "name": "Usar Arma Comum",
+   "benefit": "Escolha um tipo de arma comum. Você sabe como usar esse tipo de arma comum em combate.\nBenefício: Você faz jogadas de ataque com a arma escolhida normalmente.",
+   "prerequisite": null,
+   "choice": "Um tipo de arma comum"
+  },
+  "maximize-spell": {
+   "name": "Maximizar Magia",
+   "benefit": "Todos os efeitos numéricos variáveis de uma magia modificada por este talento são maximizados. Testes de resistência e jogadas resistidas não são afetados, nem magias sem variáveis aleatórias. Uma magia maximizada ocupa um espaço de magia três níveis acima do nível real da magia.\nUma magia potencializada e maximizada recebe os benefícios separados de cada talento: o resultado máximo mais metade do resultado normalmente obtido na jogada.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "mobility": {
+   "name": "Mobilidade",
+   "benefit": "Você recebe +4 de bônus de esquiva na Classe de Armadura contra ataques de oportunidade provocados quando você sai de uma área ameaçada ou se move dentro dela. Uma condição que faça você perder seu bônus de Destreza na Classe de Armadura (se houver) também faz você perder os bônus de esquiva.\nBônus de esquiva se acumulam entre si, ao contrário da maioria dos tipos de bônus.",
+   "prerequisite": "Des 13, Esquiva",
+   "choice": null
+  },
+  "mounted-archery": {
+   "name": "Arquearia Montada",
+   "benefit": "A penalidade que você sofre ao usar uma arma de ataque à distância enquanto montado é reduzida à metade: -2 em vez de -4 se sua montaria estiver fazendo um movimento duplo, e -4 em vez de -8 se sua montaria estiver correndo.",
+   "prerequisite": "Cavalgar 1 graduação, Combate Montado",
+   "choice": null
+  },
+  "mounted-combat": {
+   "name": "Combate Montado",
+   "benefit": "Uma vez por rodada, quando sua montaria for atingida em combate, você pode tentar um teste de Cavalgar (como uma reação) para anular o acerto. O acerto é anulado se o resultado do seu teste de Cavalgar for maior que a jogada de ataque do oponente. (Basicamente, o resultado do teste de Cavalgar se torna a Classe de Armadura da montaria, se for maior que a CA normal dela.)",
+   "prerequisite": "Cavalgar 1 graduação",
+   "choice": null
+  },
+  "natural-spell": {
+   "name": "Magia Natural",
+   "benefit": "Você pode completar os componentes verbais e gestuais de magias enquanto estiver em forma selvagem. Você substitui os componentes verbais e gestuais normais de uma magia por diversos ruídos e gestos.\nVocê também pode usar quaisquer componentes materiais ou focos que possua, mesmo que esses itens estejam fundidos à sua forma atual. Este talento não permite o uso de itens mágicos enquanto você estiver em uma forma que normalmente não poderia usá-los, e você não ganha a capacidade de falar enquanto estiver em forma selvagem.",
+   "prerequisite": "Sab 13, habilidade forma selvagem",
+   "choice": null
+  },
+  "negotiator": {
+   "name": "Negociador",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Diplomacia e Sentir Motivação.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "nimble-fingers": {
+   "name": "Dedos Ágeis",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Operar Mecanismo e Abrir Fechaduras.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "persuasive": {
+   "name": "Persuasivo",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Blefar e Intimidação.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "point-blank-shot": {
+   "name": "Tiro Certeiro",
+   "benefit": "Você recebe +1 de bônus nas jogadas de ataque e de dano com armas de ataque à distância contra alvos a até 9 m.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "power-attack": {
+   "name": "Ataque Poderoso",
+   "benefit": "Na sua ação, antes de fazer as jogadas de ataque de uma rodada, você pode escolher subtrair um número de todas as jogadas de ataque corpo a corpo e somar o mesmo número a todas as jogadas de dano corpo a corpo. Esse número não pode exceder seu bônus base de ataque. A penalidade nos ataques e o bônus no dano se aplicam até o seu próximo turno.",
+   "prerequisite": "For 13",
+   "choice": null
+  },
+  "precise-shot": {
+   "name": "Tiro Preciso",
+   "benefit": "Você pode disparar ou arremessar armas de ataque à distância contra um oponente envolvido em combate corpo a corpo sem sofrer a penalidade padrão de -4 na sua jogada de ataque.",
+   "prerequisite": "Tiro Certeiro",
+   "choice": null
+  },
+  "quick-draw": {
+   "name": "Saque Rápido",
+   "benefit": "Você pode sacar uma arma como uma ação livre em vez de uma ação de movimento. Você pode sacar uma arma escondida (veja a perícia Prestidigitação) como uma ação de movimento.\nUm personagem que tenha escolhido este talento pode arremessar armas na sua taxa normal completa de ataques (de forma parecida com um personagem usando um arco).",
+   "prerequisite": "Bônus base de ataque +1",
+   "choice": null
+  },
+  "quicken-spell": {
+   "name": "Acelerar Magia",
+   "benefit": "Conjurar uma magia acelerada é uma ação livre. Você pode realizar outra ação, inclusive conjurar outra magia, na mesma rodada em que conjura uma magia acelerada. Você só pode conjurar uma magia acelerada por rodada. Uma magia cujo tempo de execução seja maior que 1 ação de rodada completa não pode ser acelerada. Uma magia acelerada ocupa um espaço de magia quatro níveis acima do nível real da magia. Conjurar uma magia acelerada não provoca ataque de oportunidade.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "rapid-reload": {
+   "name": "Recarga Rápida",
+   "benefit": "Escolha um tipo de besta (de mão, leve ou pesada).\nBenefício: O tempo necessário para você recarregar o tipo de besta escolhido é reduzido a uma ação livre (para besta de mão ou leve) ou a uma ação de movimento (para besta pesada). Recarregar uma besta ainda provoca ataque de oportunidade.\nSe você escolheu este talento para besta de mão ou besta leve, pode disparar essa arma tantas vezes em uma ação de ataque total quanto poderia atacar se estivesse usando um arco.",
+   "prerequisite": "Usar Arma (tipo de besta escolhido)",
+   "choice": "Um tipo de besta (de mão, leve ou pesada)"
+  },
+  "rapid-shot": {
+   "name": "Tiro Rápido",
+   "benefit": "Você pode realizar um ataque extra por rodada com uma arma de ataque à distância. O ataque é feito com seu maior bônus base de ataque, mas cada ataque que você fizer nessa rodada (o extra e os normais) sofre uma penalidade de -2. Você deve usar a ação de ataque total para usar este talento.",
+   "prerequisite": "Des 13, Tiro Certeiro",
+   "choice": null
+  },
+  "ride-by-attack": {
+   "name": "Investida Montada",
+   "benefit": "Quando estiver montado e usar a ação de investida, você pode se mover e atacar como em uma investida padrão e depois se mover novamente (continuando a linha reta da investida). Seu movimento total na rodada não pode exceder o dobro do seu deslocamento montado. Você e sua montaria não provocam ataque de oportunidade do oponente que você atacar.",
+   "prerequisite": "Cavalgar 1 graduação, Combate Montado",
+   "choice": null
+  },
+  "run": {
+   "name": "Corrida",
+   "benefit": "Ao correr, você se move cinco vezes o seu deslocamento normal (se estiver usando armadura média, leve ou nenhuma e carregando no máximo uma carga média) ou quatro vezes o seu deslocamento (se estiver usando armadura pesada ou carregando uma carga pesada). Se fizer um salto após uma corrida inicial (veja a descrição da perícia Saltar), você recebe +4 de bônus no teste de Saltar. Enquanto corre, você mantém seu bônus de Destreza na CA.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "scribe-scroll": {
+   "name": "Escrever Pergaminho",
+   "benefit": "Você pode criar um pergaminho de qualquer magia que conheça. Escrever um pergaminho leva um dia para cada 1.000 PO de seu preço base. O preço base de um pergaminho é o nível da magia × o nível de conjurador × 25 PO. Para escrever um pergaminho, você deve gastar 1/25 desse preço base em XP e consumir matérias-primas que custam metade desse preço base.\nQualquer pergaminho que armazene uma magia com um componente material caro ou um custo em XP também tem um custo proporcional. Além dos custos derivados do preço base, você deve gastar o componente material ou pagar o XP ao escrever o pergaminho.",
+   "prerequisite": "Nível de conjurador 1",
+   "choice": null
+  },
+  "self-sufficient": {
+   "name": "Autossuficiente",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Cura e Sobrevivência.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "shield-proficiency": {
+   "name": "Usar Escudo",
+   "benefit": "Você pode usar um escudo e sofrer apenas as penalidades padrão.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "shot-on-the-run": {
+   "name": "Tiro em Movimento",
+   "benefit": "Ao usar a ação de ataque com uma arma de ataque à distância, você pode se mover antes e depois do ataque, desde que a distância total percorrida não seja maior que o seu deslocamento.",
+   "prerequisite": "Des 13, Esquiva, Mobilidade, Tiro Certeiro, bônus base de ataque +4",
+   "choice": null
+  },
+  "silent-spell": {
+   "name": "Magia Silenciosa",
+   "benefit": "Uma magia silenciosa pode ser conjurada sem componentes verbais. Magias sem componentes verbais não são afetadas. Uma magia silenciosa ocupa um espaço de magia um nível acima do nível real da magia.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "simple-weapon-proficiency": {
+   "name": "Usar Arma Simples",
+   "benefit": "Você faz jogadas de ataque com armas simples normalmente.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "skill-focus": {
+   "name": "Foco em Perícia",
+   "benefit": "Escolha uma perícia.\nBenefício: Você recebe +3 de bônus em todos os testes que envolvam essa perícia.",
+   "prerequisite": null,
+   "choice": "Uma perícia"
+  },
+  "snatch-arrows": {
+   "name": "Apanhar Objetos",
+   "benefit": "Ao usar o talento Desviar Objetos, você pode apanhar a arma em vez de apenas desviá-la. Armas de arremesso podem ser arremessadas imediatamente de volta contra o atacante original (mesmo que não seja seu turno) ou guardadas para uso posterior.\nVocê precisa ter pelo menos uma mão livre (sem segurar nada) para usar este talento.",
+   "prerequisite": "Des 15, Desviar Objetos, Ataque Desarmado Aprimorado",
+   "choice": null
+  },
+  "spell-focus": {
+   "name": "Foco em Magia",
+   "benefit": "Escolha uma escola de magia.\nBenefício: Some +1 à Classe de Dificuldade de todos os testes de resistência contra magias da escola escolhida.",
+   "prerequisite": null,
+   "choice": "Uma escola de magia"
+  },
+  "spell-mastery": {
+   "name": "Domínio de Magia",
+   "benefit": "Cada vez que você escolhe este talento, escolha um número de magias que já conheça igual ao seu modificador de Inteligência. A partir de então, você pode preparar essas magias sem consultar um grimório.",
+   "prerequisite": "Nível 1 de mago",
+   "choice": "Um número de magias que você já conhece igual ao seu modificador de Inteligência"
+  },
+  "spell-penetration": {
+   "name": "Magia Penetrante",
+   "benefit": "Você recebe +2 de bônus nos testes de nível de conjurador (1d20 + nível de conjurador) feitos para superar a resistência à magia de uma criatura.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "spirited-charge": {
+   "name": "Investida Implacável",
+   "benefit": "Quando estiver montado e usar a ação de investida, você causa dano dobrado com uma arma de corpo a corpo (ou dano triplicado com uma lança de justa).",
+   "prerequisite": "Cavalgar 1 graduação, Combate Montado, Investida Montada",
+   "choice": null
+  },
+  "spring-attack": {
+   "name": "Ataque em Movimento",
+   "benefit": "Ao usar a ação de ataque com uma arma de corpo a corpo, você pode se mover antes e depois do ataque, desde que a distância total percorrida não seja maior que o seu deslocamento. Mover-se dessa forma não provoca ataque de oportunidade do defensor que você atacar, embora possa provocar ataques de oportunidade de outras criaturas, se for o caso. Você não pode usar este talento se estiver usando armadura pesada.\nVocê deve se mover pelo menos 1,5 m antes e depois de realizar seu ataque para aproveitar os benefícios de Ataque em Movimento.",
+   "prerequisite": "Des 13, Esquiva, Mobilidade, bônus base de ataque +4",
+   "choice": null
+  },
+  "stealthy": {
+   "name": "Furtivo",
+   "benefit": "Você recebe +2 de bônus em todos os testes de Esconder-se e Furtividade.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "still-spell": {
+   "name": "Magia sem Gestos",
+   "benefit": "Uma magia sem gestos pode ser conjurada sem componentes gestuais.\nMagias sem componentes gestuais não são afetadas. Uma magia sem gestos ocupa um espaço de magia um nível acima do nível real da magia.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "stunning-fist": {
+   "name": "Ataque Atordoante",
+   "benefit": "Você deve declarar que está usando este talento antes de fazer sua jogada de ataque (assim, uma jogada de ataque fracassada desperdiça a tentativa). Ataque Atordoante obriga um inimigo que sofra dano do seu ataque desarmado a fazer um teste de resistência de Fortitude (CD 10 + 1/2 do seu nível de personagem + seu modificador de Sab), além de sofrer o dano normalmente. Um defensor que falhe nesse teste de resistência fica atordoado por 1 rodada (até pouco antes da sua próxima ação). Um personagem atordoado não pode agir, perde qualquer bônus de Destreza na CA e sofre uma penalidade de -2 na CA. Você pode tentar um ataque atordoante uma vez por dia para cada quatro níveis que tiver alcançado (mas veja Especial), e não mais que uma vez por rodada. Constructos, limos, plantas, mortos-vivos, criaturas incorpóreas e criaturas imunes a acertos críticos não podem ser atordoados.",
+   "prerequisite": "Des 13, Sab 13, Ataque Desarmado Aprimorado, bônus base de ataque +8",
+   "choice": null
+  },
+  "toughness": {
+   "name": "Vitalidade",
+   "benefit": "Você recebe +3 pontos de vida.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "tower-shield-proficiency": {
+   "name": "Usar Escudo de Corpo",
+   "benefit": "Você pode usar um escudo de corpo e sofrer apenas as penalidades padrão.",
+   "prerequisite": "Usar Escudo",
+   "choice": null
+  },
+  "track": {
+   "name": "Rastrear",
+   "benefit": "Encontrar rastros ou segui-los por 1,5 km exige um teste de Sobrevivência bem-sucedido. Você deve fazer outro teste de Sobrevivência sempre que os rastros se tornarem difíceis de seguir.\nVocê se move à metade do seu deslocamento normal (ou no seu deslocamento normal com uma penalidade de -5 no teste, ou a até o dobro do seu deslocamento normal com uma penalidade de -20 no teste). A CD depende da superfície e das condições predominantes, conforme a tabela abaixo:\nSuperfície\nCD de Sobrevivência \nSuperfície \nCD de Sobrevivência\nSolo muito macio\n5\nSolo firme\n15\nSolo macio\n10\nSolo duro\n20\nSolo Muito Macio: Qualquer superfície (neve fresca, poeira espessa, lama molhada) que retenha marcas profundas e nítidas de pegadas.\nSolo Macio: Qualquer superfície macia o bastante para ceder à pressão, mas mais firme que lama molhada ou neve fresca, na qual uma criatura deixa pegadas frequentes, porém rasas.\nSolo Firme: A maioria das superfícies normais ao ar livre (como gramados, campos, bosques e semelhantes) ou superfícies internas excepcionalmente macias ou sujas (tapetes grossos e pisos muito sujos ou empoeirados). A criatura pode deixar alguns vestígios (galhos quebrados ou tufos de pelo), mas deixa apenas pegadas ocasionais ou parciais.\nSolo Duro: Qualquer superfície que não retenha pegadas, como rocha nua ou o piso de um ambiente interno. A maioria dos leitos de riacho se enquadra nesta categoria, já que quaisquer pegadas deixadas são apagadas ou levadas pela água. A criatura deixa apenas vestígios (marcas de arranhões ou pedrinhas deslocadas).\nDiversos modificadores podem se aplicar ao teste de Sobrevivência, conforme a tabela abaixo.\nCondição \nModificador na CD de Sobrevivência\nCada três criaturas no grupo rastreado\n-1\nTamanho da criatura ou criaturas rastreadas:1\nMinúsculo\n+8\nDiminuto\n+4\nMiúdo\n+2\nPequeno\n+1\nMédio\n+0\nGrande\n-1\nEnorme\n-2\nImenso\n-4\nColossal\n-8\nCada 24 horas desde que a trilha foi deixada\n+1\nCada hora de chuva desde que a trilha foi deixada\n+1\nNeve fresca caída desde que a trilha foi deixada\n+10\nPouca visibilidade:2\nNoite nublada ou sem lua\n+6\nLuar\n+3\nNeblina ou precipitação\n+3\nGrupo rastreado oculta a trilha (e se move à metade do deslocamento)\n+5\n1 Para um grupo de tamanhos variados, aplique apenas o modificador da maior categoria de tamanho.\n2 Aplique apenas o maior modificador desta categoria.\nSe você falhar em um teste de Sobrevivência, pode tentar novamente após 1 hora (ao ar livre) ou 10 minutos (em ambientes internos) de busca.",
+   "prerequisite": null,
+   "choice": null
+  },
+  "trample": {
+   "name": "Pisotear",
+   "benefit": "Quando você tenta atropelar um oponente enquanto montado, o alvo não pode escolher evitá-lo. Sua montaria pode realizar um ataque com casco contra qualquer alvo que você derrubar, recebendo o bônus padrão de +4 nas jogadas de ataque contra alvos caídos.",
+   "prerequisite": "Cavalgar 1 graduação, Combate Montado",
+   "choice": null
+  },
+  "two-weapon-defense": {
+   "name": "Defesa com Duas Armas",
+   "benefit": "Ao empunhar uma arma dupla ou duas armas (sem incluir armas naturais ou ataques desarmados), você recebe +1 de bônus de escudo na CA.\nQuando você estiver lutando defensivamente ou usando a ação de defesa total, esse bônus de escudo aumenta para +2.",
+   "prerequisite": "Des 15, Combater com Duas Armas",
+   "choice": null
+  },
+  "two-weapon-fighting": {
+   "name": "Combater com Duas Armas",
+   "benefit": "Você pode lutar com uma arma em cada mão. Você pode realizar um ataque extra por rodada com a segunda arma.\nBenefício: Suas penalidades nas jogadas de ataque por combater com duas armas são reduzidas. A penalidade da mão hábil diminui em 2 e a da mão inábil diminui em 6.",
+   "prerequisite": "Des 15",
+   "choice": null
+  },
+  "weapon-finesse": {
+   "name": "Acuidade com Arma",
+   "benefit": "Com uma arma leve, florete, chicote ou corrente com cravos feitos para uma criatura da sua categoria de tamanho, você pode usar seu modificador de Destreza em vez do seu modificador de Força nas jogadas de ataque. Se você carregar um escudo, a penalidade de armadura dele se aplica às suas jogadas de ataque.",
+   "prerequisite": "Bônus base de ataque +1",
+   "choice": null
+  },
+  "weapon-focus": {
+   "name": "Foco em Arma",
+   "benefit": "Escolha um tipo de arma. Você também pode escolher ataque desarmado ou agarrar (ou raio, se for um conjurador) como sua arma para os fins deste talento.\nBenefício: Você recebe +1 de bônus em todas as jogadas de ataque que fizer com a arma escolhida.",
+   "prerequisite": "Proficiência com a arma escolhida, bônus base de ataque +1",
+   "choice": "Um tipo de arma"
+  },
+  "weapon-specialization": {
+   "name": "Especialização em Arma",
+   "benefit": "Escolha um tipo de arma para o qual você já tenha escolhido o talento Foco em Arma. Você também pode escolher ataque desarmado ou agarrar como sua arma para os fins deste talento. Você causa dano extra ao usar essa arma.\nBenefício: Você recebe +2 de bônus em todas as jogadas de dano que fizer com a arma escolhida.",
+   "prerequisite": "Proficiência com a arma escolhida, Foco em Arma com a arma escolhida, Nível 4 de guerreiro",
+   "choice": "Um tipo de arma para o qual você já escolheu o talento Foco em Arma"
+  },
+  "whirlwind-attack": {
+   "name": "Ataque Giratório",
+   "benefit": "Quando você usa a ação de ataque total, pode abrir mão dos seus ataques normais e, em vez disso, realizar um ataque corpo a corpo com seu bônus base de ataque total contra cada oponente dentro do seu alcance.\nAo usar o talento Ataque Giratório, você também perde quaisquer bônus ou ataques extras concedidos por outros talentos, magias ou habilidades.",
+   "prerequisite": "Des 13, Int 13, Especialização em Combate, Esquiva, Mobilidade, Ataque em Movimento, bônus base de ataque +4",
+   "choice": null
+  },
+  "widen-spell": {
+   "name": "Ampliar Magia",
+   "benefit": "Você pode alterar uma magia com forma de explosão, emanação, linha ou dispersão para aumentar sua área. Quaisquer medidas numéricas da área da magia aumentam em 100%. Uma magia ampliada ocupa um espaço de magia três níveis acima do nível real da magia.\nMagias que não tenham uma área de um desses quatro tipos não são afetadas por este talento.",
+   "prerequisite": null,
+   "choice": null
+  }
+ },
+ "weapons": {
+  "axe-orc-double": "Machado Duplo Orc",
+  "axe-throwing": "Machado de Arremesso",
+  "battleaxe": "Machado de Batalha",
+  "bolas": "Boleadeira",
+  "chain-spiked": "Corrente com Cravos",
+  "club": "Clava",
+  "crossbow-hand": "Besta de Mão",
+  "crossbow-heavy": "Besta Pesada",
+  "crossbow-light": "Besta Leve",
+  "crossbow-repeating-heavy": "Besta de Repetição Pesada",
+  "crossbow-repeating-light": "Besta de Repetição Leve",
+  "dagger": "Adaga",
+  "dagger-punching": "Adaga de Soco",
+  "dart": "Dardo",
+  "falchion": "Falcione",
+  "flail": "Mangual",
+  "flail-dire": "Mangual Atroz",
+  "flail-heavy": "Mangual Pesado",
+  "gauntlet": "Manopla",
+  "gauntlet-spiked": "Manopla com Cravos",
+  "glaive": "Glaive",
+  "greataxe": "Machado Grande",
+  "greatclub": "Clava Grande",
+  "greatsword": "Espada Montante",
+  "guisarme": "Bisarma",
+  "halberd": "Alabarda",
+  "hammer-gnome-hooked": "Martelo Gnomo com Gancho",
+  "hammer-light": "Martelo Leve",
+  "handaxe": "Machadinha",
+  "javelin": "Azagaia",
+  "kama": "Kama",
+  "kukri": "Kukri",
+  "lance": "Lança de Justa",
+  "longbow": "Arco Longo",
+  "longbow-composite": "Arco Longo Composto",
+  "longspear": "Lança Longa",
+  "longsword": "Espada Longa",
+  "mace-heavy": "Maça Pesada",
+  "mace-light": "Maça Leve",
+  "morningstar": "Maça-Estrela",
+  "net": "Rede",
+  "nunchaku": "Nunchaku",
+  "pick-heavy": "Picareta Pesada",
+  "pick-light": "Picareta Leve",
+  "quarterstaff": "Bordão",
+  "ranseur": "Ranseur",
+  "rapier": "Florete",
+  "sai": "Sai",
+  "sap": "Porrete",
+  "scimitar": "Cimitarra",
+  "scythe": "Gadanha",
+  "shortbow": "Arco Curto",
+  "shortbow-composite": "Arco Curto Composto",
+  "shortspear": "Lança Curta",
+  "siangham": "Siangham",
+  "sickle": "Foice Curta",
+  "sling": "Funda",
+  "spear": "Lança",
+  "sword-bastard": "Espada Bastarda",
+  "sword-short": "Espada Curta",
+  "sword-two-bladed": "Espada de Duas Lâminas",
+  "trident": "Tridente",
+  "unarmed-strike": "Ataque Desarmado",
+  "urgrosh-dwarven": "Urgrosh Anão",
+  "waraxe-dwarven": "Machado de Guerra Anão",
+  "warhammer": "Martelo de Guerra",
+  "whip": "Chicote"
+ },
+ "armor": {
+  "banded-mail": "Loriga Segmentada",
+  "breastplate": "Peitoral",
+  "buckler": "Broquel",
+  "chain-shirt": "Camisa de Cota de Malha",
+  "chainmail": "Cota de Malha",
+  "full-plate": "Armadura Completa",
+  "half-plate": "Meia Armadura",
+  "hide": "Gibão de Peles",
+  "leather": "Couro",
+  "padded": "Acolchoada",
+  "scale-mail": "Brunea",
+  "shield-heavy-steel": "Escudo Pesado de Aço",
+  "shield-heavy-wooden": "Escudo Pesado de Madeira",
+  "shield-light-steel": "Escudo Leve de Aço",
+  "shield-light-wooden": "Escudo Leve de Madeira",
+  "shield-tower": "Escudo de Corpo",
+  "splint-mail": "Cota de Talas",
+  "studded-leather": "Couro Batido"
+ },
+ "gear": {
+  "arrows-20": "Flechas (20)",
+  "bolts-10": "Virotes (10)",
+  "bolts-5": "Virotes (5)",
+  "bolts-crossbow-10": "Virotes de besta (10)",
+  "bullets-sling-10": "Balas de funda (10)",
+  "shuriken-5": "Shuriken (5)",
+  "armor-spikes": "Cravos de armadura",
+  "gauntlet-locked": "Manopla de travas",
+  "shield-spikes": "Cravos de escudo",
+  "acid-flask": "Ácido (frasco)",
+  "alchemists-fire-flask": "Fogo alquímico (frasco)",
+  "alchemists-lab": "Laboratório de alquimia",
+  "ale-gallon": "Cerveja (galão)",
+  "ale-mug": "Cerveja (caneca)",
+  "antitoxin-vial": "Antídoto (frasco)",
+  "artisans-outfit": "Traje de artesão",
+  "artisans-tools": "Ferramentas de artesão",
+  "artisans-tools-masterwork": "Ferramentas de artesão obra-prima",
+  "backpack-empty": "Mochila (vazia)",
+  "banquet-per-person": "Banquete (por pessoa)",
+  "barding-large-creature": "Barda, criatura Grande",
+  "barding-medium-creature": "Barda, criatura Média",
+  "barrel-empty": "Barril (vazio)",
+  "basket-empty": "Cesto (vazio)",
+  "bedroll": "Saco de dormir",
+  "bell": "Sino",
+  "bit-and-bridle": "Freio e rédeas",
+  "blanket-winter": "Cobertor de inverno",
+  "block-and-tackle": "Roldana e polia",
+  "bottle-wine-glass": "Garrafa de vinho de vidro",
+  "bread-per-loaf": "Pão (por unidade)",
+  "bucket-empty": "Balde (vazio)",
+  "caltrops": "Estrepes",
+  "candle": "Vela",
+  "canvas-sq-yd": "Lona",
+  "carriage": "Carruagem",
+  "cart": "Carroça",
+  "case-map-or-scroll": "Estojo para mapa ou pergaminho",
+  "chain-10-ft": "Corrente (3 m)",
+  "chalk-1-piece": "Giz (1 pedaço)",
+  "cheese-hunk-of": "Queijo (pedaço)",
+  "chest-empty": "Baú (vazio)",
+  "clerics-vestments": "Vestes de clérigo",
+  "climbers-kit": "Kit de escalada",
+  "cold-weather-outfit": "Traje de frio",
+  "courtiers-outfit": "Traje de cortesão",
+  "crowbar": "Pé de cabra",
+  "disguise-kit": "Kit de disfarce",
+  "dog-guard": "Cão de guarda",
+  "dog-riding": "Cão de montaria",
+  "donkey-or-mule": "Burro ou mula",
+  "entertainers-outfit": "Traje de artista",
+  "everburning-torch": "Tocha eterna",
+  "explorers-outfit": "Traje de explorador",
+  "feed-per-day": "Ração animal (por dia)",
+  "firewood-per-day": "Lenha (por dia)",
+  "fishhook": "Anzol",
+  "fishing-net-25-sq-ft": "Rede de pesca",
+  "flask-empty": "Frasco (vazio)",
+  "flint-and-steel": "Pederneira e fuzil",
+  "galley": "Galé",
+  "grappling-hook": "Gancho de escalada",
+  "hammer": "Martelo",
+  "healers-kit": "Kit de curandeiro",
+  "holly-and-mistletoe": "Azevinho e visco",
+  "holy-symbol-silver": "Símbolo sagrado de prata",
+  "holy-symbol-wooden": "Símbolo sagrado de madeira",
+  "holy-water-flask": "Água benta (frasco)",
+  "horse-pony": "Pônei",
+  "horse-warhorse-heavy": "Cavalo de guerra pesado",
+  "horse-warhorse-light": "Cavalo de guerra leve",
+  "horse-warpony": "Pônei de guerra",
+  "horse-heavy": "Cavalo pesado",
+  "horse-light": "Cavalo leve",
+  "hourglass": "Ampulheta",
+  "ink-1-oz-vial": "Tinta (frasco)",
+  "inkpen": "Pena de escrever",
+  "inn-stay-per-day-common": "Estadia em estalagem (por dia), comum",
+  "inn-stay-per-day-good": "Estadia em estalagem (por dia), boa",
+  "inn-stay-per-day-poor": "Estadia em estalagem (por dia), pobre",
+  "jug-clay": "Jarro de barro",
+  "keelboat": "Barcaça",
+  "ladder-10-foot": "Escada (3 m)",
+  "lamp-common": "Lamparina comum",
+  "lantern-bullseye": "Lanterna focal",
+  "lantern-hooded": "Lanterna coberta",
+  "lock-amazing": "Fechadura excelente",
+  "lock-average": "Fechadura mediana",
+  "lock-good": "Fechadura boa",
+  "lock-very-simple": "Fechadura muito simples",
+  "longship": "Drakkar",
+  "magnifying-glass": "Lupa",
+  "manacles": "Algemas",
+  "manacles-masterwork": "Algemas obra-prima",
+  "meals-per-day-common": "Refeições (por dia), comuns",
+  "meals-per-day-good": "Refeições (por dia), boas",
+  "meals-per-day-poor": "Refeições (por dia), pobres",
+  "meat-chunk-of": "Carne (pedaço)",
+  "mirror-small-steel": "Espelho pequeno de aço",
+  "monks-outfit": "Traje de monge",
+  "mug-tankard-clay": "Caneca de barro",
+  "musical-instrument-common": "Instrumento musical comum",
+  "musical-instrument-masterwork": "Instrumento musical obra-prima",
+  "nobles-outfit": "Traje de nobre",
+  "oar": "Remo",
+  "oil-1-pint-flask": "Óleo (frasco)",
+  "paper-sheet": "Papel (folha)",
+  "parchment-sheet": "Pergaminho (folha)",
+  "peasants-outfit": "Traje de camponês",
+  "pick-miners": "Picareta de mineiro",
+  "pitcher-clay": "Jarra de barro",
+  "piton": "Pitão",
+  "pole-10-foot": "Vara (3 m)",
+  "pot-iron": "Panela de ferro",
+  "pouch-belt-empty": "Bolsa de cinto (vazia)",
+  "ram-portable": "Aríete portátil",
+  "rations-trail-per-day": "Rações de viagem (por dia)",
+  "rope-hempen-50-ft": "Corda de cânhamo (15 m)",
+  "rope-silk-50-ft": "Corda de seda (15 m)",
+  "rowboat": "Bote a remo",
+  "royal-outfit": "Traje real",
+  "sack-empty": "Saco (vazio)",
+  "saddle-exotic-military": "Sela exótica militar",
+  "saddle-exotic-pack": "Sela exótica de carga",
+  "saddle-exotic-riding": "Sela exótica de montaria",
+  "saddle-military": "Sela militar",
+  "saddle-pack": "Sela de carga",
+  "saddle-riding": "Sela de montaria",
+  "saddlebags": "Alforjes",
+  "sailing-ship": "Navio a vela",
+  "scale-merchants": "Balança de mercador",
+  "scholars-outfit": "Traje de estudioso",
+  "sealing-wax": "Lacre",
+  "sewing-needle": "Agulha de costura",
+  "signal-whistle": "Apito de sinalização",
+  "signet-ring": "Anel de sinete",
+  "sled": "Trenó",
+  "sledge": "Marreta",
+  "smokestick": "Bastão de fumaça",
+  "soap-per-lb": "Sabão",
+  "spade-or-shovel": "Pá",
+  "spell-component-pouch": "Bolsa de componentes de magia",
+  "spellbook-wizards-blank": "Grimório de mago (em branco)",
+  "spyglass": "Luneta",
+  "stabling-per-day": "Estábulo (por dia)",
+  "sunrod": "Bastão solar",
+  "tanglefoot-bag": "Bolsa de cola",
+  "tent": "Barraca",
+  "thieves-tools": "Ferramentas de ladrão",
+  "thieves-tools-masterwork": "Ferramentas de ladrão obra-prima",
+  "thunderstone": "Pedra do trovão",
+  "tindertwig": "Graveto de fogo",
+  "tool-masterwork": "Ferramenta obra-prima",
+  "torch": "Tocha",
+  "travelers-outfit": "Traje de viajante",
+  "vial-ink-or-potion": "Frasco para tinta ou poção",
+  "wagon": "Carroção",
+  "warship": "Navio de guerra",
+  "water-clock": "Relógio de água",
+  "waterskin": "Odre",
+  "whetstone": "Pedra de amolar",
+  "wine-common-pitcher": "Vinho comum (jarra)",
+  "wine-fine-bottle": "Vinho fino (garrafa)"
+ },
+ "domains": {
+  "air": {
+   "name": "Ar",
+   "grantedPowers": "Expulse ou destrua criaturas da terra como um clérigo bom expulsa mortos-vivos. Fascine, comande ou fortaleça criaturas do ar como um clérigo mau fascina mortos-vivos. Use essas habilidades um número total de vezes por dia igual a 3 + seu modificador de Carisma. Este poder concedido é uma habilidade sobrenatural."
+  },
+  "animal": {
+   "name": "Animal",
+   "grantedPowers": "Você pode usar falar com animais uma vez por dia como uma habilidade similar a magia. Adicione Conhecimento (natureza) à sua lista de perícias de classe de clérigo."
+  },
+  "artifice": {
+   "name": "Artifício",
+   "grantedPowers": "Recebe +4 de bônus nos testes de Ofício. O personagem conjura magias de conjuração (criação) com +1 de nível de conjurador. (Quem tem acesso aos domínios Artifício e Criação conjura magias de conjuração [criação] com +3 de nível de conjurador.)"
+  },
+  "chaos": {
+   "name": "Caos",
+   "grantedPowers": "Você conjura magias do caos com +1 de nível de conjurador."
+  },
+  "charm": {
+   "name": "Feitiço",
+   "grantedPowers": "O personagem pode aumentar seu Carisma em 4 pontos uma vez por dia. Ativar este poder é uma ação livre. O aumento de Carisma dura 1 minuto."
+  },
+  "community": {
+   "name": "Comunidade",
+   "grantedPowers": "Use acalmar emoções como uma habilidade similar a magia uma vez por dia. Recebe +2 de bônus de competência nos testes de Diplomacia."
+  },
+  "creation": {
+   "name": "Criação",
+   "grantedPowers": "Conjura magias de conjuração (criação) com +2 de nível de conjurador. (Quem tem acesso aos domínios Artifício e Criação conjura magias de conjuração (criação) com +3 de nível de conjurador.)"
+  },
+  "darkness": {
+   "name": "Trevas",
+   "grantedPowers": "Talento Lutar às Cegas gratuito."
+  },
+  "death": {
+   "name": "Morte",
+   "grantedPowers": "Você pode usar um toque da morte uma vez por dia. Seu toque da morte é uma habilidade sobrenatural que produz um efeito de morte. Você deve ser bem-sucedido em um ataque de toque corpo a corpo contra uma criatura viva (usando as regras de magias de toque). Ao tocar, role 1d6 por nível de clérigo que você possui. Se o total for pelo menos igual aos pontos de vida atuais da criatura, ela morre (sem teste de resistência)."
+  },
+  "destruction": {
+   "name": "Destruição",
+   "grantedPowers": "Você recebe o poder de destruir, a habilidade sobrenatural de realizar um único ataque corpo a corpo com +4 de bônus na jogada de ataque e um bônus na jogada de dano igual ao seu nível de clérigo (se acertar). Você deve declarar o uso de destruir antes de realizar o ataque. Esta habilidade pode ser usada uma vez por dia."
+  },
+  "earth": {
+   "name": "Terra",
+   "grantedPowers": "Expulse ou destrua criaturas do ar como um clérigo bom expulsa mortos-vivos. Fascine, comande ou fortaleça criaturas da terra como um clérigo mau fascina mortos-vivos. Use essas habilidades um número total de vezes por dia igual a 3 + seu modificador de Carisma. Este poder concedido é uma habilidade sobrenatural."
+  },
+  "evil": {
+   "name": "Mal",
+   "grantedPowers": "Você conjura magias do mal com +1 de nível de conjurador."
+  },
+  "fire": {
+   "name": "Fogo",
+   "grantedPowers": "Expulse ou destrua criaturas da água como um clérigo bom expulsa mortos-vivos. Fascine, comande ou fortaleça criaturas do fogo como um clérigo mau fascina mortos-vivos. Use essas habilidades um número total de vezes por dia igual a 3 + seu modificador de Carisma. Este poder concedido é uma habilidade sobrenatural."
+  },
+  "glory": {
+   "name": "Glória",
+   "grantedPowers": "Expulsa mortos-vivos com +2 de bônus no teste de expulsão e +1d6 na jogada de dano de expulsão."
+  },
+  "good": {
+   "name": "Bem",
+   "grantedPowers": "Você conjura magias do bem com +1 de nível de conjurador."
+  },
+  "healing": {
+   "name": "Cura",
+   "grantedPowers": "Você conjura magias de cura com +1 de nível de conjurador."
+  },
+  "knowledge": {
+   "name": "Conhecimento",
+   "grantedPowers": "Adicione todas as perícias de Conhecimento à sua lista de perícias de classe de clérigo. Você conjura magias de adivinhação com +1 de nível de conjurador."
+  },
+  "law": {
+   "name": "Ordem",
+   "grantedPowers": "Você conjura magias da ordem com +1 de nível de conjurador."
+  },
+  "liberation": {
+   "name": "Libertação",
+   "grantedPowers": "O personagem recebe +2 de bônus de moral em todos os testes de resistência contra magias ou efeitos de encantamento."
+  },
+  "luck": {
+   "name": "Sorte",
+   "grantedPowers": "Você recebe o poder da boa fortuna, que pode ser usado uma vez por dia. Esta habilidade extraordinária permite que você jogue novamente uma jogada que acabou de realizar, antes que o Mestre declare se a jogada resultou em sucesso ou fracasso. Você deve aceitar o resultado da nova jogada, mesmo que seja pior que o da jogada original."
+  },
+  "madness": {
+   "name": "Loucura",
+   "grantedPowers": "O personagem recebe um valor de Insanidade igual à metade do seu nível de classe. Para conjuração (determinar magias adicionais e CDs), o personagem usa seu valor de Sabedoria somado ao seu valor de Insanidade no lugar apenas da Sabedoria. Para todos os outros fins, como perícias e testes de resistência, use Sabedoria menos Insanidade no lugar da Sabedoria. Uma vez por dia, o personagem pode ver e agir com a clareza da verdadeira loucura. Use o valor de Insanidade do personagem como um modificador positivo, em vez de negativo, em uma única jogada envolvendo Sabedoria. Escolha usar este poder antes de fazer a jogada."
+  },
+  "magic": {
+   "name": "Magia",
+   "grantedPowers": "Use pergaminhos, varinhas e outros dispositivos com ativação por complemento de magia ou gatilho de magia como um mago com metade do seu nível de clérigo (no mínimo 1º nível). Para fins de usar um pergaminho ou outro dispositivo mágico, se você também for mago, os níveis reais de mago e esses níveis efetivos de mago se acumulam."
+  },
+  "nobility": {
+   "name": "Nobreza",
+   "grantedPowers": "O personagem tem a habilidade similar a magia de inspirar aliados, concedendo-lhes +2 de bônus de moral nos testes de resistência, jogadas de ataque, testes de atributo, testes de perícia e jogadas de dano com armas. Os aliados devem ser capazes de ouvir o personagem falar durante 1 rodada. Usar esta habilidade é uma ação padrão. Ela dura um número de rodadas igual ao bônus de Carisma do personagem e pode ser usada uma vez por dia."
+  },
+  "plant": {
+   "name": "Planta",
+   "grantedPowers": "Fascine ou comande criaturas do tipo planta como um clérigo mau fascina ou comanda mortos-vivos. Use esta habilidade um número total de vezes por dia igual a 3 + seu modificador de Carisma. Este poder concedido é uma habilidade sobrenatural. Adicione Conhecimento (natureza) à sua lista de perícias de classe de clérigo."
+  },
+  "protection": {
+   "name": "Proteção",
+   "grantedPowers": "Você pode gerar uma proteção como uma habilidade sobrenatural. Conceda a alguém que você tocar um bônus de resistência igual ao seu nível de clérigo no próximo teste de resistência dessa pessoa. Ativar este poder é uma ação padrão. A proteção é um efeito de abjuração com duração de 1 hora, que pode ser usado uma vez por dia."
+  },
+  "repose": {
+   "name": "Repouso",
+   "grantedPowers": "O personagem pode usar um toque da morte uma vez por dia. O toque da morte é uma habilidade similar a magia que é um efeito de morte. O personagem deve ser bem-sucedido em um ataque de toque corpo a corpo contra uma criatura viva (usando as regras de magias de toque). Ao tocar, role 1d6 por nível de clérigo do personagem. Se o total for pelo menos igual aos pontos de vida atuais da criatura, ela morre."
+  },
+  "rune": {
+   "name": "Runa",
+   "grantedPowers": "Talento Escrever Pergaminho gratuito."
+  },
+  "scalykind": {
+   "name": "Escamosos",
+   "grantedPowers": "Fascine ou comande animais (apenas criaturas reptilianas e serpentes) como um clérigo mau fascina ou comanda mortos-vivos. Use esta habilidade um número total de vezes por dia igual a 3 + modificador de Carisma."
+  },
+  "strength": {
+   "name": "Força",
+   "grantedPowers": "Você pode realizar um feito de força como uma habilidade sobrenatural. Você recebe um bônus de melhoria em Força igual ao seu nível de clérigo. Ativar o poder é uma ação livre, o poder dura 1 rodada e pode ser usado uma vez por dia."
+  },
+  "sun": {
+   "name": "Sol",
+   "grantedPowers": "Uma vez por dia, você pode realizar uma expulsão maior contra mortos-vivos no lugar de uma expulsão normal. A expulsão maior é como uma expulsão normal, exceto que os mortos-vivos que seriam expulsos são destruídos."
+  },
+  "travel": {
+   "name": "Viagem",
+   "grantedPowers": "Por um tempo total por dia de 1 rodada por nível de clérigo que você possui, você pode agir normalmente independentemente de efeitos mágicos que impeçam o movimento, como se estivesse sob o efeito da magia movimentação livre. Este efeito ocorre automaticamente assim que se aplica, dura até se esgotar ou não ser mais necessário e pode operar várias vezes por dia (até o limite diário total de rodadas). Este poder concedido é uma habilidade sobrenatural. Adicione Sobrevivência à sua lista de perícias de classe de clérigo."
+  },
+  "trickery": {
+   "name": "Enganação",
+   "grantedPowers": "Adicione Blefar, Disfarces e Esconder-se à sua lista de perícias de classe de clérigo."
+  },
+  "war": {
+   "name": "Guerra",
+   "grantedPowers": "Talentos Usar Arma Comum com a arma predileta da divindade (se necessário) e Foco em Arma com a arma predileta da divindade gratuitos."
+  },
+  "water": {
+   "name": "Água",
+   "grantedPowers": "Expulse ou destrua criaturas do fogo como um clérigo bom expulsa mortos-vivos. Fascine, comande ou fortaleça criaturas da água como um clérigo mau fascina mortos-vivos. Use essas habilidades um número total de vezes por dia igual a 3 + seu modificador de Carisma. Este poder concedido é uma habilidade sobrenatural."
+  },
+  "weather": {
+   "name": "Clima",
+   "grantedPowers": "Sobrevivência é uma perícia de classe."
+  }
+ },
+ "damageTypes": {
+  "Slashing": "Cortante",
+  "Bludgeoning": "Concussão",
+  "Piercing": "Perfurante",
+  "Piercing or slashing": "Perfurante ou cortante",
+  "Bludgeoning and piercing": "Concussão e perfurante",
+  "-": "-",
+  "Slashing or piercing": "Cortante ou perfurante"
+ },
+ "classSpecials": {
+  "Fast movement": "Movimento rápido",
+  "illiteracy": "analfabetismo",
+  "rage 1/day": "fúria 1/dia",
+  "Uncanny dodge": "Esquiva sobrenatural",
+  "Trap sense +1": "Sentir armadilhas +1",
+  "Rage 2/day": "Fúria 2/dia",
+  "Improved uncanny dodge": "Esquiva sobrenatural aprimorada",
+  "Trap sense +2": "Sentir armadilhas +2",
+  "Damage reduction 1/-": "Redução de dano 1/-",
+  "Rage 3/day": "Fúria 3/dia",
+  "Trap sense +3": "Sentir armadilhas +3",
+  "Damage reduction 2/-": "Redução de dano 2/-",
+  "Greater rage": "Fúria maior",
+  "Rage 4/day": "Fúria 4/dia",
+  "trap sense +4": "sentir armadilhas +4",
+  "Damage reduction 3/-": "Redução de dano 3/-",
+  "Indomitable will": "Vontade indomável",
+  "Trap sense +5": "Sentir armadilhas +5",
+  "Damage reduction 4/-": "Redução de dano 4/-",
+  "rage 5/day": "fúria 5/dia",
+  "Tireless rage": "Fúria incansável",
+  "Trap sense +6": "Sentir armadilhas +6",
+  "Damage reduction 5/-": "Redução de dano 5/-",
+  "Mighty rage": "Fúria poderosa",
+  "rage 6/day": "fúria 6/dia",
+  "Bardic music": "Música de bardo",
+  "bardic knowledge": "conhecimento de bardo",
+  "countersong": "contramúsica",
+  "fascinate": "fascinar",
+  "inspire courage +1": "inspirar coragem +1",
+  "Inspire competence": "Inspirar competência",
+  "Suggestion": "Sugestão",
+  "Inspire courage +2": "Inspirar coragem +2",
+  "Inspire greatness": "Inspirar grandeza",
+  "Song of freedom": "Canção da liberdade",
+  "Inspire courage +3": "Inspirar coragem +3",
+  "Inspire heroics": "Inspirar heroísmo",
+  "mass suggestion": "sugestão em massa",
+  "Inspire courage +4": "Inspirar coragem +4",
+  "Turn or rebuke undead": "Expulsar ou fascinar mortos-vivos",
+  "Animal companion": "Companheiro animal",
+  "nature sense": "sentido da natureza",
+  "wild empathy": "empatia selvagem",
+  "Woodland stride": "Caminho da floresta",
+  "Trackless step": "Rastro invisível",
+  "Resist nature's lure": "Resistir à tentação da natureza",
+  "Wild shape (1/day)": "Forma selvagem (1/dia)",
+  "Wild shape (2/day)": "Forma selvagem (2/dia)",
+  "Wild shape (3/day)": "Forma selvagem (3/dia)",
+  "Wild shape (Large)": "Forma selvagem (Grande)",
+  "Venom immunity": "Imunidade a venenos",
+  "Wild shape (4/day)": "Forma selvagem (4/dia)",
+  "Wild shape (Tiny)": "Forma selvagem (Miúdo)",
+  "Wild shape (plant)": "Forma selvagem (planta)",
+  "A thousand faces": "Mil faces",
+  "Wild shape (5/day)": "Forma selvagem (5/dia)",
+  "Timeless body": "Corpo atemporal",
+  "wild shape (Huge)": "forma selvagem (Enorme)",
+  "Wild shape (elemental 1/day)": "Forma selvagem (elemental 1/dia)",
+  "Wild shape (6/day": "Forma selvagem (6/dia",
+  "elemental 2/day)": "elemental 2/dia)",
+  "Wild shape (elemental 3/day": "Forma selvagem (elemental 3/dia",
+  "Huge elemental)": "elemental Enorme)",
+  "Bonus feat": "Talento adicional",
+  "flurry of blows": "rajada de golpes",
+  "unarmed strike": "ataque desarmado",
+  "evasion": "evasão",
+  "Still mind": "Mente tranquila",
+  "Ki strike (magic)": "Golpe ki (mágico)",
+  "slow fall 20 ft.": "queda lenta 6 m",
+  "Purity of body": "Pureza corporal",
+  "slow fall 30 ft.": "queda lenta 9 m",
+  "Wholeness of body": "Integridade corporal",
+  "Slow fall 40 ft.": "Queda lenta 12 m",
+  "Improved evasion": "Evasão aprimorada",
+  "Ki strike (lawful)": "Golpe ki (leal)",
+  "slow fall 50 ft.": "queda lenta 15 m",
+  "Diamond body": "Corpo de diamante",
+  "greater flurry": "rajada maior",
+  "Abundant step": "Passo abundante",
+  "slow fall 60 ft.": "queda lenta 18 m",
+  "Diamond soul": "Alma de diamante",
+  "Slow fall 70 ft.": "Queda lenta 21 m",
+  "Quivering palm": "Palma vibrante",
+  "Ki strike (adamantine)": "Golpe ki (adamante)",
+  "slow fall 80 ft.": "queda lenta 24 m",
+  "tongue of the sun and moon": "língua do sol e da lua",
+  "Slow fall 90 ft.": "Queda lenta 27 m",
+  "Empty body": "Corpo vazio",
+  "Perfect self": "Autoperfeição",
+  "slow fall any distance": "queda lenta qualquer distância",
+  "Aura of good": "Aura do bem",
+  "detect evil": "detectar o mal",
+  "smite evil 1/day": "destruir o mal 1/dia",
+  "Divine grace": "Graça divina",
+  "lay on hands": "cura pelas mãos",
+  "Aura of courage": "Aura de coragem",
+  "divine health": "saúde divina",
+  "Turn undead": "Expulsar mortos-vivos",
+  "Smite evil 2/day": "Destruir o mal 2/dia",
+  "special mount": "montaria especial",
+  "Remove Disease 1/week": "Remover Doença 1/semana",
+  "Remove Disease 2/week": "Remover Doença 2/semana",
+  "Smite evil 3/day": "Destruir o mal 3/dia",
+  "Remove Disease 3/week": "Remover Doença 3/semana",
+  "Remove Disease 4/week": "Remover Doença 4/semana",
+  "smite evil 4/day": "destruir o mal 4/dia",
+  "Remove Disease 5/week": "Remover Doença 5/semana",
+  "Smite evil 5/day": "Destruir o mal 5/dia",
+  "1st favored enemy": "1º inimigo predileto",
+  "Track": "Rastrear",
+  "Combat style": "Estilo de combate",
+  "Endurance": "Tolerância",
+  "2nd favored enemy": "2º inimigo predileto",
+  "Improved combat style": "Estilo de combate aprimorado",
+  "Swift tracker": "Rastreador ágil",
+  "Evasion": "Evasão",
+  "3rd favored enemy": "3º inimigo predileto",
+  "Combat style mastery": "Maestria em estilo de combate",
+  "Camouflage": "Camuflagem",
+  "4th favored enemy": "4º inimigo predileto",
+  "Hide in plain sight": "Esconder-se em plena vista",
+  "5th favored enemy": "5º inimigo predileto",
+  "Sneak attack +1d6": "Ataque furtivo +1d6",
+  "trapfinding": "encontrar armadilhas",
+  "Sneak attack +2d6": "Ataque furtivo +2d6",
+  "trap sense +1": "sentir armadilhas +1",
+  "Sneak attack +3d6": "Ataque furtivo +3d6",
+  "Sneak attack +4d6": "Ataque furtivo +4d6",
+  "Sneak attack +5d6": "Ataque furtivo +5d6",
+  "trap sense +3": "sentir armadilhas +3",
+  "Special ability": "Habilidade especial",
+  "Sneak attack +6d6": "Ataque furtivo +6d6",
+  "Trap sense +4": "Sentir armadilhas +4",
+  "Sneak attack +7d6": "Ataque furtivo +7d6",
+  "special ability": "habilidade especial",
+  "Sneak attack +8d6": "Ataque furtivo +8d6",
+  "trap sense +5": "sentir armadilhas +5",
+  "Sneak attack +9d6": "Ataque furtivo +9d6",
+  "Sneak attack +10d6": "Ataque furtivo +10d6",
+  "Summon familiar": "Invocar familiar",
+  "Scribe Scroll": "Escrever Pergaminho"
+ },
+ "spellLists": {
+  "Sorcerer/Wizard": "Feiticeiro/Mago",
+  "Water": "Água",
+  "Cleric": "Clérigo",
+  "Good": "Bem",
+  "Luck": "Sorte",
+  "Air": "Ar",
+  "Druid": "Druida",
+  "Bard": "Bardo",
+  "Ranger": "Patrulheiro",
+  "Animal": "Animal",
+  "Death": "Morte",
+  "Chaos": "Caos",
+  "Plant": "Planta",
+  "Magic": "Magia",
+  "Protection": "Proteção",
+  "Darkness": "Trevas",
+  "Travel": "Viagem",
+  "War": "Guerra",
+  "Evil": "Mal",
+  "Paladin": "Paladino",
+  "Glory": "Glória",
+  "Madness": "Loucura",
+  "Strength": "Força",
+  "Fire": "Fogo",
+  "Law": "Ordem",
+  "Knowledge": "Conhecimento",
+  "Trickery": "Enganação",
+  "Destruction": "Destruição",
+  "Blackguard": "Algoz",
+  "Healing": "Cura",
+  "Earth": "Terra",
+  "Sun": "Sol",
+  "Creation": "Criação",
+  "Artifice": "Artifício",
+  "Wizard": "Mago",
+  "Repose": "Repouso"
+ },
+ "proficiencies": {
+  "barbarian": "O bárbaro é proficiente com todas as armas simples e comuns, armaduras leves, armaduras médias e escudos (exceto escudos de corpo).",
+  "bard": "O bardo é proficiente com todas as armas simples, além de espada longa, florete, porrete, espada curta, arco curto e chicote. Bardos são proficientes com armaduras leves e escudos (exceto escudos de corpo). O bardo pode conjurar magias de bardo usando armadura leve sem sofrer a chance normal de falha de magia arcana. No entanto, como qualquer outro conjurador arcano, o bardo que usa armadura média ou pesada, ou que usa escudo, sofre chance de falha de magia arcana se a magia em questão tiver componente gestual (a maioria tem). O bardo multiclasse ainda sofre a chance normal de falha de magia arcana para as magias arcanas recebidas de outras classes.",
+  "cleric": "Clérigos são proficientes com todas as armas simples, com todos os tipos de armadura (leve, média e pesada) e com escudos (exceto escudos de corpo). O clérigo que escolhe o domínio Guerra recebe o talento Foco em Arma relacionado à arma da sua divindade como talento adicional. Ele também recebe o talento Usar Arma Comum apropriado como talento adicional, se a arma pertencer a essa categoria.",
+  "druid": "Druidas são proficientes com as seguintes armas: clava, adaga, dardo, bordão, cimitarra, foice curta, lança curta, funda e lança. Também são proficientes com todos os ataques naturais (garra, mordida e assim por diante) de qualquer forma que assumam com forma selvagem (veja abaixo). Druidas são proficientes com armaduras leves e médias, mas são proibidos de usar armaduras de metal; assim, podem usar apenas armadura acolchoada, de couro ou gibão de peles. (O druida também pode usar armadura de madeira que tenha sido alterada pela magia madeira de ferro para funcionar como se fosse de aço. Veja a descrição da magia madeira de ferro.) Druidas são proficientes com escudos (exceto escudos de corpo), mas devem usar apenas escudos de madeira. O druida que usa uma armadura proibida ou carrega um escudo proibido fica incapaz de conjurar magias de druida ou usar qualquer uma de suas habilidades de classe sobrenaturais ou similares a magia enquanto o faz e pelas 24 horas seguintes.",
+  "fighter": "O guerreiro é proficiente com todas as armas simples e comuns, com todas as armaduras (pesadas, médias e leves) e escudos (incluindo escudos de corpo).",
+  "monk": "Monges são proficientes com clava, besta (leve ou pesada), adaga, machadinha, azagaia, kama, nunchaku, bordão, sai, shuriken, siangham e funda. Monges não são proficientes com nenhuma armadura ou escudo. Ao usar armadura, usar escudo ou carregar uma carga média ou pesada, o monge perde seu bônus na CA, bem como suas habilidades de movimento rápido e rajada de golpes.",
+  "paladin": "Paladinos são proficientes com todas as armas simples e comuns, com todos os tipos de armadura (pesada, média e leve) e com escudos (exceto escudos de corpo).",
+  "ranger": "O patrulheiro é proficiente com todas as armas simples e comuns, e com armaduras leves e escudos (exceto escudos de corpo).",
+  "rogue": "Ladinos são proficientes com todas as armas simples, além de besta de mão, florete, porrete, arco curto e espada curta. Ladinos são proficientes com armaduras leves, mas não com escudos.",
+  "sorcerer": "Feiticeiros são proficientes com todas as armas simples. Não são proficientes com nenhum tipo de armadura ou escudo. Armaduras de qualquer tipo interferem nos gestos do feiticeiro, o que pode fazer suas magias com componentes gestuais falharem.",
+  "wizard": "Magos são proficientes com clava, adaga, besta pesada, besta leve e bordão, mas não com nenhum tipo de armadura ou escudo. Armaduras de qualquer tipo interferem nos movimentos do mago, o que pode fazer suas magias com componentes gestuais falharem."
+ },
+ "alignments": {
+  "neutral good, neutral, neutral evil, chaotic good, chaotic neutral, chaotic evil": "neutro e bom, neutro, neutro e mau, caótico e bom, caótico e neutro, caótico e mau",
+  "any": "qualquer uma",
+  "neutral good, lawful neutral, neutral, chaotic neutral, neutral evil": "neutro e bom, leal e neutro, neutro, caótico e neutro, neutro e mau",
+  "lawful good, lawful neutral, lawful evil": "leal e bom, leal e neutro, leal e mau",
+  "lawful good": "leal e bom"
+ }
+}

@@ -279,7 +279,7 @@ describe("ataque e NPC", () => {
       payload: {
         attackerName: "Tordek",
         targetName: "Goblin",
-        weapon: "Waraxe, dwarven",
+        weapon: "Machado de Guerra Anão",
         applied: true,
       },
     });

@@ -1,5 +1,5 @@
 import type { CharacterView } from "@mesa/protocol";
-import { SRD } from "@mesa/srd";
+import { type Spell, SRD } from "@mesa/srd";
 
 export const raceName = (id: string) => SRD.races.find((r) => r.id === id)?.namePt ?? id;
 export const className = (id: string) => SRD.classes.find((c) => c.id === id)?.namePt ?? id;
@@ -42,3 +42,19 @@ export const SCHOOLS_PT: Record<string, string> = {
   Transmutation: "Transmutação",
   Universal: "Universal",
 };
+
+/** Campos da magia em português (cai no inglês se a tradução faltar). */
+export const spellText = (s: Spell) => ({
+  name: s.pt?.name ?? s.name,
+  summary: s.pt?.summary ?? s.summary,
+  description: s.pt?.description ?? s.description,
+  castingTime: s.pt?.castingTime ?? s.castingTime,
+  range: s.pt?.range ?? s.range,
+  duration: s.pt?.duration ?? s.duration,
+  components: s.pt?.components ?? s.components,
+  savingThrow: s.pt?.savingThrow ?? s.savingThrow,
+  spellResistance: s.pt?.spellResistance ?? s.spellResistance,
+  target: s.pt?.target ?? s.target,
+  area: s.pt?.area ?? s.area,
+  effect: s.pt?.effect ?? s.effect,
+});

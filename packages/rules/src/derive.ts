@@ -422,9 +422,13 @@ export function deriveCharacter(
     .filter((x): x is Spellcasting => !!x);
 
   const specials = classEntries.flatMap((e) =>
-    e.cls.levels
-      .slice(0, e.level)
-      .flatMap((row) => row.special.map((text) => ({ classId: e.cls.id, level: row.level, text }))),
+    e.cls.levels.slice(0, e.level).flatMap((row) =>
+      row.special.map((text, i) => ({
+        classId: e.cls.id,
+        level: row.level,
+        text: row.specialPt?.[i] ?? text,
+      })),
+    ),
   );
 
   return {
@@ -555,7 +559,7 @@ export function deriveCharacter(
     const crit = `${w.critical.range < 20 ? `${w.critical.range}-20/` : ""}x${w.critical.multiplier}`;
     return {
       weaponId: w.id,
-      name: w.name,
+      name: w.namePt ?? w.name,
       kind: ranged ? "ranged" : "melee",
       bonuses,
       attack,
