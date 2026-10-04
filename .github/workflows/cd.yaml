@@ -1,0 +1,43 @@
+name: CD
+
+# Tag vX.Y.Z em main → imagens no GHCR:
+#   ghcr.io/<dono>/mesa-rpg-server:vX.Y.Z (+ latest)
+#   ghcr.io/<dono>/mesa-rpg-web:vX.Y.Z (+ latest)
+# A stack do Portainer (deploy/docker-compose-mesa.yaml) usa MESA_REGISTRY=ghcr.io/<dono>.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      matrix:
+        app: [server, web]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Tags
+        id: vars
+        run: |
+          OWNER=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')
+          IMAGE="ghcr.io/$OWNER/mesa-rpg-${{ matrix.app }}"
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            echo "tags=$IMAGE:$GITHUB_REF_NAME,$IMAGE:latest" >> "$GITHUB_OUTPUT"
+          else
+            echo "tags=$IMAGE:${GITHUB_REF_NAME//\//-}-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/${{ matrix.app }}.Dockerfile
+          push: true
+          tags: ${{ steps.vars.outputs.tags }}

@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #121010;
+  --color-surface: #1a1715;
+  --color-surface-2: #231f1b;
+  --color-line: #342e28;
+  --color-ink: #ece3d3;
+  --color-muted: #a1968a;
+  --color-faint: #6f665c;
+  --color-accent: #d9a45b;
+  --color-accent-ink: #1c1407;
+  --color-crit: #86c98f;
+  --color-fumble: #e46d61;
+  --color-gm: #bf9be6;
+
+  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-accent) 40%, transparent);
+}
+
+/* Grade tática de fundo (quadrado = 1,5 m) até o mapa chegar. */
+.tactical-grid {
+  background-color: #151311;
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}

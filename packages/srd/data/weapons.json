@@ -1,0 +1,1208 @@
+[
+ {
+  "id": "axe-orc-double",
+  "name": "Axe, orc double",
+  "proficiency": "exotic",
+  "handedness": "two-handed",
+  "cost": "60 gp",
+  "damage": {
+   "small": "1d6/1d6",
+   "medium": "1d8/1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 15,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "axe-throwing",
+  "name": "Axe, throwing",
+  "proficiency": "martial",
+  "handedness": "light",
+  "cost": "8 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": 10,
+  "weight": 2,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "battleaxe",
+  "name": "Battleaxe",
+  "proficiency": "martial",
+  "handedness": "one-handed",
+  "cost": "10 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 6,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "bolas",
+  "name": "Bolas",
+  "proficiency": "exotic",
+  "handedness": "ranged",
+  "cost": "5 gp",
+  "damage": {
+   "small": "1d3",
+   "medium": "1d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": 10,
+  "weight": 2,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "chain-spiked",
+  "name": "Chain, spiked",
+  "proficiency": "exotic",
+  "handedness": "two-handed",
+  "cost": "25 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "2d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 10,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "club",
+  "name": "Club",
+  "proficiency": "simple",
+  "handedness": "one-handed",
+  "cost": "-",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": 10,
+  "weight": 3,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "crossbow-hand",
+  "name": "Crossbow, hand",
+  "proficiency": "exotic",
+  "handedness": "ranged",
+  "cost": "100 gp",
+  "damage": {
+   "small": "1d3",
+   "medium": "1d4"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": 30,
+  "weight": 2,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "crossbow-heavy",
+  "name": "Crossbow, heavy",
+  "proficiency": "simple",
+  "handedness": "ranged",
+  "cost": "50 gp",
+  "damage": {
+   "small": "1d8",
+   "medium": "1d10"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": 120,
+  "weight": 8,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "crossbow-light",
+  "name": "Crossbow, light",
+  "proficiency": "simple",
+  "handedness": "ranged",
+  "cost": "35 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": 80,
+  "weight": 4,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "crossbow-repeating-heavy",
+  "name": "Crossbow, repeating heavy",
+  "proficiency": "exotic",
+  "handedness": "ranged",
+  "cost": "400 gp",
+  "damage": {
+   "small": "1d8",
+   "medium": "1d10"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": 120,
+  "weight": 12,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "crossbow-repeating-light",
+  "name": "Crossbow, repeating light",
+  "proficiency": "exotic",
+  "handedness": "ranged",
+  "cost": "250 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": 80,
+  "weight": 6,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "dagger",
+  "name": "Dagger",
+  "proficiency": "simple",
+  "handedness": "light",
+  "cost": "2 gp",
+  "damage": {
+   "small": "1d3",
+   "medium": "1d4"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": 10,
+  "weight": 1,
+  "damageType": "Piercing or slashing"
+ },
+ {
+  "id": "dagger-punching",
+  "name": "Dagger, punching",
+  "proficiency": "simple",
+  "handedness": "light",
+  "cost": "2 gp",
+  "damage": {
+   "small": "1d3",
+   "medium": "1d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 1,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "dart",
+  "name": "Dart",
+  "proficiency": "simple",
+  "handedness": "ranged",
+  "cost": "5 sp",
+  "damage": {
+   "small": "1d3",
+   "medium": "1d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": 20,
+  "weight": 0.5,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "falchion",
+  "name": "Falchion",
+  "proficiency": "martial",
+  "handedness": "two-handed",
+  "cost": "75 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "2d4"
+  },
+  "critical": {
+   "range": 18,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 8,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "flail",
+  "name": "Flail",
+  "proficiency": "martial",
+  "handedness": "one-handed",
+  "cost": "8 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 5,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "flail-dire",
+  "name": "Flail, dire",
+  "proficiency": "exotic",
+  "handedness": "two-handed",
+  "cost": "90 gp",
+  "damage": {
+   "small": "1d6/1d6",
+   "medium": "1d8/1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 10,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "flail-heavy",
+  "name": "Flail, heavy",
+  "proficiency": "martial",
+  "handedness": "two-handed",
+  "cost": "15 gp",
+  "damage": {
+   "small": "1d8",
+   "medium": "1d10"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 10,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "gauntlet",
+  "name": "Gauntlet",
+  "proficiency": "simple",
+  "handedness": "unarmed",
+  "cost": "2 gp",
+  "damage": {
+   "small": "1d2",
+   "medium": "1d3"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 1,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "gauntlet-spiked",
+  "name": "Gauntlet, spiked",
+  "proficiency": "simple",
+  "handedness": "light",
+  "cost": "5 gp",
+  "damage": {
+   "small": "1d3",
+   "medium": "1d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 1,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "glaive",
+  "name": "Glaive",
+  "proficiency": "martial",
+  "handedness": "two-handed",
+  "cost": "8 gp",
+  "damage": {
+   "small": "1d8",
+   "medium": "1d10"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 10,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "greataxe",
+  "name": "Greataxe",
+  "proficiency": "martial",
+  "handedness": "two-handed",
+  "cost": "20 gp",
+  "damage": {
+   "small": "1d10",
+   "medium": "1d12"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 12,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "greatclub",
+  "name": "Greatclub",
+  "proficiency": "martial",
+  "handedness": "two-handed",
+  "cost": "5 gp",
+  "damage": {
+   "small": "1d8",
+   "medium": "1d10"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 8,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "greatsword",
+  "name": "Greatsword",
+  "proficiency": "martial",
+  "handedness": "two-handed",
+  "cost": "50 gp",
+  "damage": {
+   "small": "1d10",
+   "medium": "2d6"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 8,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "guisarme",
+  "name": "Guisarme",
+  "proficiency": "martial",
+  "handedness": "two-handed",
+  "cost": "9 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "2d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 12,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "halberd",
+  "name": "Halberd",
+  "proficiency": "martial",
+  "handedness": "two-handed",
+  "cost": "10 gp",
+  "damage": {
+   "small": "1d8",
+   "medium": "1d10"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 12,
+  "damageType": "Piercing or slashing"
+ },
+ {
+  "id": "hammer-gnome-hooked",
+  "name": "Hammer, gnome hooked",
+  "proficiency": "exotic",
+  "handedness": "two-handed",
+  "cost": "20 gp",
+  "damage": {
+   "small": "1d6/1d4",
+   "medium": "1d8/1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 6,
+  "damageType": "Bludgeoning and piercing"
+ },
+ {
+  "id": "hammer-light",
+  "name": "Hammer, light",
+  "proficiency": "martial",
+  "handedness": "light",
+  "cost": "1 gp",
+  "damage": {
+   "small": "1d3",
+   "medium": "1d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": 20,
+  "weight": 2,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "handaxe",
+  "name": "Handaxe",
+  "proficiency": "martial",
+  "handedness": "light",
+  "cost": "6 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 3,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "javelin",
+  "name": "Javelin",
+  "proficiency": "simple",
+  "handedness": "ranged",
+  "cost": "1 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": 30,
+  "weight": 2,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "kama",
+  "name": "Kama",
+  "proficiency": "exotic",
+  "handedness": "light",
+  "cost": "2 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 2,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "kukri",
+  "name": "Kukri",
+  "proficiency": "martial",
+  "handedness": "light",
+  "cost": "8 gp",
+  "damage": {
+   "small": "1d3",
+   "medium": "1d4"
+  },
+  "critical": {
+   "range": 18,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 2,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "lance",
+  "name": "Lance",
+  "proficiency": "martial",
+  "handedness": "two-handed",
+  "cost": "10 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 10,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "longbow",
+  "name": "Longbow",
+  "proficiency": "martial",
+  "handedness": "ranged",
+  "cost": "75 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": 100,
+  "weight": 3,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "longbow-composite",
+  "name": "Longbow, composite",
+  "proficiency": "martial",
+  "handedness": "ranged",
+  "cost": "100 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": 110,
+  "weight": 3,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "longspear",
+  "name": "Longspear",
+  "proficiency": "simple",
+  "handedness": "two-handed",
+  "cost": "5 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 9,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "longsword",
+  "name": "Longsword",
+  "proficiency": "martial",
+  "handedness": "one-handed",
+  "cost": "15 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 4,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "mace-heavy",
+  "name": "Mace, heavy",
+  "proficiency": "simple",
+  "handedness": "one-handed",
+  "cost": "12 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 8,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "mace-light",
+  "name": "Mace, light",
+  "proficiency": "simple",
+  "handedness": "light",
+  "cost": "5 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 4,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "morningstar",
+  "name": "Morningstar",
+  "proficiency": "simple",
+  "handedness": "one-handed",
+  "cost": "8 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 6,
+  "damageType": "Bludgeoning and piercing"
+ },
+ {
+  "id": "net",
+  "name": "Net",
+  "proficiency": "exotic",
+  "handedness": "ranged",
+  "cost": "20 gp",
+  "damage": {
+   "small": null,
+   "medium": null
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 1
+  },
+  "rangeIncrement": 10,
+  "weight": 6,
+  "damageType": "-"
+ },
+ {
+  "id": "nunchaku",
+  "name": "Nunchaku",
+  "proficiency": "exotic",
+  "handedness": "light",
+  "cost": "2 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 2,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "pick-heavy",
+  "name": "Pick, heavy",
+  "proficiency": "martial",
+  "handedness": "one-handed",
+  "cost": "8 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 4
+  },
+  "rangeIncrement": null,
+  "weight": 6,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "pick-light",
+  "name": "Pick, light",
+  "proficiency": "martial",
+  "handedness": "light",
+  "cost": "4 gp",
+  "damage": {
+   "small": "1d3",
+   "medium": "1d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 4
+  },
+  "rangeIncrement": null,
+  "weight": 3,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "quarterstaff",
+  "name": "Quarterstaff",
+  "proficiency": "simple",
+  "handedness": "two-handed",
+  "cost": "-",
+  "damage": {
+   "small": "1d4/1d4",
+   "medium": "1d6/1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 4,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "ranseur",
+  "name": "Ranseur",
+  "proficiency": "martial",
+  "handedness": "two-handed",
+  "cost": "10 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "2d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 12,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "rapier",
+  "name": "Rapier",
+  "proficiency": "martial",
+  "handedness": "one-handed",
+  "cost": "20 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 18,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 2,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "sai",
+  "name": "Sai",
+  "proficiency": "exotic",
+  "handedness": "light",
+  "cost": "1 gp",
+  "damage": {
+   "small": "1d3",
+   "medium": "1d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": 10,
+  "weight": 1,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "sap",
+  "name": "Sap",
+  "proficiency": "martial",
+  "handedness": "light",
+  "cost": "1 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 2,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "scimitar",
+  "name": "Scimitar",
+  "proficiency": "martial",
+  "handedness": "one-handed",
+  "cost": "15 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 18,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 4,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "scythe",
+  "name": "Scythe",
+  "proficiency": "martial",
+  "handedness": "two-handed",
+  "cost": "18 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "2d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 4
+  },
+  "rangeIncrement": null,
+  "weight": 10,
+  "damageType": "Piercing or slashing"
+ },
+ {
+  "id": "shortbow",
+  "name": "Shortbow",
+  "proficiency": "martial",
+  "handedness": "ranged",
+  "cost": "30 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": 60,
+  "weight": 2,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "shortbow-composite",
+  "name": "Shortbow, composite",
+  "proficiency": "martial",
+  "handedness": "ranged",
+  "cost": "75 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": 70,
+  "weight": 2,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "shortspear",
+  "name": "Shortspear",
+  "proficiency": "simple",
+  "handedness": "one-handed",
+  "cost": "1 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": 20,
+  "weight": 3,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "siangham",
+  "name": "Siangham",
+  "proficiency": "exotic",
+  "handedness": "light",
+  "cost": "3 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 1,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "sickle",
+  "name": "Sickle",
+  "proficiency": "simple",
+  "handedness": "light",
+  "cost": "6 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 2,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "sling",
+  "name": "Sling",
+  "proficiency": "simple",
+  "handedness": "ranged",
+  "cost": "-",
+  "damage": {
+   "small": "1d3",
+   "medium": "1d4"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": 50,
+  "weight": 0,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "spear",
+  "name": "Spear",
+  "proficiency": "simple",
+  "handedness": "two-handed",
+  "cost": "2 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": 20,
+  "weight": 6,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "sword-bastard",
+  "name": "Sword, bastard",
+  "proficiency": "exotic",
+  "handedness": "one-handed",
+  "cost": "35 gp",
+  "damage": {
+   "small": "1d8",
+   "medium": "1d10"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 6,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "sword-short",
+  "name": "Sword, short",
+  "proficiency": "martial",
+  "handedness": "light",
+  "cost": "10 gp",
+  "damage": {
+   "small": "1d4",
+   "medium": "1d6"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 2,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "sword-two-bladed",
+  "name": "Sword, two-bladed",
+  "proficiency": "exotic",
+  "handedness": "two-handed",
+  "cost": "100 gp",
+  "damage": {
+   "small": "1d6/1d6",
+   "medium": "1d8/1d8"
+  },
+  "critical": {
+   "range": 19,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 10,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "trident",
+  "name": "Trident",
+  "proficiency": "martial",
+  "handedness": "one-handed",
+  "cost": "15 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": 10,
+  "weight": 4,
+  "damageType": "Piercing"
+ },
+ {
+  "id": "unarmed-strike",
+  "name": "Unarmed strike",
+  "proficiency": "simple",
+  "handedness": "unarmed",
+  "cost": "-",
+  "damage": {
+   "small": "1d2",
+   "medium": "1d3"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 0,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "urgrosh-dwarven",
+  "name": "Urgrosh, dwarven",
+  "proficiency": "exotic",
+  "handedness": "two-handed",
+  "cost": "50 gp",
+  "damage": {
+   "small": "1d6/1d4",
+   "medium": "1d8/1d6"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 12,
+  "damageType": "Slashing or piercing"
+ },
+ {
+  "id": "waraxe-dwarven",
+  "name": "Waraxe, dwarven",
+  "proficiency": "exotic",
+  "handedness": "one-handed",
+  "cost": "30 gp",
+  "damage": {
+   "small": "1d8",
+   "medium": "1d10"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 8,
+  "damageType": "Slashing"
+ },
+ {
+  "id": "warhammer",
+  "name": "Warhammer",
+  "proficiency": "martial",
+  "handedness": "one-handed",
+  "cost": "12 gp",
+  "damage": {
+   "small": "1d6",
+   "medium": "1d8"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 3
+  },
+  "rangeIncrement": null,
+  "weight": 5,
+  "damageType": "Bludgeoning"
+ },
+ {
+  "id": "whip",
+  "name": "Whip",
+  "proficiency": "exotic",
+  "handedness": "one-handed",
+  "cost": "1 gp",
+  "damage": {
+   "small": "1d2",
+   "medium": "1d3"
+  },
+  "critical": {
+   "range": 20,
+   "multiplier": 2
+  },
+  "rangeIncrement": null,
+  "weight": 2,
+  "damageType": "Slashing"
+ }
+]

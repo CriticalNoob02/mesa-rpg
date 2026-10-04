@@ -1,0 +1,47 @@
+# Teste local da stack de produção: constrói as imagens, sobe um Postgres
+# descartável e publica o proxy em http://localhost:8088.
+#
+#   docker compose -p mesa-smoke -f deploy/docker-compose-mesa.yaml \
+#     -f deploy/docker-compose.smoke.yaml --env-file deploy/smoke.env up -d --build
+#   ... testar ...
+#   docker compose -p mesa-smoke -f deploy/docker-compose-mesa.yaml \
+#     -f deploy/docker-compose.smoke.yaml --env-file deploy/smoke.env down -v
+
+services:
+  smoke-db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: mesa
+      POSTGRES_PASSWORD: mesa
+      POSTGRES_DB: mesa
+    networks:
+      - shared-services
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mesa -d mesa"]
+      interval: 2s
+      retries: 30
+
+  mesa-server:
+    build:
+      context: ..
+      dockerfile: docker/server.Dockerfile
+    container_name: mesa-smoke-server
+    depends_on:
+      smoke-db:
+        condition: service_healthy
+
+  mesa-web:
+    build:
+      context: ..
+      dockerfile: docker/web.Dockerfile
+    container_name: mesa-smoke-web
+
+  mesa-proxy:
+    container_name: mesa-smoke-proxy
+    ports:
+      - "127.0.0.1:8088:80"
+
+networks:
+  shared-services:
+    external: false
+    name: mesa-smoke-net

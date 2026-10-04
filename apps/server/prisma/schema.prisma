@@ -1,0 +1,202 @@
+// Fase 1: campanha, participantes e log. Fase 2: fichas. Fase 3: cenas, tokens e imagens.
+// Fase 4: efeitos com duração, combate e ficha simples de NPC. Fase 5: ambientação e handouts.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum PlayerRole {
+  GM
+  PLAYER
+}
+
+enum LogKind {
+  CHAT
+  ROLL
+  SYSTEM
+  ATTACK
+}
+
+/// ALL: todos veem. GM: só o mestre e o autor (rolagem oculta).
+enum LogVisibility {
+  ALL
+  GM
+}
+
+model Campaign {
+  id            String      @id @default(cuid())
+  name          String
+  inviteCode    String      @unique
+  /// Cena que todos veem (sem FK para não criar ciclo com Scene).
+  activeSceneId String?
+  createdAt     DateTime    @default(now())
+  players       Player[]
+  log           LogEntry[]
+  characters    Character[]
+  scenes        Scene[]
+  assets        Asset[]
+  effects       Effect[]
+  combat        Combat?
+  handouts      Handout[]
+}
+
+model Player {
+  id         String      @id @default(cuid())
+  campaignId String
+  campaign   Campaign    @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  role       PlayerRole
+  nickname   String
+  /// sha256 do token de acesso; o token em si só existe no navegador do participante.
+  tokenHash  String      @unique
+  createdAt  DateTime    @default(now())
+  lastSeenAt DateTime    @default(now())
+  characters Character[]
+
+  @@index([campaignId])
+}
+
+model LogEntry {
+  id         String        @id @default(cuid())
+  campaignId String
+  campaign   Campaign      @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  /// Sem FK de propósito: o log sobrevive se o participante for removido.
+  authorId   String?
+  authorName String?
+  kind       LogKind
+  visibility LogVisibility @default(ALL)
+  payload    Json
+  createdAt  DateTime      @default(now())
+
+  @@index([campaignId, createdAt])
+}
+
+/// Ficha: `base` guarda só as escolhas (CharacterBase do @mesa/rules); o resto é derivado.
+model Character {
+  id         String   @id @default(cuid())
+  campaignId String
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  ownerId    String
+  owner      Player   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  name       String
+  base       Json
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  tokens     Token[]
+
+  @@index([campaignId])
+  @@index([ownerId])
+}
+
+/// Imagem enviada pelo mestre (mapa). O arquivo fica em ASSETS_DIR/<campaignId>/<filename>.
+model Asset {
+  id         String   @id @default(cuid())
+  campaignId String
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  filename   String
+  mime       String
+  size       Int
+  width      Int
+  height     Int
+  createdAt  DateTime @default(now())
+
+  @@index([campaignId])
+}
+
+/// Cena com grid tático. `revealed` = índices de célula (y * cols + x) sem névoa.
+model Scene {
+  id                String   @id @default(cuid())
+  campaignId        String
+  campaign          Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  name              String
+  assetId           String?
+  gridSize          Int      @default(70)
+  offsetX           Int      @default(0)
+  offsetY           Int      @default(0)
+  cols              Int      @default(30)
+  rows              Int      @default(20)
+  fogEnabled        Boolean  @default(false)
+  revealed          Json     @default("[]")
+  /// Ler em voz alta; jogador só recebe com narrationRevealed.
+  description       String   @default("")
+  ambientAssetId    String?
+  narrationRevealed Boolean  @default(false)
+  audioUrl          String?
+  audioPlaying      Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  tokens            Token[]
+
+  @@index([campaignId])
+}
+
+model Token {
+  id          String     @id @default(cuid())
+  sceneId     String
+  scene       Scene      @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+  characterId String?
+  character   Character? @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  name        String
+  x           Int
+  y           Int
+  size        Int        @default(1)
+  color       String
+  hidden      Boolean    @default(false)
+  speed       Int        @default(30)
+  moveSpent   Int        @default(0)
+  diagParity  Int        @default(0)
+  /// Ficha simples de NPC (NpcStats do @mesa/rules).
+  stats       Json?
+  createdAt   DateTime   @default(now())
+
+  @@index([sceneId])
+}
+
+/// Efeito sobre personagem (targetType "character") ou token de NPC ("token").
+model Effect {
+  id            String   @id @default(cuid())
+  campaignId    String
+  campaign      Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  targetType    String
+  targetId      String
+  sourceName    String
+  modifiers     Json
+  conditionKey  String?
+  /// null = até alguém tirar.
+  roundsLeft    Int?
+  /// Desconta no início do turno deste token; null = a cada rodada nova.
+  casterTokenId String?
+  createdAt     DateTime @default(now())
+
+  @@index([campaignId])
+}
+
+/// Um combate por campanha. `order` = [{ tokenId, initiative }] já ordenado.
+model Combat {
+  id         String   @id @default(cuid())
+  campaignId String   @unique
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  sceneId    String
+  round      Int      @default(1)
+  turnIndex  Int      @default(0)
+  order      Json
+  createdAt  DateTime @default(now())
+}
+
+/// Handout: `recipients` = "all" ou lista de ids de Player.
+model Handout {
+  id         String   @id @default(cuid())
+  campaignId String
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  title      String
+  text       String   @default("")
+  assetId    String?
+  recipients Json
+  createdAt  DateTime @default(now())
+
+  @@index([campaignId])
+}

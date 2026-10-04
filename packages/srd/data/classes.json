@@ -1,0 +1,5320 @@
+[
+ {
+  "id": "barbarian",
+  "name": "Barbarian",
+  "namePt": "Bárbaro",
+  "hitDie": 12,
+  "skillPoints": 4,
+  "classSkills": [
+   "climb",
+   "craft",
+   "handle-animal",
+   "intimidate",
+   "jump",
+   "listen",
+   "ride",
+   "survival",
+   "swim"
+  ],
+  "alignment": "neutral good, neutral, neutral evil, chaotic good, chaotic neutral, chaotic evil",
+  "casting": null,
+  "proficiencies": "A barbarian is proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields).",
+  "levels": [
+   {
+    "level": 1,
+    "bab": 1,
+    "fort": 2,
+    "ref": 0,
+    "will": 0,
+    "special": [
+     "Fast movement",
+     "illiteracy",
+     "rage 1/day"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 2,
+    "bab": 2,
+    "fort": 3,
+    "ref": 0,
+    "will": 0,
+    "special": [
+     "Uncanny dodge"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 3,
+    "bab": 3,
+    "fort": 3,
+    "ref": 1,
+    "will": 1,
+    "special": [
+     "Trap sense +1"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 4,
+    "bab": 4,
+    "fort": 4,
+    "ref": 1,
+    "will": 1,
+    "special": [
+     "Rage 2/day"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 5,
+    "bab": 5,
+    "fort": 4,
+    "ref": 1,
+    "will": 1,
+    "special": [
+     "Improved uncanny dodge"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 6,
+    "bab": 6,
+    "fort": 5,
+    "ref": 2,
+    "will": 2,
+    "special": [
+     "Trap sense +2"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 7,
+    "bab": 7,
+    "fort": 5,
+    "ref": 2,
+    "will": 2,
+    "special": [
+     "Damage reduction 1/-"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 8,
+    "bab": 8,
+    "fort": 6,
+    "ref": 2,
+    "will": 2,
+    "special": [
+     "Rage 3/day"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 9,
+    "bab": 9,
+    "fort": 6,
+    "ref": 3,
+    "will": 3,
+    "special": [
+     "Trap sense +3"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 10,
+    "bab": 10,
+    "fort": 7,
+    "ref": 3,
+    "will": 3,
+    "special": [
+     "Damage reduction 2/-"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 11,
+    "bab": 11,
+    "fort": 7,
+    "ref": 3,
+    "will": 3,
+    "special": [
+     "Greater rage"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 12,
+    "bab": 12,
+    "fort": 8,
+    "ref": 4,
+    "will": 4,
+    "special": [
+     "Rage 4/day",
+     "trap sense +4"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 13,
+    "bab": 13,
+    "fort": 8,
+    "ref": 4,
+    "will": 4,
+    "special": [
+     "Damage reduction 3/-"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 14,
+    "bab": 14,
+    "fort": 9,
+    "ref": 4,
+    "will": 4,
+    "special": [
+     "Indomitable will"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 15,
+    "bab": 15,
+    "fort": 9,
+    "ref": 5,
+    "will": 5,
+    "special": [
+     "Trap sense +5"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 16,
+    "bab": 16,
+    "fort": 10,
+    "ref": 5,
+    "will": 5,
+    "special": [
+     "Damage reduction 4/-",
+     "rage 5/day"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 17,
+    "bab": 17,
+    "fort": 10,
+    "ref": 5,
+    "will": 5,
+    "special": [
+     "Tireless rage"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 18,
+    "bab": 18,
+    "fort": 11,
+    "ref": 6,
+    "will": 6,
+    "special": [
+     "Trap sense +6"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 19,
+    "bab": 19,
+    "fort": 11,
+    "ref": 6,
+    "will": 6,
+    "special": [
+     "Damage reduction 5/-"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 20,
+    "bab": 20,
+    "fort": 12,
+    "ref": 6,
+    "will": 6,
+    "special": [
+     "Mighty rage",
+     "rage 6/day"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   }
+  ]
+ },
+ {
+  "id": "bard",
+  "name": "Bard",
+  "namePt": "Bardo",
+  "hitDie": 6,
+  "skillPoints": 6,
+  "classSkills": [
+   "appraise",
+   "balance",
+   "bluff",
+   "climb",
+   "concentration",
+   "craft",
+   "decipher-script",
+   "diplomacy",
+   "disguise",
+   "escape-artist",
+   "gather-information",
+   "hide",
+   "jump",
+   "knowledge",
+   "listen",
+   "move-silently",
+   "perform",
+   "profession",
+   "sense-motive",
+   "sleight-of-hand",
+   "spellcraft",
+   "swim",
+   "tumble",
+   "use-magic-device"
+  ],
+  "alignment": "neutral good, neutral, neutral evil, chaotic good, chaotic neutral, chaotic evil",
+  "casting": {
+   "ability": "cha",
+   "kind": "arcane",
+   "style": "spontaneous",
+   "list": "Bard"
+  },
+  "proficiencies": "A bard is proficient with all simple weapons, plus the longsword, rapier, sap, short sword, shortbow, and whip. Bards are proficient with light armor and shields (except tower shields). A bard can cast bard spells while wearing light armor without incurring the normal arcane spell failure chance. However, like any other arcane spellcaster, a bard wearing medium or heavy armor or using a shield incurs a chance of arcane spell failure if the spell in question has a somatic component (most do). A multiclass bard still incurs the normal arcane spell failure chance for arcane spells received from other classes.",
+  "levels": [
+   {
+    "level": 1,
+    "bab": 0,
+    "fort": 0,
+    "ref": 2,
+    "will": 2,
+    "special": [
+     "Bardic music",
+     "bardic knowledge",
+     "countersong",
+     "fascinate",
+     "inspire courage +1"
+    ],
+    "slots": [
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     4,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 2,
+    "bab": 1,
+    "fort": 0,
+    "ref": 3,
+    "will": 3,
+    "special": [],
+    "slots": [
+     3,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     5,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 3,
+    "bab": 2,
+    "fort": 1,
+    "ref": 3,
+    "will": 3,
+    "special": [
+     "Inspire competence"
+    ],
+    "slots": [
+     3,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 4,
+    "bab": 3,
+    "fort": 1,
+    "ref": 4,
+    "will": 4,
+    "special": [],
+    "slots": [
+     3,
+     2,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 5,
+    "bab": 3,
+    "fort": 1,
+    "ref": 4,
+    "will": 4,
+    "special": [],
+    "slots": [
+     3,
+     3,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 6,
+    "bab": 4,
+    "fort": 2,
+    "ref": 5,
+    "will": 5,
+    "special": [
+     "Suggestion"
+    ],
+    "slots": [
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 7,
+    "bab": 5,
+    "fort": 2,
+    "ref": 5,
+    "will": 5,
+    "special": [],
+    "slots": [
+     3,
+     3,
+     2,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     4,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 8,
+    "bab": 6,
+    "fort": 2,
+    "ref": 6,
+    "will": 6,
+    "special": [
+     "Inspire courage +2"
+    ],
+    "slots": [
+     3,
+     3,
+     3,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     4,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 9,
+    "bab": 6,
+    "fort": 3,
+    "ref": 6,
+    "will": 6,
+    "special": [
+     "Inspire greatness"
+    ],
+    "slots": [
+     3,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     4,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 10,
+    "bab": 7,
+    "fort": 3,
+    "ref": 7,
+    "will": 7,
+    "special": [],
+    "slots": [
+     3,
+     3,
+     3,
+     2,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     4,
+     4,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 11,
+    "bab": 8,
+    "fort": 3,
+    "ref": 7,
+    "will": 7,
+    "special": [],
+    "slots": [
+     3,
+     3,
+     3,
+     3,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     4,
+     4,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 12,
+    "bab": 9,
+    "fort": 4,
+    "ref": 8,
+    "will": 8,
+    "special": [
+     "Song of freedom"
+    ],
+    "slots": [
+     3,
+     3,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     4,
+     4,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 13,
+    "bab": 9,
+    "fort": 4,
+    "ref": 8,
+    "will": 8,
+    "special": [],
+    "slots": [
+     3,
+     3,
+     3,
+     3,
+     2,
+     0,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     4,
+     4,
+     4,
+     2,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 14,
+    "bab": 10,
+    "fort": 4,
+    "ref": 9,
+    "will": 9,
+    "special": [
+     "Inspire courage +3"
+    ],
+    "slots": [
+     4,
+     3,
+     3,
+     3,
+     3,
+     1,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     4,
+     4,
+     4,
+     3,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 15,
+    "bab": 11,
+    "fort": 5,
+    "ref": 9,
+    "will": 9,
+    "special": [
+     "Inspire heroics"
+    ],
+    "slots": [
+     4,
+     4,
+     3,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     4,
+     4,
+     4,
+     3,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 16,
+    "bab": 12,
+    "fort": 5,
+    "ref": 10,
+    "will": 10,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     3,
+     3,
+     2,
+     0,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     5,
+     4,
+     4,
+     4,
+     4,
+     2,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 17,
+    "bab": 12,
+    "fort": 5,
+    "ref": 10,
+    "will": 10,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     3,
+     3,
+     1,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     5,
+     5,
+     4,
+     4,
+     4,
+     3,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 18,
+    "bab": 13,
+    "fort": 6,
+    "ref": 11,
+    "will": 11,
+    "special": [
+     "mass suggestion"
+    ],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     2,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     5,
+     5,
+     5,
+     4,
+     4,
+     3,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 19,
+    "bab": 14,
+    "fort": 6,
+    "ref": 11,
+    "will": 11,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     5,
+     5,
+     5,
+     5,
+     4,
+     4,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 20,
+    "bab": 15,
+    "fort": 6,
+    "ref": 12,
+    "will": 12,
+    "special": [
+     "Inspire courage +4"
+    ],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     5,
+     5,
+     5,
+     5,
+     5,
+     4,
+     null,
+     null,
+     null
+    ]
+   }
+  ]
+ },
+ {
+  "id": "cleric",
+  "name": "Cleric",
+  "namePt": "Clérigo",
+  "hitDie": 8,
+  "skillPoints": 2,
+  "classSkills": [
+   "concentration",
+   "craft",
+   "diplomacy",
+   "heal",
+   "knowledge.arcana",
+   "knowledge.history",
+   "knowledge.religion",
+   "knowledge.the-planes",
+   "profession",
+   "spellcraft"
+  ],
+  "alignment": "any",
+  "casting": {
+   "ability": "wis",
+   "kind": "divine",
+   "style": "prepared",
+   "list": "Cleric"
+  },
+  "proficiencies": "Clerics are proficient with all simple weapons, with all types of armor (light, medium, and heavy), and with shields (except tower shields).A cleric who chooses the War domain receives the Weapon Focus feat related to his deity's weapon as a bonus feat. He also receives the appropriate Martial Weapon Proficiency feat as a bonus feat, if the weapon falls into that category.",
+  "levels": [
+   {
+    "level": 1,
+    "bab": 0,
+    "fort": 2,
+    "ref": 0,
+    "will": 2,
+    "special": [
+     "Turn or rebuke undead"
+    ],
+    "slots": [
+     3,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 2,
+    "bab": 1,
+    "fort": 3,
+    "ref": 0,
+    "will": 3,
+    "special": [],
+    "slots": [
+     4,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 3,
+    "bab": 2,
+    "fort": 3,
+    "ref": 1,
+    "will": 3,
+    "special": [],
+    "slots": [
+     4,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 4,
+    "bab": 3,
+    "fort": 4,
+    "ref": 1,
+    "will": 4,
+    "special": [],
+    "slots": [
+     5,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 5,
+    "bab": 3,
+    "fort": 4,
+    "ref": 1,
+    "will": 4,
+    "special": [],
+    "slots": [
+     5,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 6,
+    "bab": 4,
+    "fort": 5,
+    "ref": 2,
+    "will": 5,
+    "special": [],
+    "slots": [
+     5,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 7,
+    "bab": 5,
+    "fort": 5,
+    "ref": 2,
+    "will": 5,
+    "special": [],
+    "slots": [
+     6,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 8,
+    "bab": 6,
+    "fort": 6,
+    "ref": 2,
+    "will": 6,
+    "special": [],
+    "slots": [
+     6,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 9,
+    "bab": 6,
+    "fort": 6,
+    "ref": 3,
+    "will": 6,
+    "special": [],
+    "slots": [
+     6,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 10,
+    "bab": 7,
+    "fort": 7,
+    "ref": 3,
+    "will": 7,
+    "special": [],
+    "slots": [
+     6,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 11,
+    "bab": 8,
+    "fort": 7,
+    "ref": 3,
+    "will": 7,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 12,
+    "bab": 9,
+    "fort": 8,
+    "ref": 4,
+    "will": 8,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 13,
+    "bab": 9,
+    "fort": 8,
+    "ref": 4,
+    "will": 8,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     5,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 14,
+    "bab": 10,
+    "fort": 9,
+    "ref": 4,
+    "will": 9,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     5,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 15,
+    "bab": 11,
+    "fort": 9,
+    "ref": 5,
+    "will": 9,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 16,
+    "bab": 12,
+    "fort": 10,
+    "ref": 5,
+    "will": 10,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     0
+    ],
+    "known": null
+   },
+   {
+    "level": 17,
+    "bab": 12,
+    "fort": 10,
+    "ref": 5,
+    "will": 10,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     5,
+     4,
+     4,
+     3,
+     2,
+     1
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "known": null
+   },
+   {
+    "level": 18,
+    "bab": 13,
+    "fort": 11,
+    "ref": 6,
+    "will": 11,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     5,
+     4,
+     4,
+     3,
+     3,
+     2
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "known": null
+   },
+   {
+    "level": 19,
+    "bab": 14,
+    "fort": 11,
+    "ref": 6,
+    "will": 11,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     5,
+     5,
+     4,
+     4,
+     3,
+     3
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "known": null
+   },
+   {
+    "level": 20,
+    "bab": 15,
+    "fort": 12,
+    "ref": 6,
+    "will": 12,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     5,
+     5,
+     4,
+     4,
+     4,
+     4
+    ],
+    "domainSlots": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "known": null
+   }
+  ]
+ },
+ {
+  "id": "druid",
+  "name": "Druid",
+  "namePt": "Druida",
+  "hitDie": 8,
+  "skillPoints": 4,
+  "classSkills": [
+   "concentration",
+   "craft",
+   "diplomacy",
+   "handle-animal",
+   "heal",
+   "knowledge.nature",
+   "listen",
+   "profession",
+   "ride",
+   "spellcraft",
+   "spot",
+   "survival",
+   "swim"
+  ],
+  "alignment": "neutral good, lawful neutral, neutral, chaotic neutral, neutral evil",
+  "casting": {
+   "ability": "wis",
+   "kind": "divine",
+   "style": "prepared",
+   "list": "Druid"
+  },
+  "proficiencies": "Druids are proficient with the following weapons: club, dagger, dart, quarterstaff, scimitar, sickle, shortspear, sling, and spear. They are also proficient with all natural attacks (claw, bite, and so forth) of any form they assume with wild shape (see below).Druids are proficient with light and medium armor but are prohibited from wearing metal armor; thus, they may wear only padded, leather, or hide armor. (A druid may also wear wooden armor that has been altered by the ironwood spell so that it functions as though it were steel. See the ironwood spell description) Druids are proficient with shields (except tower shields) but must use only wooden ones.A druid who wears prohibited armor or carries a prohibited shield is unable to cast druid spells or use any of her supernatural or spell-like class abilities while doing so and for 24 hours thereafter.",
+  "levels": [
+   {
+    "level": 1,
+    "bab": 0,
+    "fort": 2,
+    "ref": 0,
+    "will": 2,
+    "special": [
+     "Animal companion",
+     "nature sense",
+     "wild empathy"
+    ],
+    "slots": [
+     3,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 2,
+    "bab": 1,
+    "fort": 3,
+    "ref": 0,
+    "will": 3,
+    "special": [
+     "Woodland stride"
+    ],
+    "slots": [
+     4,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 3,
+    "bab": 2,
+    "fort": 3,
+    "ref": 1,
+    "will": 3,
+    "special": [
+     "Trackless step"
+    ],
+    "slots": [
+     4,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 4,
+    "bab": 3,
+    "fort": 4,
+    "ref": 1,
+    "will": 4,
+    "special": [
+     "Resist nature's lure"
+    ],
+    "slots": [
+     5,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 5,
+    "bab": 3,
+    "fort": 4,
+    "ref": 1,
+    "will": 4,
+    "special": [
+     "Wild shape (1/day)"
+    ],
+    "slots": [
+     5,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 6,
+    "bab": 4,
+    "fort": 5,
+    "ref": 2,
+    "will": 5,
+    "special": [
+     "Wild shape (2/day)"
+    ],
+    "slots": [
+     5,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 7,
+    "bab": 5,
+    "fort": 5,
+    "ref": 2,
+    "will": 5,
+    "special": [
+     "Wild shape (3/day)"
+    ],
+    "slots": [
+     6,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 8,
+    "bab": 6,
+    "fort": 6,
+    "ref": 2,
+    "will": 6,
+    "special": [
+     "Wild shape (Large)"
+    ],
+    "slots": [
+     6,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 9,
+    "bab": 6,
+    "fort": 6,
+    "ref": 3,
+    "will": 6,
+    "special": [
+     "Venom immunity"
+    ],
+    "slots": [
+     6,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 10,
+    "bab": 7,
+    "fort": 7,
+    "ref": 3,
+    "will": 7,
+    "special": [
+     "Wild shape (4/day)"
+    ],
+    "slots": [
+     6,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 11,
+    "bab": 8,
+    "fort": 7,
+    "ref": 3,
+    "will": 7,
+    "special": [
+     "Wild shape (Tiny)"
+    ],
+    "slots": [
+     6,
+     5,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 12,
+    "bab": 9,
+    "fort": 8,
+    "ref": 4,
+    "will": 8,
+    "special": [
+     "Wild shape (plant)"
+    ],
+    "slots": [
+     6,
+     5,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 13,
+    "bab": 9,
+    "fort": 8,
+    "ref": 4,
+    "will": 8,
+    "special": [
+     "A thousand faces"
+    ],
+    "slots": [
+     6,
+     5,
+     5,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 14,
+    "bab": 10,
+    "fort": 9,
+    "ref": 4,
+    "will": 9,
+    "special": [
+     "Wild shape (5/day)"
+    ],
+    "slots": [
+     6,
+     5,
+     5,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 15,
+    "bab": 11,
+    "fort": 9,
+    "ref": 5,
+    "will": 9,
+    "special": [
+     "Timeless body",
+     "wild shape (Huge)"
+    ],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 16,
+    "bab": 12,
+    "fort": 10,
+    "ref": 5,
+    "will": 10,
+    "special": [
+     "Wild shape (elemental 1/day)"
+    ],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 17,
+    "bab": 12,
+    "fort": 10,
+    "ref": 5,
+    "will": 10,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     5,
+     4,
+     4,
+     3,
+     2,
+     1
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 18,
+    "bab": 13,
+    "fort": 11,
+    "ref": 6,
+    "will": 11,
+    "special": [
+     "Wild shape (6/day",
+     "elemental 2/day)"
+    ],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     5,
+     4,
+     4,
+     3,
+     3,
+     2
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 19,
+    "bab": 14,
+    "fort": 11,
+    "ref": 6,
+    "will": 11,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     5,
+     5,
+     4,
+     4,
+     3,
+     3
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 20,
+    "bab": 15,
+    "fort": 12,
+    "ref": 6,
+    "will": 12,
+    "special": [
+     "Wild shape (elemental 3/day",
+     "Huge elemental)"
+    ],
+    "slots": [
+     6,
+     5,
+     5,
+     5,
+     5,
+     5,
+     4,
+     4,
+     4,
+     4
+    ],
+    "domainSlots": null,
+    "known": null
+   }
+  ]
+ },
+ {
+  "id": "fighter",
+  "name": "Fighter",
+  "namePt": "Guerreiro",
+  "hitDie": 10,
+  "skillPoints": 2,
+  "classSkills": [
+   "climb",
+   "craft",
+   "handle-animal",
+   "intimidate",
+   "jump",
+   "ride",
+   "swim"
+  ],
+  "alignment": "any",
+  "casting": null,
+  "proficiencies": "A fighter is proficient with all simple and martial weapons and with all armor (heavy, medium, and light) and shields (including tower shields).",
+  "levels": [
+   {
+    "level": 1,
+    "bab": 1,
+    "fort": 2,
+    "ref": 0,
+    "will": 0,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 2,
+    "bab": 2,
+    "fort": 3,
+    "ref": 0,
+    "will": 0,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 3,
+    "bab": 3,
+    "fort": 3,
+    "ref": 1,
+    "will": 1,
+    "special": [],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 4,
+    "bab": 4,
+    "fort": 4,
+    "ref": 1,
+    "will": 1,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 5,
+    "bab": 5,
+    "fort": 4,
+    "ref": 1,
+    "will": 1,
+    "special": [],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 6,
+    "bab": 6,
+    "fort": 5,
+    "ref": 2,
+    "will": 2,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 7,
+    "bab": 7,
+    "fort": 5,
+    "ref": 2,
+    "will": 2,
+    "special": [],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 8,
+    "bab": 8,
+    "fort": 6,
+    "ref": 2,
+    "will": 2,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 9,
+    "bab": 9,
+    "fort": 6,
+    "ref": 3,
+    "will": 3,
+    "special": [],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 10,
+    "bab": 10,
+    "fort": 7,
+    "ref": 3,
+    "will": 3,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 11,
+    "bab": 11,
+    "fort": 7,
+    "ref": 3,
+    "will": 3,
+    "special": [],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 12,
+    "bab": 12,
+    "fort": 8,
+    "ref": 4,
+    "will": 4,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 13,
+    "bab": 13,
+    "fort": 8,
+    "ref": 4,
+    "will": 4,
+    "special": [],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 14,
+    "bab": 14,
+    "fort": 9,
+    "ref": 4,
+    "will": 4,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 15,
+    "bab": 15,
+    "fort": 9,
+    "ref": 5,
+    "will": 5,
+    "special": [],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 16,
+    "bab": 16,
+    "fort": 10,
+    "ref": 5,
+    "will": 5,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 17,
+    "bab": 17,
+    "fort": 10,
+    "ref": 5,
+    "will": 5,
+    "special": [],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 18,
+    "bab": 18,
+    "fort": 11,
+    "ref": 6,
+    "will": 6,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 19,
+    "bab": 19,
+    "fort": 11,
+    "ref": 6,
+    "will": 6,
+    "special": [],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 20,
+    "bab": 20,
+    "fort": 12,
+    "ref": 6,
+    "will": 6,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   }
+  ]
+ },
+ {
+  "id": "monk",
+  "name": "Monk",
+  "namePt": "Monge",
+  "hitDie": 8,
+  "skillPoints": 4,
+  "classSkills": [
+   "balance",
+   "climb",
+   "concentration",
+   "craft",
+   "diplomacy",
+   "escape-artist",
+   "hide",
+   "jump",
+   "knowledge.arcana",
+   "knowledge.religion",
+   "listen",
+   "move-silently",
+   "perform",
+   "profession",
+   "sense-motive",
+   "spot",
+   "swim",
+   "tumble"
+  ],
+  "alignment": "lawful good, lawful neutral, lawful evil",
+  "casting": null,
+  "proficiencies": "Monks are proficient with club, crossbow (light or heavy), dagger, handaxe, javelin, kama, nunchaku, quarterstaff, sai, shuriken, siangham, and sling.Monks are not proficient with any armor or shieldsWhen wearing armor, using a shield, or carrying a medium or heavy load, a monk loses her AC bonus, as well as her fast movement and flurry of blows abilities.",
+  "levels": [
+   {
+    "level": 1,
+    "bab": 0,
+    "fort": 2,
+    "ref": 2,
+    "will": 2,
+    "special": [
+     "Bonus feat",
+     "flurry of blows",
+     "unarmed strike"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 0,
+     "speedBonus": 0,
+     "unarmedDamage": "1d6",
+     "flurry": "-2/-2"
+    }
+   },
+   {
+    "level": 2,
+    "bab": 1,
+    "fort": 3,
+    "ref": 3,
+    "will": 3,
+    "special": [
+     "Bonus feat",
+     "evasion"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 0,
+     "speedBonus": 0,
+     "unarmedDamage": "1d6",
+     "flurry": "-1/-1"
+    }
+   },
+   {
+    "level": 3,
+    "bab": 2,
+    "fort": 3,
+    "ref": 3,
+    "will": 3,
+    "special": [
+     "Still mind"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 0,
+     "speedBonus": 10,
+     "unarmedDamage": "1d6",
+     "flurry": "+0/+0"
+    }
+   },
+   {
+    "level": 4,
+    "bab": 3,
+    "fort": 4,
+    "ref": 4,
+    "will": 4,
+    "special": [
+     "Ki strike (magic)",
+     "slow fall 20 ft."
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 0,
+     "speedBonus": 10,
+     "unarmedDamage": "1d8",
+     "flurry": "+1/+1"
+    }
+   },
+   {
+    "level": 5,
+    "bab": 3,
+    "fort": 4,
+    "ref": 4,
+    "will": 4,
+    "special": [
+     "Purity of body"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 1,
+     "speedBonus": 10,
+     "unarmedDamage": "1d8",
+     "flurry": "+2/+2"
+    }
+   },
+   {
+    "level": 6,
+    "bab": 4,
+    "fort": 5,
+    "ref": 5,
+    "will": 5,
+    "special": [
+     "Bonus feat",
+     "slow fall 30 ft."
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 1,
+     "speedBonus": 20,
+     "unarmedDamage": "1d8",
+     "flurry": "+3/+3"
+    }
+   },
+   {
+    "level": 7,
+    "bab": 5,
+    "fort": 5,
+    "ref": 5,
+    "will": 5,
+    "special": [
+     "Wholeness of body"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 1,
+     "speedBonus": 20,
+     "unarmedDamage": "1d8",
+     "flurry": "+4/+4"
+    }
+   },
+   {
+    "level": 8,
+    "bab": 6,
+    "fort": 6,
+    "ref": 6,
+    "will": 6,
+    "special": [
+     "Slow fall 40 ft."
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 1,
+     "speedBonus": 20,
+     "unarmedDamage": "1d10",
+     "flurry": "+5/+5/+0"
+    }
+   },
+   {
+    "level": 9,
+    "bab": 6,
+    "fort": 6,
+    "ref": 6,
+    "will": 6,
+    "special": [
+     "Improved evasion"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 1,
+     "speedBonus": 30,
+     "unarmedDamage": "1d10",
+     "flurry": "+6/+6/+1"
+    }
+   },
+   {
+    "level": 10,
+    "bab": 7,
+    "fort": 7,
+    "ref": 7,
+    "will": 7,
+    "special": [
+     "Ki strike (lawful)",
+     "slow fall 50 ft."
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 2,
+     "speedBonus": 30,
+     "unarmedDamage": "1d10",
+     "flurry": "+7/+7/+2"
+    }
+   },
+   {
+    "level": 11,
+    "bab": 8,
+    "fort": 7,
+    "ref": 7,
+    "will": 7,
+    "special": [
+     "Diamond body",
+     "greater flurry"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 2,
+     "speedBonus": 30,
+     "unarmedDamage": "1d10",
+     "flurry": "+8/+8/+8/+3"
+    }
+   },
+   {
+    "level": 12,
+    "bab": 9,
+    "fort": 8,
+    "ref": 8,
+    "will": 8,
+    "special": [
+     "Abundant step",
+     "slow fall 60 ft."
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 2,
+     "speedBonus": 40,
+     "unarmedDamage": "2d6",
+     "flurry": "+9/+9/+9/+4"
+    }
+   },
+   {
+    "level": 13,
+    "bab": 9,
+    "fort": 8,
+    "ref": 8,
+    "will": 8,
+    "special": [
+     "Diamond soul"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 2,
+     "speedBonus": 40,
+     "unarmedDamage": "2d6",
+     "flurry": "+9/+9/+9/+4"
+    }
+   },
+   {
+    "level": 14,
+    "bab": 10,
+    "fort": 9,
+    "ref": 9,
+    "will": 9,
+    "special": [
+     "Slow fall 70 ft."
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 2,
+     "speedBonus": 40,
+     "unarmedDamage": "2d6",
+     "flurry": "+10/+10/+10/+5"
+    }
+   },
+   {
+    "level": 15,
+    "bab": 11,
+    "fort": 9,
+    "ref": 9,
+    "will": 9,
+    "special": [
+     "Quivering palm"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 3,
+     "speedBonus": 50,
+     "unarmedDamage": "2d6",
+     "flurry": "+11/+11/+11/+6/+1"
+    }
+   },
+   {
+    "level": 16,
+    "bab": 12,
+    "fort": 10,
+    "ref": 10,
+    "will": 10,
+    "special": [
+     "Ki strike (adamantine)",
+     "slow fall 80 ft."
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 3,
+     "speedBonus": 50,
+     "unarmedDamage": "2d8",
+     "flurry": "+12/+12/+12/+7/+2"
+    }
+   },
+   {
+    "level": 17,
+    "bab": 12,
+    "fort": 10,
+    "ref": 10,
+    "will": 10,
+    "special": [
+     "Timeless body",
+     "tongue of the sun and moon"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 3,
+     "speedBonus": 50,
+     "unarmedDamage": "2d8",
+     "flurry": "+12/+12/+12/+7/+2"
+    }
+   },
+   {
+    "level": 18,
+    "bab": 13,
+    "fort": 11,
+    "ref": 11,
+    "will": 11,
+    "special": [
+     "Slow fall 90 ft."
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 3,
+     "speedBonus": 60,
+     "unarmedDamage": "2d8",
+     "flurry": "+13/+13/+13/+8/+3"
+    }
+   },
+   {
+    "level": 19,
+    "bab": 14,
+    "fort": 11,
+    "ref": 11,
+    "will": 11,
+    "special": [
+     "Empty body"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 3,
+     "speedBonus": 60,
+     "unarmedDamage": "2d8",
+     "flurry": "+14/+14/+14/+9/+4"
+    }
+   },
+   {
+    "level": 20,
+    "bab": 15,
+    "fort": 12,
+    "ref": 12,
+    "will": 12,
+    "special": [
+     "Perfect self",
+     "slow fall any distance"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null,
+    "monk": {
+     "acBonus": 4,
+     "speedBonus": 60,
+     "unarmedDamage": "2d10",
+     "flurry": "+15/+15/+15/+10/+5"
+    }
+   }
+  ]
+ },
+ {
+  "id": "paladin",
+  "name": "Paladin",
+  "namePt": "Paladino",
+  "hitDie": 10,
+  "skillPoints": 2,
+  "classSkills": [
+   "concentration",
+   "craft",
+   "diplomacy",
+   "handle-animal",
+   "heal",
+   "knowledge.nobility-and-royalty",
+   "knowledge.religion",
+   "profession",
+   "ride",
+   "sense-motive"
+  ],
+  "alignment": "lawful good",
+  "casting": {
+   "ability": "cha",
+   "kind": "divine",
+   "style": "prepared",
+   "list": "Paladin",
+   "halfCasterLevel": true
+  },
+  "proficiencies": "Paladins are proficient with all simple and martial weapons, with all types of armor (heavy, medium, and light), and with shields (except tower shields).",
+  "levels": [
+   {
+    "level": 1,
+    "bab": 1,
+    "fort": 2,
+    "ref": 0,
+    "will": 0,
+    "special": [
+     "Aura of good",
+     "detect evil",
+     "smite evil 1/day"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 2,
+    "bab": 2,
+    "fort": 3,
+    "ref": 0,
+    "will": 0,
+    "special": [
+     "Divine grace",
+     "lay on hands"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 3,
+    "bab": 3,
+    "fort": 3,
+    "ref": 1,
+    "will": 1,
+    "special": [
+     "Aura of courage",
+     "divine health"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 4,
+    "bab": 4,
+    "fort": 4,
+    "ref": 1,
+    "will": 1,
+    "special": [
+     "Turn undead"
+    ],
+    "slots": [
+     null,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 5,
+    "bab": 5,
+    "fort": 4,
+    "ref": 1,
+    "will": 1,
+    "special": [
+     "Smite evil 2/day",
+     "special mount"
+    ],
+    "slots": [
+     null,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 6,
+    "bab": 6,
+    "fort": 5,
+    "ref": 2,
+    "will": 2,
+    "special": [
+     "Remove Disease 1/week"
+    ],
+    "slots": [
+     null,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 7,
+    "bab": 7,
+    "fort": 5,
+    "ref": 2,
+    "will": 2,
+    "special": [],
+    "slots": [
+     null,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 8,
+    "bab": 8,
+    "fort": 6,
+    "ref": 2,
+    "will": 2,
+    "special": [],
+    "slots": [
+     null,
+     1,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 9,
+    "bab": 9,
+    "fort": 6,
+    "ref": 3,
+    "will": 3,
+    "special": [
+     "Remove Disease 2/week"
+    ],
+    "slots": [
+     null,
+     1,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 10,
+    "bab": 10,
+    "fort": 7,
+    "ref": 3,
+    "will": 3,
+    "special": [
+     "Smite evil 3/day"
+    ],
+    "slots": [
+     null,
+     1,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 11,
+    "bab": 11,
+    "fort": 7,
+    "ref": 3,
+    "will": 3,
+    "special": [],
+    "slots": [
+     null,
+     1,
+     1,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 12,
+    "bab": 12,
+    "fort": 8,
+    "ref": 4,
+    "will": 4,
+    "special": [
+     "Remove Disease 3/week"
+    ],
+    "slots": [
+     null,
+     1,
+     1,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 13,
+    "bab": 13,
+    "fort": 8,
+    "ref": 4,
+    "will": 4,
+    "special": [],
+    "slots": [
+     null,
+     1,
+     1,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 14,
+    "bab": 14,
+    "fort": 9,
+    "ref": 4,
+    "will": 4,
+    "special": [],
+    "slots": [
+     null,
+     2,
+     1,
+     1,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 15,
+    "bab": 15,
+    "fort": 9,
+    "ref": 5,
+    "will": 5,
+    "special": [
+     "Remove Disease 4/week",
+     "smite evil 4/day"
+    ],
+    "slots": [
+     null,
+     2,
+     1,
+     1,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 16,
+    "bab": 16,
+    "fort": 10,
+    "ref": 5,
+    "will": 5,
+    "special": [],
+    "slots": [
+     null,
+     2,
+     2,
+     1,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 17,
+    "bab": 17,
+    "fort": 10,
+    "ref": 5,
+    "will": 5,
+    "special": [],
+    "slots": [
+     null,
+     2,
+     2,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 18,
+    "bab": 18,
+    "fort": 11,
+    "ref": 6,
+    "will": 6,
+    "special": [
+     "Remove Disease 5/week"
+    ],
+    "slots": [
+     null,
+     3,
+     2,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 19,
+    "bab": 19,
+    "fort": 11,
+    "ref": 6,
+    "will": 6,
+    "special": [],
+    "slots": [
+     null,
+     3,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 20,
+    "bab": 20,
+    "fort": 12,
+    "ref": 6,
+    "will": 6,
+    "special": [
+     "Smite evil 5/day"
+    ],
+    "slots": [
+     null,
+     3,
+     3,
+     3,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   }
+  ]
+ },
+ {
+  "id": "ranger",
+  "name": "Ranger",
+  "namePt": "Patrulheiro",
+  "hitDie": 8,
+  "skillPoints": 6,
+  "classSkills": [
+   "climb",
+   "concentration",
+   "craft",
+   "handle-animal",
+   "heal",
+   "hide",
+   "jump",
+   "knowledge.dungeoneering",
+   "knowledge.geography",
+   "knowledge.nature",
+   "listen",
+   "move-silently",
+   "profession",
+   "ride",
+   "search",
+   "spot",
+   "survival",
+   "swim",
+   "use-rope"
+  ],
+  "alignment": "any",
+  "casting": {
+   "ability": "wis",
+   "kind": "divine",
+   "style": "prepared",
+   "list": "Ranger",
+   "halfCasterLevel": true
+  },
+  "proficiencies": "A ranger is proficient with all simple and martial weapons, and with light armor and shields (except tower shields).",
+  "levels": [
+   {
+    "level": 1,
+    "bab": 1,
+    "fort": 2,
+    "ref": 2,
+    "will": 0,
+    "special": [
+     "1st favored enemy",
+     "Track",
+     "wild empathy"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 2,
+    "bab": 2,
+    "fort": 3,
+    "ref": 3,
+    "will": 0,
+    "special": [
+     "Combat style"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 3,
+    "bab": 3,
+    "fort": 3,
+    "ref": 3,
+    "will": 1,
+    "special": [
+     "Endurance"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 4,
+    "bab": 4,
+    "fort": 4,
+    "ref": 4,
+    "will": 1,
+    "special": [
+     "Animal companion"
+    ],
+    "slots": [
+     null,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 5,
+    "bab": 5,
+    "fort": 4,
+    "ref": 4,
+    "will": 1,
+    "special": [
+     "2nd favored enemy"
+    ],
+    "slots": [
+     null,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 6,
+    "bab": 6,
+    "fort": 5,
+    "ref": 5,
+    "will": 2,
+    "special": [
+     "Improved combat style"
+    ],
+    "slots": [
+     null,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 7,
+    "bab": 7,
+    "fort": 5,
+    "ref": 5,
+    "will": 2,
+    "special": [
+     "Woodland stride"
+    ],
+    "slots": [
+     null,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 8,
+    "bab": 8,
+    "fort": 6,
+    "ref": 6,
+    "will": 2,
+    "special": [
+     "Swift tracker"
+    ],
+    "slots": [
+     null,
+     1,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 9,
+    "bab": 9,
+    "fort": 6,
+    "ref": 6,
+    "will": 3,
+    "special": [
+     "Evasion"
+    ],
+    "slots": [
+     null,
+     1,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 10,
+    "bab": 10,
+    "fort": 7,
+    "ref": 7,
+    "will": 3,
+    "special": [
+     "3rd favored enemy"
+    ],
+    "slots": [
+     null,
+     1,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 11,
+    "bab": 11,
+    "fort": 7,
+    "ref": 7,
+    "will": 3,
+    "special": [
+     "Combat style mastery"
+    ],
+    "slots": [
+     null,
+     1,
+     1,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 12,
+    "bab": 12,
+    "fort": 8,
+    "ref": 8,
+    "will": 4,
+    "special": [],
+    "slots": [
+     null,
+     1,
+     1,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 13,
+    "bab": 13,
+    "fort": 8,
+    "ref": 8,
+    "will": 4,
+    "special": [
+     "Camouflage"
+    ],
+    "slots": [
+     null,
+     1,
+     1,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 14,
+    "bab": 14,
+    "fort": 9,
+    "ref": 9,
+    "will": 4,
+    "special": [],
+    "slots": [
+     null,
+     2,
+     1,
+     1,
+     0,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 15,
+    "bab": 15,
+    "fort": 9,
+    "ref": 9,
+    "will": 5,
+    "special": [
+     "4th favored enemy"
+    ],
+    "slots": [
+     null,
+     2,
+     1,
+     1,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 16,
+    "bab": 16,
+    "fort": 10,
+    "ref": 10,
+    "will": 5,
+    "special": [],
+    "slots": [
+     null,
+     2,
+     2,
+     1,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 17,
+    "bab": 17,
+    "fort": 10,
+    "ref": 10,
+    "will": 5,
+    "special": [
+     "Hide in plain sight"
+    ],
+    "slots": [
+     null,
+     2,
+     2,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 18,
+    "bab": 18,
+    "fort": 11,
+    "ref": 11,
+    "will": 6,
+    "special": [],
+    "slots": [
+     null,
+     3,
+     2,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 19,
+    "bab": 19,
+    "fort": 11,
+    "ref": 11,
+    "will": 6,
+    "special": [],
+    "slots": [
+     null,
+     3,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 20,
+    "bab": 20,
+    "fort": 12,
+    "ref": 12,
+    "will": 6,
+    "special": [
+     "5th favored enemy"
+    ],
+    "slots": [
+     null,
+     3,
+     3,
+     3,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   }
+  ]
+ },
+ {
+  "id": "rogue",
+  "name": "Rogue",
+  "namePt": "Ladino",
+  "hitDie": 6,
+  "skillPoints": 8,
+  "classSkills": [
+   "appraise",
+   "balance",
+   "bluff",
+   "climb",
+   "craft",
+   "decipher-script",
+   "diplomacy",
+   "disable-device",
+   "disguise",
+   "escape-artist",
+   "forgery",
+   "gather-information",
+   "hide",
+   "intimidate",
+   "jump",
+   "knowledge.local",
+   "listen",
+   "move-silently",
+   "open-lock",
+   "perform",
+   "profession",
+   "search",
+   "sense-motive",
+   "sleight-of-hand",
+   "spot",
+   "swim",
+   "tumble",
+   "use-magic-device",
+   "use-rope"
+  ],
+  "alignment": "any",
+  "casting": null,
+  "proficiencies": "Rogues are proficient with all simple weapons, plus the hand crossbow, rapier, sap, shortbow, and short sword. Rogues are proficient with light armor, but not with shields.",
+  "levels": [
+   {
+    "level": 1,
+    "bab": 0,
+    "fort": 0,
+    "ref": 2,
+    "will": 0,
+    "special": [
+     "Sneak attack +1d6",
+     "trapfinding"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 2,
+    "bab": 1,
+    "fort": 0,
+    "ref": 3,
+    "will": 0,
+    "special": [
+     "Evasion"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 3,
+    "bab": 2,
+    "fort": 1,
+    "ref": 3,
+    "will": 1,
+    "special": [
+     "Sneak attack +2d6",
+     "trap sense +1"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 4,
+    "bab": 3,
+    "fort": 1,
+    "ref": 4,
+    "will": 1,
+    "special": [
+     "Uncanny dodge"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 5,
+    "bab": 3,
+    "fort": 1,
+    "ref": 4,
+    "will": 1,
+    "special": [
+     "Sneak attack +3d6"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 6,
+    "bab": 4,
+    "fort": 2,
+    "ref": 5,
+    "will": 2,
+    "special": [
+     "Trap sense +2"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 7,
+    "bab": 5,
+    "fort": 2,
+    "ref": 5,
+    "will": 2,
+    "special": [
+     "Sneak attack +4d6"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 8,
+    "bab": 6,
+    "fort": 2,
+    "ref": 6,
+    "will": 2,
+    "special": [
+     "Improved uncanny dodge"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 9,
+    "bab": 6,
+    "fort": 3,
+    "ref": 6,
+    "will": 3,
+    "special": [
+     "Sneak attack +5d6",
+     "trap sense +3"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 10,
+    "bab": 7,
+    "fort": 3,
+    "ref": 7,
+    "will": 3,
+    "special": [
+     "Special ability"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 11,
+    "bab": 8,
+    "fort": 3,
+    "ref": 7,
+    "will": 3,
+    "special": [
+     "Sneak attack +6d6"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 12,
+    "bab": 9,
+    "fort": 4,
+    "ref": 8,
+    "will": 4,
+    "special": [
+     "Trap sense +4"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 13,
+    "bab": 9,
+    "fort": 4,
+    "ref": 8,
+    "will": 4,
+    "special": [
+     "Sneak attack +7d6",
+     "special ability"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 14,
+    "bab": 10,
+    "fort": 4,
+    "ref": 9,
+    "will": 4,
+    "special": [],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 15,
+    "bab": 11,
+    "fort": 5,
+    "ref": 9,
+    "will": 5,
+    "special": [
+     "Sneak attack +8d6",
+     "trap sense +5"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 16,
+    "bab": 12,
+    "fort": 5,
+    "ref": 10,
+    "will": 5,
+    "special": [
+     "Special ability"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 17,
+    "bab": 12,
+    "fort": 5,
+    "ref": 10,
+    "will": 5,
+    "special": [
+     "Sneak attack +9d6"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 18,
+    "bab": 13,
+    "fort": 6,
+    "ref": 11,
+    "will": 6,
+    "special": [
+     "Trap sense +6"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 19,
+    "bab": 14,
+    "fort": 6,
+    "ref": 11,
+    "will": 6,
+    "special": [
+     "Sneak attack +10d6",
+     "special ability"
+    ],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 20,
+    "bab": 15,
+    "fort": 6,
+    "ref": 12,
+    "will": 6,
+    "special": [],
+    "slots": null,
+    "domainSlots": null,
+    "known": null
+   }
+  ]
+ },
+ {
+  "id": "sorcerer",
+  "name": "Sorcerer",
+  "namePt": "Feiticeiro",
+  "hitDie": 4,
+  "skillPoints": 2,
+  "classSkills": [
+   "bluff",
+   "concentration",
+   "craft",
+   "knowledge.arcana",
+   "profession",
+   "spellcraft"
+  ],
+  "alignment": "any",
+  "casting": {
+   "ability": "cha",
+   "kind": "arcane",
+   "style": "spontaneous",
+   "list": "Sorcerer/Wizard"
+  },
+  "proficiencies": "Sorcerers are proficient with all simple weapons. They are not proficient with any type of armor or shield. Armor of any type interferes with a sorcerer's gestures, which can cause his spells with somatic components to fail.",
+  "levels": [
+   {
+    "level": 1,
+    "bab": 0,
+    "fort": 0,
+    "ref": 0,
+    "will": 2,
+    "special": [
+     "Summon familiar"
+    ],
+    "slots": [
+     5,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     4,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 2,
+    "bab": 1,
+    "fort": 0,
+    "ref": 0,
+    "will": 3,
+    "special": [],
+    "slots": [
+     6,
+     4,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     5,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 3,
+    "bab": 1,
+    "fort": 1,
+    "ref": 1,
+    "will": 3,
+    "special": [],
+    "slots": [
+     6,
+     5,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     5,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 4,
+    "bab": 2,
+    "fort": 1,
+    "ref": 1,
+    "will": 4,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     3,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 5,
+    "bab": 2,
+    "fort": 1,
+    "ref": 1,
+    "will": 4,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     4,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     6,
+     4,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 6,
+    "bab": 3,
+    "fort": 2,
+    "ref": 2,
+    "will": 5,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     5,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     7,
+     4,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 7,
+    "bab": 3,
+    "fort": 2,
+    "ref": 2,
+    "will": 5,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     4,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     7,
+     5,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 8,
+    "bab": 4,
+    "fort": 2,
+    "ref": 2,
+    "will": 6,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     5,
+     3,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     8,
+     5,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 9,
+    "bab": 4,
+    "fort": 3,
+    "ref": 3,
+    "will": 6,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     4,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     8,
+     5,
+     4,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 10,
+    "bab": 5,
+    "fort": 3,
+    "ref": 3,
+    "will": 7,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     5,
+     3,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     9,
+     5,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 11,
+    "bab": 5,
+    "fort": 3,
+    "ref": 3,
+    "will": 7,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     4,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     9,
+     5,
+     5,
+     4,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 12,
+    "bab": 6,
+    "fort": 4,
+    "ref": 4,
+    "will": 8,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     5,
+     3,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     9,
+     5,
+     5,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 13,
+    "bab": 6,
+    "fort": 4,
+    "ref": 4,
+    "will": 8,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     4,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     9,
+     5,
+     5,
+     4,
+     4,
+     3,
+     2,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 14,
+    "bab": 7,
+    "fort": 4,
+    "ref": 4,
+    "will": 9,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     5,
+     3,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     9,
+     5,
+     5,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 15,
+    "bab": 7,
+    "fort": 5,
+    "ref": 5,
+    "will": 9,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     4,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     9,
+     5,
+     5,
+     4,
+     4,
+     4,
+     3,
+     2,
+     null,
+     null
+    ]
+   },
+   {
+    "level": 16,
+    "bab": 8,
+    "fort": 5,
+    "ref": 5,
+    "will": 10,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     5,
+     3,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     9,
+     5,
+     5,
+     4,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null
+    ]
+   },
+   {
+    "level": 17,
+    "bab": 8,
+    "fort": 5,
+    "ref": 5,
+    "will": 10,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     4,
+     null
+    ],
+    "domainSlots": null,
+    "known": [
+     9,
+     5,
+     5,
+     4,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null
+    ]
+   },
+   {
+    "level": 18,
+    "bab": 9,
+    "fort": 6,
+    "ref": 6,
+    "will": 11,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     5,
+     3
+    ],
+    "domainSlots": null,
+    "known": [
+     9,
+     5,
+     5,
+     4,
+     4,
+     4,
+     3,
+     3,
+     2,
+     1
+    ]
+   },
+   {
+    "level": 19,
+    "bab": 9,
+    "fort": 6,
+    "ref": 6,
+    "will": 11,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     4
+    ],
+    "domainSlots": null,
+    "known": [
+     9,
+     5,
+     5,
+     4,
+     4,
+     4,
+     3,
+     3,
+     3,
+     2
+    ]
+   },
+   {
+    "level": 20,
+    "bab": 10,
+    "fort": 6,
+    "ref": 6,
+    "will": 12,
+    "special": [],
+    "slots": [
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6,
+     6
+    ],
+    "domainSlots": null,
+    "known": [
+     9,
+     5,
+     5,
+     4,
+     4,
+     4,
+     3,
+     3,
+     3,
+     3
+    ]
+   }
+  ]
+ },
+ {
+  "id": "wizard",
+  "name": "Wizard",
+  "namePt": "Mago",
+  "hitDie": 4,
+  "skillPoints": 2,
+  "classSkills": [
+   "concentration",
+   "craft",
+   "decipher-script",
+   "knowledge",
+   "profession",
+   "spellcraft"
+  ],
+  "alignment": "any",
+  "casting": {
+   "ability": "int",
+   "kind": "arcane",
+   "style": "prepared",
+   "list": "Sorcerer/Wizard"
+  },
+  "proficiencies": "Wizards are proficient with the club, dagger, heavy crossbow, light crossbow, and quarterstaff, but not with any type of armor or shield. Armor of any type interferes with a wizard's movements, which can cause her spells with somatic components to fail.",
+  "levels": [
+   {
+    "level": 1,
+    "bab": 0,
+    "fort": 0,
+    "ref": 0,
+    "will": 2,
+    "special": [
+     "Summon familiar",
+     "Scribe Scroll"
+    ],
+    "slots": [
+     3,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 2,
+    "bab": 1,
+    "fort": 0,
+    "ref": 0,
+    "will": 3,
+    "special": [],
+    "slots": [
+     4,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 3,
+    "bab": 1,
+    "fort": 1,
+    "ref": 1,
+    "will": 3,
+    "special": [],
+    "slots": [
+     4,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 4,
+    "bab": 2,
+    "fort": 1,
+    "ref": 1,
+    "will": 4,
+    "special": [],
+    "slots": [
+     4,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 5,
+    "bab": 2,
+    "fort": 1,
+    "ref": 1,
+    "will": 4,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": [
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 6,
+    "bab": 3,
+    "fort": 2,
+    "ref": 2,
+    "will": 5,
+    "special": [],
+    "slots": [
+     4,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 7,
+    "bab": 3,
+    "fort": 2,
+    "ref": 2,
+    "will": 5,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 8,
+    "bab": 4,
+    "fort": 2,
+    "ref": 2,
+    "will": 6,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 9,
+    "bab": 4,
+    "fort": 3,
+    "ref": 3,
+    "will": 6,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 10,
+    "bab": 5,
+    "fort": 3,
+    "ref": 3,
+    "will": 7,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": [
+     4,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 11,
+    "bab": 5,
+    "fort": 3,
+    "ref": 3,
+    "will": 7,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 12,
+    "bab": 6,
+    "fort": 4,
+    "ref": 4,
+    "will": 8,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 13,
+    "bab": 6,
+    "fort": 4,
+    "ref": 4,
+    "will": 8,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 14,
+    "bab": 7,
+    "fort": 4,
+    "ref": 4,
+    "will": 9,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 15,
+    "bab": 7,
+    "fort": 5,
+    "ref": 5,
+    "will": 9,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     2,
+     1,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 16,
+    "bab": 8,
+    "fort": 5,
+    "ref": 5,
+    "will": 10,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     3,
+     2,
+     null
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 17,
+    "bab": 8,
+    "fort": 5,
+    "ref": 5,
+    "will": 10,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     2,
+     1
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 18,
+    "bab": 9,
+    "fort": 6,
+    "ref": 6,
+    "will": 11,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     3,
+     2
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 19,
+    "bab": 9,
+    "fort": 6,
+    "ref": 6,
+    "will": 11,
+    "special": [],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     3
+    ],
+    "domainSlots": null,
+    "known": null
+   },
+   {
+    "level": 20,
+    "bab": 10,
+    "fort": 6,
+    "ref": 6,
+    "will": 12,
+    "special": [
+     "Bonus feat"
+    ],
+    "slots": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4
+    ],
+    "domainSlots": null,
+    "known": null
+   }
+  ]
+ }
+]

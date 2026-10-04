@@ -1,0 +1,1507 @@
+[
+ {
+  "id": "air",
+  "name": "Air",
+  "grantedPowers": "Turn or destroy earth creatures as a good cleric turns undead. Rebuke, command, or bolster air creatures as an evil cleric rebukes undead. Use these abilities a total number of times per day equal to 3 + your Charisma modifier. This granted power is a supernatural ability.",
+  "spells": [
+   {
+    "name": "obscuring mist",
+    "id": "obscuring-mist"
+   },
+   {
+    "name": "wind wall",
+    "id": "wind-wall"
+   },
+   {
+    "name": "gaseous form",
+    "id": "gaseous-form"
+   },
+   {
+    "name": "air walk",
+    "id": "air-walk"
+   },
+   {
+    "name": "control winds",
+    "id": "control-winds"
+   },
+   {
+    "name": "chain lightning",
+    "id": "chain-lightning"
+   },
+   {
+    "name": "control weather",
+    "id": "control-weather"
+   },
+   {
+    "name": "whirlwind",
+    "id": "whirlwind"
+   },
+   {
+    "name": "elemental swarm",
+    "id": "elemental-swarm"
+   }
+  ]
+ },
+ {
+  "id": "animal",
+  "name": "Animal",
+  "grantedPowers": "You can use speak with animals once per day as a spell-like ability.Add Knowledge (nature) to your list of cleric class skills.",
+  "spells": [
+   {
+    "name": "calm animals",
+    "id": "calm-animals"
+   },
+   {
+    "name": "hold animal",
+    "id": "hold-animal"
+   },
+   {
+    "name": "dominate animal",
+    "id": "dominate-animal"
+   },
+   {
+    "name": "summon nature's ally IV",
+    "id": "summon-natures-ally-iv"
+   },
+   {
+    "name": "commune with nature",
+    "id": "commune-with-nature"
+   },
+   {
+    "name": "antilife shell",
+    "id": "antilife-shell"
+   },
+   {
+    "name": "animal shapes",
+    "id": "animal-shapes"
+   },
+   {
+    "name": "summon nature's ally VIII",
+    "id": "summon-natures-ally-viii"
+   },
+   {
+    "name": "shapechange",
+    "id": "shapechange"
+   }
+  ]
+ },
+ {
+  "id": "artifice",
+  "name": "Artifice",
+  "grantedPowers": "Gain +4 bonus on Craft checks. The character casts conjuration (creation) spells at +1 caster level. (Those with access to both the Artifice and Creation domains cast conjuration [creation] spells at +3 caster level.)",
+  "spells": [
+   {
+    "name": "animate rope",
+    "id": "animate-rope"
+   },
+   {
+    "name": "wood shape",
+    "id": "wood-shape"
+   },
+   {
+    "name": "stone shape",
+    "id": "stone-shape"
+   },
+   {
+    "name": "minor creation",
+    "id": "minor-creation"
+   },
+   {
+    "name": "fabricate",
+    "id": "fabricate"
+   },
+   {
+    "name": "major creation",
+    "id": "major-creation"
+   },
+   {
+    "name": "hardening",
+    "id": "hardening"
+   },
+   {
+    "name": "true creation",
+    "id": "true-creation"
+   },
+   {
+    "name": "prismatic sphere",
+    "id": "prismatic-sphere"
+   }
+  ]
+ },
+ {
+  "id": "chaos",
+  "name": "Chaos",
+  "grantedPowers": "You cast chaos spells at +1 caster level.",
+  "spells": [
+   {
+    "name": "protection from law",
+    "id": "protection-from-law"
+   },
+   {
+    "name": "shatter",
+    "id": "shatter"
+   },
+   {
+    "name": "magic circle against law",
+    "id": "magic-circle-against-law"
+   },
+   {
+    "name": "chaos hammer",
+    "id": "chaos-hammer"
+   },
+   {
+    "name": "dispel law",
+    "id": "dispel-law"
+   },
+   {
+    "name": "animate objects",
+    "id": "animate-objects"
+   },
+   {
+    "name": "word of chaos",
+    "id": "word-of-chaos"
+   },
+   {
+    "name": "cloak of chaos",
+    "id": "cloak-of-chaos"
+   },
+   {
+    "name": "summon monster IX",
+    "id": "summon-monster-ix"
+   }
+  ]
+ },
+ {
+  "id": "charm",
+  "name": "Charm",
+  "grantedPowers": "The character can boost his or her Charisma by 4 points once per day. Activating this power is a free action. The Charisma increase lasts 1 minute.",
+  "spells": [
+   {
+    "name": "charm person",
+    "id": "charm-person"
+   },
+   {
+    "name": "calm emotions",
+    "id": "calm-emotions"
+   },
+   {
+    "name": "suggestion",
+    "id": "suggestion"
+   },
+   {
+    "name": "emotion",
+    "id": null
+   },
+   {
+    "name": "charm monster",
+    "id": "charm-monster"
+   },
+   {
+    "name": "geas/quest",
+    "id": "geas-quest"
+   },
+   {
+    "name": "insanity",
+    "id": "insanity"
+   },
+   {
+    "name": "demand",
+    "id": "demand"
+   },
+   {
+    "name": "dominate monster",
+    "id": "dominate-monster"
+   }
+  ]
+ },
+ {
+  "id": "community",
+  "name": "Community",
+  "grantedPowers": "Use calm emotions as a spell-like ability once per day. Gain a +2 competence bonus on Diplomacy checks.",
+  "spells": [
+   {
+    "name": "bless",
+    "id": "bless"
+   },
+   {
+    "name": "shield other",
+    "id": "shield-other"
+   },
+   {
+    "name": "prayer",
+    "id": "prayer"
+   },
+   {
+    "name": "status",
+    "id": "status"
+   },
+   {
+    "name": "telepathic bond",
+    "id": "telepathic-bond"
+   },
+   {
+    "name": "heroes' feast",
+    "id": "heroes-feast"
+   },
+   {
+    "name": "refuge",
+    "id": "refuge"
+   },
+   {
+    "name": "mass heal",
+    "id": "heal-mass"
+   },
+   {
+    "name": "miracle",
+    "id": "miracle"
+   }
+  ]
+ },
+ {
+  "id": "creation",
+  "name": "Creation",
+  "grantedPowers": "Cast conjuration (creation) spells at +2 caster level. (Those with access to both the Artifice and Creation domains cast conjuration (creation) spells at +3 caster level.)",
+  "spells": [
+   {
+    "name": "create water",
+    "id": "create-water"
+   },
+   {
+    "name": "minor image",
+    "id": "minor-image"
+   },
+   {
+    "name": "create food and water",
+    "id": "create-food-and-water"
+   },
+   {
+    "name": "minor creation",
+    "id": "minor-creation"
+   },
+   {
+    "name": "major creation",
+    "id": "major-creation"
+   },
+   {
+    "name": "heroes' feast",
+    "id": "heroes-feast"
+   },
+   {
+    "name": "permanent image",
+    "id": "permanent-image"
+   },
+   {
+    "name": "true creation",
+    "id": "true-creation"
+   },
+   {
+    "name": "genesis",
+    "id": "genesis"
+   }
+  ]
+ },
+ {
+  "id": "darkness",
+  "name": "Darkness",
+  "grantedPowers": "Free Blind-Fight feat.",
+  "spells": [
+   {
+    "name": "obscuring mist",
+    "id": "obscuring-mist"
+   },
+   {
+    "name": "blindness",
+    "id": "blindness-deafness"
+   },
+   {
+    "name": "blacklight",
+    "id": "blacklight"
+   },
+   {
+    "name": "armor of darkness",
+    "id": "armor-of-darkness"
+   },
+   {
+    "name": "summon monster V (only summons 1d3 shadows)",
+    "id": "summon-monster-v"
+   },
+   {
+    "name": "prying eyes",
+    "id": "prying-eyes"
+   },
+   {
+    "name": "nightmare",
+    "id": "nightmare"
+   },
+   {
+    "name": "power word blind",
+    "id": "power-word-blind"
+   },
+   {
+    "name": "power word kill",
+    "id": "power-word-kill"
+   }
+  ]
+ },
+ {
+  "id": "death",
+  "name": "Death",
+  "grantedPowers": "You may use a death touch once per day. Your death touch is a supernatural ability that produces a death effect. You must succeed on a melee touch attack against a living creature (using the rules for touch spells). When you touch, roll 1d6 per cleric level you possess. If the total at least equals the creature's current hit points, it dies (no save).",
+  "spells": [
+   {
+    "name": "cause fear",
+    "id": "cause-fear"
+   },
+   {
+    "name": "death knell",
+    "id": "death-knell"
+   },
+   {
+    "name": "animate dead",
+    "id": "animate-dead"
+   },
+   {
+    "name": "death ward",
+    "id": "death-ward"
+   },
+   {
+    "name": "slay living",
+    "id": "slay-living"
+   },
+   {
+    "name": "create undead",
+    "id": "create-undead"
+   },
+   {
+    "name": "destruction",
+    "id": "destruction"
+   },
+   {
+    "name": "create greater undead",
+    "id": "create-greater-undead"
+   },
+   {
+    "name": "wail of the banshee",
+    "id": "wail-of-the-banshee"
+   }
+  ]
+ },
+ {
+  "id": "destruction",
+  "name": "Destruction",
+  "grantedPowers": "You gain the smite power, the supernatural ability to make a single melee attack with a +4 bonus on attack rolls and a bonus on damage rolls equal to your cleric level (if you hit). You must declare the smite before making the attack. This ability is usable once per day.",
+  "spells": [
+   {
+    "name": "inflict light wounds",
+    "id": "inflict-light-wounds"
+   },
+   {
+    "name": "shatter",
+    "id": "shatter"
+   },
+   {
+    "name": "contagion",
+    "id": "contagion"
+   },
+   {
+    "name": "inflict critical wounds",
+    "id": "inflict-critical-wounds"
+   },
+   {
+    "name": "mass inflict light wounds",
+    "id": "inflict-light-wounds-mass"
+   },
+   {
+    "name": "harm",
+    "id": "harm"
+   },
+   {
+    "name": "disintegrate",
+    "id": "disintegrate"
+   },
+   {
+    "name": "earthquake",
+    "id": "earthquake"
+   },
+   {
+    "name": "implosion",
+    "id": "implosion"
+   }
+  ]
+ },
+ {
+  "id": "earth",
+  "name": "Earth",
+  "grantedPowers": "Turn or destroy air creatures as a good cleric turns undead. Rebuke, command, or bolster earth creatures as an evil cleric rebukes undead. Use these abilities a total number of times per day equal to 3 + your Charisma modifier. This granted power is a supernatural ability.",
+  "spells": [
+   {
+    "name": "magic stone",
+    "id": "magic-stone"
+   },
+   {
+    "name": "soften earth and stone",
+    "id": "soften-earth-and-stone"
+   },
+   {
+    "name": "stone shape",
+    "id": "stone-shape"
+   },
+   {
+    "name": "spike stones",
+    "id": "spike-stones"
+   },
+   {
+    "name": "wall of stone",
+    "id": "wall-of-stone"
+   },
+   {
+    "name": "stoneskin",
+    "id": "stoneskin"
+   },
+   {
+    "name": "earthquake",
+    "id": "earthquake"
+   },
+   {
+    "name": "iron body",
+    "id": "iron-body"
+   },
+   {
+    "name": "elemental swarm",
+    "id": "elemental-swarm"
+   }
+  ]
+ },
+ {
+  "id": "evil",
+  "name": "Evil",
+  "grantedPowers": "You cast evil spells at +1 caster level.",
+  "spells": [
+   {
+    "name": "protection from good",
+    "id": "protection-from-good"
+   },
+   {
+    "name": "desecrate",
+    "id": "desecrate"
+   },
+   {
+    "name": "magic circle against good",
+    "id": "magic-circle-against-good"
+   },
+   {
+    "name": "unholy blight",
+    "id": "unholy-blight"
+   },
+   {
+    "name": "dispel good",
+    "id": "dispel-good"
+   },
+   {
+    "name": "create undead",
+    "id": "create-undead"
+   },
+   {
+    "name": "blasphemy",
+    "id": "blasphemy"
+   },
+   {
+    "name": "unholy aura",
+    "id": "unholy-aura"
+   },
+   {
+    "name": "summon monster IX",
+    "id": "summon-monster-ix"
+   }
+  ]
+ },
+ {
+  "id": "fire",
+  "name": "Fire",
+  "grantedPowers": "Turn or destroy water creatures as a good cleric turns undead. Rebuke, command, or bolster fire creatures as an evil cleric rebukes undead. Use these abilities a total number of times per day equal to 3 + your Charisma modifier. This granted power is a supernatural ability.",
+  "spells": [
+   {
+    "name": "burning hands",
+    "id": "burning-hands"
+   },
+   {
+    "name": "produce flame",
+    "id": "produce-flame"
+   },
+   {
+    "name": "resist energy",
+    "id": "resist-energy"
+   },
+   {
+    "name": "wall of fire",
+    "id": "wall-of-fire"
+   },
+   {
+    "name": "fire shield",
+    "id": "fire-shield"
+   },
+   {
+    "name": "fire seeds",
+    "id": "fire-seeds"
+   },
+   {
+    "name": "fire storm",
+    "id": "fire-storm"
+   },
+   {
+    "name": "incendiary cloud",
+    "id": "incendiary-cloud"
+   },
+   {
+    "name": "elemental swarm",
+    "id": "elemental-swarm"
+   }
+  ]
+ },
+ {
+  "id": "glory",
+  "name": "Glory",
+  "grantedPowers": "Turn undead with a +2 bonus on the turning check and +1d6 to the turning damage roll.",
+  "spells": [
+   {
+    "name": "disrupt undead",
+    "id": "disrupt-undead"
+   },
+   {
+    "name": "bless weapon",
+    "id": "bless-weapon"
+   },
+   {
+    "name": "searing light",
+    "id": "searing-light"
+   },
+   {
+    "name": "holy smite",
+    "id": "holy-smite"
+   },
+   {
+    "name": "holy sword",
+    "id": "holy-sword"
+   },
+   {
+    "name": "bolt of glory",
+    "id": "bolt-of-glory"
+   },
+   {
+    "name": "sunbeam",
+    "id": "sunbeam"
+   },
+   {
+    "name": "crown of glory",
+    "id": "crown-of-glory"
+   },
+   {
+    "name": "gate",
+    "id": "gate"
+   }
+  ]
+ },
+ {
+  "id": "good",
+  "name": "Good",
+  "grantedPowers": "You cast good spells at +1 caster level.",
+  "spells": [
+   {
+    "name": "protection from evil",
+    "id": "protection-from-evil"
+   },
+   {
+    "name": "aid",
+    "id": "aid"
+   },
+   {
+    "name": "magic circle against evil",
+    "id": "magic-circle-against-evil"
+   },
+   {
+    "name": "holy smite",
+    "id": "holy-smite"
+   },
+   {
+    "name": "dispel evil",
+    "id": "dispel-evil"
+   },
+   {
+    "name": "blade barrier",
+    "id": "blade-barrier"
+   },
+   {
+    "name": "holy word",
+    "id": "holy-word"
+   },
+   {
+    "name": "holy aura",
+    "id": "holy-aura"
+   },
+   {
+    "name": "summon monster IX",
+    "id": "summon-monster-ix"
+   }
+  ]
+ },
+ {
+  "id": "healing",
+  "name": "Healing",
+  "grantedPowers": "You cast healing spells at +1 caster level.",
+  "spells": [
+   {
+    "name": "cure light wounds",
+    "id": "cure-light-wounds"
+   },
+   {
+    "name": "cure moderate wounds",
+    "id": "cure-moderate-wounds"
+   },
+   {
+    "name": "cure serious wounds",
+    "id": "cure-serious-wounds"
+   },
+   {
+    "name": "cure critical wounds",
+    "id": "cure-critical-wounds"
+   },
+   {
+    "name": "mass cure light wounds",
+    "id": "cure-light-wounds-mass"
+   },
+   {
+    "name": "heal",
+    "id": "heal"
+   },
+   {
+    "name": "regenerate",
+    "id": "regenerate"
+   },
+   {
+    "name": "mass cure critical wounds",
+    "id": "cure-critical-wounds-mass"
+   },
+   {
+    "name": "mass heal",
+    "id": "heal-mass"
+   }
+  ]
+ },
+ {
+  "id": "knowledge",
+  "name": "Knowledge",
+  "grantedPowers": "Add all Knowledge skills to your list of cleric class skills.You cast divination spells at +1 caster level.",
+  "spells": [
+   {
+    "name": "detect secret doors",
+    "id": "detect-secret-doors"
+   },
+   {
+    "name": "detect thoughts",
+    "id": "detect-thoughts"
+   },
+   {
+    "name": "clairaudience/clairvoyance",
+    "id": "clairaudience-clairvoyance"
+   },
+   {
+    "name": "divination",
+    "id": "divination"
+   },
+   {
+    "name": "true seeing",
+    "id": "true-seeing"
+   },
+   {
+    "name": "find the path",
+    "id": "find-the-path"
+   },
+   {
+    "name": "legend lore",
+    "id": "legend-lore"
+   },
+   {
+    "name": "discern location",
+    "id": "discern-location"
+   },
+   {
+    "name": "foresight",
+    "id": "foresight"
+   }
+  ]
+ },
+ {
+  "id": "law",
+  "name": "Law",
+  "grantedPowers": "You cast law spells at +1 caster level.",
+  "spells": [
+   {
+    "name": "protection from chaos",
+    "id": "protection-from-chaos"
+   },
+   {
+    "name": "calm emotions",
+    "id": "calm-emotions"
+   },
+   {
+    "name": "magic circle against chaos",
+    "id": "magic-circle-against-chaos"
+   },
+   {
+    "name": "order's wrath",
+    "id": "orders-wrath"
+   },
+   {
+    "name": "dispel chaos",
+    "id": "dispel-chaos"
+   },
+   {
+    "name": "hold monster",
+    "id": "hold-monster"
+   },
+   {
+    "name": "dictum",
+    "id": "dictum"
+   },
+   {
+    "name": "shield of law",
+    "id": "shield-of-law"
+   },
+   {
+    "name": "summon monster IX",
+    "id": "summon-monster-ix"
+   }
+  ]
+ },
+ {
+  "id": "liberation",
+  "name": "Liberation",
+  "grantedPowers": "The character gains a +2 morale bonus on all saving throws against enchantment spells or effects.",
+  "spells": [
+   {
+    "name": "remove fear",
+    "id": "remove-fear"
+   },
+   {
+    "name": "remove paralysis",
+    "id": "remove-paralysis"
+   },
+   {
+    "name": "remove curse",
+    "id": "remove-curse"
+   },
+   {
+    "name": "freedom of movement",
+    "id": "freedom-of-movement"
+   },
+   {
+    "name": "break enchantment",
+    "id": "break-enchantment"
+   },
+   {
+    "name": "greater dispel magic",
+    "id": "dispel-magic-greater"
+   },
+   {
+    "name": "refuge",
+    "id": "refuge"
+   },
+   {
+    "name": "mind blank",
+    "id": "mind-blank"
+   },
+   {
+    "name": "unbinding",
+    "id": null
+   }
+  ]
+ },
+ {
+  "id": "luck",
+  "name": "Luck",
+  "grantedPowers": "You gain the power of good fortune, which is usable once per day. This extraordinary ability allows you to reroll one roll that you have just made before the DM declares whether the roll results in success or failure. You must take the result of the reroll, even if it's worse than the original roll.",
+  "spells": [
+   {
+    "name": "entropic shield",
+    "id": "entropic-shield"
+   },
+   {
+    "name": "aid",
+    "id": "aid"
+   },
+   {
+    "name": "protection from energy",
+    "id": "protection-from-energy"
+   },
+   {
+    "name": "freedom of movement",
+    "id": "freedom-of-movement"
+   },
+   {
+    "name": "break enchantment",
+    "id": "break-enchantment"
+   },
+   {
+    "name": "mislead",
+    "id": "mislead"
+   },
+   {
+    "name": "spell turning",
+    "id": "spell-turning"
+   },
+   {
+    "name": "moment of prescience",
+    "id": "moment-of-prescience"
+   },
+   {
+    "name": "miracle",
+    "id": "miracle"
+   }
+  ]
+ },
+ {
+  "id": "madness",
+  "name": "Madness",
+  "grantedPowers": "The character gains an Insanity score equal to half his or her class level. For spellcasting (determining bonus spells and DCs), the character uses his or her Wisdom score plus his or her Insanity score in place of Wisdom alone.For all other purposes, such as skills and saves, use Wisdom minus Insanity in place of Wisdom.Once per day, the character can see and act with the clarity of true madness. Use the character's Insanity score as a positive rather than a negative modifier on a single roll involving Wisdom. Choose to use this power before the roll is made.",
+  "spells": [
+   {
+    "name": "random action",
+    "id": null
+   },
+   {
+    "name": "touch of madness",
+    "id": "touch-of-madness"
+   },
+   {
+    "name": "rage",
+    "id": "rage"
+   },
+   {
+    "name": "confusion",
+    "id": "confusion"
+   },
+   {
+    "name": "bolts of bedevilment",
+    "id": "bolts-of-bedevilment"
+   },
+   {
+    "name": "phantasmal killer",
+    "id": "phantasmal-killer"
+   },
+   {
+    "name": "insanity",
+    "id": "insanity"
+   },
+   {
+    "name": "maddening scream",
+    "id": "maddening-scream"
+   },
+   {
+    "name": "weird",
+    "id": "weird"
+   }
+  ]
+ },
+ {
+  "id": "magic",
+  "name": "Magic",
+  "grantedPowers": "Use scrolls, wands, and other devices with spell completion or spell trigger activation as a wizard of one-half your cleric level (at least 1st level). For the purpose of using a scroll or other magic device, if you are also a wizard, actual wizard levels and these effective wizard levels stack.",
+  "spells": [
+   {
+    "name": "magic aura",
+    "id": "magic-aura"
+   },
+   {
+    "name": "identify",
+    "id": "identify"
+   },
+   {
+    "name": "dispel magic",
+    "id": "dispel-magic"
+   },
+   {
+    "name": "imbue with spell ability",
+    "id": "imbue-with-spell-ability"
+   },
+   {
+    "name": "spell resistance",
+    "id": "spell-resistance"
+   },
+   {
+    "name": "antimagic field",
+    "id": "antimagic-field"
+   },
+   {
+    "name": "spell turning",
+    "id": "spell-turning"
+   },
+   {
+    "name": "protection from spells",
+    "id": "protection-from-spells"
+   },
+   {
+    "name": "mage's disjunction",
+    "id": "mages-disjunction"
+   }
+  ]
+ },
+ {
+  "id": "nobility",
+  "name": "Nobility",
+  "grantedPowers": "The character has the spell-like ability to inspire allies, giving them a +2 morale bonus on saving throws, attack rolls, ability checks, skill checks, and weapon damage rolls. Allies must be able to hear the character speak for 1 round. Using this ability is a standard action. It lasts a number of rounds equal to the character's Charisma bonus and can be used once per day.",
+  "spells": [
+   {
+    "name": "divine favor",
+    "id": "divine-favor"
+   },
+   {
+    "name": "enthrall",
+    "id": "enthrall"
+   },
+   {
+    "name": "magic vestment",
+    "id": "magic-vestment"
+   },
+   {
+    "name": "discern lies",
+    "id": "discern-lies"
+   },
+   {
+    "name": "greater command",
+    "id": "command-greater"
+   },
+   {
+    "name": "geas/quest",
+    "id": "geas-quest"
+   },
+   {
+    "name": "repulsion",
+    "id": "repulsion"
+   },
+   {
+    "name": "demand",
+    "id": "demand"
+   },
+   {
+    "name": "storm of vengeance",
+    "id": "storm-of-vengeance"
+   }
+  ]
+ },
+ {
+  "id": "plant",
+  "name": "Plant",
+  "grantedPowers": "Rebuke or command plant creatures as an evil cleric rebukes or commands undead. Use this ability a total number of times per day equal to 3 + your Charisma modifier. This granted power is a supernatural ability.Add Knowledge (nature) to your list of cleric class skills.",
+  "spells": [
+   {
+    "name": "entangle",
+    "id": "entangle"
+   },
+   {
+    "name": "barkskin",
+    "id": "barkskin"
+   },
+   {
+    "name": "plant growth",
+    "id": "plant-growth"
+   },
+   {
+    "name": "command plants",
+    "id": "command-plants"
+   },
+   {
+    "name": "wall of thorns",
+    "id": "wall-of-thorns"
+   },
+   {
+    "name": "repel wood",
+    "id": "repel-wood"
+   },
+   {
+    "name": "animate plants",
+    "id": "animate-plants"
+   },
+   {
+    "name": "control plants",
+    "id": "control-plants"
+   },
+   {
+    "name": "shambler",
+    "id": "shambler"
+   }
+  ]
+ },
+ {
+  "id": "protection",
+  "name": "Protection",
+  "grantedPowers": "You can generate a protective ward as a supernatural ability. Grant someone you touch a resistance bonus equal to your cleric level on his or her next saving throw. Activating this power is a standard action. The protective ward is an abjuration effect with a duration of 1 hour that is usable once per day.",
+  "spells": [
+   {
+    "name": "sanctuary",
+    "id": "sanctuary"
+   },
+   {
+    "name": "shield other",
+    "id": "shield-other"
+   },
+   {
+    "name": "protection from energy",
+    "id": "protection-from-energy"
+   },
+   {
+    "name": "spell immunity",
+    "id": "spell-immunity"
+   },
+   {
+    "name": "spell resistance",
+    "id": "spell-resistance"
+   },
+   {
+    "name": "antimagic field",
+    "id": "antimagic-field"
+   },
+   {
+    "name": "repulsion",
+    "id": "repulsion"
+   },
+   {
+    "name": "mind blank",
+    "id": "mind-blank"
+   },
+   {
+    "name": "prismatic sphere",
+    "id": "prismatic-sphere"
+   }
+  ]
+ },
+ {
+  "id": "repose",
+  "name": "Repose",
+  "grantedPowers": "The character may use a death touch once per day. The death touch is a spell-like ability that is a death effect. The character must succeed at a melee touch attack against a living creature (using the rules for touch spells). When the character touches, roll 1d6 per his or her cleric level. If the total at least equals the creature's current hit points, it dies.",
+  "spells": [
+   {
+    "name": "deathwatch",
+    "id": "deathwatch"
+   },
+   {
+    "name": "gentle repose",
+    "id": "gentle-repose"
+   },
+   {
+    "name": "speak with dead",
+    "id": "speak-with-dead"
+   },
+   {
+    "name": "death ward",
+    "id": "death-ward"
+   },
+   {
+    "name": "slay living",
+    "id": "slay-living"
+   },
+   {
+    "name": "undeath to death",
+    "id": "undeath-to-death"
+   },
+   {
+    "name": "destruction",
+    "id": "destruction"
+   },
+   {
+    "name": "surelife",
+    "id": "surelife"
+   },
+   {
+    "name": "wail of the banshee",
+    "id": "wail-of-the-banshee"
+   }
+  ]
+ },
+ {
+  "id": "rune",
+  "name": "Rune",
+  "grantedPowers": "Free Scribe Scroll feat.",
+  "spells": [
+   {
+    "name": "erase",
+    "id": "erase"
+   },
+   {
+    "name": "secret page",
+    "id": "secret-page"
+   },
+   {
+    "name": "glyph of warding",
+    "id": "glyph-of-warding"
+   },
+   {
+    "name": "explosive runes",
+    "id": "explosive-runes"
+   },
+   {
+    "name": "lesser planar binding",
+    "id": "planar-binding-lesser"
+   },
+   {
+    "name": "greater glyph of warding",
+    "id": "glyph-of-warding-greater"
+   },
+   {
+    "name": "instant summons",
+    "id": "instant-summons"
+   },
+   {
+    "name": "symbol",
+    "id": null
+   },
+   {
+    "name": "teleportation circle",
+    "id": "teleportation-circle"
+   }
+  ]
+ },
+ {
+  "id": "scalykind",
+  "name": "Scalykind",
+  "grantedPowers": "Rebuke or command animals (reptilian creatures and snakes only) as an evil cleric rebukes or commands undead.Use this ability a total number of times per day equal to 3 + Charisma modifier.",
+  "spells": [
+   {
+    "name": "magic fang",
+    "id": "magic-fang"
+   },
+   {
+    "name": "animal trance",
+    "id": "animal-trance"
+   },
+   {
+    "name": "greater magic fang",
+    "id": "magic-fang-greater"
+   },
+   {
+    "name": "poison",
+    "id": "poison"
+   },
+   {
+    "name": "animal growth",
+    "id": "animal-growth"
+   },
+   {
+    "name": "eyebite",
+    "id": "eyebite"
+   },
+   {
+    "name": "creeping doom (composed of tiny snakes)",
+    "id": "creeping-doom"
+   },
+   {
+    "name": "animal shapes",
+    "id": "animal-shapes"
+   },
+   {
+    "name": "shapechange",
+    "id": "shapechange"
+   }
+  ]
+ },
+ {
+  "id": "strength",
+  "name": "Strength",
+  "grantedPowers": "You can perform a feat of strength as a supernatural ability. You gain an enhancement bonus to Strength equal to your cleric level. Activating the power is a free action, the power lasts 1 round, and it is usable once per day.",
+  "spells": [
+   {
+    "name": "enlarge person",
+    "id": "enlarge-person"
+   },
+   {
+    "name": "bull's strength",
+    "id": "bulls-strength"
+   },
+   {
+    "name": "magic vestment",
+    "id": "magic-vestment"
+   },
+   {
+    "name": "spell immunity",
+    "id": "spell-immunity"
+   },
+   {
+    "name": "righteous might",
+    "id": "righteous-might"
+   },
+   {
+    "name": "stoneskin",
+    "id": "stoneskin"
+   },
+   {
+    "name": "grasping hand",
+    "id": "grasping-hand"
+   },
+   {
+    "name": "clenched fist",
+    "id": "clenched-fist"
+   },
+   {
+    "name": "crushing hand",
+    "id": "crushing-hand"
+   }
+  ]
+ },
+ {
+  "id": "sun",
+  "name": "Sun",
+  "grantedPowers": "Once per day, you can perform a greater turning against undead in place of a regular turning. The greater turning is like a normal turning except that the undead creatures that would be turned are destroyed instead.",
+  "spells": [
+   {
+    "name": "endure elements",
+    "id": "endure-elements"
+   },
+   {
+    "name": "heat metal",
+    "id": "heat-metal"
+   },
+   {
+    "name": "searing light",
+    "id": "searing-light"
+   },
+   {
+    "name": "fire shield",
+    "id": "fire-shield"
+   },
+   {
+    "name": "flame strike",
+    "id": "flame-strike"
+   },
+   {
+    "name": "fire seeds",
+    "id": "fire-seeds"
+   },
+   {
+    "name": "sunbeam",
+    "id": "sunbeam"
+   },
+   {
+    "name": "sunburst",
+    "id": "sunburst"
+   },
+   {
+    "name": "prismatic sphere",
+    "id": "prismatic-sphere"
+   }
+  ]
+ },
+ {
+  "id": "travel",
+  "name": "Travel",
+  "grantedPowers": "For a total time per day of 1 round per cleric level you possess, you can act normally regardless of magical effects that impede movement as if you were affected by the spell freedom of movement. This effect occurs automatically as soon as it applies, lasts until it runs out or is no longer needed, and can operate multiple times per day (up to the total daily limit of rounds).This granted power is a supernatural ability.Add Survival to your list of cleric class skills.",
+  "spells": [
+   {
+    "name": "longstrider",
+    "id": "longstrider"
+   },
+   {
+    "name": "locate object",
+    "id": "locate-object"
+   },
+   {
+    "name": "fly",
+    "id": "fly"
+   },
+   {
+    "name": "dimension door",
+    "id": "dimension-door"
+   },
+   {
+    "name": "teleport",
+    "id": "teleport"
+   },
+   {
+    "name": "find the path",
+    "id": "find-the-path"
+   },
+   {
+    "name": "greater teleport",
+    "id": "teleport-greater"
+   },
+   {
+    "name": "phase door",
+    "id": "phase-door"
+   },
+   {
+    "name": "astral projection",
+    "id": "astral-projection"
+   }
+  ]
+ },
+ {
+  "id": "trickery",
+  "name": "Trickery",
+  "grantedPowers": "Add Bluff, Disguise, and Hide to your list of cleric class skills.",
+  "spells": [
+   {
+    "name": "disguise self",
+    "id": "disguise-self"
+   },
+   {
+    "name": "invisibility",
+    "id": "invisibility"
+   },
+   {
+    "name": "nondetection",
+    "id": "nondetection"
+   },
+   {
+    "name": "confusion",
+    "id": "confusion"
+   },
+   {
+    "name": "false vision",
+    "id": "false-vision"
+   },
+   {
+    "name": "mislead",
+    "id": "mislead"
+   },
+   {
+    "name": "screen",
+    "id": "screen"
+   },
+   {
+    "name": "polymorph any object",
+    "id": "polymorph-any-object"
+   },
+   {
+    "name": "time stop",
+    "id": "time-stop"
+   }
+  ]
+ },
+ {
+  "id": "war",
+  "name": "War",
+  "grantedPowers": "Free Martial Weapon Proficiency with deity's favored weapon (if necessary) and Weapon Focus with the deity's favored weapon.",
+  "spells": [
+   {
+    "name": "magic weapon",
+    "id": "magic-weapon"
+   },
+   {
+    "name": "spiritual weapon",
+    "id": "spiritual-weapon"
+   },
+   {
+    "name": "magic vestment",
+    "id": "magic-vestment"
+   },
+   {
+    "name": "divine power",
+    "id": "divine-power"
+   },
+   {
+    "name": "flame strike",
+    "id": "flame-strike"
+   },
+   {
+    "name": "blade barrier",
+    "id": "blade-barrier"
+   },
+   {
+    "name": "power word blind",
+    "id": "power-word-blind"
+   },
+   {
+    "name": "power word stun",
+    "id": "power-word-stun"
+   },
+   {
+    "name": "power word kill",
+    "id": "power-word-kill"
+   }
+  ]
+ },
+ {
+  "id": "water",
+  "name": "Water",
+  "grantedPowers": "Turn or destroy fire creatures as a good cleric turns undead. Rebuke, command, or bolster water creatures as an evil cleric rebukes undead. Use these abilities a total number of times per day equal to 3 + your Charisma modifier. This granted power is a supernatural ability.",
+  "spells": [
+   {
+    "name": "obscuring mist",
+    "id": "obscuring-mist"
+   },
+   {
+    "name": "fog cloud",
+    "id": "fog-cloud"
+   },
+   {
+    "name": "water breathing",
+    "id": "water-breathing"
+   },
+   {
+    "name": "control water",
+    "id": "control-water"
+   },
+   {
+    "name": "ice storm",
+    "id": "ice-storm"
+   },
+   {
+    "name": "cone of cold",
+    "id": "cone-of-cold"
+   },
+   {
+    "name": "acid fog",
+    "id": "acid-fog"
+   },
+   {
+    "name": "horrid wilting",
+    "id": "horrid-wilting"
+   },
+   {
+    "name": "elemental swarm",
+    "id": "elemental-swarm"
+   }
+  ]
+ },
+ {
+  "id": "weather",
+  "name": "Weather",
+  "grantedPowers": "Survival is a class skill.",
+  "spells": [
+   {
+    "name": "obscuring mist",
+    "id": "obscuring-mist"
+   },
+   {
+    "name": "fog cloud",
+    "id": "fog-cloud"
+   },
+   {
+    "name": "call lightning",
+    "id": "call-lightning"
+   },
+   {
+    "name": "sleet storm",
+    "id": "sleet-storm"
+   },
+   {
+    "name": "ice storm",
+    "id": "ice-storm"
+   },
+   {
+    "name": "control winds",
+    "id": "control-winds"
+   },
+   {
+    "name": "control weather",
+    "id": "control-weather"
+   },
+   {
+    "name": "whirlwind",
+    "id": "whirlwind"
+   },
+   {
+    "name": "storm of vengeance",
+    "id": "storm-of-vengeance"
+   }
+  ]
+ }
+]

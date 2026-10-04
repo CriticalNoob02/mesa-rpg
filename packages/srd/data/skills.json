@@ -1,0 +1,727 @@
+[
+ {
+  "id": "appraise",
+  "name": "Appraise",
+  "namePt": "Avaliação",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "balance",
+  "name": "Balance",
+  "namePt": "Equilíbrio",
+  "ability": "dex",
+  "trainedOnly": false,
+  "armorCheck": true
+ },
+ {
+  "id": "bluff",
+  "name": "Bluff",
+  "namePt": "Blefar",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "climb",
+  "name": "Climb",
+  "namePt": "Escalar",
+  "ability": "str",
+  "trainedOnly": false,
+  "armorCheck": true
+ },
+ {
+  "id": "concentration",
+  "name": "Concentration",
+  "namePt": "Concentração",
+  "ability": "con",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.alchemy",
+  "name": "Craft (alchemy)",
+  "namePt": "Ofício (alquimia)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.armorsmithing",
+  "name": "Craft (armorsmithing)",
+  "namePt": "Ofício (armaduras)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.blacksmithing",
+  "name": "Craft (blacksmithing)",
+  "namePt": "Ofício (ferraria)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.gemcutting",
+  "name": "Craft (gemcutting)",
+  "namePt": "Ofício (gemcutting)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.leatherworking",
+  "name": "Craft (leatherworking)",
+  "namePt": "Ofício (couro)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.metalworking",
+  "name": "Craft (metalworking)",
+  "namePt": "Ofício (metalworking)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.painting",
+  "name": "Craft (painting)",
+  "namePt": "Ofício (painting)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.sculpting",
+  "name": "Craft (sculpting)",
+  "namePt": "Ofício (sculpting)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.shipmaking",
+  "name": "Craft (shipmaking)",
+  "namePt": "Ofício (shipmaking)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.stonemasonry",
+  "name": "Craft (stonemasonry)",
+  "namePt": "Ofício (cantaria)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.stoneworking",
+  "name": "Craft (stoneworking)",
+  "namePt": "Ofício (stoneworking)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.trapmaking",
+  "name": "Craft (trapmaking)",
+  "namePt": "Ofício (armadilhas)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.weaponsmithing",
+  "name": "Craft (weaponsmithing)",
+  "namePt": "Ofício (armas)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.bowmaking",
+  "name": "Craft (bowmaking)",
+  "namePt": "Ofício (arcos)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.carpentry",
+  "name": "Craft (carpentry)",
+  "namePt": "Ofício (carpintaria)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "craft.tailoring",
+  "name": "Craft (tailoring)",
+  "namePt": "Ofício (alfaiataria)",
+  "parent": "craft",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "decipher-script",
+  "name": "Decipher Script",
+  "namePt": "Decifrar Escrita",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "diplomacy",
+  "name": "Diplomacy",
+  "namePt": "Diplomacia",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "disable-device",
+  "name": "Disable Device",
+  "namePt": "Operar Mecanismo",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "disguise",
+  "name": "Disguise",
+  "namePt": "Disfarces",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "escape-artist",
+  "name": "Escape Artist",
+  "namePt": "Arte da Fuga",
+  "ability": "dex",
+  "trainedOnly": false,
+  "armorCheck": true
+ },
+ {
+  "id": "forgery",
+  "name": "Forgery",
+  "namePt": "Falsificação",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "gather-information",
+  "name": "Gather Information",
+  "namePt": "Obter Informação",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "handle-animal",
+  "name": "Handle Animal",
+  "namePt": "Adestrar Animais",
+  "ability": "cha",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "heal",
+  "name": "Heal",
+  "namePt": "Cura",
+  "ability": "wis",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "hide",
+  "name": "Hide",
+  "namePt": "Esconder-se",
+  "ability": "dex",
+  "trainedOnly": false,
+  "armorCheck": true
+ },
+ {
+  "id": "intimidate",
+  "name": "Intimidate",
+  "namePt": "Intimidação",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "jump",
+  "name": "Jump",
+  "namePt": "Saltar",
+  "ability": "str",
+  "trainedOnly": false,
+  "armorCheck": true
+ },
+ {
+  "id": "knowledge.arcana",
+  "name": "Knowledge (arcana)",
+  "namePt": "Conhecimento (arcano)",
+  "parent": "knowledge",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "knowledge.architecture-and-engineering",
+  "name": "Knowledge (architecture and engineering)",
+  "namePt": "Conhecimento (arquitetura e engenharia)",
+  "parent": "knowledge",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "knowledge.dungeoneering",
+  "name": "Knowledge (dungeoneering)",
+  "namePt": "Conhecimento (masmorras)",
+  "parent": "knowledge",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "knowledge.geography",
+  "name": "Knowledge (geography)",
+  "namePt": "Conhecimento (geografia)",
+  "parent": "knowledge",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "knowledge.history",
+  "name": "Knowledge (history)",
+  "namePt": "Conhecimento (história)",
+  "parent": "knowledge",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "knowledge.local",
+  "name": "Knowledge (local)",
+  "namePt": "Conhecimento (local)",
+  "parent": "knowledge",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "knowledge.nature",
+  "name": "Knowledge (nature)",
+  "namePt": "Conhecimento (natureza)",
+  "parent": "knowledge",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "knowledge.nobility-and-royalty",
+  "name": "Knowledge (nobility and royalty)",
+  "namePt": "Conhecimento (nobreza e realeza)",
+  "parent": "knowledge",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "knowledge.religion",
+  "name": "Knowledge (religion)",
+  "namePt": "Conhecimento (religião)",
+  "parent": "knowledge",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "knowledge.the-planes",
+  "name": "Knowledge (the planes)",
+  "namePt": "Conhecimento (planos)",
+  "parent": "knowledge",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "listen",
+  "name": "Listen",
+  "namePt": "Ouvir",
+  "ability": "wis",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "move-silently",
+  "name": "Move Silently",
+  "namePt": "Furtividade",
+  "ability": "dex",
+  "trainedOnly": false,
+  "armorCheck": true
+ },
+ {
+  "id": "open-lock",
+  "name": "Open Lock",
+  "namePt": "Abrir Fechaduras",
+  "ability": "dex",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "perform.act",
+  "name": "Perform (act)",
+  "namePt": "Atuação (atuar)",
+  "parent": "perform",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "perform.comedy",
+  "name": "Perform (comedy)",
+  "namePt": "Atuação (comédia)",
+  "parent": "perform",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "perform.dance",
+  "name": "Perform (dance)",
+  "namePt": "Atuação (dança)",
+  "parent": "perform",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "perform.keyboard-instruments",
+  "name": "Perform (keyboard instruments)",
+  "namePt": "Atuação (instrumentos de teclado)",
+  "parent": "perform",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "perform.oratory",
+  "name": "Perform (oratory)",
+  "namePt": "Atuação (oratória)",
+  "parent": "perform",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "perform.percussion-instruments",
+  "name": "Perform (percussion instruments)",
+  "namePt": "Atuação (percussão)",
+  "parent": "perform",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "perform.sing",
+  "name": "Perform (sing)",
+  "namePt": "Atuação (canto)",
+  "parent": "perform",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "perform.string-instruments",
+  "name": "Perform (string instruments)",
+  "namePt": "Atuação (instrumentos de corda)",
+  "parent": "perform",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "perform.wind-instruments",
+  "name": "Perform (wind instruments)",
+  "namePt": "Atuação (instrumentos de sopro)",
+  "parent": "perform",
+  "ability": "cha",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.bookkeeper",
+  "name": "Profession (bookkeeper)",
+  "namePt": "Profissão (contador)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.hunter",
+  "name": "Profession (hunter)",
+  "namePt": "Profissão (caçador)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.miner",
+  "name": "Profession (miner)",
+  "namePt": "Profissão (minerador)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.siege-engineer",
+  "name": "Profession (siege engineer)",
+  "namePt": "Profissão (engenheiro de cerco)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.apothecary",
+  "name": "Profession (apothecary)",
+  "namePt": "Profissão (boticário)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.boater",
+  "name": "Profession (boater)",
+  "namePt": "Profissão (barqueiro)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.cook",
+  "name": "Profession (cook)",
+  "namePt": "Profissão (cozinheiro)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.farmer",
+  "name": "Profession (farmer)",
+  "namePt": "Profissão (fazendeiro)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.fisherman",
+  "name": "Profession (fisherman)",
+  "namePt": "Profissão (pescador)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.guide",
+  "name": "Profession (guide)",
+  "namePt": "Profissão (guia)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.herbalist",
+  "name": "Profession (herbalist)",
+  "namePt": "Profissão (herbalista)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.innkeeper",
+  "name": "Profession (innkeeper)",
+  "namePt": "Profissão (estalajadeiro)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.sailor",
+  "name": "Profession (sailor)",
+  "namePt": "Profissão (marinheiro)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.scribe",
+  "name": "Profession (scribe)",
+  "namePt": "Profissão (escriba)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.stablehand",
+  "name": "Profession (stablehand)",
+  "namePt": "Profissão (cavalariço)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.tanner",
+  "name": "Profession (tanner)",
+  "namePt": "Profissão (curtidor)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.teamster",
+  "name": "Profession (teamster)",
+  "namePt": "Profissão (carroceiro)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "profession.woodcutter",
+  "name": "Profession (woodcutter)",
+  "namePt": "Profissão (lenhador)",
+  "parent": "profession",
+  "ability": "wis",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "ride",
+  "name": "Ride",
+  "namePt": "Cavalgar",
+  "ability": "dex",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "search",
+  "name": "Search",
+  "namePt": "Procurar",
+  "ability": "int",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "sense-motive",
+  "name": "Sense Motive",
+  "namePt": "Sentir Motivação",
+  "ability": "wis",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "sleight-of-hand",
+  "name": "Sleight of Hand",
+  "namePt": "Prestidigitação",
+  "ability": "dex",
+  "trainedOnly": true,
+  "armorCheck": true
+ },
+ {
+  "id": "spellcraft",
+  "name": "Spellcraft",
+  "namePt": "Identificar Magia",
+  "ability": "int",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "spot",
+  "name": "Spot",
+  "namePt": "Observar",
+  "ability": "wis",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "survival",
+  "name": "Survival",
+  "namePt": "Sobrevivência",
+  "ability": "wis",
+  "trainedOnly": false,
+  "armorCheck": false
+ },
+ {
+  "id": "swim",
+  "name": "Swim",
+  "namePt": "Natação",
+  "ability": "str",
+  "trainedOnly": false,
+  "armorCheck": true
+ },
+ {
+  "id": "tumble",
+  "name": "Tumble",
+  "namePt": "Acrobacia",
+  "ability": "dex",
+  "trainedOnly": true,
+  "armorCheck": true
+ },
+ {
+  "id": "use-magic-device",
+  "name": "Use Magic Device",
+  "namePt": "Usar Instrumento Mágico",
+  "ability": "cha",
+  "trainedOnly": true,
+  "armorCheck": false
+ },
+ {
+  "id": "use-rope",
+  "name": "Use Rope",
+  "namePt": "Usar Cordas",
+  "ability": "dex",
+  "trainedOnly": false,
+  "armorCheck": false
+ }
+]

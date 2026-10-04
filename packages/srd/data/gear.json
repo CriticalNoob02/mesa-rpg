@@ -1,0 +1,980 @@
+[
+ {
+  "id": "arrows-20",
+  "name": "Arrows (20)",
+  "cost": "1 gp",
+  "weight": 3
+ },
+ {
+  "id": "bolts-10",
+  "name": "Bolts (10)",
+  "cost": "1 gp",
+  "weight": 1
+ },
+ {
+  "id": "bolts-5",
+  "name": "Bolts (5)",
+  "cost": "1 gp",
+  "weight": 0
+ },
+ {
+  "id": "bolts-crossbow-10",
+  "name": "Bolts, crossbow (10)",
+  "cost": "1 gp",
+  "weight": 1
+ },
+ {
+  "id": "bullets-sling-10",
+  "name": "Bullets, sling (10)",
+  "cost": "1 sp",
+  "weight": 5
+ },
+ {
+  "id": "shuriken-5",
+  "name": "Shuriken (5)",
+  "cost": "1 gp",
+  "weight": 0.5
+ },
+ {
+  "id": "armor-spikes",
+  "name": "Armor spikes",
+  "cost": "+50 gp",
+  "weight": 10
+ },
+ {
+  "id": "gauntlet-locked",
+  "name": "Gauntlet, locked",
+  "cost": "8 gp",
+  "weight": 0
+ },
+ {
+  "id": "shield-spikes",
+  "name": "Shield spikes",
+  "cost": "+10 gp",
+  "weight": 5
+ },
+ {
+  "id": "acid-flask",
+  "name": "Acid (flask)",
+  "cost": "10 gp",
+  "weight": 1
+ },
+ {
+  "id": "alchemists-fire-flask",
+  "name": "Alchemist's fire (flask)",
+  "cost": "20 gp",
+  "weight": 1
+ },
+ {
+  "id": "alchemists-lab",
+  "name": "Alchemist's lab",
+  "cost": "500 gp",
+  "weight": 40
+ },
+ {
+  "id": "ale-gallon",
+  "name": "Ale, Gallon",
+  "cost": "2 sp",
+  "weight": 8
+ },
+ {
+  "id": "ale-mug",
+  "name": "Ale, Mug",
+  "cost": "4 cp",
+  "weight": 1
+ },
+ {
+  "id": "antitoxin-vial",
+  "name": "Antitoxin (vial)",
+  "cost": "50 gp",
+  "weight": 0
+ },
+ {
+  "id": "artisans-outfit",
+  "name": "Artisan's outfit",
+  "cost": "1 gp",
+  "weight": 4
+ },
+ {
+  "id": "artisans-tools",
+  "name": "Artisan's tools",
+  "cost": "5 gp",
+  "weight": 5
+ },
+ {
+  "id": "artisans-tools-masterwork",
+  "name": "Artisan's tools, masterwork",
+  "cost": "55 gp",
+  "weight": 5
+ },
+ {
+  "id": "backpack-empty",
+  "name": "Backpack (empty)",
+  "cost": "2 gp",
+  "weight": 2
+ },
+ {
+  "id": "banquet-per-person",
+  "name": "Banquet (per person)",
+  "cost": "10 gp",
+  "weight": 0
+ },
+ {
+  "id": "barding-large-creature",
+  "name": "Barding, Large creature",
+  "cost": "x4",
+  "weight": 2
+ },
+ {
+  "id": "barding-medium-creature",
+  "name": "Barding, Medium creature",
+  "cost": "x2",
+  "weight": 1
+ },
+ {
+  "id": "barrel-empty",
+  "name": "Barrel (empty)",
+  "cost": "2 gp",
+  "weight": 30
+ },
+ {
+  "id": "basket-empty",
+  "name": "Basket (empty)",
+  "cost": "4 sp",
+  "weight": 1
+ },
+ {
+  "id": "bedroll",
+  "name": "Bedroll",
+  "cost": "1 sp",
+  "weight": 5
+ },
+ {
+  "id": "bell",
+  "name": "Bell",
+  "cost": "1 gp",
+  "weight": 0
+ },
+ {
+  "id": "bit-and-bridle",
+  "name": "Bit and bridle",
+  "cost": "2 gp",
+  "weight": 1
+ },
+ {
+  "id": "blanket-winter",
+  "name": "Blanket, winter",
+  "cost": "5 sp",
+  "weight": 3
+ },
+ {
+  "id": "block-and-tackle",
+  "name": "Block and tackle",
+  "cost": "5 gp",
+  "weight": 5
+ },
+ {
+  "id": "bottle-wine-glass",
+  "name": "Bottle, wine, glass",
+  "cost": "2 gp",
+  "weight": 0
+ },
+ {
+  "id": "bread-per-loaf",
+  "name": "Bread, per loaf",
+  "cost": "2 cp",
+  "weight": 0.5
+ },
+ {
+  "id": "bucket-empty",
+  "name": "Bucket (empty)",
+  "cost": "5 sp",
+  "weight": 2
+ },
+ {
+  "id": "caltrops",
+  "name": "Caltrops",
+  "cost": "1 gp",
+  "weight": 2
+ },
+ {
+  "id": "candle",
+  "name": "Candle",
+  "cost": "1 cp",
+  "weight": 0
+ },
+ {
+  "id": "canvas-sq-yd",
+  "name": "Canvas (sq. yd.)",
+  "cost": "1 sp",
+  "weight": 1
+ },
+ {
+  "id": "carriage",
+  "name": "Carriage",
+  "cost": "100 gp",
+  "weight": 600
+ },
+ {
+  "id": "cart",
+  "name": "Cart",
+  "cost": "15 gp",
+  "weight": 200
+ },
+ {
+  "id": "case-map-or-scroll",
+  "name": "Case, map or scroll",
+  "cost": "1 gp",
+  "weight": 0.5
+ },
+ {
+  "id": "chain-10-ft",
+  "name": "Chain (10 ft.)",
+  "cost": "30 gp",
+  "weight": 2
+ },
+ {
+  "id": "chalk-1-piece",
+  "name": "Chalk, 1 piece",
+  "cost": "1 cp",
+  "weight": 0
+ },
+ {
+  "id": "cheese-hunk-of",
+  "name": "Cheese, hunk of",
+  "cost": "1 sp",
+  "weight": 0.5
+ },
+ {
+  "id": "chest-empty",
+  "name": "Chest (empty)",
+  "cost": "2 gp",
+  "weight": 25
+ },
+ {
+  "id": "clerics-vestments",
+  "name": "Cleric's vestments",
+  "cost": "5 gp",
+  "weight": 6
+ },
+ {
+  "id": "climbers-kit",
+  "name": "Climber's kit",
+  "cost": "80 gp",
+  "weight": 5
+ },
+ {
+  "id": "cold-weather-outfit",
+  "name": "Cold weather outfit",
+  "cost": "8 gp",
+  "weight": 7
+ },
+ {
+  "id": "courtiers-outfit",
+  "name": "Courtier's outfit",
+  "cost": "30 gp",
+  "weight": 6
+ },
+ {
+  "id": "crowbar",
+  "name": "Crowbar",
+  "cost": "2 gp",
+  "weight": 5
+ },
+ {
+  "id": "disguise-kit",
+  "name": "Disguise kit",
+  "cost": "50 gp",
+  "weight": 8
+ },
+ {
+  "id": "dog-guard",
+  "name": "Dog, guard",
+  "cost": "25 gp",
+  "weight": 0
+ },
+ {
+  "id": "dog-riding",
+  "name": "Dog, riding",
+  "cost": "150 gp",
+  "weight": 0
+ },
+ {
+  "id": "donkey-or-mule",
+  "name": "Donkey or mule",
+  "cost": "8 gp",
+  "weight": 0
+ },
+ {
+  "id": "entertainers-outfit",
+  "name": "Entertainer's outfit",
+  "cost": "3 gp",
+  "weight": 4
+ },
+ {
+  "id": "everburning-torch",
+  "name": "Everburning torch",
+  "cost": "110 gp",
+  "weight": 1
+ },
+ {
+  "id": "explorers-outfit",
+  "name": "Explorer's outfit",
+  "cost": "10 gp",
+  "weight": 8
+ },
+ {
+  "id": "feed-per-day",
+  "name": "Feed (per day)",
+  "cost": "5 cp",
+  "weight": 10
+ },
+ {
+  "id": "firewood-per-day",
+  "name": "Firewood (per day)",
+  "cost": "1 cp",
+  "weight": 20
+ },
+ {
+  "id": "fishhook",
+  "name": "Fishhook",
+  "cost": "1 sp",
+  "weight": 0
+ },
+ {
+  "id": "fishing-net-25-sq-ft",
+  "name": "Fishing net, 25 sq. ft.",
+  "cost": "4 gp",
+  "weight": 5
+ },
+ {
+  "id": "flask-empty",
+  "name": "Flask (empty)",
+  "cost": "3 cp",
+  "weight": 1
+ },
+ {
+  "id": "flint-and-steel",
+  "name": "Flint and steel",
+  "cost": "1 gp",
+  "weight": 0
+ },
+ {
+  "id": "galley",
+  "name": "Galley",
+  "cost": "30,000 gp",
+  "weight": 0
+ },
+ {
+  "id": "grappling-hook",
+  "name": "Grappling hook",
+  "cost": "1 gp",
+  "weight": 4
+ },
+ {
+  "id": "hammer",
+  "name": "Hammer",
+  "cost": "5 sp",
+  "weight": 2
+ },
+ {
+  "id": "healers-kit",
+  "name": "Healer's kit",
+  "cost": "50 gp",
+  "weight": 1
+ },
+ {
+  "id": "holly-and-mistletoe",
+  "name": "Holly and mistletoe",
+  "cost": "-",
+  "weight": 0
+ },
+ {
+  "id": "holy-symbol-silver",
+  "name": "Holy symbol, silver",
+  "cost": "25 gp",
+  "weight": 1
+ },
+ {
+  "id": "holy-symbol-wooden",
+  "name": "Holy symbol, wooden",
+  "cost": "1 gp",
+  "weight": 0
+ },
+ {
+  "id": "holy-water-flask",
+  "name": "Holy water (flask)",
+  "cost": "25 gp",
+  "weight": 1
+ },
+ {
+  "id": "horse-pony",
+  "name": "Horse, Pony",
+  "cost": "30 gp",
+  "weight": 0
+ },
+ {
+  "id": "horse-warhorse-heavy",
+  "name": "Horse, Warhorse, heavy",
+  "cost": "400 gp",
+  "weight": 0
+ },
+ {
+  "id": "horse-warhorse-light",
+  "name": "Horse, Warhorse, light",
+  "cost": "150 gp",
+  "weight": 0
+ },
+ {
+  "id": "horse-warpony",
+  "name": "Horse, Warpony",
+  "cost": "100 gp",
+  "weight": 0
+ },
+ {
+  "id": "horse-heavy",
+  "name": "Horse, heavy",
+  "cost": "200 gp",
+  "weight": 0
+ },
+ {
+  "id": "horse-light",
+  "name": "Horse, light",
+  "cost": "75 gp",
+  "weight": 0
+ },
+ {
+  "id": "hourglass",
+  "name": "Hourglass",
+  "cost": "25 gp",
+  "weight": 1
+ },
+ {
+  "id": "ink-1-oz-vial",
+  "name": "Ink (1 oz. vial)",
+  "cost": "8 gp",
+  "weight": 0
+ },
+ {
+  "id": "inkpen",
+  "name": "Inkpen",
+  "cost": "1 sp",
+  "weight": 0
+ },
+ {
+  "id": "inn-stay-per-day-common",
+  "name": "Inn stay (per day), Common",
+  "cost": "5 sp",
+  "weight": 0
+ },
+ {
+  "id": "inn-stay-per-day-good",
+  "name": "Inn stay (per day), Good",
+  "cost": "2 gp",
+  "weight": 0
+ },
+ {
+  "id": "inn-stay-per-day-poor",
+  "name": "Inn stay (per day), Poor",
+  "cost": "2 sp",
+  "weight": 0
+ },
+ {
+  "id": "jug-clay",
+  "name": "Jug, clay",
+  "cost": "3 cp",
+  "weight": 9
+ },
+ {
+  "id": "keelboat",
+  "name": "Keelboat",
+  "cost": "3,000 gp",
+  "weight": 0
+ },
+ {
+  "id": "ladder-10-foot",
+  "name": "Ladder, 10-foot",
+  "cost": "5 cp",
+  "weight": 20
+ },
+ {
+  "id": "lamp-common",
+  "name": "Lamp, common",
+  "cost": "1 sp",
+  "weight": 1
+ },
+ {
+  "id": "lantern-bullseye",
+  "name": "Lantern, bullseye",
+  "cost": "12 gp",
+  "weight": 3
+ },
+ {
+  "id": "lantern-hooded",
+  "name": "Lantern, hooded",
+  "cost": "7 gp",
+  "weight": 2
+ },
+ {
+  "id": "lock-amazing",
+  "name": "Lock, Amazing",
+  "cost": "150 gp",
+  "weight": 1
+ },
+ {
+  "id": "lock-average",
+  "name": "Lock, Average",
+  "cost": "40 gp",
+  "weight": 1
+ },
+ {
+  "id": "lock-good",
+  "name": "Lock, Good",
+  "cost": "80 gp",
+  "weight": 1
+ },
+ {
+  "id": "lock-very-simple",
+  "name": "Lock, Very simple",
+  "cost": "20 gp",
+  "weight": 1
+ },
+ {
+  "id": "longship",
+  "name": "Longship",
+  "cost": "10,000 gp",
+  "weight": 0
+ },
+ {
+  "id": "magnifying-glass",
+  "name": "Magnifying glass",
+  "cost": "100 gp",
+  "weight": 0
+ },
+ {
+  "id": "manacles",
+  "name": "Manacles",
+  "cost": "15 gp",
+  "weight": 2
+ },
+ {
+  "id": "manacles-masterwork",
+  "name": "Manacles, masterwork",
+  "cost": "50 gp",
+  "weight": 2
+ },
+ {
+  "id": "meals-per-day-common",
+  "name": "Meals (per day), Common",
+  "cost": "3 sp",
+  "weight": 0
+ },
+ {
+  "id": "meals-per-day-good",
+  "name": "Meals (per day), Good",
+  "cost": "5 sp",
+  "weight": 0
+ },
+ {
+  "id": "meals-per-day-poor",
+  "name": "Meals (per day), Poor",
+  "cost": "1 sp",
+  "weight": 0
+ },
+ {
+  "id": "meat-chunk-of",
+  "name": "Meat, chunk of",
+  "cost": "3 sp",
+  "weight": 0.5
+ },
+ {
+  "id": "mirror-small-steel",
+  "name": "Mirror, small steel",
+  "cost": "10 gp",
+  "weight": 0.5
+ },
+ {
+  "id": "monks-outfit",
+  "name": "Monk's outfit",
+  "cost": "5 gp",
+  "weight": 2
+ },
+ {
+  "id": "mug-tankard-clay",
+  "name": "Mug/Tankard, clay",
+  "cost": "2 cp",
+  "weight": 1
+ },
+ {
+  "id": "musical-instrument-common",
+  "name": "Musical instrument, common",
+  "cost": "5 gp",
+  "weight": 3
+ },
+ {
+  "id": "musical-instrument-masterwork",
+  "name": "Musical instrument, masterwork",
+  "cost": "100 gp",
+  "weight": 3
+ },
+ {
+  "id": "nobles-outfit",
+  "name": "Noble's outfit",
+  "cost": "75 gp",
+  "weight": 10
+ },
+ {
+  "id": "oar",
+  "name": "Oar",
+  "cost": "2 gp",
+  "weight": 10
+ },
+ {
+  "id": "oil-1-pint-flask",
+  "name": "Oil (1-pint flask)",
+  "cost": "1 sp",
+  "weight": 1
+ },
+ {
+  "id": "paper-sheet",
+  "name": "Paper (sheet)",
+  "cost": "4 sp",
+  "weight": 0
+ },
+ {
+  "id": "parchment-sheet",
+  "name": "Parchment (sheet)",
+  "cost": "2 sp",
+  "weight": 0
+ },
+ {
+  "id": "peasants-outfit",
+  "name": "Peasant's outfit",
+  "cost": "1 sp",
+  "weight": 2
+ },
+ {
+  "id": "pick-miners",
+  "name": "Pick, miner's",
+  "cost": "3 gp",
+  "weight": 10
+ },
+ {
+  "id": "pitcher-clay",
+  "name": "Pitcher, clay",
+  "cost": "2 cp",
+  "weight": 5
+ },
+ {
+  "id": "piton",
+  "name": "Piton",
+  "cost": "1 sp",
+  "weight": 0.5
+ },
+ {
+  "id": "pole-10-foot",
+  "name": "Pole, 10-foot",
+  "cost": "2 sp",
+  "weight": 8
+ },
+ {
+  "id": "pot-iron",
+  "name": "Pot, iron",
+  "cost": "5 sp",
+  "weight": 10
+ },
+ {
+  "id": "pouch-belt-empty",
+  "name": "Pouch, belt (empty)",
+  "cost": "1 gp",
+  "weight": 0.5
+ },
+ {
+  "id": "ram-portable",
+  "name": "Ram, portable",
+  "cost": "10 gp",
+  "weight": 20
+ },
+ {
+  "id": "rations-trail-per-day",
+  "name": "Rations, trail (per day)",
+  "cost": "5 sp",
+  "weight": 1
+ },
+ {
+  "id": "rope-hempen-50-ft",
+  "name": "Rope, hempen (50 ft.)",
+  "cost": "1 gp",
+  "weight": 10
+ },
+ {
+  "id": "rope-silk-50-ft",
+  "name": "Rope, silk (50 ft.)",
+  "cost": "10 gp",
+  "weight": 5
+ },
+ {
+  "id": "rowboat",
+  "name": "Rowboat",
+  "cost": "50 gp",
+  "weight": 100
+ },
+ {
+  "id": "royal-outfit",
+  "name": "Royal outfit",
+  "cost": "200 gp",
+  "weight": 15
+ },
+ {
+  "id": "sack-empty",
+  "name": "Sack (empty)",
+  "cost": "1 sp",
+  "weight": 0.5
+ },
+ {
+  "id": "saddle-exotic-military",
+  "name": "Saddle, Exotic, Military",
+  "cost": "60 gp",
+  "weight": 40
+ },
+ {
+  "id": "saddle-exotic-pack",
+  "name": "Saddle, Exotic, Pack",
+  "cost": "15 gp",
+  "weight": 20
+ },
+ {
+  "id": "saddle-exotic-riding",
+  "name": "Saddle, Exotic, Riding",
+  "cost": "30 gp",
+  "weight": 30
+ },
+ {
+  "id": "saddle-military",
+  "name": "Saddle, Military",
+  "cost": "20 gp",
+  "weight": 30
+ },
+ {
+  "id": "saddle-pack",
+  "name": "Saddle, Pack",
+  "cost": "5 gp",
+  "weight": 15
+ },
+ {
+  "id": "saddle-riding",
+  "name": "Saddle, Riding",
+  "cost": "10 gp",
+  "weight": 25
+ },
+ {
+  "id": "saddlebags",
+  "name": "Saddlebags",
+  "cost": "4 gp",
+  "weight": 8
+ },
+ {
+  "id": "sailing-ship",
+  "name": "Sailing ship",
+  "cost": "10,000 gp",
+  "weight": 0
+ },
+ {
+  "id": "scale-merchants",
+  "name": "Scale, merchant's",
+  "cost": "2 gp",
+  "weight": 1
+ },
+ {
+  "id": "scholars-outfit",
+  "name": "Scholar's outfit",
+  "cost": "5 gp",
+  "weight": 6
+ },
+ {
+  "id": "sealing-wax",
+  "name": "Sealing wax",
+  "cost": "1 gp",
+  "weight": 1
+ },
+ {
+  "id": "sewing-needle",
+  "name": "Sewing needle",
+  "cost": "5 sp",
+  "weight": 0
+ },
+ {
+  "id": "signal-whistle",
+  "name": "Signal whistle",
+  "cost": "8 sp",
+  "weight": 0
+ },
+ {
+  "id": "signet-ring",
+  "name": "Signet ring",
+  "cost": "5 gp",
+  "weight": 0
+ },
+ {
+  "id": "sled",
+  "name": "Sled",
+  "cost": "20 gp",
+  "weight": 300
+ },
+ {
+  "id": "sledge",
+  "name": "Sledge",
+  "cost": "1 gp",
+  "weight": 10
+ },
+ {
+  "id": "smokestick",
+  "name": "Smokestick",
+  "cost": "20 gp",
+  "weight": 0.5
+ },
+ {
+  "id": "soap-per-lb",
+  "name": "Soap (per lb.)",
+  "cost": "5 sp",
+  "weight": 1
+ },
+ {
+  "id": "spade-or-shovel",
+  "name": "Spade or shovel",
+  "cost": "2 gp",
+  "weight": 8
+ },
+ {
+  "id": "spell-component-pouch",
+  "name": "Spell component pouch",
+  "cost": "5 gp",
+  "weight": 2
+ },
+ {
+  "id": "spellbook-wizards-blank",
+  "name": "Spellbook, wizard's (blank)",
+  "cost": "15 gp",
+  "weight": 3
+ },
+ {
+  "id": "spyglass",
+  "name": "Spyglass",
+  "cost": "1,000 gp",
+  "weight": 1
+ },
+ {
+  "id": "stabling-per-day",
+  "name": "Stabling (per day)",
+  "cost": "5 sp",
+  "weight": 0
+ },
+ {
+  "id": "sunrod",
+  "name": "Sunrod",
+  "cost": "2 gp",
+  "weight": 1
+ },
+ {
+  "id": "tanglefoot-bag",
+  "name": "Tanglefoot bag",
+  "cost": "50 gp",
+  "weight": 4
+ },
+ {
+  "id": "tent",
+  "name": "Tent",
+  "cost": "10 gp",
+  "weight": 20
+ },
+ {
+  "id": "thieves-tools",
+  "name": "Thieves' tools",
+  "cost": "30 gp",
+  "weight": 1
+ },
+ {
+  "id": "thieves-tools-masterwork",
+  "name": "Thieves' tools, masterwork",
+  "cost": "100 gp",
+  "weight": 2
+ },
+ {
+  "id": "thunderstone",
+  "name": "Thunderstone",
+  "cost": "30 gp",
+  "weight": 1
+ },
+ {
+  "id": "tindertwig",
+  "name": "Tindertwig",
+  "cost": "1 gp",
+  "weight": 0
+ },
+ {
+  "id": "tool-masterwork",
+  "name": "Tool, masterwork",
+  "cost": "50 gp",
+  "weight": 1
+ },
+ {
+  "id": "torch",
+  "name": "Torch",
+  "cost": "1 cp",
+  "weight": 1
+ },
+ {
+  "id": "travelers-outfit",
+  "name": "Traveler's outfit",
+  "cost": "1 gp",
+  "weight": 5
+ },
+ {
+  "id": "vial-ink-or-potion",
+  "name": "Vial, ink or potion",
+  "cost": "1 gp",
+  "weight": 0.1
+ },
+ {
+  "id": "wagon",
+  "name": "Wagon",
+  "cost": "35 gp",
+  "weight": 400
+ },
+ {
+  "id": "warship",
+  "name": "Warship",
+  "cost": "25,000 gp",
+  "weight": 0
+ },
+ {
+  "id": "water-clock",
+  "name": "Water clock",
+  "cost": "1,000 gp",
+  "weight": 200
+ },
+ {
+  "id": "waterskin",
+  "name": "Waterskin",
+  "cost": "1 gp",
+  "weight": 4
+ },
+ {
+  "id": "whetstone",
+  "name": "Whetstone",
+  "cost": "2 cp",
+  "weight": 1
+ },
+ {
+  "id": "wine-common-pitcher",
+  "name": "Wine, Common (pitcher)",
+  "cost": "2 sp",
+  "weight": 6
+ },
+ {
+  "id": "wine-fine-bottle",
+  "name": "Wine, Fine (bottle)",
+  "cost": "10 gp",
+  "weight": 1
+ }
+]
