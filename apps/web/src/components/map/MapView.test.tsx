@@ -69,7 +69,7 @@ const scene: SceneView = {
 
 const table = (role: "GM" | "PLAYER", s: SceneView | null = scene): TableState => ({
   me: { id: "u1", nickname: "X", role },
-  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345" },
+  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345", startLevel: 1, hpMode: "average" },
   players: [],
   log: [],
   characters: [],
@@ -80,6 +80,7 @@ const table = (role: "GM" | "PLAYER", s: SceneView | null = scene): TableState =
   combat: null,
   activeAudio: null,
   handouts: [],
+  abilityRoll: null,
 });
 
 function setup(t: TableState, reply: unknown = { ok: true }) {
@@ -192,6 +193,7 @@ describe("MapView narração", () => {
           classes: [],
           updatedAt: "",
           hp: { current: 4, max: 8 },
+          xp: 0,
         },
       ],
       combat: {
@@ -219,7 +221,7 @@ describe("MapView narração", () => {
     });
     expect(screen.getByRole("status")).toHaveTextContent("Acertou Goblin: 7 de dano!");
     await act(async () => fireEvent.click(screen.getByRole("button", { name: "Encerrar turno" })));
-    expect(emit).toHaveBeenCalledWith("combat:next", {});
+    expect(emit).toHaveBeenCalledWith("combat:next", { round: 2, tokenId: "p1" });
   });
 
   it("fora da vez: só mostra de quem é a vez, sem alvos", () => {

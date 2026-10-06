@@ -1,13 +1,24 @@
 "use client";
 
 import type { TableState } from "@mesa/protocol";
-import { ChevronRight, Map as MapIcon, Skull, Swords, UserPlus } from "lucide-react";
+import {
+  ChevronRight,
+  Dices,
+  Map as MapIcon,
+  Skull,
+  Swords,
+  TrendingUp,
+  UserPlus,
+} from "lucide-react";
 import { type ReactNode, useState } from "react";
+import { party, xpProgress } from "@/lib/party";
 import { CombatPanel } from "./CombatPanel";
+import { EncounterPanel } from "./EncounterPanel";
 import { MonsterPicker } from "./MonsterPicker";
+import { ProgressionPanel } from "./ProgressionPanel";
 import { PlaceTokens, ScenesPanel } from "./ScenesPanel";
 
-type SectionKey = "combat" | "monsters" | "tokens" | "scene";
+type SectionKey = "combat" | "encounter" | "monsters" | "party" | "tokens" | "scene";
 const STORAGE = "mesa:gm-sections";
 
 function readOpen(): Set<SectionKey> {
@@ -18,7 +29,7 @@ function readOpen(): Set<SectionKey> {
   return new Set(["combat", "monsters"]);
 }
 
-/** Tudo do mestre numa coluna: combate, monstros, tokens e cena, em seções recolhíveis. */
+/** Tudo do mestre numa coluna: combate, encontros, monstros, grupo, tokens e cena, em seções recolhíveis. */
 export function GmPanel({ table }: { table: TableState }) {
   const [open, setOpen] = useState<Set<SectionKey>>(readOpen);
   const toggle = (k: SectionKey) =>
@@ -31,6 +42,7 @@ export function GmPanel({ table }: { table: TableState }) {
       return next;
     });
   const sceneName = table.scenes.find((s) => s.id === table.scene?.id)?.name;
+  const group = party(table);
 
   const sections: {
     key: SectionKey;
@@ -47,10 +59,24 @@ export function GmPanel({ table }: { table: TableState }) {
       body: <CombatPanel table={table} bare />,
     },
     {
+      key: "encounter",
+      title: "Gerar encontro",
+      hint: `grupo nível ${group.level}`,
+      icon: <Dices size={15} />,
+      body: <EncounterPanel table={table} />,
+    },
+    {
       key: "monsters",
-      title: "Monstros prontos",
+      title: "Monstros e NPCs prontos",
       icon: <Skull size={15} />,
       body: <MonsterPicker table={table} />,
+    },
+    {
+      key: "party",
+      title: "Grupo e experiência",
+      hint: group.members.some((c) => xpReady(c)) ? "alguém pode subir" : undefined,
+      icon: <TrendingUp size={15} />,
+      body: <ProgressionPanel table={table} />,
     },
     {
       key: "tokens",
@@ -102,3 +128,5 @@ export function GmPanel({ table }: { table: TableState }) {
     </div>
   );
 }
+
+const xpReady = (c: Parameters<typeof xpProgress>[0]) => xpProgress(c).canLevelUp;

@@ -1,6 +1,6 @@
 "use client";
 
-import { deriveCharacter, quickCharacter } from "@mesa/rules";
+import { deriveCharacter, quickCharacter, quickLevelUp } from "@mesa/rules";
 import { type ClassId, type Spell, SRD } from "@mesa/srd";
 import clsx from "clsx";
 import {
@@ -66,6 +66,8 @@ export function QuickCreator() {
   const [error, setError] = useState<string | null>(null);
   const isCaster = !!SRD.classes.find((c) => c.id === classId)?.casting;
   const back = `/mesa/${table.campaign.id}`;
+  // Pronto no nível em que a campanha começa (o servidor define os PV dos níveis extras).
+  const level = table.campaign.startLevel;
 
   useEffect(() => {
     if (isCaster && !spells) import("@mesa/srd/spells").then((m) => setSpells(m.SPELLS));
@@ -73,9 +75,10 @@ export function QuickCreator() {
 
   const preview = useMemo(() => {
     if (isCaster && !spells) return null;
-    const base = quickCharacter({ name: name || "Sem nome", raceId, classId }, SRD, spells ?? []);
+    let base = quickCharacter({ name: name || "Sem nome", raceId, classId }, SRD, spells ?? []);
+    while (base.levels.length < level) base = quickLevelUp(base, SRD, spells ?? [], classId);
     return { base, derived: deriveCharacter(base, [], SRD) };
-  }, [name, raceId, classId, spells, isCaster]);
+  }, [name, raceId, classId, spells, isCaster, level]);
 
   async function create() {
     if (!preview || !name.trim()) return;
@@ -202,10 +205,13 @@ export function QuickCreator() {
             <>
               <p className="text-sm text-muted">
                 {SRD.races.find((r) => r.id === raceId)?.namePt}{" "}
-                {SRD.classes.find((c) => c.id === classId)?.namePt} 1
+                {SRD.classes.find((c) => c.id === classId)?.namePt} {level}
               </p>
               <dl className="grid grid-cols-4 gap-2 text-center">
-                <Stat label="PV" value={String(d.hp.total)} />
+                <Stat
+                  label="PV"
+                  value={`${level > 1 && table.campaign.hpMode === "roll" ? "≈" : ""}${d.hp.total}`}
+                />
                 <Stat label="CA" value={String(d.ac.total.total)} />
                 <Stat label="Inic." value={signed(d.initiative.total)} />
                 <Stat label="Desl." value={meters(d.speed.total)} />

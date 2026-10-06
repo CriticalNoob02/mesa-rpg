@@ -1,4 +1,5 @@
 import type {
+  CampaignSettings,
   EffectView,
   LogEntryView,
   Me,
@@ -10,7 +11,7 @@ import type {
 } from "@mesa/protocol";
 import type { CharacterBase } from "@mesa/rules";
 
-export type CampaignRecord = { id: string; name: string; inviteCode: string };
+export type CampaignRecord = { id: string; name: string; inviteCode: string } & CampaignSettings;
 export type PlayerRecord = Me & { campaignId: string };
 
 export type CharacterRecord = {
@@ -19,6 +20,7 @@ export type CharacterRecord = {
   ownerId: string;
   name: string;
   base: CharacterBase;
+  xp: number;
   updatedAt: Date;
 };
 
@@ -53,7 +55,8 @@ export type CombatRecord = {
   sceneId: string;
   round: number;
   turnIndex: number;
-  order: { tokenId: string; initiative: number }[];
+  /** `delayed`: adiou e volta a agir sem recomeçar o turno. */
+  order: { tokenId: string; initiative: number; delayed?: boolean }[];
 };
 
 export type ScenePatch = Partial<Omit<SceneRecord, "id" | "campaignId">>;
@@ -73,6 +76,7 @@ export interface Store {
   }): Promise<{ campaign: CampaignRecord; gm: PlayerRecord }>;
   findCampaign(id: string): Promise<CampaignRecord | null>;
   findCampaignByInvite(inviteCode: string): Promise<CampaignRecord | null>;
+  updateCampaignSettings(id: string, patch: Partial<CampaignSettings>): Promise<CampaignRecord>;
   addPlayer(input: {
     campaignId: string;
     nickname: string;
@@ -82,6 +86,8 @@ export interface Store {
   findPlayerByTokenHash(tokenHash: string): Promise<PlayerRecord | null>;
   listPlayers(campaignId: string): Promise<PlayerRecord[]>;
   touchPlayer(id: string): Promise<void>;
+  getAbilityRoll(playerId: string): Promise<number[] | null>;
+  setAbilityRoll(playerId: string, scores: number[] | null): Promise<void>;
   addLog(entry: NewLogEntry): Promise<LogEntryView>;
   /** Últimas `limit` entradas que o participante pode ver, da mais antiga à mais nova. */
   listLog(campaignId: string, viewer: Me, limit: number): Promise<LogEntryView[]>;
@@ -91,7 +97,7 @@ export interface Store {
   createCharacter(input: Omit<CharacterRecord, "id" | "updatedAt">): Promise<CharacterRecord>;
   updateCharacter(
     id: string,
-    input: { name: string; base: CharacterBase },
+    input: { name: string; base: CharacterBase; xp?: number },
   ): Promise<CharacterRecord>;
   /** Apaga também os tokens do personagem. */
   deleteCharacter(id: string): Promise<void>;

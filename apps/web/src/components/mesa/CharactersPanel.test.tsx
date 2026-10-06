@@ -17,7 +17,7 @@ const base = {
 
 const table = (withBase: boolean): TableState => ({
   me: { id: "p1", nickname: "Ana", role: "PLAYER" },
-  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345" },
+  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345", startLevel: 1, hpMode: "average" },
   players: [],
   log: [],
   characters: [
@@ -30,6 +30,7 @@ const table = (withBase: boolean): TableState => ({
       classes: [{ classId: "fighter", level: 1 }],
       updatedAt: "2026-10-02T20:00:00.000Z",
       hp: { current: 10, max: 10 },
+      xp: 0,
       ...(withBase ? { base } : {}),
     },
   ],
@@ -40,6 +41,7 @@ const table = (withBase: boolean): TableState => ({
   combat: null,
   activeAudio: null,
   handouts: [],
+  abilityRoll: null,
 });
 
 const renderPanel = (t: TableState) =>

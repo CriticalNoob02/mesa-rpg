@@ -10,6 +10,12 @@ afterEach(() => srv?.close());
 const next = <T>(socket: Client, event: "combat" | "effects" | "token:update") =>
   new Promise<T>((resolve) => (socket.once as any)(event, resolve));
 
+/** Turno atual (o que o cliente manda no "próximo turno"). */
+async function turn(t: { ana: { state: { campaign: { id: string } } } }) {
+  const c = (await srv.store.getCombat(t.ana.state.campaign.id))!;
+  return { round: c.round, tokenId: c.order[c.turnIndex]?.tokenId ?? null };
+}
+
 /**
  * Mesa com cena, Tordek (Ana) e um goblin com ficha. O dado do servidor segue
  * uma fila controlada pelo teste (o resto rola 10).
@@ -18,6 +24,7 @@ async function table() {
   const queue: number[] = [];
   srv = await startServer({
     rng: (sides) => (queue.length ? queue.shift()! : Math.min(10, sides)),
+    socketBurst: 50,
   });
   const gmS = await srv.createCampaign("Mesa", "Mestre");
   const anaS = await srv.join(gmS.campaignId, "Ana");
@@ -101,13 +108,13 @@ describe("combate", () => {
     });
     t.queue.push(18, 2);
     await emit(t.gm.socket, "combat:start", { sceneId: t.sceneId });
-    expect(await emit(t.ana.socket, "combat:next", {})).toEqual({ ok: true }); // vez de Tordek → Goblin
-    expect(await emit(t.ana.socket, "combat:next", {})).toEqual({
+    expect(await emit(t.ana.socket, "combat:next", await turn(t))).toEqual({ ok: true }); // vez de Tordek → Goblin
+    expect(await emit(t.ana.socket, "combat:next", await turn(t))).toEqual({
       ok: false,
       error: "Não é a sua vez.",
     });
     const view = next<CombatView>(t.ana.socket, "combat");
-    await emit(t.gm.socket, "combat:next", {});
+    await emit(t.gm.socket, "combat:next", await turn(t));
     expect(await view).toMatchObject({ round: 2, currentTokenId: t.tordekId });
     expect(srv.store.log.some((e) => (e.payload as any).text === "Rodada 2.")).toBe(true);
     expect(await emit(t.gm.socket, "combat:end", {})).toEqual({ ok: true });
@@ -122,7 +129,7 @@ describe("combate", () => {
       ok: false,
       error: "Não é a sua vez.",
     });
-    await emit(t.gm.socket, "combat:next", {});
+    await emit(t.gm.socket, "combat:next", await turn(t));
     // Exausto: anda metade (3 m = 2 quadrados) e não corre: limite 4.
     const exhausted = SRD.conditions.find((c) => c.key === "exhausted")!;
     await emit(t.gm.socket, "effect:apply", {
@@ -153,8 +160,8 @@ describe("combate", () => {
     t.queue.push(18, 2);
     await emit(t.gm.socket, "combat:start", { sceneId: t.sceneId });
     await emit(t.ana.socket, "token:move", { id: t.tordekId, x: 2, y: 0 });
-    await emit(t.gm.socket, "combat:next", {});
-    await emit(t.gm.socket, "combat:next", {});
+    await emit(t.gm.socket, "combat:next", await turn(t));
+    await emit(t.gm.socket, "combat:next", await turn(t));
     expect((await srv.store.findToken(t.tordekId))!.moveSpent).toBe(0);
   });
 
@@ -166,19 +173,119 @@ describe("combate", () => {
     let c = (await srv.store.getCombat(t.ana.state.campaign.id))!;
     expect(c.order.map((o) => o.tokenId)).toEqual([t.goblinId, t.tordekId]);
     expect(c.order[c.turnIndex]!.tokenId).toBe(t.tordekId); // a vez continua com quem estava
+    // Token novo na cena do combate entra sozinho, com iniciativa rolada.
+    t.queue.push(20);
     const orc: any = await emit(t.gm.socket, "token:create", {
       sceneId: t.sceneId,
       name: "Orc",
       x: 8,
       y: 8,
     });
-    t.queue.push(20);
-    await emit(t.gm.socket, "combat:add", { tokenId: orc.id });
     c = (await srv.store.getCombat(t.ana.state.campaign.id))!;
     expect(c.order.map((o) => o.initiative)).toEqual([30, 20, 19]);
+    // Tirado pelo mestre, volta com combat:add.
+    await emit(t.gm.socket, "combat:remove", { tokenId: orc.id });
+    t.queue.push(5);
+    expect(await emit(t.gm.socket, "combat:add", { tokenId: orc.id })).toEqual({ ok: true });
+    c = (await srv.store.getCombat(t.ana.state.campaign.id))!;
+    expect(c.order.map((o) => o.initiative)).toEqual([30, 19, 5]);
     await emit(t.gm.socket, "token:delete", { id: orc.id });
     c = (await srv.store.getCombat(t.ana.state.campaign.id))!;
     expect(c.order).toHaveLength(2);
+  });
+});
+
+describe("turno seguro e adiar", () => {
+  it("clique atrasado não passa dois turnos", async () => {
+    const t = await table();
+    t.queue.push(18, 2);
+    await emit(t.gm.socket, "combat:start", { sceneId: t.sceneId });
+    const stale = await turn(t);
+    expect(await emit(t.ana.socket, "combat:next", stale)).toEqual({ ok: true });
+    expect(await emit(t.gm.socket, "combat:next", stale)).toEqual({
+      ok: false,
+      error: "O turno já passou.",
+    });
+    expect((await turn(t)).tokenId).toBe(t.goblinId);
+  });
+
+  it("adiar: age depois do próximo, sem recomeçar o turno", async () => {
+    const t = await table();
+    t.queue.push(18, 2);
+    await emit(t.gm.socket, "combat:start", { sceneId: t.sceneId });
+    await emit(t.ana.socket, "token:move", { id: t.tordekId, x: 2, y: 0 });
+    expect(await emit(t.ana.socket, "combat:delay", await turn(t))).toEqual({ ok: true });
+    let c = (await srv.store.getCombat(t.ana.state.campaign.id))!;
+    expect(c.order.map((o) => o.tokenId)).toEqual([t.goblinId, t.tordekId]);
+    expect(c.order[1]).toMatchObject({ initiative: c.order[0]!.initiative, delayed: true });
+    expect((await turn(t)).tokenId).toBe(t.goblinId);
+    expect(
+      srv.store.log.some((e) => (e.payload as any).text === "Tordek adia e age depois de Goblin."),
+    ).toBe(true);
+    // Último da rodada não adia.
+    await emit(t.gm.socket, "combat:next", await turn(t));
+    expect((await turn(t)).tokenId).toBe(t.tordekId);
+    expect((await srv.store.findToken(t.tordekId))!.moveSpent).toBe(2); // turno continua
+    c = (await srv.store.getCombat(t.ana.state.campaign.id))!;
+    expect(c.order[1]!.delayed).toBeUndefined();
+    expect(await emit(t.ana.socket, "combat:delay", await turn(t))).toMatchObject({ ok: false });
+  });
+
+  it("personagem que chega no meio do combate entra na ordem", async () => {
+    const t = await table();
+    t.queue.push(18, 2);
+    await emit(t.gm.socket, "combat:start", { sceneId: t.sceneId });
+    const lidda: any = await emit(t.ana.socket, "character:save", {
+      base: tordek({ name: "Lidda" }),
+    });
+    t.queue.push(11);
+    await emit(t.ana.socket, "token:create", {
+      sceneId: t.sceneId,
+      characterId: lidda.id,
+      x: 1,
+      y: 1,
+    });
+    const c = (await srv.store.getCombat(t.ana.state.campaign.id))!;
+    expect(c.order).toHaveLength(3);
+    expect(c.order[c.turnIndex]!.tokenId).toBe(t.tordekId);
+  });
+});
+
+describe("NPCs prontos", () => {
+  it("modelo de classe no nível pedido e monstro do SRD guardam o ND", async () => {
+    const t = await table();
+    const npc: any = await emit(t.gm.socket, "token:create", {
+      sceneId: t.sceneId,
+      npc: { classId: "fighter", raceId: "human", level: 3 },
+      x: 9,
+      y: 9,
+    });
+    const tok = (await srv.store.findToken(npc.id))!;
+    expect(tok.name).toBe("Guerreiro humano 3");
+    expect(tok.stats).toMatchObject({ cr: "3" });
+    expect(tok.stats!.hp).toBeGreaterThan(20);
+    const again: any = await emit(t.gm.socket, "token:create", {
+      sceneId: t.sceneId,
+      npc: { classId: "fighter", raceId: "human", level: 3 },
+      x: 9,
+      y: 8,
+    });
+    expect((await srv.store.findToken(again.id))!.name).toBe("Guerreiro humano 3 (2)");
+    const gob: any = await emit(t.gm.socket, "token:create", {
+      sceneId: t.sceneId,
+      monsterId: "goblin-1st-level-warrior",
+      x: 8,
+      y: 8,
+    });
+    expect((await srv.store.findToken(gob.id))!.stats?.cr).toBe("1/3");
+    expect(
+      await emit(t.ana.socket, "token:create", {
+        sceneId: t.sceneId,
+        npc: { classId: "fighter", raceId: "human", level: 3 },
+        x: 1,
+        y: 1,
+      }),
+    ).toMatchObject({ ok: false });
   });
 });
 
@@ -197,9 +304,9 @@ describe("efeitos", () => {
       casterTokenId: t.tordekId,
     });
     expect((await got)[0]).toMatchObject({ sourceName: "Bênção", roundsLeft: 1 });
-    await emit(t.gm.socket, "combat:next", {}); // goblin
+    await emit(t.gm.socket, "combat:next", await turn(t)); // goblin
     expect(srv.store.effects).toHaveLength(1);
-    await emit(t.gm.socket, "combat:next", {}); // volta pro Tordek: expira
+    await emit(t.gm.socket, "combat:next", await turn(t)); // volta pro Tordek: expira
     expect(srv.store.effects).toHaveLength(0);
     expect(srv.store.log.some((e) => (e.payload as any).text === "Bênção acabou em Tordek.")).toBe(
       true,

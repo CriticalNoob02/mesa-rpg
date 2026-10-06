@@ -36,7 +36,7 @@ const rat: TokenView = { ...goblin, id: "t3", name: "Rato", stats: null };
 
 const table: TableState = {
   me: { id: "gm", nickname: "Mestre", role: "GM" },
-  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345" },
+  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345", startLevel: 1, hpMode: "average" },
   players: [],
   log: [],
   characters: [],
@@ -71,6 +71,7 @@ const table: TableState = {
   combat: null,
   activeAudio: null,
   handouts: [],
+  abilityRoll: null,
 };
 
 function setup(token: TokenView, reply: unknown = { ok: true, hit: true, damage: 7 }) {

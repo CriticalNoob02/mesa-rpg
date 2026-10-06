@@ -6,7 +6,13 @@ import type {
   ServerToClientEvents,
 } from "@mesa/protocol";
 import type { Server } from "socket.io";
-import type { CharacterRecord, PlayerRecord, Store, TokenRecord } from "../store/types";
+import type {
+  CampaignRecord,
+  CharacterRecord,
+  PlayerRecord,
+  Store,
+  TokenRecord,
+} from "../store/types";
 import { toCharacterView } from "./characters";
 import {
   canSeeToken,
@@ -116,6 +122,14 @@ export class Hub {
         "character:upsert",
         toCharacterView(c, players, { id: c.ownerId, nickname: "", role: "GM" }),
       );
+  }
+
+  publishCampaign(campaign: CampaignRecord) {
+    this.io.to(rooms.campaign(campaign.id)).emit("campaign", campaign);
+  }
+
+  publishAbilityRoll(playerId: string, scores: number[] | null) {
+    this.io.to(rooms.player(playerId)).emit("abilityRoll", scores);
   }
 
   publishCharacterRemoved(campaignId: string, id: string) {

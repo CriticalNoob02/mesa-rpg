@@ -1,5 +1,6 @@
 import type {
   ActiveAudio,
+  CampaignView,
   CharacterView,
   CombatView,
   EffectView,
@@ -55,6 +56,8 @@ type MesaStore = {
   removeToken: (input: { id: string; sceneId: string }) => void;
   setEffects: (effects: EffectView[]) => void;
   setCombat: (combat: CombatView | null) => void;
+  setCampaign: (campaign: CampaignView) => void;
+  setAbilityRoll: (scores: number[] | null) => void;
   reset: () => void;
 };
 
@@ -89,6 +92,8 @@ export const useMesa = create<MesaStore>((set) => {
       ),
     setEffects: (effects) => patch(() => ({ effects })),
     setCombat: (combat) => patch(() => ({ combat })),
+    setCampaign: (campaign) => patch(() => ({ campaign })),
+    setAbilityRoll: (abilityRoll) => patch(() => ({ abilityRoll })),
     reset: () => set({ status: "connecting", table: null }),
   };
 });

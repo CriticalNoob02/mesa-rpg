@@ -2,10 +2,12 @@
 
 import type { TableState } from "@mesa/protocol";
 import clsx from "clsx";
-import { Flag, Hourglass, Play, Plus, SkipForward, Swords, X } from "lucide-react";
+import { Clock, Flag, Hourglass, Play, Plus, SkipForward, Swords, X } from "lucide-react";
 import { useState } from "react";
+import { firstFreeCell } from "@/components/map/geometry";
 import { roundsLabel } from "@/lib/effects";
 import { useMesaAction } from "@/lib/MesaContext";
+import { party } from "@/lib/party";
 
 /** Iniciativa, rodada e turno. Mestre conduz; o dono do combatente da vez encerra o turno. */
 export function CombatPanel({ table, bare }: { table: TableState; bare?: boolean }) {
@@ -23,6 +25,47 @@ export function CombatPanel({ table, bare }: { table: TableState; bare?: boolean
 
   const current = combat?.currentTokenId ? tokens.get(combat.currentTokenId) : undefined;
   const myTurn = !!current && current.ownerId === table.me.id;
+  const turn = combat ? { round: combat.round, tokenId: combat.currentTokenId } : null;
+  const isLast = !!combat && combat.order.at(-1)?.tokenId === combat.currentTokenId;
+  // Personagens do grupo sem token na cena (do combate, ou a aberta antes de começar).
+  const fightScene = combat ? (combat.sceneId === scene?.id ? scene : null) : scene;
+  const missing =
+    isGm && fightScene
+      ? party(table).members.filter((c) => !fightScene.tokens.some((t) => t.characterId === c.id))
+      : [];
+  async function place(characterId: string) {
+    if (!fightScene) return;
+    await run(
+      send("token:create", {
+        sceneId: fightScene.id,
+        characterId,
+        ...firstFreeCell(fightScene, 1),
+      }),
+    );
+  }
+  const missingList = missing.length > 0 && (
+    <div className="mt-3 rounded-md border border-dashed border-line p-2">
+      <p className="mb-1 text-xs text-muted">
+        Sem token no mapa{combat ? " (entram na ordem ao colocar)" : ""}:
+      </p>
+      <ul className="flex flex-wrap gap-1">
+        {missing.map((c) => (
+          <li key={c.id}>
+            <button
+              type="button"
+              onClick={() => place(c.id)}
+              title={`Colocar ${c.name} no mapa`}
+              aria-label={`Colocar ${c.name} no mapa`}
+              className="flex items-center gap-1 rounded-full border border-line px-2 py-0.5 text-xs text-muted hover:text-accent"
+            >
+              <Plus size={11} /> {c.name}
+              <span className="text-faint">({c.ownerName})</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
   const outside = scene
     ? scene.tokens.filter((t) => !combat?.order.some((o) => o.tokenId === t.id))
     : [];
@@ -56,6 +99,7 @@ export function CombatPanel({ table, bare }: { table: TableState; bare?: boolean
                 <Play size={14} /> Iniciar combate em {scene.name}
               </button>
               <p className="text-xs text-faint">Rola a iniciativa de todos os tokens da cena.</p>
+              {missingList}
               <button
                 type="button"
                 onClick={() => run(send("effects:advanceRound", {}))}
@@ -76,14 +120,27 @@ export function CombatPanel({ table, bare }: { table: TableState; bare?: boolean
                 {current ? `vez de ${current.name}` : "vez do mestre"}
               </span>
             </p>
-            {(isGm || myTurn) && (
-              <button
-                type="button"
-                onClick={() => run(send("combat:next", {}))}
-                className="flex h-8 items-center gap-1.5 rounded-md bg-accent px-3 text-xs font-medium text-accent-ink hover:bg-[#e5b46d]"
-              >
-                <SkipForward size={13} /> {myTurn && !isGm ? "Terminar meu turno" : "Próximo turno"}
-              </button>
+            {(isGm || myTurn) && turn && (
+              <span className="flex shrink-0 gap-1">
+                {!isLast && (
+                  <button
+                    type="button"
+                    onClick={() => run(send("combat:delay", turn))}
+                    title="Adiar: agir logo depois do próximo da ordem"
+                    className="flex h-8 items-center gap-1 rounded-md border border-line px-2 text-xs text-muted hover:text-ink"
+                  >
+                    <Clock size={13} /> Adiar
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => run(send("combat:next", turn))}
+                  className="flex h-8 items-center gap-1.5 rounded-md bg-accent px-3 text-xs font-medium text-accent-ink hover:bg-[#e5b46d]"
+                >
+                  <SkipForward size={13} />{" "}
+                  {myTurn && !isGm ? "Terminar meu turno" : "Próximo turno"}
+                </button>
+              </span>
             )}
           </div>
 
@@ -176,6 +233,8 @@ export function CombatPanel({ table, bare }: { table: TableState; bare?: boolean
               </ul>
             </div>
           )}
+
+          {missingList}
 
           {isGm && (
             <button

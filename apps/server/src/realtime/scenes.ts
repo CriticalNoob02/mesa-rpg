@@ -1,6 +1,6 @@
 import { LIMITS, type SceneView } from "@mesa/protocol";
-import { deriveCharacter, moveCost, type NpcStats } from "@mesa/rules";
-import { SRD } from "@mesa/srd";
+import { deriveCharacter, moveCost, type NpcStats, quickNpc } from "@mesa/rules";
+import { type ClassId, SRD } from "@mesa/srd";
 import { MONSTERS } from "@mesa/srd/monsters";
 import { z } from "zod";
 import type { AssetFiles } from "../lib/assets";
@@ -56,6 +56,13 @@ const tokenCreateSchema = z.object({
   sceneId: id,
   characterId: id.optional(),
   monsterId: z.string().max(80).optional(),
+  npc: z
+    .object({
+      classId: z.enum(SRD.classes.map((c) => c.id) as [ClassId, ...ClassId[]]),
+      raceId: z.string().max(40),
+      level: z.number().int().min(1).max(20),
+    })
+    .optional(),
   name: singleLine(40).optional(),
   x: coord,
   y: coord,
@@ -99,6 +106,7 @@ export function sceneActions(
   data: SocketData,
   emitScene: (scene: SceneView | null) => void,
   moveCheck: (token: TokenRecord, cost: number, force: boolean) => Promise<string | null>,
+  autoJoin: (token: TokenRecord) => Promise<void>,
 ) {
   const { campaignId } = me;
   const gmOnly = () => {
@@ -348,7 +356,18 @@ export function sceneActions(
           ref: m.ref,
           will: m.will,
           attacks: m.attacks.slice(0, 10),
+          cr: m.cr,
         };
+      } else if (t.npc) {
+        const race = SRD.races.find((r) => r.id === t.npc!.raceId);
+        if (!race) throw new ActionError("Raça inválida.");
+        const cls = SRD.classes.find((c) => c.id === t.npc!.classId)!;
+        const base = t.name ?? `${cls.namePt} ${race.namePt.toLowerCase()} ${t.npc.level}`;
+        const npc = quickNpc({ name: base, ...t.npc }, SRD);
+        const same = tokens.filter((x) => x.name === base || x.name.startsWith(`${base} (`)).length;
+        name = same ? `${base} (${same + 1})` : base;
+        tokenSpeed = npc.speed;
+        stats = npc.stats;
       }
       if (me.role !== "GM") {
         if ((await store.getActiveSceneId(campaignId)) !== scene.id)
@@ -371,6 +390,7 @@ export function sceneActions(
         stats,
       });
       await hub.publishToken(campaignId, created);
+      await autoJoin(created);
       return { id: created.id };
     },
 

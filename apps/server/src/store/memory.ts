@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import type { LogEntryView, Me } from "@mesa/protocol";
+import type { CampaignSettings, LogEntryView, Me } from "@mesa/protocol";
 import {
   type AssetRecord,
   type CampaignRecord,
@@ -30,12 +30,19 @@ export class MemoryStore implements Store {
   effects: EffectRecord[] = [];
   handouts: HandoutRecord[] = [];
   combats = new Map<string, CombatRecord>();
+  rolls = new Map<string, number[]>();
 
   async createCampaign(input: Parameters<Store["createCampaign"]>[0]) {
     if (this.campaigns.some((c) => c.inviteCode === input.inviteCode)) {
       throw new Error("inviteCode duplicado");
     }
-    const campaign = { id: randomUUID(), name: input.name, inviteCode: input.inviteCode };
+    const campaign: CampaignRecord = {
+      id: randomUUID(),
+      name: input.name,
+      inviteCode: input.inviteCode,
+      startLevel: 1,
+      hpMode: "average",
+    };
     this.campaigns.push(campaign);
     const gm = await this.addPlayer({ campaignId: campaign.id, role: "GM", ...input.gm });
     return { campaign, gm };
@@ -47,6 +54,13 @@ export class MemoryStore implements Store {
 
   async findCampaignByInvite(inviteCode: string) {
     return this.campaigns.find((c) => c.inviteCode === inviteCode) ?? null;
+  }
+
+  async updateCampaignSettings(id: string, patch: Partial<CampaignSettings>) {
+    const c = this.campaigns.find((x) => x.id === id);
+    if (!c) throw new Error("campanha não existe");
+    Object.assign(c, patch);
+    return { ...c };
   }
 
   async addPlayer(input: Parameters<Store["addPlayer"]>[0]) {
@@ -70,6 +84,15 @@ export class MemoryStore implements Store {
   }
 
   async touchPlayer() {}
+
+  async getAbilityRoll(playerId: string) {
+    return this.rolls.get(playerId) ?? null;
+  }
+
+  async setAbilityRoll(playerId: string, scores: number[] | null) {
+    if (scores) this.rolls.set(playerId, [...scores]);
+    else this.rolls.delete(playerId);
+  }
 
   async addLog(entry: NewLogEntry) {
     const stored = {
@@ -112,10 +135,16 @@ export class MemoryStore implements Store {
     return structuredClone(c);
   }
 
-  async updateCharacter(id: string, input: Pick<CharacterRecord, "name" | "base">) {
+  async updateCharacter(
+    id: string,
+    input: Pick<CharacterRecord, "name" | "base"> & { xp?: number },
+  ) {
     const c = this.characters.find((x) => x.id === id);
     if (!c) throw new Error("personagem não existe");
-    Object.assign(c, structuredClone(input), { updatedAt: new Date() });
+    const { xp, ...rest } = input;
+    Object.assign(c, structuredClone(rest), xp === undefined ? {} : { xp }, {
+      updatedAt: new Date(),
+    });
     return structuredClone(c);
   }
 

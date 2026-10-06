@@ -6,6 +6,7 @@ export * from "./dice";
 export * from "./feats";
 export * from "./movement";
 export * from "./proficiency";
+export * from "./progression";
 export * from "./quick";
 export * from "./spellcasting";
 export * from "./stacking";

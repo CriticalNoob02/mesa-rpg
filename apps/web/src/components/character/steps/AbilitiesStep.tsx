@@ -13,22 +13,34 @@ import { Dices } from "lucide-react";
 import { useState } from "react";
 import { useMesaAction } from "@/lib/MesaContext";
 import { signed } from "@/lib/srd";
+import { useMesa } from "@/lib/store";
 import { Section, Select, Stepper } from "../kit";
-import type { StepProps } from "../types";
+import { FREE_LIMITS, type StepProps } from "../types";
 
-export function AbilitiesStep({ base, update, derived }: StepProps) {
+/** Distribui a rolagem na ordem padrão (maior em For); o jogador troca depois. */
+const spread = (scores: number[]) => {
+  const sorted = [...scores].sort((a, b) => b - a);
+  return Object.fromEntries(ABILITIES.map((a, i) => [a, sorted[i]!])) as Record<Ability, number>;
+};
+
+export function AbilitiesStep({ base, update, derived, limits = FREE_LIMITS }: StepProps) {
   const send = useMesaAction();
-  const [pool, setPool] = useState<number[]>([]);
   const [rollError, setRollError] = useState<string | null>(null);
   const race = SRD.races.find((r) => r.id === base.raceId);
   const cost = pointBuyCost(base.abilities);
+  // Uma rolagem por pessoa: a do servidor, guardada até o mestre liberar outra.
+  const pool = limits.abilityRoll ?? [];
+  const locked = limits.locked;
 
   function setMethod(method: "pointbuy" | "rolled") {
-    if (method === base.abilityMethod) return;
+    if (method === base.abilityMethod || locked) return;
     update((d) => ({
       ...d,
       abilityMethod: method,
-      abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
+      abilities:
+        method === "rolled" && limits.abilityRoll
+          ? spread(limits.abilityRoll)
+          : { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
     }));
   }
 
@@ -36,16 +48,9 @@ export function AbilitiesStep({ base, update, derived }: StepProps) {
     setRollError(null);
     const res = await send("character:rollAbilities", {});
     if (!res.ok) return setRollError(res.error);
-    const sorted = [...res.scores].sort((a, b) => b - a);
-    setPool(sorted);
-    // Distribui na ordem padrão; o jogador troca depois.
-    update((d) => ({
-      ...d,
-      abilities: Object.fromEntries(ABILITIES.map((a, i) => [a, sorted[i]!])) as Record<
-        Ability,
-        number
-      >,
-    }));
+    // O servidor também avisa por evento; o ack já basta para mostrar.
+    useMesa.getState().setAbilityRoll(res.scores);
+    update((d) => ({ ...d, abilities: spread(res.scores) }));
   }
 
   /** Troca valores entre dois atributos para manter cada número da rolagem usado uma vez. */
@@ -69,8 +74,13 @@ export function AbilitiesStep({ base, update, derived }: StepProps) {
         )
       }
     >
+      {locked && (
+        <p className="mb-3 text-xs text-muted">
+          Atributos ficam como foram criados; aumentos vêm a cada 4 níveis. Só o mestre muda.
+        </p>
+      )}
       <div
-        className="mb-4 inline-flex rounded-md border border-line p-0.5"
+        className={clsx("mb-4 inline-flex rounded-md border border-line p-0.5", locked && "hidden")}
         role="radiogroup"
         aria-label="Método"
       >
@@ -95,17 +105,25 @@ export function AbilitiesStep({ base, update, derived }: StepProps) {
         ))}
       </div>
 
-      {base.abilityMethod === "rolled" && (
+      {base.abilityMethod === "rolled" && !locked && (
         <div className="mb-4 flex flex-wrap items-center gap-3">
-          <button
-            type="button"
-            onClick={roll}
-            className="flex h-9 items-center gap-1.5 rounded-md border border-line px-3 text-sm hover:border-accent hover:text-accent"
-          >
-            <Dices size={15} /> {pool.length ? "Rolar de novo" : "Rolar no servidor"}
-          </button>
+          {pool.length ? (
+            <span className="text-sm">
+              Sua rolagem: <span className="font-mono">{pool.join(", ")}</span>
+            </span>
+          ) : (
+            <button
+              type="button"
+              onClick={roll}
+              className="flex h-9 items-center gap-1.5 rounded-md border border-line px-3 text-sm hover:border-accent hover:text-accent"
+            >
+              <Dices size={15} /> Rolar no servidor
+            </button>
+          )}
           <span className="text-xs text-muted">
-            6× 4d6 descartando o menor. A rolagem aparece no log da mesa.
+            {pool.length
+              ? "Rolagem única: troque os valores entre os atributos. Outra só se o mestre liberar."
+              : "6× 4d6 descartando o menor, uma vez só. A rolagem aparece no log da mesa."}
           </span>
           {rollError && <span className="text-xs text-fumble">{rollError}</span>}
         </div>
@@ -133,7 +151,9 @@ export function AbilitiesStep({ base, update, derived }: StepProps) {
                   {ABILITY_PT[a].name}
                 </td>
                 <td className="py-2">
-                  {base.abilityMethod === "pointbuy" ? (
+                  {locked ? (
+                    <span className="font-mono">{base.abilities[a]}</span>
+                  ) : base.abilityMethod === "pointbuy" ? (
                     <Stepper
                       label={ABILITY_PT[a].name}
                       value={base.abilities[a]}

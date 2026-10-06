@@ -6,17 +6,17 @@ import { Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { signed } from "@/lib/srd";
 import { Section, Select, StatValue } from "../kit";
-import type { StepProps } from "../types";
+import { FREE_LIMITS, type StepProps } from "../types";
 
 const average = (hitDie: number) => Math.floor(hitDie / 2) + 1;
 
-export function ClassStep({ base, update, derived }: StepProps) {
+export function ClassStep({ base, update, derived, limits = FREE_LIMITS }: StepProps) {
   const [next, setNext] = useState<ClassId>(base.levels.at(-1)?.classId ?? "fighter");
   const hitDie = (id: ClassId) => SRD.classes.find((c) => c.id === id)!.hitDie;
 
   function addLevel() {
     update((d) => {
-      if (d.levels.length >= 20) return d;
+      if (d.levels.length >= Math.min(20, limits.maxLevels)) return d;
       const first = d.levels.length === 0;
       const levels = [
         ...d.levels,
@@ -75,6 +75,21 @@ export function ClassStep({ base, update, derived }: StepProps) {
                     <span className="font-mono text-ink" title="1º nível: máximo do dado">
                       {l.hp}
                     </span>
+                  ) : i >= limits.savedLevels ? (
+                    <span
+                      className="font-mono text-ink"
+                      title={
+                        limits.hpMode === "roll"
+                          ? "O servidor rola o dado ao salvar"
+                          : "Média do dado"
+                      }
+                    >
+                      {limits.hpMode === "roll" ? "?" : average(c.hitDie)}
+                    </span>
+                  ) : i < limits.fixedLevels ? (
+                    <span className="font-mono text-ink" title="Nível já ganho">
+                      {l.hp}
+                    </span>
                   ) : (
                     <input
                       type="number"
@@ -95,7 +110,12 @@ export function ClassStep({ base, update, derived }: StepProps) {
                   )}
                   <span className="text-faint">/ d{c.hitDie}</span>
                 </span>
-                {increaseIndex >= 0 && (
+                {increaseIndex >= 0 && i < limits.fixedLevels && (
+                  <span className="text-muted">
+                    +1 em {ABILITY_PT[base.abilityIncreases[increaseIndex] ?? "str"].name}
+                  </span>
+                )}
+                {increaseIndex >= 0 && i >= limits.fixedLevels && (
                   <span className="flex items-center gap-1.5 text-muted">
                     +1 em
                     <Select
@@ -122,7 +142,7 @@ export function ClassStep({ base, update, derived }: StepProps) {
                     {specials.join(" · ")}
                   </span>
                 )}
-                {i === base.levels.length - 1 && (
+                {i === base.levels.length - 1 && i >= limits.fixedLevels && (
                   <button
                     type="button"
                     onClick={removeLast}
@@ -153,7 +173,7 @@ export function ClassStep({ base, update, derived }: StepProps) {
           <button
             type="button"
             onClick={addLevel}
-            disabled={base.levels.length >= 20}
+            disabled={base.levels.length >= Math.min(20, limits.maxLevels)}
             className="flex h-9 items-center gap-1.5 rounded-md border border-line px-3 text-sm hover:border-accent hover:text-accent disabled:opacity-40"
           >
             <Plus size={14} /> {base.levels.length ? "Subir de nível" : "Escolher"}
@@ -163,6 +183,14 @@ export function ClassStep({ base, update, derived }: StepProps) {
             {cls.casting && ` · magias (${ABILITY_PT[cls.casting.ability].short})`}
           </span>
         </div>
+        <p className="mt-2 text-xs text-muted">
+          {limits.maxLevels < 20 &&
+            (limits.fixedLevels
+              ? `Até o nível ${limits.maxLevels} pelo XP atual. `
+              : `Personagem novo começa no nível ${limits.maxLevels} nesta campanha. `)}
+          PV de cada nível novo:{" "}
+          {limits.hpMode === "roll" ? "dado rolado pelo servidor ao salvar" : "média do dado"}.
+        </p>
         <p className="mt-2 text-xs text-faint">{cls.proficienciesPt ?? cls.proficiencies}</p>
       </Section>
 

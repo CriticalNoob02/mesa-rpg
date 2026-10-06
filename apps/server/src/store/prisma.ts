@@ -1,4 +1,4 @@
-import type { LogEntryView, Me } from "@mesa/protocol";
+import type { CampaignSettings, LogEntryView, Me } from "@mesa/protocol";
 import type { CharacterBase, NpcStats } from "@mesa/rules";
 import type { Modifier } from "@mesa/srd";
 import type {
@@ -15,6 +15,7 @@ import type {
 import { Prisma } from "../generated/prisma/client";
 import type {
   AssetRecord,
+  CampaignRecord,
   CharacterRecord,
   CombatRecord,
   EffectRecord,
@@ -53,6 +54,7 @@ const toCharacter = (c: Character): CharacterRecord => ({
   ownerId: c.ownerId,
   name: c.name,
   base: c.base as CharacterBase,
+  xp: c.xp,
   updatedAt: c.updatedAt,
 });
 
@@ -126,7 +128,26 @@ const toAsset = (a: Asset): AssetRecord => ({
   height: a.height,
 });
 
-const campaignSelect = { id: true, name: true, inviteCode: true } as const;
+const campaignSelect = {
+  id: true,
+  name: true,
+  inviteCode: true,
+  startLevel: true,
+  hpMode: true,
+} as const;
+const toCampaign = (c: {
+  id: string;
+  name: string;
+  inviteCode: string;
+  startLevel: number;
+  hpMode: string;
+}): CampaignRecord => ({
+  id: c.id,
+  name: c.name,
+  inviteCode: c.inviteCode,
+  startLevel: c.startLevel,
+  hpMode: c.hpMode === "roll" ? "roll" : "average",
+});
 
 export class PrismaStore implements Store {
   constructor(private db: PrismaClient) {}
@@ -142,17 +163,25 @@ export class PrismaStore implements Store {
     });
     const { players, ...rest } = campaign;
     return {
-      campaign: { id: rest.id, name: rest.name, inviteCode: rest.inviteCode },
+      campaign: toCampaign(rest),
       gm: toPlayer(players[0]!),
     };
   }
 
-  findCampaign(id: string) {
-    return this.db.campaign.findUnique({ where: { id }, select: campaignSelect });
+  async findCampaign(id: string) {
+    const c = await this.db.campaign.findUnique({ where: { id }, select: campaignSelect });
+    return c ? toCampaign(c) : null;
   }
 
-  findCampaignByInvite(inviteCode: string) {
-    return this.db.campaign.findUnique({ where: { inviteCode }, select: campaignSelect });
+  async findCampaignByInvite(inviteCode: string) {
+    const c = await this.db.campaign.findUnique({ where: { inviteCode }, select: campaignSelect });
+    return c ? toCampaign(c) : null;
+  }
+
+  async updateCampaignSettings(id: string, patch: Partial<CampaignSettings>) {
+    return toCampaign(
+      await this.db.campaign.update({ where: { id }, data: patch, select: campaignSelect }),
+    );
   }
 
   async addPlayer(input: Parameters<Store["addPlayer"]>[0]) {
@@ -174,6 +203,21 @@ export class PrismaStore implements Store {
 
   async touchPlayer(id: string) {
     await this.db.player.update({ where: { id }, data: { lastSeenAt: new Date() } });
+  }
+
+  async getAbilityRoll(playerId: string) {
+    const p = await this.db.player.findUnique({
+      where: { id: playerId },
+      select: { abilityRoll: true },
+    });
+    return (p?.abilityRoll as number[] | null) ?? null;
+  }
+
+  async setAbilityRoll(playerId: string, scores: number[] | null) {
+    await this.db.player.update({
+      where: { id: playerId },
+      data: { abilityRoll: jsonOrNull(scores) },
+    });
   }
 
   async addLog({ campaignId, kind, visibility, authorId, authorName, payload }: NewLogEntry) {
@@ -217,14 +261,23 @@ export class PrismaStore implements Store {
     ownerId,
     name,
     base,
+    xp,
   }: Omit<CharacterRecord, "id" | "updatedAt">) {
     return toCharacter(
-      await this.db.character.create({ data: { campaignId, ownerId, name, base } }),
+      await this.db.character.create({ data: { campaignId, ownerId, name, base, xp } }),
     );
   }
 
-  async updateCharacter(id: string, { name, base }: { name: string; base: CharacterBase }) {
-    return toCharacter(await this.db.character.update({ where: { id }, data: { name, base } }));
+  async updateCharacter(
+    id: string,
+    { name, base, xp }: { name: string; base: CharacterBase; xp?: number },
+  ) {
+    return toCharacter(
+      await this.db.character.update({
+        where: { id },
+        data: { name, base, ...(xp === undefined ? {} : { xp }) },
+      }),
+    );
   }
 
   async deleteCharacter(id: string) {

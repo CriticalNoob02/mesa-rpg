@@ -11,6 +11,7 @@ import { characterActions, toCharacterView } from "./characters";
 import { combatActions } from "./combat";
 import { handoutActions } from "./handouts";
 import { type Hub, type MesaServer, rooms } from "./hub";
+import { progressionActions } from "./progression";
 import { sceneActions } from "./scenes";
 
 const chatSchema = z.object({ text: multiLine(LIMITS.chat) });
@@ -122,6 +123,12 @@ export function registerHandlers(io: MesaServer, store: Store, hub: Hub, opts: R
     socket.on("character:save", handle(characters.save));
     socket.on("character:delete", handle(characters.remove));
     socket.on("character:rollAbilities", handle(characters.rollAbilities));
+    socket.on("character:hp", handle(characters.adjustHp));
+
+    const progression = progressionActions(store, hub, me);
+    socket.on("campaign:settings", handle(progression.settings));
+    socket.on("character:resetRoll", handle(progression.resetRoll));
+    socket.on("xp:award", handle(progression.award));
 
     const combat = combatActions(store, hub, me, opts.rng);
     const scenes = sceneActions(
@@ -132,9 +139,11 @@ export function registerHandlers(io: MesaServer, store: Store, hub: Hub, opts: R
       socket.data,
       (scene) => socket.emit("scene:state", scene),
       combat.moveCheck,
+      combat.autoJoin,
     );
     socket.on("combat:start", handle(combat.start));
     socket.on("combat:next", handle(combat.next));
+    socket.on("combat:delay", handle(combat.delay));
     socket.on("combat:end", handle(combat.end));
     socket.on("combat:setInitiative", handle(combat.setInitiative));
     socket.on("combat:add", handle(combat.add));
@@ -162,15 +171,17 @@ export function registerHandlers(io: MesaServer, store: Store, hub: Hub, opts: R
     socket.on("token:delete", handle(scenes.tokenDelete));
 
     try {
-      const [campaign, players, log, chars, sceneList, activeSceneId, viewing] = await Promise.all([
-        store.findCampaign(campaignId),
-        hub.players(campaignId),
-        store.listLog(campaignId, me, LIMITS.logSnapshot),
-        store.listCharacters(campaignId),
-        store.listScenes(campaignId),
-        store.getActiveSceneId(campaignId),
-        hub.viewingScene(socket.data),
-      ]);
+      const [campaign, players, log, chars, sceneList, activeSceneId, viewing, abilityRoll] =
+        await Promise.all([
+          store.findCampaign(campaignId),
+          hub.players(campaignId),
+          store.listLog(campaignId, me, LIMITS.logSnapshot),
+          store.listCharacters(campaignId),
+          store.listScenes(campaignId),
+          store.getActiveSceneId(campaignId),
+          hub.viewingScene(socket.data),
+          store.getAbilityRoll(me.id),
+        ]);
       if (!campaign) return void socket.disconnect(true);
       const { campaignId: _, ...meView } = me;
       socket.emit("state", {
@@ -186,6 +197,7 @@ export function registerHandlers(io: MesaServer, store: Store, hub: Hub, opts: R
         combat: await hub.combatView(socket.data),
         activeAudio: await hub.activeAudio(campaignId),
         handouts: await hub.handoutsView(socket.data),
+        abilityRoll,
       });
       if (cameOnline) {
         socket.broadcast.to(rooms.campaign(campaignId)).emit("players", players);

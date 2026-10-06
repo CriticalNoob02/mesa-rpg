@@ -4,6 +4,7 @@ import {
   type CharacterBase,
   deriveCharacter,
   emptyCharacter,
+  levelForXp,
   validateCharacter,
 } from "@mesa/rules";
 import { type Spell, SRD } from "@mesa/srd";
@@ -22,7 +23,7 @@ import { RaceStep } from "./steps/RaceStep";
 import { ReviewStep } from "./steps/ReviewStep";
 import { SkillsStep } from "./steps/SkillsStep";
 import { SpellsStep } from "./steps/SpellsStep";
-import { STEPS, type StepKey, stepOf } from "./types";
+import { STEPS, type StepKey, type StepLimits, stepOf } from "./types";
 
 const draftKey = (campaignId: string) => `mesa:draft:${campaignId}`;
 
@@ -131,11 +132,26 @@ export function CharacterWizard({ characterId }: { characterId?: string }) {
     router.push(`/mesa/${campaignId}/personagem/${res.id}`);
   }
 
+  const isGm = table.me.role === "GM";
+  const fixedLevels = existing?.base && !isGm ? existing.base.levels.length : 0;
+  const limits: StepLimits = {
+    locked: !!existing && !isGm,
+    fixedLevels,
+    savedLevels: existing?.base?.levels.length ?? 0,
+    maxLevels: isGm
+      ? 20
+      : existing
+        ? Math.max(fixedLevels, levelForXp(existing.xp))
+        : table.campaign.startLevel,
+    hpMode: table.campaign.hpMode,
+    abilityRoll: table.abilityRoll,
+  };
   const props = {
     ...result,
     base,
     update: (fn: (d: CharacterBase) => CharacterBase) => setBase(fn),
     derived,
+    limits,
   };
 
   return (

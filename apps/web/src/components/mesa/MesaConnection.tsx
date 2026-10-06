@@ -53,6 +53,8 @@ export function MesaConnection({
     s.on("token:removed", (t) => useMesa.getState().removeToken(t));
     s.on("effects", (e) => useMesa.getState().setEffects(e));
     s.on("combat", (c) => useMesa.getState().setCombat(c));
+    s.on("campaign", (c) => useMesa.getState().setCampaign(c));
+    s.on("abilityRoll", (r) => useMesa.getState().setAbilityRoll(r));
     s.on("handouts", (h) => useMesa.getState().setHandouts(h));
     s.on("disconnect", () => useMesa.getState().setStatus("reconnecting"));
     s.io.on("reconnect_attempt", () => useMesa.getState().setStatus("reconnecting"));

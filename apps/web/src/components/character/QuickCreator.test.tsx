@@ -11,7 +11,7 @@ vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
 
 const table: TableState = {
   me: { id: "p1", nickname: "Ana", role: "PLAYER" },
-  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345" },
+  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345", startLevel: 1, hpMode: "average" },
   players: [],
   log: [],
   characters: [],
@@ -22,6 +22,7 @@ const table: TableState = {
   combat: null,
   activeAudio: null,
   handouts: [],
+  abilityRoll: null,
 };
 
 function setup(reply: unknown = { ok: true, id: "ch9" }) {

@@ -29,7 +29,14 @@ export type Visibility = "ALL" | "GM";
 
 export type Me = { id: string; nickname: string; role: Role };
 export type PlayerView = Me & { online: boolean };
-export type CampaignView = { id: string; name: string; inviteCode: string };
+/** PV a cada nível novo: média do dado ou rolagem no servidor (sem rerrolar). */
+export type HpMode = "average" | "roll";
+export type CampaignSettings = {
+  /** Nível em que personagens novos de jogador começam (pode ser menor). */
+  startLevel: number;
+  hpMode: HpMode;
+};
+export type CampaignView = { id: string; name: string; inviteCode: string } & CampaignSettings;
 
 export type ChatPayload = { text: string };
 export type RollPayload = { expr: string; label?: string; terms: RolledTerm[]; total: number };
@@ -68,6 +75,8 @@ export type CharacterView = {
   updatedAt: string;
   /** Vida (todos veem, para a barra no token). */
   hp: { current: number; max: number };
+  /** Experiência acumulada; o nível só sobe até o que o XP permite. */
+  xp: number;
   base?: CharacterBase;
 };
 
@@ -171,6 +180,8 @@ export type TableState = {
   combat: CombatView | null;
   activeAudio: ActiveAudio;
   handouts: HandoutView[];
+  /** Atributos que esta pessoa rolou (uma vez; nova rolagem só se o mestre liberar). */
+  abilityRoll: number[] | null;
 };
 
 export type AckError = { ok: false; error: string; issues?: Issue[] };
@@ -207,11 +218,14 @@ export type HandoutInput = {
 export type FogInput =
   | { sceneId: string; cells: number[]; reveal: boolean }
   | { sceneId: string; all: true; reveal: boolean };
+/** NPC pronto: modelo da classe subido até o nível pedido. */
+export type NpcTemplateInput = { classId: ClassId; raceId: string; level: number };
 export type TokenCreateInput = {
   sceneId: string;
   characterId?: string;
   /** Monstro do SRD: nome, tamanho, deslocamento e ficha vêm prontos. */
   monsterId?: string;
+  npc?: NpcTemplateInput;
   name?: string;
   x: number;
   y: number;
@@ -251,6 +265,22 @@ export type AttackInput = {
   applyDamage?: boolean;
 };
 
+export type XpAwardInput = {
+  awards: { characterId: string; amount: number }[];
+  /** Motivo no log ("Goblins da estrada"). */
+  reason?: string;
+};
+/** Ajuste de PV pela ficha: anunciado no log para a mesa. */
+export type HpAdjustInput = {
+  id: string;
+  /** Positivo cura, negativo é dano. */
+  delta?: number;
+  temp?: number;
+  nonlethal?: number;
+};
+/** Confere que o turno não passou enquanto o clique viajava. */
+export type CombatNextInput = { round: number; tokenId: string | null };
+
 export interface ServerToClientEvents {
   state: (state: TableState) => void;
   "log:new": (entry: LogEntryView) => void;
@@ -270,6 +300,8 @@ export interface ServerToClientEvents {
   "token:removed": (input: { id: string; sceneId: string }) => void;
   effects: (effects: EffectView[]) => void;
   combat: (combat: CombatView | null) => void;
+  campaign: (campaign: CampaignView) => void;
+  abilityRoll: (scores: number[] | null) => void;
 }
 
 export interface ClientToServerEvents {
@@ -277,8 +309,16 @@ export interface ClientToServerEvents {
   roll: (input: RollInput, ack: (res: Ack) => void) => void;
   "character:save": (input: CharacterSaveInput, ack: (res: Ack<{ id: string }>) => void) => void;
   "character:delete": (input: { id: string }, ack: (res: Ack) => void) => void;
-  /** 6× 4d6 descartando o menor, rolados no servidor e anunciados no log. */
+  /**
+   * 6× 4d6 descartando o menor, rolados no servidor e anunciados no log. Uma vez
+   * por pessoa: rolar de novo devolve a mesma rolagem até o mestre liberar.
+   */
   "character:rollAbilities": (input: object, ack: (res: Ack<{ scores: number[] }>) => void) => void;
+  "character:hp": (input: HpAdjustInput, ack: (res: Ack) => void) => void;
+  // Mestre: progressão
+  "campaign:settings": (input: Partial<CampaignSettings>, ack: (res: Ack) => void) => void;
+  "character:resetRoll": (input: { playerId: string }, ack: (res: Ack) => void) => void;
+  "xp:award": (input: XpAwardInput, ack: (res: Ack) => void) => void;
   // Mestre
   "scene:create": (input: SceneCreateInput, ack: (res: Ack<{ id: string }>) => void) => void;
   "scene:update": (input: SceneUpdateInput, ack: (res: Ack) => void) => void;
@@ -297,7 +337,9 @@ export interface ClientToServerEvents {
   "token:stats": (input: { id: string; stats: NpcStats | null }, ack: (res: Ack) => void) => void;
   // Combate (mestre; "next" também pelo dono do combatente da vez)
   "combat:start": (input: { sceneId: string }, ack: (res: Ack) => void) => void;
-  "combat:next": (input: object, ack: (res: Ack) => void) => void;
+  "combat:next": (input: CombatNextInput, ack: (res: Ack) => void) => void;
+  /** Adiar: o combatente da vez passa a agir logo depois do próximo. */
+  "combat:delay": (input: CombatNextInput, ack: (res: Ack) => void) => void;
   "combat:end": (input: object, ack: (res: Ack) => void) => void;
   "combat:setInitiative": (
     input: { tokenId: string; initiative: number },

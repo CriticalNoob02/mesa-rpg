@@ -1,7 +1,7 @@
 "use client";
 
 import type { TableState, TokenView } from "@mesa/protocol";
-import { Crosshair, SkipForward, SlidersHorizontal, Swords } from "lucide-react";
+import { Clock, Crosshair, SkipForward, SlidersHorizontal, Swords } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useMesaAction } from "@/lib/MesaContext";
 import { bestAttackIndex, signed } from "@/lib/srd";
@@ -31,8 +31,16 @@ export function TurnBar({
   const mine = current.ownerId === table.me.id;
   const round = table.combat?.round ?? 1;
 
+  const turn = { round, tokenId: current.id };
+  const isLast = table.combat?.order.at(-1)?.tokenId === current.id;
+
   async function endTurn() {
-    const res = await send("combat:next", {});
+    const res = await send("combat:next", turn);
+    onError(res.ok ? null : res.error);
+  }
+
+  async function delay() {
+    const res = await send("combat:delay", turn);
     onError(res.ok ? null : res.error);
   }
 
@@ -63,6 +71,17 @@ export function TurnBar({
             className="flex h-8 shrink-0 items-center gap-1.5 rounded-full bg-accent px-3 text-sm font-medium text-accent-ink hover:bg-[#e5b46d]"
           >
             <Crosshair size={14} /> Agir
+          </button>
+        )}
+        {canAct && !armed && !isLast && (
+          <button
+            type="button"
+            onClick={delay}
+            title="Adiar: agir logo depois do próximo da ordem"
+            aria-label="Adiar"
+            className="flex size-8 shrink-0 items-center justify-center rounded-full border border-line text-muted hover:text-ink"
+          >
+            <Clock size={14} />
           </button>
         )}
         {canAct && (

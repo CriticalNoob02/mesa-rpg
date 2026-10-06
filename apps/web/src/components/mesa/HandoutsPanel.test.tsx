@@ -15,7 +15,7 @@ const handout = (over: Partial<HandoutView> = {}): HandoutView => ({
 
 const table = (role: "GM" | "PLAYER", handouts: HandoutView[]): TableState => ({
   me: { id: role === "GM" ? "gm" : "p1", nickname: "X", role },
-  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345" },
+  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345", startLevel: 1, hpMode: "average" },
   players: [
     { id: "gm", nickname: "Mestre", role: "GM", online: true },
     { id: "p1", nickname: "Ana", role: "PLAYER", online: true },
@@ -30,6 +30,7 @@ const table = (role: "GM" | "PLAYER", handouts: HandoutView[]): TableState => ({
   combat: null,
   activeAudio: null,
   handouts,
+  abilityRoll: null,
 });
 
 function setup(t: TableState) {

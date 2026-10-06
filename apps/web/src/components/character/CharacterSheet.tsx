@@ -1,5 +1,6 @@
 "use client";
 
+import type { HpMode } from "@mesa/protocol";
 import { ABILITY_PT, type CharacterBase, deriveCharacter, quickLevelUp } from "@mesa/rules";
 import { ABILITIES, type ClassId, ptName, type Spell, SRD } from "@mesa/srd";
 import clsx from "clsx";
@@ -11,6 +12,7 @@ import { RollButton } from "@/components/mesa/RollButton";
 import { characterEffects, roundsLabel } from "@/lib/effects";
 import { kg } from "@/lib/format";
 import { useMesaAction } from "@/lib/MesaContext";
+import { xpProgress } from "@/lib/party";
 import {
   ALIGNMENT_PT,
   bestAttackIndex,
@@ -76,15 +78,7 @@ export function CharacterSheet({ characterId }: { characterId: string }) {
   const who = character.name;
 
   async function adjustHp(delta: number) {
-    if (!base || !derived) return;
-    const current = Math.max(
-      -10,
-      Math.min(derived.hp.total + base.hp.temp, base.hp.current + delta),
-    );
-    const res = await send("character:save", {
-      id: characterId,
-      base: { ...base, hp: { ...base.hp, current } },
-    });
+    const res = await send("character:hp", { id: characterId, delta });
     if (!res.ok) setError(res.error);
   }
 
@@ -95,6 +89,10 @@ export function CharacterSheet({ characterId }: { characterId: string }) {
   }
 
   const level = base?.levels.length ?? 0;
+  const xp = xpProgress(character);
+  const isGm = table.me.role === "GM";
+  // Jogador sobe quando o XP permite; o mestre ajusta quando quiser.
+  const canLevelUp = level < 20 && (isGm || xp.canLevelUp);
   async function levelUp(classId: ClassId) {
     if (!base || !derived) return;
     const isCaster = !!SRD.classes.find((c) => c.id === classId)?.casting;
@@ -106,9 +104,8 @@ export function CharacterSheet({ characterId }: { characterId: string }) {
     if (!res.ok) return setError(res.error);
     setError(null);
     setLevelOpen(false);
-    const gained = next.hp.current - base.hp.current;
     setNotice(
-      `Subiu para o nível ${next.levels.length}! +${gained} PV, perícias e talentos preenchidos.`,
+      `Subiu para o nível ${next.levels.length}! PV no log; perícias, talentos e magias preenchidos.`,
     );
   }
 
@@ -130,14 +127,18 @@ export function CharacterSheet({ characterId }: { characterId: string }) {
               {characterSummary(character)}
               {base && ` · ${ALIGNMENT_PT[base.alignment]}`} · de {character.ownerName}
             </p>
+            <XpBar xp={character.xp} progress={xp} />
           </div>
           {canEdit && base && (
             <>
-              {level < 20 && (
+              {canLevelUp && (
                 <button
                   type="button"
                   onClick={() => setLevelOpen((o) => !o)}
                   aria-expanded={levelOpen}
+                  title={
+                    xp.canLevelUp ? "XP suficiente para o próximo nível" : "Mestre: subir sem XP"
+                  }
                   className="flex h-9 shrink-0 items-center gap-1.5 rounded-md bg-accent px-3 text-sm font-medium text-accent-ink hover:bg-[#e5b46d]"
                 >
                   <ArrowUpCircle size={15} />
@@ -185,7 +186,12 @@ export function CharacterSheet({ characterId }: { characterId: string }) {
           )}
         </div>
         {levelOpen && base && (
-          <LevelUpBar base={base} onPick={levelUp} onCancel={() => setLevelOpen(false)} />
+          <LevelUpBar
+            base={base}
+            hpMode={table.campaign.hpMode}
+            onPick={levelUp}
+            onCancel={() => setLevelOpen(false)}
+          />
         )}
       </header>
 
@@ -754,13 +760,42 @@ function Tile({
   );
 }
 
+/** Experiência rumo ao próximo nível. */
+function XpBar({ xp, progress }: { xp: number; progress: ReturnType<typeof xpProgress> }) {
+  const fmt = (n: number) => n.toLocaleString("pt-BR");
+  return (
+    <div className="mt-1 flex items-center gap-2 text-[11px] text-faint">
+      <div
+        className="h-1 w-24 overflow-hidden rounded-full bg-line sm:w-32"
+        role="progressbar"
+        aria-label="Experiência"
+        aria-valuemin={progress.from}
+        aria-valuemax={progress.to}
+        aria-valuenow={xp}
+      >
+        <div
+          className={clsx("h-full rounded-full", progress.canLevelUp ? "bg-crit" : "bg-accent")}
+          style={{ width: `${progress.pct}%` }}
+        />
+      </div>
+      <span className="font-mono">
+        {fmt(xp)}
+        {progress.level < 20 && ` / ${fmt(progress.to)}`} XP
+      </span>
+      {progress.canLevelUp && <span className="text-crit">pode subir de nível!</span>}
+    </div>
+  );
+}
+
 /** Escolhe a classe do novo nível (a principal já vem marcada). */
 function LevelUpBar({
   base,
+  hpMode,
   onPick,
   onCancel,
 }: {
   base: CharacterBase;
+  hpMode: HpMode;
   onPick: (c: ClassId) => Promise<void>;
   onCancel: () => void;
 }) {
@@ -790,8 +825,10 @@ function LevelUpBar({
           ))}
         </select>
         <span className="text-xs text-muted">
-          +{Math.floor(cls.hitDie / 2) + 1} PV (média do d{cls.hitDie}) antes de Con; perícias,
-          talentos e magias automáticos.
+          {hpMode === "roll"
+            ? `PV: 1d${cls.hitDie} rolado pelo servidor`
+            : `+${Math.floor(cls.hitDie / 2) + 1} PV (média do d${cls.hitDie})`}{" "}
+          + Con; perícias, talentos e magias automáticos.
         </span>
         <span className="ml-auto flex gap-1.5">
           <button

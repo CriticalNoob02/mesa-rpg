@@ -7,7 +7,7 @@ import { MonsterPicker } from "./MonsterPicker";
 
 const table: TableState = {
   me: { id: "gm", nickname: "Mestre", role: "GM" },
-  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345" },
+  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345", startLevel: 1, hpMode: "average" },
   players: [],
   log: [],
   characters: [],
@@ -47,6 +47,7 @@ const table: TableState = {
   combat: null,
   activeAudio: null,
   handouts: [],
+  abilityRoll: null,
 };
 
 function setup(reply: unknown = { ok: true, id: "t2" }) {
@@ -106,5 +107,34 @@ describe("MonsterPicker", { timeout: 20_000 }, () => {
     });
     fireEvent.click(screen.getByRole("button", { name: "11+" }));
     expect(screen.queryByRole("button", { name: /Pôr Goblin/ })).toBeNull();
+  });
+
+  it("faixa do grupo por padrão, com XP por personagem", async () => {
+    setup();
+    expect(screen.getByRole("button", { name: "Grupo (ND ¼–4)" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    fireEvent.change(screen.getByLabelText("Buscar monstro"), { target: { value: "ogro" } });
+    expect(
+      (await screen.findAllByText(/≈900 XP\/pers\./, {}, { timeout: 5000 }))[0],
+    ).toBeInTheDocument();
+  });
+
+  it("NPC de classe no nível escolhido", async () => {
+    const emit = setup();
+    fireEvent.click(screen.getByRole("button", { name: "NPC de classe" }));
+    fireEvent.change(screen.getByLabelText("Classe do NPC"), { target: { value: "wizard" } });
+    fireEvent.change(screen.getByLabelText("Nível do NPC"), { target: { value: "5" } });
+    fireEvent.click(screen.getByRole("button", { name: /Pôr no mapa/ }));
+    await waitFor(() =>
+      expect(emit).toHaveBeenCalledWith("token:create", {
+        sceneId: "s1",
+        npc: { classId: "wizard", raceId: "human", level: 5 },
+        hidden: false,
+        x: 1,
+        y: 0,
+      }),
+    );
   });
 });

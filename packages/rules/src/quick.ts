@@ -1,5 +1,6 @@
 import { ABILITIES, type Ability, type ClassId, type Spell, type SrdCore } from "@mesa/srd";
 import { type CharacterBase, emptyCharacter } from "./character";
+import { damageExpr, type NpcStats } from "./combat";
 import { deriveCharacter } from "./derive";
 import { assignFeats, checkPrerequisites, isMonkBonusFeat, type PrereqContext } from "./feats";
 import { isWeaponProficient } from "./proficiency";
@@ -352,6 +353,45 @@ export function quickLevelUp(
   return {
     ...next,
     hp: { ...next.hp, current: Math.min(next.hp.current + (after - before), after + next.hp.temp) },
+  };
+}
+
+export type QuickNpcInput = QuickInput & { level: number };
+
+/**
+ * NPC pronto de qualquer nível: personagem do modelo da classe subido até
+ * `level`, convertido no bloco simples de NPC (ND = nível, classe de PJ).
+ */
+export function quickNpc(
+  input: QuickNpcInput,
+  srd: SrdCore,
+  spells: Spell[] = [],
+): { base: CharacterBase; stats: NpcStats; speed: number } {
+  let base = quickCharacter(input, srd, spells);
+  const level = Math.max(1, Math.min(20, Math.floor(input.level)));
+  while (base.levels.length < level) base = quickLevelUp(base, srd, spells, input.classId);
+  const d = deriveCharacter(base, [], srd);
+  return {
+    base,
+    speed: d.speed.total,
+    stats: {
+      hp: d.hp.total,
+      hpMax: d.hp.total,
+      ac: d.ac.total.total,
+      touch: d.ac.touch,
+      flatFooted: d.ac.flatFooted,
+      init: d.initiative.total,
+      fort: d.saves.fort.total,
+      ref: d.saves.ref.total,
+      will: d.saves.will.total,
+      attacks: d.attacks.slice(0, 10).map((a) => ({
+        name: a.name,
+        bonus: a.bonuses[0] ?? a.attack.total,
+        damage: damageExpr(a.damageDice, a.damage.total),
+        critical: a.critical,
+      })),
+      cr: String(level),
+    },
   };
 }
 

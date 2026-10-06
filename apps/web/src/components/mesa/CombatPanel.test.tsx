@@ -24,7 +24,7 @@ const tok = (id: string, name: string, extra: Partial<TokenView> = {}): TokenVie
 
 const base = (role: "GM" | "PLAYER", combat: TableState["combat"]): TableState => ({
   me: { id: "p1", nickname: "Ana", role },
-  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345" },
+  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345", startLevel: 1, hpMode: "average" },
   players: [],
   log: [],
   characters: [],
@@ -63,6 +63,7 @@ const base = (role: "GM" | "PLAYER", combat: TableState["combat"]): TableState =
   combat,
   activeAudio: null,
   handouts: [],
+  abilityRoll: null,
 });
 
 const combat = {
@@ -114,7 +115,7 @@ describe("CombatPanel", () => {
     await act(async () =>
       fireEvent.click(screen.getByRole("button", { name: /Terminar meu turno/ })),
     );
-    expect(emit).toHaveBeenCalledWith("combat:next", {});
+    expect(emit).toHaveBeenCalledWith("combat:next", { round: 2, tokenId: "t1" });
     expect(screen.queryByLabelText("Iniciativa de Tordek")).toBeNull();
   });
 
@@ -144,5 +145,45 @@ describe("CombatPanel", () => {
     expect(emit).toHaveBeenCalledWith("combat:add", { tokenId: "t3" });
     expect(emit).toHaveBeenCalledWith("combat:remove", { tokenId: "t2" });
     expect(emit).toHaveBeenCalledWith("combat:end", {});
+  });
+
+  it("adiar manda o turno esperado; o último da ordem não adia", async () => {
+    const emit = setup(base("PLAYER", combat));
+    await act(async () => fireEvent.click(screen.getByRole("button", { name: /Adiar/ })));
+    expect(emit).toHaveBeenCalledWith("combat:delay", { round: 2, tokenId: "t1" });
+  });
+
+  it("último da ordem não tem adiar", () => {
+    setup(base("GM", { ...combat, currentTokenId: "t2" }));
+    expect(screen.queryByRole("button", { name: /Adiar/ })).toBeNull();
+  });
+
+  it("mestre vê personagem do grupo sem token e coloca no mapa", async () => {
+    const t = base("GM", combat);
+    t.players = [
+      { id: "gm", nickname: "Mestre", role: "GM", online: true },
+      { id: "p2", nickname: "Bia", role: "PLAYER", online: true },
+    ];
+    t.characters = [
+      {
+        id: "ch2",
+        ownerId: "p2",
+        ownerName: "Bia",
+        name: "Lidda",
+        raceId: "halfling",
+        classes: [{ classId: "rogue", level: 1 }],
+        updatedAt: "",
+        hp: { current: 6, max: 6 },
+        xp: 0,
+      },
+    ];
+    const emit = setup(t);
+    await act(async () =>
+      fireEvent.click(screen.getByRole("button", { name: "Colocar Lidda no mapa" })),
+    );
+    expect(emit).toHaveBeenCalledWith(
+      "token:create",
+      expect.objectContaining({ sceneId: "s1", characterId: "ch2" }),
+    );
   });
 });

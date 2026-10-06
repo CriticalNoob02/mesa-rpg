@@ -14,7 +14,7 @@ const chat = (id: string): LogEntryView => ({
 
 const table: TableState = {
   me: { id: "p1", nickname: "Ana", role: "GM" },
-  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345" },
+  campaign: { id: "c1", name: "Mesa", inviteCode: "ABCD2345", startLevel: 1, hpMode: "average" },
   players: [],
   log: [chat("1")],
   characters: [],
@@ -25,6 +25,7 @@ const table: TableState = {
   combat: null,
   activeAudio: null,
   handouts: [],
+  abilityRoll: null,
 };
 
 describe("appendLog", () => {
@@ -73,6 +74,7 @@ describe("characters", () => {
     classes: [],
     updatedAt: "2026-10-02T20:00:00.000Z",
     hp: { current: 10, max: 10 },
+    xp: 0,
   });
 
   it("upsert mantém ordem e remove", () => {

@@ -2,6 +2,7 @@ import { afterAll, describe, expect, it } from "vitest";
 import { createPrisma } from "../src/lib/db";
 import { generateInviteCode } from "../src/lib/tokens";
 import { PrismaStore } from "../src/store/prisma";
+import { tordek } from "./fixtures";
 
 // Contra um Postgres de verdade, só quando TEST_DATABASE_URL vier (ex.: o banco local `mesa`).
 const url = process.env.TEST_DATABASE_URL;
@@ -63,5 +64,38 @@ describe.skipIf(!url)("PrismaStore", () => {
     expect(await kinds(p1)).toEqual(["CHAT", "ROLL"]);
     expect(await kinds(p2)).toEqual(["CHAT"]);
     expect(await store.listLog(campaign.id, gm, 1)).toEqual([hidden]);
+  });
+
+  it("progressão: configurações, rolagem guardada e XP da ficha", async () => {
+    const inviteCode = generateInviteCode();
+    const { campaign, gm } = await store.createCampaign({
+      name: "Progressão",
+      inviteCode,
+      gm: { nickname: "Mestre", tokenHash: `gm-${inviteCode}` },
+    });
+    created.push(campaign.id);
+    expect(campaign).toMatchObject({ startLevel: 1, hpMode: "average" });
+    expect(
+      await store.updateCampaignSettings(campaign.id, { startLevel: 3, hpMode: "roll" }),
+    ).toEqual({ ...campaign, startLevel: 3, hpMode: "roll" });
+
+    expect(await store.getAbilityRoll(gm.id)).toBeNull();
+    await store.setAbilityRoll(gm.id, [15, 14, 13, 12, 10, 8]);
+    expect(await store.getAbilityRoll(gm.id)).toEqual([15, 14, 13, 12, 10, 8]);
+    await store.setAbilityRoll(gm.id, null);
+    expect(await store.getAbilityRoll(gm.id)).toBeNull();
+
+    const c = await store.createCharacter({
+      campaignId: campaign.id,
+      ownerId: gm.id,
+      name: "Tordek",
+      base: tordek(),
+      xp: 1000,
+    });
+    expect(c.xp).toBe(1000);
+    expect((await store.updateCharacter(c.id, { name: "T", base: c.base })).xp).toBe(1000);
+    expect((await store.updateCharacter(c.id, { name: "T", base: c.base, xp: 3000 })).xp).toBe(
+      3000,
+    );
   });
 });

@@ -97,6 +97,8 @@ export type NpcStats = {
   ref: number;
   will: number;
   attacks: { name: string; bonus: number; damage: string; critical: string }[];
+  /** Nível de desafio (monstro do SRD ou NPC pronto), para calcular XP. */
+  cr?: string;
 };
 
 export const emptyNpcStats = (): NpcStats => ({

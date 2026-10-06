@@ -73,6 +73,7 @@ const statsSchema = z.object({
       }),
     )
     .max(10),
+  cr: z.string().max(40).optional(),
 }) satisfies z.ZodType<NpcStats, unknown>;
 const attackSchema = z.object({
   attackerTokenId: id,
@@ -82,6 +83,8 @@ const attackSchema = z.object({
   iterative: int(0, 3).optional(),
   applyDamage: z.boolean().optional(),
 });
+
+const expectSchema = z.object({ round: z.number().int().min(1), tokenId: id.nullable() });
 
 const toActive = (e: EffectRecord): ActiveEffect => ({
   id: e.id,
@@ -162,19 +165,39 @@ export function combatActions(store: Store, hub: Hub, me: PlayerRecord, rng: Die
     return t;
   };
   const nameOf = (t: TokenRecord) => t.name;
+  /**
+   * Combate + conferência da vez: quem clicou é o mestre ou o dono do
+   * combatente da vez, e o turno esperado ainda é o atual (dois cliques quase
+   * juntos não passam dois turnos).
+   */
+  const loadTurn = async (input: unknown) => {
+    const expected = expectSchema.parse(input);
+    const combat = await loadCombat();
+    const current = combat.order[combat.turnIndex];
+    if (me.role !== "GM") {
+      const owners = await hub.owners(campaignId);
+      const t = current ? await store.findToken(current.tokenId) : null;
+      if (!t?.characterId || owners.get(t.characterId) !== me.id)
+        throw new ActionError("Não é a sua vez.");
+    }
+    if (expected.round !== combat.round || expected.tokenId !== (current?.tokenId ?? null))
+      throw new ActionError("O turno já passou.");
+    return combat;
+  };
   const rollInit = async (t: TokenRecord) => {
     const { init } = await combatProfile(store, t, campaignId);
     return { id: t.id, bonus: init, roll: rollExpr("1d20", rng).total };
   };
   /** Ordena e mantém a vez de quem estava jogando. */
-  const resort = (
-    combat: CombatRecord,
-    entries: { tokenId: string; initiative: number; bonus?: number }[],
-  ) => {
+  const resort = (combat: CombatRecord, entries: CombatRecord["order"]) => {
     const current = combat.order[combat.turnIndex]?.tokenId;
     const order = [...entries]
       .sort((a, b) => b.initiative - a.initiative)
-      .map(({ tokenId, initiative }) => ({ tokenId, initiative }));
+      .map(({ tokenId, initiative, delayed }) => ({
+        tokenId,
+        initiative,
+        ...(delayed ? { delayed } : {}),
+      }));
     const idx = order.findIndex((o) => o.tokenId === current);
     return {
       ...combat,
@@ -209,7 +232,10 @@ export function combatActions(store: Store, hub: Hub, me: PlayerRecord, rng: Die
     await hub.publishEffects(campaignId);
   }
 
-  /** Início do turno: movimento zera e os efeitos de quem age descontam. */
+  /**
+   * Início do turno: movimento zera e os efeitos de quem age descontam. Quem
+   * adiou volta sem recomeçar o turno (o que tinha começado continua).
+   */
   async function beginTurn(combat: CombatRecord, newRound: boolean) {
     if (newRound) {
       await hub.system(campaignId, `Rodada ${combat.round}.`);
@@ -219,6 +245,18 @@ export function combatActions(store: Store, hub: Hub, me: PlayerRecord, rng: Die
     if (!current) return;
     const t = await store.findToken(current.tokenId);
     if (!t) return;
+    if (current.delayed) {
+      await store.saveCombat({
+        ...combat,
+        order: combat.order.map((o, i) =>
+          i === combat.turnIndex ? { tokenId: o.tokenId, initiative: o.initiative } : o,
+        ),
+      });
+      const text = `Vez de ${t.name} (depois de adiar).`;
+      if (t.hidden) await hub.systemGm(campaignId, text);
+      else await hub.system(campaignId, text);
+      return;
+    }
     const saved = await store.updateToken(t.id, { moveSpent: 0, diagParity: 0 });
     await hub.publishToken(campaignId, saved);
     await tick((e) => e.casterTokenId === t.id);
@@ -271,15 +309,8 @@ export function combatActions(store: Store, hub: Hub, me: PlayerRecord, rng: Die
       return {};
     },
 
-    async next() {
-      const combat = await loadCombat();
-      const current = combat.order[combat.turnIndex];
-      if (me.role !== "GM") {
-        const owners = await hub.owners(campaignId);
-        const t = current ? await store.findToken(current.tokenId) : null;
-        if (!t?.characterId || owners.get(t.characterId) !== me.id)
-          throw new ActionError("Não é a sua vez.");
-      }
+    async next(input: unknown) {
+      const combat = await loadTurn(input);
       let { turnIndex, round } = combat;
       turnIndex++;
       const newRound = turnIndex >= combat.order.length;
@@ -292,6 +323,46 @@ export function combatActions(store: Store, hub: Hub, me: PlayerRecord, rng: Die
       await beginTurn(next, newRound);
       await hub.publishCombat(campaignId);
       return {};
+    },
+
+    /** Adiar: quem está na vez passa a agir logo depois do próximo da ordem. */
+    async delay(input: unknown) {
+      const combat = await loadTurn(input);
+      const idx = combat.turnIndex;
+      const delayer = combat.order[idx]!;
+      const after = combat.order[idx + 1];
+      if (!after)
+        throw new ActionError("Último da rodada não tem depois de quem agir: encerre o turno.");
+      const order = [...combat.order];
+      order[idx] = after;
+      order[idx + 1] = { tokenId: delayer.tokenId, initiative: after.initiative, delayed: true };
+      const next = { ...combat, order };
+      await store.saveCombat(next);
+      const [t, other] = await Promise.all([
+        store.findToken(delayer.tokenId),
+        store.findToken(after.tokenId),
+      ]);
+      const text = `${t?.name ?? "?"} adia e age depois de ${other?.hidden ? "alguém" : (other?.name ?? "?")}.`;
+      if (t?.hidden) await hub.systemGm(campaignId, text);
+      else await hub.system(campaignId, text);
+      await beginTurn(next, false);
+      await hub.publishCombat(campaignId);
+      return {};
+    },
+
+    /** Token criado na cena do combate entra na ordem com iniciativa rolada. */
+    async autoJoin(t: TokenRecord) {
+      const combat = await store.getCombat(campaignId);
+      if (!combat || combat.sceneId !== t.sceneId) return;
+      if (combat.order.some((o) => o.tokenId === t.id)) return;
+      const r = await rollInit(t);
+      await store.saveCombat(
+        resort(combat, [...combat.order, { tokenId: t.id, initiative: r.roll + r.bonus }]),
+      );
+      const text = `${t.name} entra no combate (iniciativa ${r.roll + r.bonus}).`;
+      if (t.hidden) await hub.systemGm(campaignId, text);
+      else await hub.system(campaignId, text);
+      await hub.publishCombat(campaignId);
     },
 
     async end() {

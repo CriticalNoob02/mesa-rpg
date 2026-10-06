@@ -5,9 +5,9 @@ import { type Ability, SRD } from "@mesa/srd";
 import clsx from "clsx";
 import { ALIGNMENT_PT, meters, signed } from "@/lib/srd";
 import { Section } from "../kit";
-import type { StepProps } from "../types";
+import { FREE_LIMITS, type StepProps } from "../types";
 
-export function RaceStep({ base, update }: StepProps) {
+export function RaceStep({ base, update, limits = FREE_LIMITS }: StepProps) {
   return (
     <div className="flex flex-col gap-4">
       <Section title="Quem é">
@@ -59,9 +59,11 @@ export function RaceStep({ base, update }: StepProps) {
                 key={r.id}
                 type="button"
                 aria-pressed={selected}
+                disabled={limits.locked && !selected}
+                title={limits.locked && !selected ? "Raça só o mestre muda" : undefined}
                 onClick={() => update((d) => ({ ...d, raceId: r.id }))}
                 className={clsx(
-                  "flex flex-col rounded-lg border p-3 text-left transition-colors",
+                  "flex flex-col rounded-lg border p-3 text-left transition-colors disabled:opacity-40",
                   selected ? "border-accent bg-accent/5" : "border-line hover:border-muted",
                 )}
               >

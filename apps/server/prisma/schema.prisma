@@ -1,5 +1,6 @@
 // Fase 1: campanha, participantes e log. Fase 2: fichas. Fase 3: cenas, tokens e imagens.
 // Fase 4: efeitos com duração, combate e ficha simples de NPC. Fase 5: ambientação e handouts.
+// Progressão: XP por personagem, nível inicial e PV por nível na campanha, rolagem única.
 
 generator client {
   provider = "prisma-client"
@@ -34,6 +35,10 @@ model Campaign {
   inviteCode    String      @unique
   /// Cena que todos veem (sem FK para não criar ciclo com Scene).
   activeSceneId String?
+  /// Nível dos personagens novos de jogador.
+  startLevel    Int         @default(1)
+  /// "average" (média do dado) ou "roll" (rolado no servidor) a cada nível novo.
+  hpMode        String      @default("average")
   createdAt     DateTime    @default(now())
   players       Player[]
   log           LogEntry[]
@@ -53,6 +58,8 @@ model Player {
   nickname   String
   /// sha256 do token de acesso; o token em si só existe no navegador do participante.
   tokenHash  String      @unique
+  /// 6 valores de 4d6 rolados no servidor; nova rolagem só se o mestre liberar.
+  abilityRoll Json?
   createdAt  DateTime    @default(now())
   lastSeenAt DateTime    @default(now())
   characters Character[]
@@ -84,6 +91,8 @@ model Character {
   owner      Player   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   name       String
   base       Json
+  /// Experiência; o nível só sobe até o que ela permite.
+  xp         Int      @default(0)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   tokens     Token[]
@@ -175,7 +184,7 @@ model Effect {
   @@index([campaignId])
 }
 
-/// Um combate por campanha. `order` = [{ tokenId, initiative }] já ordenado.
+/// Um combate por campanha. `order` = [{ tokenId, initiative, delayed? }] já ordenado.
 model Combat {
   id         String   @id @default(cuid())
   campaignId String   @unique
